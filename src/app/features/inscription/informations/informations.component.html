@@ -1,0 +1,579 @@
+<div class="container">
+    <app-left-bar> </app-left-bar>
+    <div class="second-container">
+
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                    fill="#1E1E1E" />
+            </svg>
+            <div class="Search-text">
+                <input type="search" placeholder="Search Anything Here...">
+            </div>
+            <div>
+                <button> Rechercher </button>
+            </div>
+        </div>
+
+        <br> <br>
+        <div class="Information"> information personnelle et du compte</div>
+        <form [formGroup]="myForm">
+            <div style="display: flex;">
+                <div>
+                    <div class="label"> Prénom :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="firstName" [ngModel]="personalInfo?.firstName.value"
+                            [readonly]="personalInfo?.firstName.validated">
+
+                        <label class="toggle-switch" *ngIf="!personalInfo?.firstName.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+
+                    </div>
+
+                    <div class="cause">
+                        {{ personalInfo?.firstName.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Nom :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="lastName" [ngModel]="personalInfo?.lastName.value"
+                            [readonly]="personalInfo?.lastName.validated">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.lastName.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.lastName.causeNonValidation }}
+                    </div>
+
+
+                    <div class="label"> Date de naissance :</div>
+                    <div class="Tableau">
+                        <input type="date" formControlName="dateOfBirth"
+                            [readonly]="personalInfo?.dateOfBirth.validated"
+                            [ngModel]="personalInfo?.dateOfBirth.value">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.dateOfBirth.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.dateOfBirth.causeNonValidation }}
+                    </div>
+                    <div class="label"> Adresse email :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="email" [ngModel]="personalInfo?.email.value"
+                            [readonly]="personalInfo?.email.validated">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.email.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.email.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Lieu :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="location" [ngModel]="personalInfo?.location.value"
+                            [readonly]="personalInfo?.location.validated">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.location.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.location.causeNonValidation }}
+                    </div>
+                    <div class="label"> Nationalité :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="nationality" [ngModel]="personalInfo?.nationality.value"
+                            [readonly]="personalInfo?.nationality.validated">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.nationality.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.nationality.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Numéro de téléphone :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="phoneNumber" [ngModel]="personalInfo?.phoneNumber.value"
+                            [readonly]="personalInfo?.phoneNumber.validated">
+                        <label class="toggle-switch" *ngIf="!personalInfo?.phoneNumber.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.phoneNumber.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Pièce d'identité (CIN) :</div>
+                    <div class="Tableau">
+                        <div class="zoom">
+                            <img formControlName="identificationDocument"
+                                [src]="personalInfo.identificationDocument.value" />
+                        </div><label class="toggle-switch" *ngIf="!personalInfo?.identificationDocument.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="upload-icon" onclick="document.getElementById('fileInput').click()">
+                        <div class="chose-file" *ngIf="!cin_img"> choisir un fichier <br>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
+                                class="icon-file" fill="none">
+                                <g clip-path="url(#clip0_972_185)">
+                                    <path
+                                        d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
+                                        stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_972_185">
+                                        <rect width="14" height="14" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div *ngIf="cin_img" style="align-items: center; text-align: center;">
+                            <img [src]="cin_img" alt="Selected Image"
+                                style="max-width: 320%; max-height: 50px; margin:5px; margin-top: 10px;" />
+                        </div>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.identificationDocument.causeNonValidation}}
+                    </div>
+
+                </div>
+                <div style="margin-left: 70px;">
+                    <div class="label"> Voiture : {{personalInfo?.carInfo.hasCar.value}}</div>
+                    <div>
+                        <div style="display: flex;margin-top: 25px;margin-bottom: 35px;">
+
+                            <div>
+                                <input type="radio" id="oui" value="oui" formControlName="hasCar"
+                                    [checked]="personalInfo?.carInfo.hasCar.value"
+                                    [disabled]="personalInfo?.carInfo.hasCar.validated === true">
+                                <label for="oui">Oui</label><br>
+                            </div>
+                            <div>
+                                <input type="radio" id="non" value="non" formControlName="hasCar"
+                                    [checked]="personalInfo?.carInfo.hasCar.value !== true"
+                                    [disabled]="personalInfo?.carInfo.hasCar.validated === true">
+                                <label for="non">Non</label><br>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="label"> Permis : </div>
+                    <div class="Tableau">
+                        <div class="zoom">
+                            <img formControlName="drivingLicense" [src]="personalInfo?.carInfo.drivingLicense.value" />
+                        </div>
+
+                        <label class="toggle-switch" *ngIf="!personalInfo?.carInfo.drivingLicense.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.carInfo.drivingLicense.causeNonValidation}}
+                    </div>
+                    <div class="label"> RIB :</div>
+                    <div class="Tableau">
+                        <input formControlName="rib" [ngModel]="personalInfo?.rib.value"
+                            [readonly]="personalInfo?.rib.validated" type="text" required placeholder="RIB" />
+                        <label class="toggle-switch" *ngIf="!personalInfo?.rib.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.rib.causeNonValidation}}
+                    </div>
+                    <div class="label"> RIB Document : </div>
+                    <div class="Tableau">
+                        <div id="pdfContainer1"></div>
+                    </div>
+
+
+
+                    <div class="label"> Num de sécurité sociale / AVS :</div>
+                    <div class="Tableau">
+                        <input formControlName="socialSecurityNumber"
+                            [ngModel]="personalInfo?.socialSecurityNumber.value" type="text"
+                            [readonly]="personalInfo?.socialSecurityNumber.validated" required placeholder="RIB" />
+                        <label class="toggle-switch" *ngIf="!personalInfo?.socialSecurityNumber.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ personalInfo?.socialSecurityNumber.causeNonValidation }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="Information"> Information du client (pour la contractualisation) </div>
+            <div class="personal-info">
+                <div>
+                    <div class="label"> Prénom :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="clientfirstName"
+                            [readonly]="clientInfo?.clientContact.firstName.validated"
+                            [ngModel]="clientInfo?.clientContact.firstName.value">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.firstName.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ clientInfo?.clientContact.firstName.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Nom :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="clientlastName"
+                            [readonly]="clientInfo?.clientContact.lastName.validated"
+                            [ngModel]="clientInfo?.clientContact.lastName.value">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.lastName.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ clientInfo?.clientContact.lastName.causeNonValidation }}
+                    </div>
+                    <div class="label"> Email :</div>
+                    <div class="Tableau">
+                        <input type="email" formControlName="clientEmail"
+                            [ngModel]="clientInfo?.clientContact.email.value"
+                            [readonly]="clientInfo?.clientContact.email.validated">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.email.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ clientInfo?.clientContact.email.causeNonValidation }}
+                    </div>
+                    <div class="label"> Société :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="company" [ngModel]="clientInfo?.company.value"
+                            [readonly]="clientInfo?.company.validated">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.company.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause" *ngIf="!clientInfo?.company.validated">
+                        {{ clientInfo?.company.causeNonValidation }}
+                    </div>
+                    <div class="label">Poste du contact :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="clientPostion"
+                            [ngModel]="clientInfo?.clientContact.position.value"
+                            [readonly]="clientInfo?.clientContact.position.validated">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.position.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ clientInfo?.clientContact.position.causeNonValidation }}
+                    </div>
+                    <div class="label"> Numéro de téléphone :</div>
+                    <div class="Tableau">
+                        <input type="text" formControlName="clientphoneNumber"
+                            [ngModel]="clientInfo?.clientContact.phoneNumber.value"
+                            [readonly]="clientInfo?.clientContact.phoneNumber.validated">
+                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.phoneNumber.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ clientInfo?.clientContact.phoneNumber.causeNonValidation }}
+                    </div>
+
+
+
+
+                </div>
+                <div style="margin-left: 70px;">
+                    <div class="label"> Métier :</div>
+                    <div class="Tableau">
+                        <input formControlName="profession" [ngModel]="missionInfo?.profession.value"
+                            [readonly]="missionInfo?.profession.validated" type="text" required placeholder="RIB" />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.profession.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.profession.causeNonValidation }}
+                    </div>
+                    <div class="label"> TJM : :</div>
+                    <div class="Tableau">
+                        <input formControlName="dailyRate" [ngModel]="missionInfo?.dailyRate.value"
+                            [readonly]="missionInfo?.dailyRate.validated" type="text" placeholder="Société" required />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.dailyRate.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.dailyRate.causeNonValidation }}
+                    </div>
+
+                    <div class="label"> Secteur d'activité : </div>
+                    <div class="Tableau">
+                        <input formControlName="industrySector" [ngModel]="missionInfo?.industrySector.value"
+                            type="text" [readonly]="missionInfo?.industrySector.validated"
+                            placeholder="Secteur d'activité" required />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.industrySector.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.industrySector.causeNonValidation }}
+                    </div>
+                    <div class="label"> Date de début : </div>
+                    <div class="Tableau">
+                        <input type="date" formControlName="startDate" [readonly]="missionInfo?.startDate.validated"
+                            [ngModel]="missionInfo?.startDate.value.split('T')[0]" required />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.startDate.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.startDate.causeNonValidation }}
+                    </div>
+                    <div class="label"> Date de fin de mission : </div>
+                    <div class="Tableau">
+                        <input formControlName="endDate" [ngModel]="missionInfo?.endDate.value.split('T')[0]"
+                            type="date" placeholder="téléphone" required [readonly]="missionInfo?.endDate.validated" />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.endDate.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.endDate.causeNonValidation }}
+                    </div>
+                    <div class="label"> Client final : </div>
+                    <div class="Tableau">
+                        <input formControlName="finalClient" [ngModel]="missionInfo?.finalClient.value"
+                            [readonly]="missionInfo?.finalClient.validated" type="text" placeholder="téléphone"
+                            required />
+                        <label class="toggle-switch" *ngIf="!missionInfo?.finalClient.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div class="cause">
+                        {{ missionInfo?.finalClient.causeNonValidation }}
+                    </div>
+
+
+
+                    <div class="label"> Simulation : </div>
+                    <div class="Tableau">
+                        <div id="pdfContainer"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+        <div style="margin-right: 60px;margin-top: 20px;" *ngIf="status_preregister == 'NOTVALIDATED'">
+            <button (click)="edit()">Terminé</button>
+        </div>
+
+    </div>
+    <div class="right-item">
+        <div class="profil">
+            <img src="/assets/unsplash_dt60oksDTx8.png">
+            <div class="nom-prenom"> Prénom Nom</div>
+            <div>
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="10" height="4" viewBox="0 0 10 8"
+                    fill="none">
+                    <path d="M5 8L0.669872 0.5L9.33013 0.5L5 8Z" fill="#1E1E1E" fill-opacity="0.8" />
+                </svg>
+            </div>
+        </div>
+        <div class="historique">
+            <div class="historique-demandes">
+                <div class="text"> Historique des demandes</div>
+                <div class="plus"> Voir tout </div>
+            </div>
+            <div>
+                <div style="display: flex;">
+                    <div class="circle"><svg xmlns="http://www.w3.org/2000/svg" width="1" height="1" viewBox="0 0 11 11"
+                            fill="none">
+                            <circle cx="5.5" cy="5.5" r="5.5" fill="#2BEDB3" />
+                        </svg></div>
+                    <div class="historique-name"> Jaquiline </div>
+                    <div class="historique-time"> 03:20</div>
+                </div>
+                <div style="display:flex;margin-top: -8px !important;">
+                    <div class="approved"> Approuvé </div>
+                    <div class="name-of-approved"> • Jaquiline </div>
+
+
+                </div>
+            </div> <br>
+
+        </div>
+        <div class="historique">
+            <div class="historique-consultants">
+                <div class="text"> Nos consultants</div>
+                <div class="plus"> Voir tout </div>
+            </div>
+            <div>
+                <div style="display: flex;margin-bottom: 10px;">
+                    <div><img src="/assets/consultant.png" style="margin-left: 10px;"></div>
+                    <div class="historique-consultant"> Firoz Nom
+
+                        <div> firoz@email.com</div>
+                    </div>
+                    <div class="historiqueconsultantdetails">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                                fill="black" />
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

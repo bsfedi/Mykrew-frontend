@@ -1,0 +1,428 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <app-left-bar> </app-left-bar>
+        <div class="second-container">
+
+            <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                        fill="#1E1E1E" />
+                </svg>
+                <div class="Search-text">
+                    <input type="search" placeholder="Search Anything Here...">
+                </div>
+                <div>
+                    <button> Rechercher </button>
+                </div>
+            </div>
+
+            <div class="demande-ng-consultants ">
+                <div class="demande">
+                    <div>
+                        <img src="/assets/consultant.png">
+
+                    </div>
+                    <div class="nb-demande">
+                        <div class="nameofconsultant">
+                            <b> Firoz NOM </b>
+                        </div>
+                        <div> 8/03/2023</div>
+                    </div>
+                    <div class="post-email">
+                        <div class="nameofconsultant">
+                            Développeur Front end
+                        </div>
+                        <div> firoz@email.com </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="primry-button"> Envoyer un email </button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="Information"> Information personnel et du compte</div>
+            <div style="display: flex;">
+                <div>
+                    <div class="label"> Prénom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.firstName.value">
+                        <!-- Toggle switch HTML structure -->
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="toggleValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!toggleValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairetoggleValue">
+
+                    <div class="label"> Nom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.lastName.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="toggleValue1">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!toggleValue1" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairetoggleValue1">
+                    <div class="label"> Date de naissance :</div>
+                    <div class="Tableau">
+                        <input type="date" [value]="personalInfo?.dateOfBirth.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="dateOfBirthValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!dateOfBirthValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairedateOfBirthValue">
+                    <div class="label"> Adresse email :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.email.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="emailValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!emailValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireemailValue">
+
+                    <div class="label"> Lieu :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.location.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="locationValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!locationValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairelocationValue">
+
+                    <div class="label"> Nationalité :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.nationality.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="nationalityValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!nationalityValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairenationalityValue">
+
+                    <div class="label"> Numéro de téléphone :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="personalInfo?.phoneNumber.value">
+                        <label class="toggle-switch" [ngClass]="{'commantaire-style': !phoneNumberValue}">
+                            <input type="checkbox" [(ngModel)]="phoneNumberValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!phoneNumberValue" type="text" [value]="personalInfo?.phoneNumber.value"
+                        [(ngModel)]="commantairephoneNumberValue">
+
+
+
+                </div>
+                <div style="margin-left: 70px;">
+                    <div class="label"> Voiture :</div>
+                    <div>
+                        <div style="display: flex;margin-top: 25px;margin-bottom: 35px;">
+
+
+                            <div>
+                                <input type="radio" id="oui" name="fav_language" value="oui"
+                                    [checked]="personalInfo?.carInfo.hasCar.value === true"
+                                    [disabled]="personalInfo?.carInfo.hasCar.value === true">
+                                <label for="oui">Oui</label><br>
+                            </div>
+                            <div>
+                                <input type="radio" id="non" name="fav_language" value="non"
+                                    [checked]="personalInfo?.carInfo.hasCar.value !== true"
+                                    [disabled]="personalInfo?.carInfo.hasCar.value === true">
+                                <label for="non">Non</label><br>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="label"> Pièce d'identité (CIN) :</div>
+                    <div class="Tableau">
+                        <div class="zoom">
+                            <img [src]="personalInfo?.identificationDocument.value" />
+                        </div><label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="identificationDocumentValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <input *ngIf="!identificationDocumentValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireidentificationDocumentValue">
+                    <div class="label"> RIB :</div>
+                    <div class="Tableau">
+                        <input [value]="personalInfo?.rib.value" type="text" id="birthDate" name="birthDate" required
+                            placeholder="RIB" />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="ribValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!ribValue" type="text" placeholder="commantaire" [(ngModel)]="commantaireribValue">
+                    <div class="label"> Permis : </div>
+                    <div class="Tableau">
+                        <div class="zoom">
+                            <img [src]="personalInfo?.carInfo.drivingLicense.value" />
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="drivingLicenseValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!drivingLicenseValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairedrivingLicenseValue">
+
+                    <div class="label"> Num de sécurité sociale / AVS :</div>
+                    <div class="Tableau">
+                        <input [value]="personalInfo?.socialSecurityNumber.value" type="text" id="birthDate"
+                            name="birthDate" required placeholder="RIB" />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="socialSecurityNumberValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!socialSecurityNumberValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairesocialSecurityNumberValue">
+                </div>
+
+            </div>
+            <div class="Information"> Information du client (pour la contractualisation) </div>
+            <div style="display: flex;">
+                <div>
+                    <div class="label"> Prénom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.firstName.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="firstNameValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!firstNameValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairefirstNameValue">
+
+                    <div class="label"> Nom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.lastName.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientlastNameValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientlastNameValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientlastName">
+                    <div class="label"> Email :</div>
+                    <div class="Tableau">
+                        <input type="email" [value]="clientInfo?.clientContact.email.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientContactemailValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientContactemailValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientContactemailValue">
+                    <div class="label"> Société :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.company.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="companyValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!companyValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairecompanyValue">
+                    <div class="label">Poste du contact :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.position.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="positionValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!positionValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairepositionValue">
+                    <div class="label"> Numéro de téléphone :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.phoneNumber.value">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientContactphoneNumberValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientContactphoneNumberValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientContactphoneNumberValue">
+
+
+
+
+                </div>
+                <div style="margin-left: 70px;">
+                    <div class="label"> Métier :</div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.profession.value" type="text" id="birthDate" name="birthDate"
+                            required placeholder="RIB" />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="professionValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!professionValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireprofessionValue">
+                    <div class="label"> TJM : :</div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.dailyRate.value" type="text" id="companyName" placeholder="Société"
+                            name="companyName" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="dailyRateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!dailyRateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairedailyRateValue">
+
+                    <div class="label"> Secteur d'activité : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.industrySector.value" type="text" id="email"
+                            placeholder="Secteur d'activité" name="email" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="industrySectorValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!industrySectorValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireindustrySectorValue">
+                    <div class="label"> Date de début : </div>
+                    <div class="Tableau">
+                        <input type="date" id="birthDate" name="birthDate"
+                            [value]="missionInfo?.startDate.value.split('T')[0]" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="startDateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!startDateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairestartDateValue">
+                    <div class="label"> Client final : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.finalClient.value" type="text" id="phoneNumber" name="phoneNumber"
+                            placeholder="téléphone" required /> <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="finalClientValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!finalClientValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairefinalClientValue">
+                    <div class="label"> Date de fin de mission : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.endDate.value.split('T')[0]" type="date" id="phoneNumber"
+                            name="phoneNumber" placeholder="téléphone" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="endDateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!endDateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireendDateValue">
+
+                    <div class="label"> Simulation : </div>
+
+
+                    <div class="Tableau">
+                        <div id="pdfContainer"></div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="missionInfo?.isSimulationValidated.value">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!missionInfo?.isSimulationValidated.value" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireendDateValue">
+
+
+
+
+
+                </div>
+
+            </div>
+            <div style="margin-right: 60px;margin-top: 20px;">
+                <button (click)="update_register()">Terminé</button>
+            </div>
+
+        </div>
+        <div class="right-item">
+            <div class="profil">
+                <img src="/assets/unsplash_dt60oksDTx8.png">
+                <div style="" class="nom-prenom"> Prénom Nom</div>
+                <div>
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="10" height="4" viewBox="0 0 10 8"
+                        fill="none">
+                        <path d="M5 8L0.669872 0.5L9.33013 0.5L5 8Z" fill="#1E1E1E" fill-opacity="0.8" />
+                    </svg>
+                </div>
+            </div>
+            <div class="historique">
+                <div class="historique-demandes">
+                    <div class="text"> Historique des demandes</div>
+                    <div class="plus"> Voir tout </div>
+                </div>
+                <div>
+                    <div style="display: flex;">
+                        <div class="circle"><svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"
+                                viewBox="0 0 11 11" fill="none">
+                                <circle cx="5.5" cy="5.5" r="5.5" fill="#2BEDB3" />
+                            </svg></div>
+                        <div class="historique-name"> Jaquiline </div>
+                        <div class="historique-time"> 03:20</div>
+                    </div>
+                    <div style="display:flex;margin-top: -8px !important;">
+                        <div class="approved"> Approuvé </div>
+                        <div class="name-of-approved"> • Jaquiline </div>
+
+
+                    </div>
+                </div> <br>
+
+            </div>
+            <div class="historique">
+                <div class="historique-consultants">
+                    <div class="text"> Nos consultants</div>
+                    <div class="plus"> Voir tout </div>
+                </div>
+                <div>
+                    <div style="display: flex;margin-bottom: 10px;">
+                        <div><img src="/assets/consultant.png" style="margin-left: 10px;"></div>
+                        <div class="historique-consultant"> Firoz Nom
+
+                            <div> firoz@email.com</div>
+                        </div>
+                        <div class="historiqueconsultantdetails">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path
+                                    d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

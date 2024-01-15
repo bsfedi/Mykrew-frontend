@@ -1,0 +1,130 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<div class="container">
+    <div class="left-panel">
+        <img src="/assets/client.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <div class="text-overlay">
+            <h5> Saisissez les détails de votre société et de votre rôle pour faciliter la gestion et le suivi de vos
+                interactions professionnelles. </h5>
+        </div>
+        <div class="logo-overlay">
+            <div class="image">
+                <img src="/assets/Calque 4.png">
+            </div>
+        </div>
+    </div>
+    <div class="form-panel ">
+        <div class="form-container ">
+            <div>
+                <img src="/assets/mk 3.svg" width="30%" height="30%">
+            </div>
+            <div>
+                <div class="Connectez"> <b>
+                        Information du client
+                    </b> </div>
+                <div class="under-connect"> Rejoignez MyKrew : Suivez vos investissements et élargissez votre réseau
+                    professionnel en quelques clics.</div>
+            </div>
+            <div> Pré-inscription</div>
+            <div>
+                <form action="/submit_form" method="post" [formGroup]="myForm">
+                    <div class="form-section">
+                        <div class="grid-container">
+                            <div class="grid-item">
+
+                                <input formControlName="firstName" type="text" id="fullName" placeholder="Prénom"
+                                    name="fullName" required />
+
+
+                                <div class="error" *ngIf="
+                              myForm.get('firstName')?.invalid &&
+                              myForm.get('firstName')?.touched
+                            ">
+                                    Prénom is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="lastName" type="text" id="Nom" placeholder="Nom" name="lastName"
+                                    required />
+
+                                <div class="error"
+                                    *ngIf=" myForm.get('lastName')?.invalid && myForm.get('lastName')?.touched ">
+                                    Nom is required.
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+
+                                <input formControlName="company" type="text" id="companyName" placeholder="Société"
+                                    name="companyName" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('company')?.invalid &&
+                              myForm.get('company')?.touched
+                            ">
+                                    Société is required.
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+
+                                <input formControlName="email" type="email" id="email" placeholder="E-mail" name="email"
+                                    required />
+
+
+                                <div class="error" *ngIf="
+                              myForm.get('email')?.invalid && myForm.get('email')?.touched
+                            ">
+                                    Adresse email is required.
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+
+                                <input formControlName="position" type="text" id="contactPosition"
+                                    placeholder="Poste du contact " name="contactPosition" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('position')?.invalid &&
+                              myForm.get('position')?.touched
+                            ">
+                                    Poste du contact is required.
+                                </div>
+                            </div>
+
+                            <div class="grid-item">
+
+                                <input formControlName="phoneNumber" type="text" id="phoneNumber" name="phoneNumber"
+                                    placeholder="téléphone" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('phoneNumber')?.invalid &&
+                              myForm.get('phoneNumber')?.touched
+                            ">
+                                    Numéro de téléphone is required.
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </form>
+
+            </div> <br>
+            <div class="buttons">
+                <button type="submit" class="button1">
+                    <div class="inscrire"> retour </div>
+                </button>
+                <button type="submit" class="button" (click)="submit()">
+                    <div class="inscrire"> Suivant</div>
+                </button>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,604 @@
+.container {
+  display: flex;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.Tableau {
+  display: flex;
+}
+
+.second-container {
+  margin-left: 260px;
+  margin-right: 20px;
+  width: 56%;
+  flex-wrap: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.button {
+  float: right;
+}
+
+button {
+  color: white;
+  display: flex;
+  width: 7.68075rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: #1e1e1e;
+  margin-top: 2px;
+  margin: 10px;
+}
+
+.Search-text {
+  width: 75%;
+  color: #bebcbc;
+  padding-top: 11px;
+}
+
+input[type="search"] {
+  border: none;
+  width: 100%;
+  height: 80%;
+  border: none none;
+  outline: none;
+}
+
+input[type="search"]:focus {
+  border: none none;
+  color: none;
+}
+
+.search-bar {
+  width: 52.575rem;
+  flex-shrink: 1;
+  border-radius: 0.4375rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.search-bar svg {
+  margin-top: 14px;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.profil {
+  width: 12rem;
+  height: 3.125rem;
+
+  border-radius: 1.5625rem;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+}
+
+.profil img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+.right-item {
+  width: 30%;
+  float: right;
+  display: row;
+}
+
+.right-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+  margin-top: 8px;
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+}
+
+.svg {
+  margin-top: 8px;
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+}
+
+.nom-prenom {
+  margin-top: 15px;
+  margin-left: 8px;
+  color: #000;
+
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  /* 1rem */
+}
+
+.table-row {
+  border-bottom: 1px solid #000;
+  /* You can adjust the color and thickness as needed */
+}
+
+table tr {
+  border-bottom: 1px solid #000;
+  /* You can adjust the color and thickness as needed */
+}
+
+/* my-component.component.css */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  margin-top: 1px;
+  /* Adjust the margin as needed */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-left: -70px;
+}
+
+/***************** NEw CSS *********************/
+body {
+  font-family: "Poppins", sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-card-count {
+  display: flex;
+  margin-top: 8px;
+}
+
+.percentage-change {
+  color: green;
+  margin-top: 7px;
+}
+
+.week {
+  margin-top: 200px;
+  margin-left: 15px;
+}
+
+.custom-container {
+  color: #323842;
+
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.pending {
+  display: flex;
+  width: 3.9375rem;
+  height: 2rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background: #fce9a4;
+  color: #bf6f25;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.ancienne {
+  display: flex;
+  width: 3.9375rem;
+  height: 2rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background: #f9f9f9;
+  color: #969696;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.encours {
+  display: flex;
+  width: 3.9375rem;
+  height: 2rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background-color: #f1f8fd;
+  color: #379ae6;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.done {
+  display: flex;
+  width: 3.9375rem;
+  height: 2rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background: #eefdf3;
+  color: #187111;
+  margin: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.label {
+  color: #323842;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.375rem;
+}
+/* Add more classes for other styles as needed */
+
+.nonvalidée {
+  display: flex;
+  width: 3.9375rem;
+  height: 2rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background: #f3c0c0;
+  color: rgb(101, 0, 0);
+  margin: 5px;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-bottom: #000 3px;
+}
+
+th {
+  color: #323842;
+}
+
+td {
+  margin: 5px;
+  padding: 8px;
+}
+
+tr {
+  border-bottom: 5px solid black;
+}
+
+.eye {
+  margin-top: 8px;
+  margin-left: 80%;
+  float: right !important;
+}
+
+.chiffre_affaire {
+  margin: 5px;
+  width: 15.75rem;
+  height: 8.6875rem;
+  flex-shrink: 0;
+  border-radius: 0.8125rem;
+  border: 1px solid #eae3d5;
+  background: #1e1e1e;
+  color: white;
+}
+
+.tjm_moyen {
+  margin: 5px;
+  margin-left: 15px;
+  width: 15.75rem;
+  height: 8.6875rem;
+  flex-shrink: 0;
+  border-radius: 0.8125rem;
+  border: 1px solid #eae3d5;
+  background: #fefcf1;
+  color: black;
+}
+
+.pourcentage {
+  width: 2.4375rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border-radius: 0.6875rem;
+  border: 1px solid #fefcf1;
+}
+
+.pourcentage svg {
+  width: 0.775rem;
+  height: 0.75rem;
+
+  flex-shrink: 0;
+  fill: #fefcf1;
+  stroke-width: 0.2px;
+  stroke: #fefcf1;
+}
+
+.nb_money {
+  margin-top: 15px;
+  margin-left: 15px;
+  font-size: 1.6875rem;
+}
+
+.chaffaire {
+  color: #cdc7b9;
+  margin-top: 5px;
+  margin-left: 15px;
+  font-size: 1.125rem;
+}
+
+.graph svg {
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 5.0375rem;
+  height: 3.265rem;
+  stroke-width: 3px;
+  stroke: #fefcf1;
+}
+
+.first {
+  display: flex;
+  width: auto;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 1px solid #eae3d5;
+  background: #fff;
+  margin: 2px;
+  padding: 2px;
+}
+
+.second {
+  padding: 10px;
+
+  border-radius: 0rem 0.625rem 0.625rem 0rem;
+  background: #eae3d5;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+th {
+  color: #323842;
+  border: none;
+}
+
+td {
+  margin: 5px;
+  padding: 8px;
+}
+
+tr {
+  border-bottom: 5px solid black;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.32);
+
+  /* Use your preferred shade of green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  width: 25.6875rem;
+  margin-left: 50px;
+  height: 16.4375rem;
+  border-radius: 2.125rem;
+  background: white;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.popup-content-validation {
+  width: 35.6875rem;
+  margin-left: 50px;
+  height: 32.4375rem;
+  border-radius: 6.125rem;
+  background: rgb(255, 254, 254);
+  padding: 30px;
+  margin-top: 30px;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"] {
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  padding: 8px;
+  margin-top: 10px;
+
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+
+  background: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.vertical-line {
+  height: 58px;
+  /* Adjust the height as needed */
+  border-left: 1px solid #000;
+  /* Adjust the color as needed */
+  margin-right: 10px;
+}
+
+.chose-file {
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #000;
+
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.icon-file {
+  margin-top: 5px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+.custom-file-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #1e1e1e;
+  border-radius: 0.5rem;
+
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  margin-top: 10px;
+}
+
+.file-label {
+  margin-left: 6px;
+  font-size: 1rem;
+
+  flex: 1;
+  margin-right: 10px;
+  color: #6c6868;
+
+  font-size: 0.8rem;
+}
+.newmissionbutton {
+  width: 100%;
+}
+.mesmissions {
+  margin-top: 10px;
+  margin-right: 435px;
+
+  font-size: 1.35rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    display: row;
+    font-family: "Poppins", sans-serif !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  thead {
+    background-color: #187111;
+  }
+  .newmissionbutton {
+    width: 100px;
+  }
+  .mesmissions {
+    margin-top: 9px;
+    margin-right: 165px;
+    margin-left: -40px;
+
+    font-size: 1.55rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
+  }
+
+  .search-bar {
+    width: 22.575rem;
+    flex-shrink: 1;
+    border-radius: 0.4375rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+  }
+  .second-container {
+    margin-left: 260px;
+    margin-right: 20px;
+    width: 16%;
+    flex-wrap: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  .Tableau {
+    display: table-row;
+  }
+}
+
+@media (max-width: 750px) {
+  .search-bar {
+    width: 42.575rem;
+    flex-shrink: 1;
+    border-radius: 0.4375rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+  }
+  .Tableau {
+    display: table-row;
+  }
+  .search-bar svg {
+    margin-top: 14px;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .container {
+    display: table-row;
+    font-family: "Poppins", sans-serif !important;
+  }
+  .right-item {
+    margin-left: -1200px;
+    width: 60%;
+
+    display: row;
+  }
+  .profil {
+    width: 12rem;
+    height: 3.125rem;
+
+    border-radius: 1.5625rem;
+    background: #fef9f1;
+    display: flex;
+  }
+  .second-container {
+    margin-left: 60px;
+    margin-right: 20px;
+    width: 56%;
+    flex-wrap: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .profil img {
+    border-radius: 100%;
+    width: 2.625rem;
+    height: 2.175rem;
+    margin-left: 15px;
+    margin-top: 8px;
+  }
+}

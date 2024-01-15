@@ -1,1 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
+button {
+  cursor: pointer;
+}
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.info-msg {
+  color: #059;
+  background-color: #bef;
+}
+
+.success-msg {
+  color: #270;
+  background-color: #dff2bf;
+}
+
+.warning-msg {
+  color: #9f6000;
+  background-color: #feefb3;
+}
+
+.error-msg {
+  color: #d8000c;
+  background-color: #ffbaba;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* body {
+    font-family: 'Poppins', sans-serif !important;
+
+} */
+
+/* div {
+    font-family: 'Poppins', sans-serif !important;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+th,
+td {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+
+  text-align: center;
+}
+
+td {
+  padding: 7px 7px;
+}
+th {
+  /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
+  background: #e0d7c2;
+  padding: 12px 15px;
+  color: #333333;
+  font-weight: normal;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+td:first-child {
+  color: #555555;
+  font-weight: bold;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  /* You would include your custom checkbox styling here */
+}
+
+/* Status color coding - assuming 'En attente' as yellow, 'Nouvelle' as green */
+tr td:first-child:contains("En attente") {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+tr td:first-child:contains("Nouvelle") {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+/* Adjust the ID column width */
+th:nth-child(2),
+td:nth-child(2) {
+  width: 5%;
+}
+
+/* Adjust the Client column width */
+th:nth-child(4),
+td:nth-child(4) {
+  width: 10%;
+}
+
+/* Align the TJM, Début, and Fin columns to the center */
+th:nth-child(6),
+th:nth-child(7),
+th:nth-child(8),
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8) {
+  text-align: center;
+}
+
+/* Style for the 'En attente' and 'Nouvelle' labels */
+.status-label {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.status-label.en-attente {
+  background-color: #ffc107; /* Assuming yellow for 'En attente' */
+}
+
+.status-label.nouvelle {
+  background-color: #28a745; /* Assuming green for 'Nouvelle' */
+}

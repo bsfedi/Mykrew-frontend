@@ -1,0 +1,94 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<div class="container">
+    <div class="left-panel">
+        <img src="/assets/Rectangle 135.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <div class="text-overlay">
+            <h5> Gestion Financière Simplifiée avec MyKrew : Suivi, Cooptation et Succès
+                Professionnel </h5>
+        </div>
+        <div class="logo-overlay">
+            <div class="image">
+                <img src="/assets/Calque 4.png">
+            </div>
+        </div>
+    </div>
+    <div class="form-panel ">
+        <div class="form-container ">
+            <div>
+                <img src="/assets/mk 3.svg" width="30%" height="30%">
+            </div>
+            <div>
+                <div class="Connectez"> <b>
+                        Connectez-vous
+                    </b> </div>
+                <div class="under-connect"> Accédez à la gestion et au suivi de vos finances en un clic. </div>
+            </div>
+            <div>
+                <form [formGroup]="signupForm">
+
+
+                    <div>
+                        <input type="email" formControlName="email" class="form-control" placeholder="Adresse e-mail"
+                            required name="email" />
+                    </div>
+                    <div *ngIf="signupForm.get('email')?.hasError('required') &&signupForm.get('email')?.touched"
+                        class="error-message">
+                        Email is required.
+                    </div>
+                    <div *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched"
+                        class="error-message">
+                        Invalid email format.
+                    </div>
+                    <div>
+                        <input type="password" formControlName="password" class="form-control"
+                            placeholder="Mot de passe" required name="email" />
+                    </div>
+                    <div *ngIf="signupForm.get('password')?.hasError('required') &&signupForm.get('password')?.touched"
+                        class="error-message">
+                        Password is required.
+                    </div>
+                    <div *ngIf=" signupForm.get('password')?.hasError('minlength') &&signupForm.get('password')?.touched"
+                        class="error-message">
+                        Password must be at least 6 characters long.
+                    </div>
+                    <div *ngIf=" signupForm.hasError('passwordMismatch') &&signupForm.get('confirmPassword')?.touched "
+                        class="error-message">
+                        Passwords do not match.
+                    </div>
+                    <div>
+                        <input type="password" formControlName="confirmPassword" class="form-control"
+                            placeholder="Confirme mot de passe" required name="email" />
+                    </div>
+                    <div *ngIf="signupForm.get('confirmPassword')?.hasError('required') &&signupForm.get('confirmPassword')?.touched"
+                        class="error-message">
+                        Confirm password is required.
+                    </div>
+                    <!-- Add error message for password mismatch -->
+                    <div *ngIf="signupForm.hasError('passwordMismatch') &&signupForm.get('confirmPassword')?.touched"
+                        class="error-message">
+                        Passwords do not match.
+                    </div>
+                    <div *ngIf="showerrormessage" class="error-message" style="text-align: center; margin-top: 10px">
+                        <div class="error-msg">{{ failedmessage }}</div>
+                    </div>
+                    <div *ngIf="showsucessmessage" class="succes-message">
+                        <div class="success-msg">{{ succesmessage }}</div>
+                    </div>
+
+                </form>
+            </div> <br>
+
+            <div>
+                <button>
+                    <div class="inscrire" (click)="saveUser()"> S’inscrire </div>
+                </button>
+            </div>
+            <div class="Inscrivez-vous"> déjà membre ? <a href="/sign-in">Connectez-vous</a></div>
+
+
+        </div>
+
+    </div>
+</div>

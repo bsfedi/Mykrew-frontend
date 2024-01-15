@@ -1,0 +1,365 @@
+<body>
+  <div class="wrapper">
+    <div>
+      <app-left-bar> </app-left-bar>
+    </div>
+    <div class="second-container">
+      <div class="title">Tableau de bord - RH</div>
+      <div class="search-bar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+            fill="#1E1E1E"
+          />
+        </svg>
+        <div class="Search-text">
+          <input type="search" placeholder="Search Anything Here..." />
+        </div>
+        <div>
+          <button class="button">Rechercher</button>
+        </div>
+      </div>
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [dataLabels]="chartOptions.dataLabels"
+          [yaxis]="chartOptions.yaxis"
+          [colors]="chartOptions.colors"
+          [legend]="chartOptions.legend"
+          [fill]="chartOptions.fill"
+        ></apx-chart>
+      </div>
+      <div class="Tableau" style="margin-left: 80px">
+        <div class="chiffre_affaire">
+          <div class="Tableau">
+            <div class="chaffaire">Chiffre d’Affaire</div>
+            <!-- <div class="pourcentage Tableau">
+    
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none">
+                                    <path
+                                        d="M2.73086 1.03259L1.00245 3.12467C0.865848 3.29001 0.865848 3.5516 1.00245 3.71695C1.07294 3.80227 1.16992 3.84955 1.27159 3.84955C1.37326 3.84955 1.47024 3.80227 1.54073 3.71695L2.62841 2.40043V6.67126C2.62841 6.88933 2.77776 7.1 3 7.1C3.22225 7.1 3.37159 6.88933 3.37159 6.67126V2.40043L4.45927 3.71695C4.52976 3.80227 4.62674 3.84955 4.72841 3.84955C4.83008 3.84955 4.92706 3.80227 4.99755 3.71695C5.13415 3.55161 5.13415 3.29001 4.99755 3.12467L3.26914 1.03259C3.19865 0.947275 3.10167 0.9 3 0.9C2.89833 0.9 2.80135 0.947275 2.73086 1.03259Z"
+                                        fill="#FEFCF1" stroke="#FEFCF1" stroke-width="0.2" />
+                                </svg>20%
+    
+    
+    
+                            </div> -->
+          </div>
+          <div class="Tableau">
+            <div class="nb_money">
+              <b> 67 000€</b>
+            </div>
+            <div class="graph">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                height="560"
+                viewBox="0 0 91 56"
+                fill="none"
+              >
+                <path
+                  d="M2 54.1485C21.1808 54.9943 30.3079 49.9052 32.5 42.7153C35.0789 34.2567 39.5 28.816 43 27.2153C50.4957 23.7873 53.8751 30.4547 62 28.2153C69.0285 26.2781 71.3103 21.6768 74 16.7153C76.1698 12.7128 79.5 0.214852 89 2.21525"
+                  stroke="#FEFCF1"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="tjm_moyen">
+          <div class="chaffaire">TJM Moyen</div>
+          <div class="nb_money">
+            <b> 650€ </b>
+          </div>
+        </div>
+        <div class="tjm_moyen">
+          <div class="chaffaire">Nb de Consultants</div>
+          <div class="nb_money">
+            <b> {{ nbdemande }} </b>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="Tableau">
+        <div class="first">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M11.5996 11.6001L13.9996 11.6001"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 4.3999L4.4 4.3999"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.2002 4.3999L14.0002 4.3999"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.80039 2L4.40039 2L4.40039 6.8L6.80039 6.8L6.80039 2Z"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11.6002 9.2002L9.2002 9.2002L9.2002 14.0002L11.6002 14.0002L11.6002 9.2002Z"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 11.6001L6.8 11.6001"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="first">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+          >
+            <path
+              d="M1.5 2.5L12.5 2.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6 11.5H8"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 5.5L11 5.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4.5 8.5L9.5 8.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div>Sort: Last updated</div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+          >
+            <path
+              d="M7 12.5L7 1.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11 8.5L7 12.5L3 8.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="first">
+          <div style="margin-right: 5px">Tous les Consultants</div>
+          <div>
+            <div class="second">Missions</div>
+          </div>
+        </div>
+        <div class="Tableau" style="margin-left: 105px">
+          <div class="first">Ajouter un consultant</div>
+          <div class="first">Export list</div>
+        </div>
+      </div>
+      <br />
+      <table>
+        <thead>
+          <tr>
+            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+              Tous les demandes
+            </th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Nationalité</th>
+            <th>Dernière Con.</th>
+
+            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td class="Tableau">
+              <div class="image">
+                <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+              </div>
+
+              <div style="margin-top: 12px">
+                {{ item.personalInfo?.firstName.value }}
+                {{ item.personalInfo?.lastName.value }}
+              </div>
+            </td>
+            <td>
+              {{ item.personalInfo?.email.value }}
+            </td>
+            <td>
+              {{ item.personalInfo?.phoneNumber.value }}
+            </td>
+            <td>
+              <div style="width: 115px">
+                <div
+                  style="
+                    display: flex;
+                    width: auto;
+                    height: 1.75rem;
+                    padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                    justify-content: center;
+                    align-items: center;
+                    flex-shrink: 0;
+                    border-radius: 0.875rem;
+                    background: #f3f4f6;
+                  "
+                >
+                  {{ item.personalInfo?.nationality.value }}
+                </div>
+              </div>
+            </td>
+
+            <td>
+              {{ item.addedDate.split("T")[0] }}
+            </td>
+            <td>
+              <div>
+                <div>
+                  <div style="margin-left: 8px">
+                    <span (click)="toggleMenu(i)">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                          fill="black"
+                        />
+                      </svg>
+                    </span>
+                    <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
+                      <div style="display: flex; cursor: pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          style="margin-left: -13px"
+                          fill="none"
+                        >
+                          <path
+                            d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                            stroke="black"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                        <div
+                          (click)="
+                            gotovalidemission(item._id, item.contractProcess)
+                          "
+                          style="margin-top: 8px; cursor: pointer"
+                        >
+                          Process de validation
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <svg
+                          style="margin-left: -11px"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="28"
+                          height="28"
+                          viewBox="0 0 28 28"
+                          fill="none"
+                        >
+                          <path
+                            d="M18.0807 22.182C18.3529 22.182 18.5848 22.084 18.7763 21.888C18.9669 21.692 19.0622 21.4535 19.0622 21.1725C19.0622 20.8925 18.9669 20.654 18.7763 20.457C18.5858 20.261 18.3539 20.163 18.0807 20.163C17.8085 20.163 17.5766 20.261 17.3851 20.457C17.1945 20.654 17.0993 20.8925 17.0993 21.1725C17.0993 21.4535 17.1945 21.692 17.3851 21.888C17.5756 22.084 17.8075 22.182 18.0807 22.182ZM21.2497 22.182C21.5219 22.182 21.7538 22.084 21.9453 21.888C22.1359 21.692 22.2311 21.4535 22.2311 21.1725C22.2311 20.8925 22.1359 20.654 21.9453 20.457C21.7547 20.261 21.5229 20.163 21.2497 20.163C20.9775 20.163 20.7456 20.261 20.5541 20.457C20.3635 20.654 20.2682 20.8925 20.2682 21.1725C20.2682 21.4535 20.3635 21.692 20.5541 21.888C20.7446 22.084 20.9765 22.182 21.2497 22.182ZM24.4186 22.182C24.6909 22.182 24.9227 22.084 25.1143 21.888C25.3048 21.692 25.4001 21.4535 25.4001 21.1725C25.4001 20.8925 25.3048 20.654 25.1143 20.457C24.9237 20.261 24.6918 20.163 24.4186 20.163C24.1464 20.163 23.9145 20.261 23.723 20.457C23.5325 20.654 23.4372 20.8925 23.4372 21.1725C23.4372 21.4535 23.5325 21.692 23.723 21.888C23.9136 22.084 24.1454 22.182 24.4186 22.182ZM3.18822 24C2.53683 24 1.9812 23.764 1.52134 23.292C1.06245 22.82 0.833008 22.2485 0.833008 21.5775V2.4225C0.833008 1.7525 1.06245 1.181 1.52134 0.708C1.98023 0.236 2.53585 0 3.18822 0H21.8111C22.4625 0 23.0181 0.236 23.478 0.708C23.9369 1.18 24.1663 1.7515 24.1663 2.4225V11.3475C23.9106 11.2575 23.6656 11.184 23.4313 11.127C23.198 11.071 22.9569 11.015 22.708 10.959V2.424C22.708 2.193 22.6147 1.981 22.428 1.788C22.2404 1.596 22.0347 1.5 21.8111 1.5H3.18822C2.9646 1.5 2.75898 1.596 2.57134 1.788C2.38467 1.981 2.29134 2.1925 2.29134 2.4225V21.5775C2.29134 21.8075 2.38467 22.019 2.57134 22.212C2.75898 22.404 2.9646 22.5 3.18822 22.5H11.4511C11.4861 22.78 11.5313 23.0405 11.5868 23.2815C11.6422 23.5215 11.7136 23.761 11.8011 24H3.18822ZM2.29134 21V22.5V1.5V10.959V10.8465V21ZM5.93717 18.405H11.7122C11.7656 18.148 11.8386 17.8995 11.9309 17.6595L12.2226 16.9035H5.93717V18.405ZM5.93717 12.75H15.533C16.0123 12.404 16.4838 12.1105 16.9476 11.8695C17.4133 11.6295 17.9125 11.4415 18.4453 11.3055V11.25H5.93717V12.75ZM5.93717 7.095H19.0622V5.595H5.93717V7.095ZM21.2497 27.174C19.6251 27.174 18.2465 26.592 17.1138 25.428C15.9812 24.264 15.4154 22.8455 15.4163 21.1725C15.4163 19.5025 15.9822 18.085 17.1138 16.92C18.2455 15.755 19.6241 15.1725 21.2497 15.1725C22.8743 15.1725 24.2529 15.755 25.3855 16.92C26.5182 18.085 27.084 19.5025 27.083 21.1725C27.083 22.8445 26.5172 24.2625 25.3855 25.4265C24.2519 26.5905 22.8733 27.174 21.2497 27.174Z"
+                            fill="black"
+                          />
+                        </svg>
+                        <div
+                          (click)="gotomissions(item.userId)"
+                          style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          "
+                        >
+                          Voir missions
+                        </div>
+                      </div>
+                      <!-- <div style="display: flex;cursor: pointer; ">
+                                            <svg style="margin-left: -10px;" xmlns=" http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 20 20" fill="black">
+                                                <path
+                                                    d="M9.99956 0C8.06004 0.00368503 6.16344 0.571311 4.54079 1.63374C2.91814 2.69617 1.63946 4.20754 0.860502 5.98377C0.0815471 7.76 -0.164063 9.72442 0.153587 11.6378C0.471237 13.5511 1.33844 15.3308 2.64956 16.76C3.58598 17.775 4.7225 18.5851 5.9875 19.1392C7.25249 19.6933 8.61854 19.9793 9.99956 19.9793C11.3806 19.9793 12.7466 19.6933 14.0116 19.1392C15.2766 18.5851 16.4131 17.775 17.3496 16.76C18.6607 15.3308 19.5279 13.5511 19.8455 11.6378C20.1632 9.72442 19.9176 7.76 19.1386 5.98377C18.3597 4.20754 17.081 2.69617 15.4583 1.63374C13.8357 0.571311 11.9391 0.00368503 9.99956 0ZM9.99956 18C7.92803 17.9969 5.93848 17.1903 4.44956 15.75C4.9016 14.6495 5.67059 13.7083 6.65881 13.0459C7.64703 12.3835 8.80987 12.0298 9.99956 12.0298C11.1893 12.0298 12.3521 12.3835 13.3403 13.0459C14.3285 13.7083 15.0975 14.6495 15.5496 15.75C14.0606 17.1903 12.0711 17.9969 9.99956 18ZM7.99956 8C7.99956 7.60444 8.11686 7.21776 8.33662 6.88886C8.55638 6.55996 8.86874 6.30362 9.23419 6.15224C9.59965 6.00087 10.0018 5.96126 10.3897 6.03843C10.7777 6.1156 11.1341 6.30608 11.4138 6.58579C11.6935 6.86549 11.884 7.22186 11.9611 7.60982C12.0383 7.99778 11.9987 8.39991 11.8473 8.76537C11.6959 9.13082 11.4396 9.44318 11.1107 9.66294C10.7818 9.8827 10.3951 10 9.99956 10C9.46913 10 8.96042 9.78929 8.58535 9.41421C8.21027 9.03914 7.99956 8.53043 7.99956 8ZM16.9096 14C16.0161 12.4718 14.641 11.283 12.9996 10.62C13.5087 10.0427 13.8405 9.33066 13.955 8.56944C14.0696 7.80822 13.962 7.03011 13.6453 6.3285C13.3286 5.62688 12.8161 5.03156 12.1695 4.61397C11.5228 4.19637 10.7694 3.97425 9.99956 3.97425C9.22977 3.97425 8.47633 4.19637 7.82965 4.61397C7.18298 5.03156 6.67053 5.62688 6.35381 6.3285C6.03709 7.03011 5.92955 7.80822 6.04409 8.56944C6.15863 9.33066 6.49039 10.0427 6.99956 10.62C5.35816 11.283 3.98303 12.4718 3.08956 14C2.3775 12.7871 2.00128 11.4065 1.99956 10C1.99956 7.87827 2.84242 5.84344 4.34271 4.34315C5.843 2.84285 7.87783 2 9.99956 2C12.1213 2 14.1561 2.84285 15.6564 4.34315C17.1567 5.84344 17.9996 7.87827 17.9996 10C17.9978 11.4065 17.6216 12.7871 16.9096 14Z"
+                                                    fill="black" fill-opacity="0.5" />
+                                            </svg>
+                                            <div (click)="openPopup()" style="margin-top: 11px;">Voir le profil </div>
+                                        </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-notificaion-rh></app-notificaion-rh>
+  </div>
+</body>

@@ -1,0 +1,218 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.8/pdfobject.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <app-left-bar> </app-left-bar>
+        <div class="second-container">
+
+            <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                        fill="#1E1E1E" />
+                </svg>
+                <div class="Search-text">
+                    <input type="search" placeholder="Search Anything Here...">
+                </div>
+                <div>
+                    <button> Rechercher </button>
+                </div>
+            </div>
+
+            <div class="demande-ng-consultants ">
+                <div class="demande">
+                    <div>
+                        <img src="/assets/consultant.png">
+
+                    </div>
+                    <div class="nb-demande">
+                        <div class="nameofconsultant">
+                            <b> Firoz NOM </b>
+                        </div>
+                        <div> 8/03/2023</div>
+                    </div>
+                    <div class="post-email">
+                        <div class="nameofconsultant">
+                            Développeur Front end
+                        </div>
+                        <div> firoz@email.com </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="primry-button"> Envoyer un email </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="Information"> Information du client (pour la contractualisation) </div>
+            <div style="display: flex;">
+                <div>
+                    <div class="label"> Prénom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.firstName">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="firstNameValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!firstNameValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairefirstNameValue">
+
+                    <div class="label"> Nom :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.lastName">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientlastNameValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientlastNameValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientlastName">
+                    <div class="label"> Email :</div>
+                    <div class="Tableau">
+                        <input type="email" [value]="clientInfo?.clientContact.email">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientContactemailValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientContactemailValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientContactemailValue">
+                    <div class="label"> Société :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.company">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="companyValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!companyValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairecompanyValue">
+                    <div class="label">Poste du contact :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.position">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="positionValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!positionValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairepositionValue">
+                    <div class="label"> Numéro de téléphone :</div>
+                    <div class="Tableau">
+                        <input type="text" [value]="clientInfo?.clientContact.phoneNumber">
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="clientContactphoneNumberValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!clientContactphoneNumberValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireclientContactphoneNumberValue">
+
+
+
+
+                </div>
+                <div style="margin-left: 70px;">
+                    <div class="label"> Métier :</div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.profession" type="text" id="birthDate" name="birthDate" required
+                            placeholder="RIB" />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="professionValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!professionValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireprofessionValue">
+                    <div class="label"> TJM : :</div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.dailyRate" type="text" id="companyName" placeholder="Société"
+                            name="companyName" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="dailyRateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!dailyRateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairedailyRateValue">
+
+                    <div class="label"> Secteur d'activité : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.industrySector" type="text" id="email"
+                            placeholder="Secteur d'activité" name="email" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="industrySectorValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!industrySectorValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireindustrySectorValue">
+                    <div class="label"> Date de début : </div>
+                    <div class="Tableau">
+                        <input type="date" id="birthDate" name="birthDate"
+                            [value]="missionInfo?.startDate.split('T')[0]" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="startDateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!startDateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairestartDateValue">
+                    <div class="label"> Client final : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.finalClient" type="text" id="phoneNumber" name="phoneNumber"
+                            placeholder="téléphone" required /> <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="finalClientValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!finalClientValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantairefinalClientValue">
+                    <div class="label"> Date de fin de mission : </div>
+                    <div class="Tableau">
+                        <input [value]="missionInfo?.endDate.split('T')[0]" type="date" id="phoneNumber"
+                            name="phoneNumber" placeholder="téléphone" required />
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="endDateValue">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!endDateValue" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireendDateValue">
+
+                    <div class="label"> Simulation : </div>
+
+
+                    <div class="Tableau">
+                        <div id="pdfContainer"></div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" [(ngModel)]="missionInfo.isSimulationValidated">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <input *ngIf="!missionInfo?.isSimulationValidated" type="text" placeholder="commantaire"
+                        [(ngModel)]="commantaireendDateValue">
+
+
+
+
+
+                </div>
+
+            </div>
+            <div style="margin-right: 60px;margin-top: 20px;">
+                <button (click)="update_register()">Terminé</button>
+            </div>
+
+        </div>
+        <app-notificaion-rh></app-notificaion-rh>
+    </div>
+</body>

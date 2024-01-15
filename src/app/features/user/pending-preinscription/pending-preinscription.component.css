@@ -1,0 +1,339 @@
+.container {
+  display: flex;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.left-panel {
+  padding: 3px;
+  flex: 1;
+  position: relative;
+  height: 96vh;
+}
+
+.status-demande {
+  margin-top: 20px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 80%;
+  left: 40%;
+  transform: translate(-40%, -50%);
+  color: white;
+
+  z-index: 2;
+  width: 30.5rem;
+  color: #fff;
+
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  /* Set a higher z-index for the logo overlay */
+}
+
+.image {
+  margin-top: -43px;
+  z-index: 1;
+  margin-left: -45px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Adjust object-fit as needed */
+}
+
+.content {
+  filter: drop-shadow(0px 4px 68.8px rgba(255, 255, 255, 0.56));
+}
+
+.sucess-circle {
+  background-color: #270;
+  border-radius: 50%;
+  width: 1.4375rem;
+  height: 1.4375rem;
+  color: white;
+}
+
+.text-etapes {
+  margin-left: 10px;
+  margin-top: 2px;
+  color: green;
+}
+
+.text-etapes-notvalidated {
+  margin-left: 10px;
+  margin-top: 2px;
+  color: red;
+}
+
+.text-etapes-pending {
+  margin-left: 10px;
+  margin-top: 2px;
+  color: rgb(122, 118, 118);
+}
+
+.number-etpaes {
+  text-align: center;
+  padding-top: 2px;
+}
+
+.error-circle {
+  background-color: red;
+  border-radius: 100%;
+  width: 1.4375rem;
+  height: 1.4375rem;
+  color: white;
+}
+
+.pending-etape {
+  display: flex;
+  width: 24.12494rem;
+  height: 3.62238rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+  background: #ededed;
+}
+
+.error-etape {
+  display: flex;
+  width: 24.12494rem;
+  height: 3.62238rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+  background: rgba(188, 0, 0, 0.2);
+}
+
+.etape {
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+.sucess-etape {
+  display: flex;
+  width: 24.12494rem;
+  height: 3.62238rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+  background: rgba(18, 130, 0, 0.23);
+}
+
+.pending-circle {
+  background-color: #353535;
+  border-radius: 100%;
+  width: 1.4375rem;
+  height: 1.4375rem;
+  color: white;
+}
+
+.logo-overlay {
+  width: 6.25rem;
+  height: 4.3125rem;
+  position: fixed;
+  top: 4%;
+  left: 3%;
+  border-radius: 1.1875rem;
+  border: 0px solid #fff;
+  background: rgba(215, 215, 209, 0.32);
+  backdrop-filter: blur(3.6500000953674316px);
+  z-index: 2;
+}
+
+.image img {
+  border-radius: 10px;
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the container */
+}
+
+.inputs {
+  align-items: center;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.form {
+  justify-content: center;
+  align-items: center;
+}
+
+.form-panel {
+  flex: 0.7;
+  padding-top: 200px;
+  padding-left: 150px;
+  display: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-panel1 {
+  flex: 0.7;
+  padding-top: 100px;
+  padding-left: 150px;
+  display: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.succes-message {
+  text-align: center;
+  margin-top: 10px;
+  color: green;
+}
+
+button {
+  border-color: rgba(118, 115, 110, 0.55);
+  margin-top: 35px;
+  width: 16.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background: rgba(118, 115, 110, 0.55);
+}
+
+.inscrire {
+  color: #fff;
+
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.under-connect {
+  margin-bottom: 25px;
+}
+
+.mdp {
+  color: #000;
+  margin-left: 280px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Inscrivez-vous {
+  margin-left: 95px;
+  margin-top: 30px;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"] {
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  padding: 8px;
+  margin-top: 15px;
+
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+
+  background: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.Connectez {
+  margin-top: 15px;
+  margin-bottom: 3px;
+  font-size: 24px;
+}
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.info-msg {
+  color: #059;
+  background-color: #bef;
+}
+
+.success-msg {
+  color: #270;
+  background-color: #dff2bf;
+}
+
+.warning-msg {
+  color: #9f6000;
+  background-color: #feefb3;
+}
+
+.error-msg {
+  color: #d8000c;
+  background-color: #ffbaba;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    padding: 3px;
+    flex: none;
+    position: relative;
+    height: 50vh;
+  }
+
+  .form-panel {
+    flex: 0.7;
+    padding-top: 30px;
+    padding-left: 50px;
+    display: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-panel {
+    flex: 0.7;
+    padding-top: 30px;
+    padding-left: 0px;
+    display: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .text-overlay {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+    color: white;
+
+    z-index: 2;
+    width: 20.5rem;
+    color: #fff;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* Set a higher z-index for the logo overlay */
+  }
+
+  button {
+    margin-top: 35px;
+    width: 22.04313rem;
+    height: 3.61006rem;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    background: black;
+  }
+}

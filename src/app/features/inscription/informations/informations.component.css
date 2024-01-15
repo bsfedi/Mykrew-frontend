@@ -1,0 +1,545 @@
+.container {
+    display: flex;
+    width: 100%;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+.logo {
+    width: 8.88481rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    padding: 50px;
+}
+
+.title {
+    color: #000;
+    
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin-top: 12px;
+    margin-bottom: 30px;
+    flex-shrink: 0;
+    /* 2.25rem */
+}
+
+.first-item {
+    color: white;
+    position: fixed;
+    flex-shrink: 0;
+    background: #1E1E1E;
+    align-items: center;
+    justify-content: center;
+    width: 18%;
+}
+
+.Tableau {
+    display: flex;
+}
+
+.board-item {
+    width: 12.875rem;
+    height: 3rem;
+
+    border-radius: 0.4375rem;
+    background: rgba(242, 239, 224, 0.10);
+    margin-left: 20px;
+    display: flex;
+}
+
+.custom-item {
+    width: 12.875rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 0.4375rem;
+    margin-left: 20px;
+    display: flex;
+}
+
+svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.bord-text {
+    color: #FEFCF1;
+    
+
+    font-style: normal;
+
+    /* 1.125rem */
+    margin-left: 10px;
+    margin-top: 11px;
+    /* 1.125rem */
+}
+
+.faq-sedeconnecter {
+    margin-top: 250px;
+}
+
+.second-container {
+    margin-left: 275px;
+    width: 55%;
+
+    flex-shrink: 0;
+}
+
+
+@media (max-width: 768px) {
+    .second-container {
+        margin-left: 5px;
+        width: 30%;
+
+        flex-shrink: 0;
+    }
+
+    .container {
+        display: grid;
+        width: 100%;
+
+    }
+
+    .first-item {
+        position: relative;
+    }
+
+}
+
+.personal-info {
+    display: flex;
+}
+
+button {
+    float: right;
+    color: white;
+    display: flex;
+    width: 7.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.625rem;
+    background: #1E1E1E;
+    margin-top: 2px;
+    margin: 10px;
+}
+
+.Information {
+    color: #000;
+    
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.01563rem;
+}
+
+.primry-button {
+    float: right;
+    color: white;
+    display: flex;
+    width: 8.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.625rem;
+    background: #1E1E1E;
+    margin-top: 2px;
+    margin: 20px 0 0 240px;
+}
+
+.Search-text {
+    width: 75%;
+    color: #bebcbc;
+    padding-top: 11px;
+
+}
+
+input[type='search'] {
+    border: none;
+    width: 100%;
+    height: 80%;
+    border: none none;
+    outline: none;
+}
+
+input[type='search']:focus {
+    border: none none;
+    color: none
+}
+
+.search-bar {
+
+    width: 52.575rem;
+    flex-shrink: 1;
+    border-radius: 0.4375rem;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: row;
+        width: 10%;
+
+    }
+}
+
+.search-bar svg {
+    margin-top: 8px;
+    margin-left: 25px;
+}
+
+.demande {
+    margin-top: 0px;
+    width: 52.756rem;
+    height: 5rem;
+    flex-shrink: 0;
+    border-radius: 0.4375rem;
+    background: #fef9f1;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+
+}
+
+
+
+.demande-ng-consultants {
+    display: flex;
+}
+
+.demande img {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.nameofconsultant {
+    margin-bottom: 5px;
+}
+
+.nb-demande {
+    margin-top: 18px;
+    margin-left: 15px;
+}
+
+.post-email {
+    margin-top: 18px;
+    margin-left: 145px;
+}
+
+.preinscriptions {
+    width: 52.6rem;
+    min-height: 140px;
+    flex-shrink: 0;
+    border-radius: 0.6875rem;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #F9FAFC;
+
+
+}
+
+.item-preinscription {
+    width: 52.51rem;
+    height: 4.5625rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FFF;
+    display: flex;
+
+}
+
+.checked-box {
+
+
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    border-radius: 0.1875rem;
+    border: 1px solid #D9D9D9;
+    background: #FFF;
+}
+
+input[type='checkbox'] {
+    margin-top: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    border-radius: 0.1875rem;
+    border: 1px solid #D9D9D9;
+    background: #FFF;
+}
+
+.nom {
+    margin-left: 70px;
+}
+
+.header-container {
+    display: flex;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+.member {
+    margin-left: 400px;
+    margin-right: 25px;
+}
+
+.image {
+    display: row;
+    margin-top: 3px;
+    margin-left: 8px;
+}
+
+.member-date {
+    margin-left: 288px;
+    margin-top: 18px;
+    color: rgba(29, 29, 29, 0.50);
+}
+
+.demande-date {
+    margin-left: 60px;
+    margin-top: 18px;
+    color: rgba(29, 29, 29, 0.50);
+}
+
+.second-item {}
+
+.profil {
+    width: 12rem;
+    height: 3.125rem;
+
+    border-radius: 1.5625rem;
+    background: #fef9f1;
+    display: flex;
+    float: right;
+
+}
+
+.profil img {
+    border-radius: 100%;
+    width: 2.625rem;
+    height: 2.175rem;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+.historique {
+    width: 21.3125rem;
+
+    flex-shrink: 0;
+    border-radius: 0.4375rem;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    margin-top: 15px;
+    float: right;
+    min-height: 293px;
+    flex-shrink: 0;
+    padding-bottom: 10px;
+}
+
+.right-item {
+    width: 80%;
+    float: right;
+    display: row;
+
+}
+
+.svg {
+    margin-top: 8px;
+    width: 0.625rem;
+    height: 0.625rem;
+    flex-shrink: 0;
+}
+
+.nom-prenom {
+    margin-top: 15px;
+    margin-left: 8px;
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    /* 1rem */
+}
+
+.historique .text {
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%;
+    margin: 10px;
+
+    /* 1.125rem */
+}
+
+.plus {
+    color: #FFD200;
+    
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin: 11.8px 0 0 75px;
+    /* 0.875rem */
+}
+
+.circle {
+    width: 0.3875rem;
+    height: 0.3875rem;
+    flex-shrink: 0;
+    fill: #2BEDB3;
+}
+
+.historique-name {
+    margin: 10px 30px;
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    width: 4.84563rem;
+    line-height: normal;
+}
+
+.historiqueconsultantdetails {
+    margin: 0px 125px;
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 3.13544rem;
+}
+
+.historique-consultant {
+    margin: 4px 10px;
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    width: 4.84563rem;
+    line-height: normal;
+}
+
+.historique-time {
+    margin: 10px 150px;
+    color: #000;
+    
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 3.13544rem;
+}
+
+.approved {
+    color: rgba(0, 0, 0, 0.75);
+    
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 35px;
+}
+
+.name-of-approved {
+    color: rgba(0, 0, 0, 0.35);
+    
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 10.26138rem;
+    margin-left: 4px;
+}
+
+.historique-demandes {
+    display: flex;
+}
+
+.historique-consultants {
+    display: flex;
+}
+
+.historique-consultants .plus {
+    color: #FFD200;
+    
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    margin: 11.8px 0 0 145px;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+input[type="password"] {
+    padding-left: 10px;
+    border: none;
+    width: 17.25rem;
+    height: 2.85456rem;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    background: #F2F2F2;
+    margin-bottom: 10px;
+    border: none none;
+    outline: none;
+
+}
+
+input[type='text']:focus {
+    border: none none;
+    color: none
+}
+
+.Tableau svg {
+    margin-top: 4px;
+    width: 2.5rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.label {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: #000;
+    
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.00875rem;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.cause {
+    margin-left: 2%;
+    color: red;
+}
+
+
+.pdfobject-container {
+    max-width: 40%;
+    width: 600px;
+    height: 300px;
+    border: 10px solid rgba(0, 0, 0, 0.2);
+    margin: 0;
+    margin-bottom: 10px;
+}

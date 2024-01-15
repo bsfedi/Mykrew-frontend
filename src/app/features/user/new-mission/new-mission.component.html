@@ -1,0 +1,227 @@
+<div class="wrapper">
+    <div>
+        <app-left-bar></app-left-bar>
+    </div>
+    <div class="container">
+        <h1> Declarer une nouvelle mission
+        </h1>
+        <form action="/submit_form" method="post" [formGroup]="myForm" style="display: flex;">
+            <div class="form-section">
+                <b> Information du mission : <br></b>
+                <div class="grid-container">
+                    <div class="grid-item">
+
+                        <input formControlName="profession" type="text" id="fullName" placeholder="Métier"
+                            name="fullName" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('profession')?.invalid &&
+                      myForm.get('profession')?.touched
+                    ">
+                            Métier is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="dailyRate" type="text" id="firstName" placeholder="TJM" name="TJM"
+                            required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('dailyRate')?.invalid &&
+                      myForm.get('dailyRate')?.touched
+                    ">
+                            TJM is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="industrySector" type="text" id="email" placeholder="Secteur d'activité"
+                            name="email" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('industrySector')?.invalid &&
+                      myForm.get('industrySector')?.touched
+                    ">
+                            Secteur d'activité is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="startDate" type="date" id="birthDate" name="birthDate" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('startDate')?.invalid &&
+                      myForm.get('startDate')?.touched
+                    ">
+                            Date de début is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="endDate" type="date" id="birthDate" name="birthDate" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('endDate')?.invalid &&
+                      myForm.get('endDate')?.touched
+                    ">
+                            Date de fin de mission is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="finalClient" type="text" id="phoneNumber" name="phoneNumber"
+                            placeholder="Client final" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('finalClient')?.invalid &&
+                      myForm.get('finalClient')?.touched
+                    ">
+                            Client final is required.
+                        </div>
+                    </div>
+
+
+
+                    <div class="custom-file-input" (change)="setFileInput('isSimulationValidated', $event)"
+                        onclick="document.getElementById('isSimulationValidated').click()">
+                        <label class="file-label" for="Simulation" style="cursor: pointer;"
+                            *ngIf="!selectedFile">Simulation</label>
+                        <label class="file-label" for="Simulation" style="cursor: pointer;"
+                            *ngIf="selectedFile">{{selectedFile.name}}</label>
+
+                        <div class="vertical-line"></div>
+                        <input class="file-input" type="file" id="isSimulationValidated" accept=".pdf"
+                            formControlName="isSimulationValidated" name="Simulation"
+                            (change)="setFileInput('isSimulationValidated', $event)">
+                        <div class="upload-icon" onclick="document.getElementById('isSimulationValidated').click()">
+                            <div class="chose-file"> choisir un fichier <br>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
+                                    class="icon-file" fill="none">
+                                    <g clip-path="url(#clip0_972_185)">
+                                        <path
+                                            d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_972_185">
+                                            <rect width="14" height="14" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="form-section">
+                <b> Information du Client : <br></b>
+                <div class="grid-container">
+                    <div class="grid-item">
+
+                        <input formControlName="firstName" type="text" id="fullName" placeholder="Prénom" name="Prénom"
+                            required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('firstName')?.invalid &&
+                      myForm.get('firstName')?.touched
+                    ">
+                            Prénom is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="lastName" type="text" id="companyName" placeholder="Nom" name="lastName"
+                            required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('lastName')?.invalid &&
+                      myForm.get('lastName')?.touched
+                    ">
+                            Nom is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="email" type="email" id="email" placeholder="email" name="email"
+                            required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('email')?.invalid &&
+                      myForm.get('email')?.touched
+                    ">
+                            email is required.
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+
+                        <input formControlName="company" type="text" id="company" name="company" placeholder="Société"
+                            required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('company')?.invalid &&
+                      myForm.get('company')?.touched
+                    ">
+                            Société is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="position" type="text" id="company" name="company"
+                            placeholder="poste du contact" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('position')?.invalid &&
+                      myForm.get('position')?.touched
+                    ">
+                            poste is required.
+                        </div>
+                    </div>
+                    <div class="grid-item">
+
+                        <input formControlName="phoneNumber" type="text" id="phoneNumber" name="phoneNumber"
+                            placeholder="Téléphone" required />
+
+                        <div class="error" *ngIf="
+                      myForm.get('phoneNumber')?.invalid &&
+                      myForm.get('phoneNumber')?.touched
+                    ">
+                            poste is required.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="buttons">
+
+                    <button type="submit" class="button" (click)="submit()">
+                        <div class="inscrire"> Ajouter</div>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="right-item">
+        <div class="profil">
+            <img src="/assets/unsplash_dt60oksDTx8.png">
+            <div class="nom-prenom"> Prénom Nom</div>
+            <div>
+                <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="10" height="4" viewBox="0 0 10 8"
+                    fill="none">
+                    <path d="M5 8L0.669872 0.5L9.33013 0.5L5 8Z" fill="#1E1E1E" fill-opacity="0.8" />
+                </svg>
+            </div>
+        </div><br> <br>
+        <br>
+        <app-notification></app-notification>
+    </div>
+
+</div>

@@ -1,0 +1,236 @@
+<div class="container">
+  <div>
+    <app-left-bar></app-left-bar>
+  </div>
+  <div class="second-container">
+    <div class="search-bar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+          fill="#1E1E1E"
+        />
+      </svg>
+      <div class="Search-text">
+        <input type="search" placeholder="Search Anything Here..." />
+      </div>
+      <div>
+        <button class="button">Rechercher</button>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <div style="display: flex; margin-left: 10px">
+      <form [formGroup]="myForm" *ngIf="status === 'VALIDATED'">
+        <div class="Information"><b> Information du client </b></div>
+        <div class="personal-info" style="display: flex">
+          <div>
+            <div class="label">Prénom :</div>
+            <div class="Tableau">
+              <input
+                type="text"
+                formControlName="clientfirstName"
+                [readonly]="true"
+                [ngModel]="clientInfo?.clientContact.firstName"
+              />
+            </div>
+
+            <div class="label">Nom :</div>
+            <div class="Tableau">
+              <input
+                type="text"
+                formControlName="clientlastName"
+                [readonly]="true"
+                [ngModel]="clientInfo?.clientContact.lastName"
+              />
+            </div>
+
+            <div class="label">Email :</div>
+            <div class="Tableau">
+              <input
+                type="email"
+                formControlName="clientEmail"
+                [ngModel]="clientInfo?.clientContact.email"
+                [readonly]="true"
+              />
+            </div>
+
+            <div class="label">Société :</div>
+            <div class="Tableau">
+              <input
+                type="text"
+                formControlName="company"
+                [ngModel]="clientInfo?.company"
+                [readonly]="true"
+              />
+            </div>
+
+            <div class="label">Poste du contact :</div>
+            <div class="Tableau">
+              <input
+                type="text"
+                formControlName="clientPostion"
+                [ngModel]="clientInfo?.clientContact.position"
+                [readonly]="true"
+              />
+            </div>
+
+            <div class="label">Numéro de téléphone :</div>
+            <div class="Tableau">
+              <input
+                type="text"
+                formControlName="clientphoneNumber"
+                [ngModel]="clientInfo?.clientContact.phoneNumber"
+                [readonly]="true"
+              />
+            </div>
+            <div class="label">Nouveau Simulation :</div>
+
+            <div class="Tableau" *ngIf="showpdf">
+              <div formControlName="clientphoneNumber" id="pdfContainer1"></div>
+            </div>
+            <div class="Tableau" *ngIf="!showpdf">
+              <img
+                [src]="new_tjm.simulationValidated"
+                alt="Selected Image"
+                width="80%"
+                height="100%"
+              />
+            </div>
+          </div>
+
+          <div style="margin-left: 80px">
+            <div class="Information" style="margin-top: -18px">
+              <b> Information du mission </b>
+            </div>
+            <div class="label">Métier :</div>
+            <div class="Tableau">
+              <input
+                formControlName="profession"
+                [ngModel]="missionInfo?.profession"
+                [readonly]="true"
+                type="text"
+                id="birthDate"
+                name="birthDate"
+                required
+                placeholder="RIB"
+              />
+            </div>
+
+            <div class="label" style="color: rgb(24, 117, 24)">TJM :</div>
+            <div class="Tableau">
+              <input
+                formControlName="dailyRate"
+                [ngModel]="missionInfo?.dailyRate"
+                [readonly]="true"
+                type="text"
+                id="companyName"
+                placeholder="Société"
+                name="companyName"
+                required
+              />
+            </div>
+
+            <div class="label" style="color: rgb(255, 0, 0)">Nouveau TJM :</div>
+            <div class="Tableau">
+              <input
+                [value]="new_tjm.valueOfNewTjm"
+                [ngModel]="new_tjm.valueOfNewTjm"
+                [readonly]="true"
+                type="text"
+                id="companyName"
+                placeholder="47"
+                name="companyName"
+                required
+              />
+            </div>
+
+            <div class="label">Secteur d'activité :</div>
+            <div class="Tableau">
+              <input
+                formControlName="industrySector"
+                [ngModel]="missionInfo?.industrySector"
+                type="text"
+                id="email"
+                [readonly]="true"
+                placeholder="Secteur d'activité"
+                name="email"
+                required
+              />
+            </div>
+
+            <div class="label">Date de début :</div>
+            <div class="Tableau">
+              <input
+                type="date"
+                formControlName="startDate"
+                id="birthDate"
+                name="birthDate"
+                [readonly]="true"
+                [ngModel]="missionInfo?.startDate.split('T')[0]"
+                required
+              />
+            </div>
+
+            <div class="label">Date de fin de mission :</div>
+            <div class="Tableau">
+              <input
+                formControlName="endDate"
+                [ngModel]="missionInfo?.endDate.split('T')[0]"
+                type="date"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="téléphone"
+                required
+                [readonly]="true"
+              />
+            </div>
+
+            <div class="label">Client final :</div>
+            <div class="Tableau">
+              <input
+                formControlName="finalClient"
+                [ngModel]="missionInfo?.finalClient"
+                [readonly]="true"
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="téléphone"
+                required
+              />
+            </div>
+
+            <div class="label">Simulation :</div>
+            <div class="Tableau">
+              <div formControlName="clientphoneNumber" id="pdfContainer"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div style="display: flex; margin-left: 450px">
+      <div style="margin-top: 20px">
+        <button
+          (click)="invalid()"
+          style="
+            background-color: rgb(174, 178, 182);
+            border-color: rgb(174, 178, 182);
+            color: black;
+          "
+        >
+          Refusé TJM
+        </button>
+      </div>
+      <div style="margin-top: 20px">
+        <button (click)="valid()">Validé TJM</button>
+      </div>
+    </div>
+  </div>
+  <div><app-notificaion-rh></app-notificaion-rh></div>
+</div>

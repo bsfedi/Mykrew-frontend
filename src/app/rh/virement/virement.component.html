@@ -1,0 +1,39 @@
+<body>
+    <div class="wrapper">
+        <app-left-bar> </app-left-bar>
+        <div class="second-container">
+            <h1> Ajouter un nouveau virement
+            </h1> <br>
+            <div class="table-container">
+                <div class="transaction-header">
+                    <span>Virement</span>
+
+
+
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Titre</th>
+                            <th>Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let virement of virements">
+                            <td>{{virement.createdAt.split('T')[0]}}</td>
+                            <td>{{virement.typeVirement}}</td>
+                            <td>{{virement.montant}}€</td>
+                        </tr>
+
+                        <!-- Repeat this row for other transactions -->
+                        <!-- ... other transactions ... -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <app-notificaion-rh></app-notificaion-rh>
+    </div>
+</body>

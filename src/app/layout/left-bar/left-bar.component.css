@@ -1,0 +1,142 @@
+.logo {
+  width: 8.88481rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  padding: 50px;
+}
+
+.title {
+  color: #000;
+
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  margin-top: 12px;
+  margin-bottom: 30px;
+  flex-shrink: 0;
+  /* 2.25rem */
+}
+
+/* .first-item {
+  color: white;
+  position: fixed;
+  background: #1e1e1e;
+  align-items: center;
+  justify-content: center;
+  margin-left: -16px;
+  height: 100%;
+  margin-top: -8px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif !important;
+} */
+
+/* Default styles for larger screens */
+.first-item {
+  margin-left: -16px;
+  margin-top: -8px;
+  position: fixed;
+  background: #1e1e1e;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  font-family: "Poppins", sans-serif !important;
+  transition: margin-left 0.3s; /* Add transition for smoother animation */
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1;
+} /* Default styles for larger screens */
+.first-item {
+  position: fixed;
+  background: #1e1e1e;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  font-family: "Poppins", sans-serif !important;
+  transition: margin-left 0.3s; /* Add transition for smoother animation */
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  /* Styles for screens with a maximum width of 768px */
+  .first-item {
+    margin-left: -270px; /* Collapse the navigation bar */
+  }
+
+  .first-item.collapsed {
+    margin-left: 0; /* Adjust margin for collapsed state */
+  }
+
+  .second-container {
+    margin-left: 0; /* Adjust the content container when the navigation bar is collapsed */
+  }
+
+  .menu-toggle {
+    display: block; /* Show the menu toggle icon */
+  }
+
+  /* Adjust other styles for smaller screens if needed */
+}
+.board-item {
+  width: 12.875rem;
+  height: 3rem;
+
+  border-radius: 0.4375rem;
+  background: rgba(242, 239, 224, 0.1);
+  margin-left: 20px;
+  display: flex;
+}
+
+.custom-item {
+  width: 12.875rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 0.4375rem;
+  margin-left: 20px;
+  display: flex;
+}
+
+svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+.bord-text {
+  color: #fefcf1;
+
+  cursor: pointer;
+  font-style: normal;
+
+  /* 1.125rem */
+  margin-left: 10px;
+  margin-top: 11px;
+  /* 1.125rem */
+}
+
+.faq-sedeconnecter {
+  margin-top: 250px;
+}
+
+.second-container {
+  margin-left: 270px;
+  flex-wrap: 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+}

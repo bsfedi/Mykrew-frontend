@@ -1,0 +1,9 @@
+/* Add application styles & imports to this file! */
+
+.pdfobject-container {
+    max-width: 50%;
+    width: 300px;
+    height: 300px;
+    border: 10px solid rgba(0, 0, 0, 0.2);
+    margin: 0;
+}

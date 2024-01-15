@@ -1,0 +1,79 @@
+<body>
+    <div class="wrapper">
+        <app-left-bar> </app-left-bar>
+        <div class="second-container">
+            <h1> Charger un nouveau document
+            </h1> <br>
+            <form action="/submit_form" method="post" style="display: flex;">
+
+                <div class="form-section">
+
+                    <div class="grid-container">
+                        <div class="grid-item">
+
+                            <input type="text" id="fullName" placeholder="Prénom" name="Prénom" required />
+
+
+                        </div>
+                        <div class="grid-item">
+
+                            <input type="text" id="companyName" placeholder="Nom" name="lastName" required />
+
+
+                        </div>
+
+
+                        <div class="grid-item">
+                            <!-- (change)="setFileInput('isSimulationValidated', $event)" -->
+                            <div class="custom-file-input"
+                                onclick="document.getElementById('isSimulationValidated').click()">
+                                <label class="file-label" for="Simulation" style="cursor: pointer;">Simulation</label>
+                                <!-- <label class="file-label" for="Simulation" style="cursor: pointer;"
+                                    *ngIf="selectedFile">{{selectedFile.name}}</label> -->
+
+                                <div class="vertical-line"></div>
+                                <input class="file-input" type="file" id="isSimulationValidated" accept=".pdf"
+                                    name="Simulation">
+                                <!-- (change)="setFileInput('isSimulationValidated', $event)"> -->
+                                <div class="upload-icon"
+                                    onclick="document.getElementById('isSimulationValidated').click()">
+                                    <div class="chose-file"> choisir un fichier <br>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" class="icon-file" fill="none">
+                                            <g clip-path="url(#clip0_972_185)">
+                                                <path
+                                                    d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
+                                                    stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_972_185">
+                                                    <rect width="14" height="14" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="buttons">
+
+                        <button type="submit" class="button">
+                            <div class="inscrire"> Ajouter</div>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <app-notificaion-rh></app-notificaion-rh>
+    </div>
+</body>

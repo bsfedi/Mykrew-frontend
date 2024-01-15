@@ -1,0 +1,162 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<div class="container">
+    <div class="left-panel">
+        <img src="/assets/mission.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <div class="text-overlay">
+            <h5> Saisissez les détails de votre société et de votre rôle pour faciliter la gestion et le suivi de vos
+                interactions professionnelles. </h5>
+        </div>
+        <div class="logo-overlay">
+            <div class="image">
+                <img src="/assets/Calque 4.png">
+            </div>
+        </div>
+    </div>
+    <div class="form-panel ">
+        <div class="form-container ">
+            <div>
+                <img src="/assets/mk 3.svg" width="30%" height="30%">
+            </div>
+            <div>
+                <div class="Connectez"> <b>
+                        Information du mission
+                    </b> </div>
+                <div class="under-connect"> Rejoignez MyKrew : Suivez vos investissements et élargissez votre réseau
+                    professionnel en quelques clics.</div>
+            </div>
+            <div> Mission</div>
+            <div>
+                <form action="/submit_form" method="post" [formGroup]="myForm">
+                    <div class="form-section">
+                        <div class="grid-container">
+                            <div class="grid-item">
+
+                                <input formControlName="profession" type="text" id="fullName" placeholder="Métier"
+                                    name="fullName" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('profession')?.invalid &&
+                              myForm.get('profession')?.touched
+                            ">
+                                    Métier is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="dailyRate" type="text" id="companyName" placeholder="TJM"
+                                    name="TJM" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('dailyRate')?.invalid &&
+                              myForm.get('dailyRate')?.touched
+                            ">
+                                    TJM is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="industrySector" type="text" id="email"
+                                    placeholder="Secteur d'activité" name="email" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('industrySector')?.invalid &&
+                              myForm.get('industrySector')?.touched
+                            ">
+                                    Secteur d'activité is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="startDate" type="date" id="birthDate" name="birthDate"
+                                    required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('startDate')?.invalid &&
+                              myForm.get('startDate')?.touched
+                            ">
+                                    Date de début is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="endDate" type="date" id="birthDate" name="birthDate" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('endDate')?.invalid &&
+                              myForm.get('endDate')?.touched
+                            ">
+                                    Date de fin de mission is required.
+                                </div>
+                            </div>
+                            <div class="grid-item">
+
+                                <input formControlName="finalClient" type="text" id="phoneNumber" name="phoneNumber"
+                                    placeholder="Client final" required />
+
+                                <div class="error" *ngIf="
+                              myForm.get('finalClient')?.invalid &&
+                              myForm.get('finalClient')?.touched
+                            ">
+                                    Client final is required.
+                                </div>
+                            </div>
+
+
+                            <div class="custom-file-input" (change)="setFileInput('isSimulationValidated', $event)"
+                                onclick="document.getElementById('isSimulationValidated').click()">
+                                <label class="file-label" for="Simulation" style="cursor: pointer;"
+                                    *ngIf="!selectedFile">Simulation</label>
+                                <label class="file-label" for="Simulation" style="cursor: pointer;"
+                                    *ngIf="selectedFile">{{selectedFile.name}}</label>
+
+                                <div class="vertical-line"></div>
+                                <input class="file-input" type="file" id="isSimulationValidated" accept=".pdf"
+                                    formControlName="isSimulationValidated" name="Simulation"
+                                    (change)="setFileInput('isSimulationValidated', $event)">
+                                <div class="upload-icon"
+                                    onclick="document.getElementById('isSimulationValidated').click()">
+                                    <div class="chose-file"> choisir un fichier <br>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 14 14" class="icon-file" fill="none">
+                                            <g clip-path="url(#clip0_972_185)">
+                                                <path
+                                                    d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
+                                                    stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_972_185">
+                                                    <rect width="14" height="14" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div> <br>
+            <div class="buttons">
+                <button type="submit" class="button1">
+                    <div class="inscrire"> retour </div>
+                </button>
+                <button type="submit" class="button" (click)="submit()">
+                    <div class="inscrire"> Suivant</div>
+                </button>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

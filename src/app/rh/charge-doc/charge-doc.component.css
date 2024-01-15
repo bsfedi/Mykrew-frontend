@@ -1,0 +1,103 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.5fr 250fr 0.5fr;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="search"] {
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  padding: 8px;
+  margin-top: 10px;
+
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+
+  background: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.second-container {
+  margin-left: 240px;
+
+  flex-shrink: 0;
+}
+
+.form-section {
+  margin-left: 25%;
+}
+
+.custom-file-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #1e1e1e;
+  border-radius: 0.5rem;
+
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  margin-top: 10px;
+}
+
+.file-label {
+  margin-left: 6px;
+  font-size: 1rem;
+
+  flex: 1;
+  margin-right: 10px;
+  color: #6c6868;
+
+  font-size: 0.8rem;
+}
+.vertical-line {
+  height: 58px;
+  /* Adjust the height as needed */
+  border-left: 1px solid #000;
+  /* Adjust the color as needed */
+  margin-right: 10px;
+}
+
+.chose-file {
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #000;
+
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.icon-file {
+  margin-top: 5px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+button {
+  color: white;
+  display: flex;
+  width: 7.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: #1e1e1e;
+  margin-top: 2px;
+  margin: 10px;
+}
