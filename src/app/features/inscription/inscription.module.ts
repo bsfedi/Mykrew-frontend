@@ -45,7 +45,8 @@ export const routes: Routes = [
     ClientComponent,
     MissionComponent,
     PersonalDocComponent,
-    InformationsComponent
+    InformationsComponent,
+
   ],
   imports: [
     CommonModule,

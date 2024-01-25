@@ -37,7 +37,11 @@
     </div>
   </div>
 
-  <div class="message-container" *ngFor="let item of notification">
+  <div
+    class="message-container"
+    *ngFor="let item of notification"
+    (click)="gotoallnotification()"
+  >
     <div class="avatar-container">
       <p class="avatar-text"><b>RH</b></p>
     </div>
@@ -77,10 +81,36 @@
     </div>
   </div>
 
-  <div *ngFor="let notif of lastnotifications">
+  <div *ngFor="let notif of lastnotifications" (click)="gotoallnotification()">
     <div
       class="message-container"
-      *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSE'"
+      *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSENOTVALIDATED'"
+    >
+      <div class="avatar-container">
+        <p class="avatar-text"><b>RH</b></p>
+      </div>
+      <div class="content-container">
+        <div>
+          <p>TJM non Validée</p>
+          <!-- <b>Votre demande de nouveau TJM n'a pas été approuvée.</b>
+          <p>
+            Assurez-vous que toutes les informations fournies sont correctes et
+            conformes aux critères requis.
+          </p>
+          <p>
+            N'hésitez pas à contacter le support technique si vous avez des
+            questions ou des préoccupations.
+          </p> -->
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="message-container"
+      *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'"
     >
       <div class="avatar-container">
         <p class="avatar-text"><b>RH</b></p>
@@ -88,8 +118,12 @@
       <div class="content-container">
         <div>
           <p>Nouveau TJM Validée</p>
-          <b>Félicitations ! Votre nouveau tjm a été approuvée avec succès.</b>
-          <p>Continuez votre excellent travail!</p>
+          <!-- <b>Félicitations ! Votre nouveau tjm a été approuvée avec succès.</b>
+          <p>Continuez votre excellent travail!</p> -->
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+          >
         </div>
       </div>
     </div>
@@ -103,8 +137,12 @@
       <div class="content-container">
         <div>
           <p>Mission Annulée</p>
-          <b>Cette mission a été annulée par le responsable :</b>
+          <!-- <b>Cette mission a été annulée par le responsable :</b> -->
           <p>{{ notif.note }}</p>
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+          >
         </div>
       </div>
     </div>
@@ -119,8 +157,12 @@
       <div class="content-container">
         <div>
           <p>Mission Validée</p>
-          <b>Félicitations ! Votre mission a été approuvée avec succès.</b>
-          <p>Continuez votre excellent travail!</p>
+          <!-- <b>Félicitations ! Votre mission a été approuvée avec succès.</b>
+          <p>Continuez votre excellent travail!</p> -->
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+          >
         </div>
       </div>
     </div>
@@ -135,74 +177,13 @@
       <div class="content-container">
         <div>
           <p>Mission Non Validée</p>
-          <div class="details">Votre mission n'a pas été approuvée</div>
+          <!-- <div class="details">Votre mission n'a pas été approuvée</div>
 
-          <p>Vous devez effectuer des modifications pour la valider.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngFor="let notif of lastnotifications">
-    <div
-      class="message-container"
-      *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSE'"
-    >
-      <div class="avatar-container">
-        <p class="avatar-text"><b>RH</b></p>
-      </div>
-      <div class="content-container">
-        <div>
-          <p>Nouveau TJM Validée</p>
-          <b>Félicitations ! Votre nouveau tjm a été approuvée avec succès.</b>
-          <p>Continuez votre excellent travail!</p>
-        </div>
-      </div>
-    </div>
-    <div
-      class="message-container"
-      *ngIf="notif.typeOfNotification == 'MISSIONKILLED'"
-    >
-      <div class="avatar-container">
-        <p class="avatar-text"><b>RH</b></p>
-      </div>
-      <div class="content-container">
-        <div>
-          <p>Mission Annulée</p>
-          <b>Cette mission a été annulée par le responsable :</b>
-          <p>{{ notif.note }}</p>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="message-container"
-      *ngIf="notif.typeOfNotification == 'MISSIONVALID'"
-    >
-      <div class="avatar-container">
-        <p class="avatar-text"><b>RH</b></p>
-      </div>
-      <div class="content-container">
-        <div>
-          <p>Mission Validée</p>
-          <b>Félicitations ! Votre mission a été approuvée avec succès.</b>
-          <p>Continuez votre excellent travail!</p>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="message-container"
-      *ngIf="notif.typeOfNotification == 'MISSIONNOTVALID'"
-    >
-      <div class="avatar-container">
-        <p class="avatar-text"><b>RH</b></p>
-      </div>
-      <div class="content-container">
-        <div>
-          <p>Mission Non Validée</p>
-          <div class="details">Votre mission n'a pas été approuvée</div>
-
-          <p>Vous devez effectuer des modifications pour la valider.</p>
+          <p>Vous devez effectuer des modifications pour la valider.</p> -->
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+          >
         </div>
       </div>
     </div>
@@ -265,10 +246,10 @@
       </svg>
     </div>
   </div>
-  <div *ngFor="let notif of lastnotifications">
+  <div *ngFor="let notif of lastnotificationsvir">
     <div
       class="message-container"
-      *ngIf="notif.typeOfNotification == 'TJMREQUEST'"
+      *ngIf="notif.typeOfNotification == 'VIREMENT'"
     >
       <div class="avatar-container1">
         <img
@@ -278,9 +259,13 @@
         />
       </div>
       <div class="content-container1">
-        <div *ngIf="notif.typeOfNotification == 'TJMREQUEST'">
+        <div *ngIf="notif.typeOfNotification == 'VIREMENT'">
           <div class="title"><b> Virement </b></div>
           <div class="details">Vous avez reçu un virement</div>
+          <b>
+            {{ notif.createdAt.split(["T"])[0] }} -
+            {{ notif.createdAt.split(["T"])[1].split(".")[0] }}
+          </b>
         </div>
       </div>
       <div class="time-container">

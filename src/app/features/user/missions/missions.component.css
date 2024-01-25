@@ -516,20 +516,22 @@ input[type="number"] {
   thead {
     background-color: #187111;
   }
-  .newmissionbutton {
-    width: 100px;
-  }
   .mesmissions {
-    margin-top: 9px;
-    margin-right: 165px;
-    margin-left: -40px;
-
-    font-size: 1.55rem;
+    margin-top: 10px;
+    margin-right: 35px;
+  
+    font-size: 1.35rem;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     letter-spacing: 0.0225rem;
   }
+  
+  .newmissionbutton {
+    width: 200px;
+    
+  }
+
 
   .search-bar {
     width: 22.575rem;
@@ -552,6 +554,10 @@ input[type="number"] {
 }
 
 @media (max-width: 750px) {
+  .newmissionbutton {
+    width: 200px;
+    
+  }
   .search-bar {
     width: 42.575rem;
     flex-shrink: 1;
@@ -572,7 +578,7 @@ input[type="number"] {
     font-family: "Poppins", sans-serif !important;
   }
   .right-item {
-    margin-left: -1200px;
+  float: right;
     width: 60%;
 
     display: row;
@@ -586,7 +592,7 @@ input[type="number"] {
     display: flex;
   }
   .second-container {
-    margin-left: 60px;
+    margin-left: 0px;
     margin-right: 20px;
     width: 56%;
     flex-wrap: 1;
@@ -602,3 +608,5 @@ input[type="number"] {
     margin-top: 8px;
   }
 }
+
+

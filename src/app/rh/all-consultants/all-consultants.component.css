@@ -730,3 +730,64 @@ input[type="password"] {
   border-radius: 0rem 0.625rem 0.625rem 0rem;
   background: #eae3d5;
 }
+
+.calendar-container {
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.month-label {
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+  background-color: #f3f3f3;
+}
+
+.week-labels {
+  display: flex;
+  background-color: #e8e8e8;
+}
+
+.week-labels span {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.week-labels span:last-child {
+  border-right: none;
+}
+
+.days-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  padding: 20px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  min-height: 100px;
+}
+
+.day.empty {
+  background-color: #fafafa;
+}
+
+.day.today {
+  background-color: #def;
+}
+
+/* Clear day borders on the right for the last column */
+.day:nth-child(7n) {
+  border-right: none;
+}
+
+/* Clear day borders at the bottom for the last row */
+.day:nth-last-child(-n + 7) {
+  border-bottom: none;
+}

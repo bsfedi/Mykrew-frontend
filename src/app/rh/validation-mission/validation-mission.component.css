@@ -100,10 +100,26 @@ svg {
   height: 2.4rem;
   border-radius: 0.25rem;
   border: 1px solid #eab059;
-  background: #fff;
+  background: #fce9a4;
   width: 8rem;
 }
 
+.desactivated {
+  display: inline-flex;
+  padding: 0.4375rem 0.6875rem 0.375rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+  gap: 6.6875rem;
+  height: 2.4rem;
+  border-radius: 0.25rem;
+  border: 0px solid #1e1e1e;
+  background: #ededed;
+  width: 8rem;
+}
+
+option {
+  background-color: white;
+}
 body {
   font-family: "Poppins", sans-serif !important;
 }
@@ -116,8 +132,8 @@ body {
   gap: 6.6875rem;
   height: 2.4rem;
   border-radius: 0.25rem;
-  border: 1px solid #1dd75b;
-  background: #fff;
+  border: 1px solid #c9e2c4;
+  background: #c9e2c4;
   width: 8rem;
 }
 
@@ -130,7 +146,7 @@ div {
   height: 1.5875rem;
   flex-shrink: 0;
   border-radius: 0.25rem;
-  border: 1px solid #eab059;
+  border: 1px solid #fce9a4;
   background: #fff;
   padding-top: 10px;
   padding-left: 8px;
@@ -145,7 +161,18 @@ option {
   height: 1.5875rem;
   flex-shrink: 0;
   border-radius: 0.25rem;
-  border: 1px solid #1dd75b;
+  border: 1px solid #c9e2c4;
+  background: #fff;
+  padding-top: 10px;
+  padding-left: 8px;
+}
+
+.desactivated1 {
+  width: 18.4375rem;
+  height: 1.5875rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+  border: 2px solid #ededed;
   background: #fff;
   padding-top: 10px;
   padding-left: 8px;

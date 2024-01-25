@@ -22,7 +22,7 @@ export class LeftBarComponent {
     
           // Adjust the margin-left of the first item
           if (firstItem.classList.contains("collapsed")) {
-            firstItem.style.marginLeft = "0";
+            firstItem.style.marginLeft = "-30px";
             
           } else {
             firstItem.style.marginLeft = "-270px";

@@ -1,0 +1,160 @@
+<div class="wrapper">
+  <div>
+    <app-left-bar></app-left-bar>
+  </div>
+  <div class="second-container">
+    <div class="search-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+          fill="#1E1E1E" />
+      </svg>
+      <div class="Search-text">
+        <input type="search" placeholder="Search Anything Here..." />
+      </div>
+      <div>
+        <button class="button">Rechercher</button>
+      </div>
+    </div>
+
+    <br /><br />
+    <div class="flex-container" #myPdfContent>
+      <div>
+        <div class="flex-container">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="29" height="36" viewBox="0 0 29 36" fill="none">
+              <path
+                d="M16.592 1.85742H9.14283C5.77567 1.85742 4.09209 1.85742 3.04604 2.90347C2 3.94951 2 5.63309 2 9.00025V26.8573C2 30.2245 2 31.9081 3.04604 32.9541C4.09209 34.0002 5.77567 34.0002 9.14283 34.0002H19.8571C23.2242 34.0002 24.9078 34.0002 25.9539 32.9541C26.9999 31.9081 26.9999 30.2245 26.9999 26.8573V12.2653C26.9999 11.5354 26.9999 11.1704 26.864 10.8423C26.7281 10.5141 26.47 10.256 25.9539 9.73992L19.1174 2.90347C18.6013 2.38734 18.3432 2.12928 18.0151 1.99335C17.6869 1.85742 17.322 1.85742 16.592 1.85742Z"
+                stroke="black" stroke-width="3.5" />
+              <path d="M9.14276 19.7148L19.857 19.7148" stroke="black" stroke-width="3.5" stroke-linecap="round" />
+              <path d="M9.14276 26.8574L16.2856 26.8574" stroke="black" stroke-width="3.5" stroke-linecap="round" />
+              <path
+                d="M16.2857 1.85742V9.00025C16.2857 10.6838 16.2857 11.5256 16.8088 12.0486C17.3318 12.5717 18.1736 12.5717 19.8572 12.5717H27"
+                stroke="black" stroke-width="3.5" />
+            </svg>
+          </div>
+          <div class="compterendu">Compte Rendu d’Activité</div>
+
+        </div>
+        <hr style="width: 440px;">
+        <div class="Informations">Informations</div>
+
+        <div class="flex-container">
+          <div class="flex-container">
+            <div class="time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                <circle cx="13.5" cy="13.5" r="12" stroke="#76736E" stroke-opacity="0.55" stroke-width="3" />
+              </svg>
+            </div>
+            <div class="days-mission">
+              <!-- {{ daysDifference }} -->
+              {{ selectedDays.length }} j
+            </div>
+          </div>
+
+          <div class="flex-container" style="margin-left: 30px">
+            <div class="time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24" fill="none">
+                <rect x="2" y="2" width="28" height="20.2222" rx="2" stroke="#A9A6A1" stroke-width="3" />
+                <path d="M8.2222 16H8.23664" stroke="#A9A6A1" stroke-width="3" stroke-linecap="round" />
+                <path d="M2 10L30 10" stroke="#A9A6A1" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="days-mission">
+              {{ mission_details?.missionInfo.finalClient }}
+            </div>
+          </div>
+          <div class="flex-container" style="margin-left: 15px">
+            <div class="time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24" fill="none">
+                <rect x="2" y="2" width="28" height="20.2222" rx="2" stroke="#A9A6A1" stroke-width="3" />
+                <path d="M8.2222 16H8.23664" stroke="#A9A6A1" stroke-width="3" stroke-linecap="round" />
+                <path d="M2 10L30 10" stroke="#A9A6A1" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="days-mission">
+              {{ portage?.personalInfo.portage.value }}
+            </div>
+          </div>
+        </div><br>
+        <hr style="width: 440px;">
+
+        <div class="note">Note globale</div>
+        <div>
+          <input type="text" placeholder="Note sur le compte rendu d’activité" [(ngModel)]="noteGlobale" />
+        </div><br>
+        <hr style="width: 440px;">
+        <div class="note">Personnalisation</div>
+        <div class="addsig">Ajouter ma signature :</div>
+        <div class="signature" (click)="openFileInput()">
+          <div *ngIf="permis_img" style="height: 65%; margin: 8px">
+            <img [src]="permis_img" alt="Selected Image" width="80%" height="100%" />
+          </div>
+          <input type="file" style="display: none" (change)="setFileInput('signature', $event)" #fileInput />
+        </div>
+      </div>
+      <div style="margin-left: 8%; margin-top: 70px;">
+        <div class="calendar-container">
+          <div>
+            <div class="month-navigation">
+              <div class="month-label">
+                <div class="flex-container">
+                  <div>{{ months[currentMonth] }} - {{ currentYear }}</div>
+                  <div>
+                    <select [(ngModel)]="currentMonth" (change)="onMonthChange()">
+                      <option *ngFor="let month of months; let i = index" [value]="i">
+                        {{ month }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="week-labels">
+              <span *ngFor="
+                  let day of [
+                    'dim.',
+                    'lun.',
+                    'mar.',
+                    'mer.',
+                    'jeu.',
+                    'ven.',
+                    'sam.'
+                  ]
+                ">{{ day }}</span>
+            </div>
+            <div class="days-container" *ngIf="dowloded">
+              <div class="day empty" *ngFor="let emptyDay of emptyStartDays"></div>
+              <div class="day" *ngFor="let day of daysInMonth" [class.today]="isToday(day)"
+                [class.selected]="isSelected(day)" [class.selected-day]="isSelected(day)" (click)="selectDay(day)"
+                [attr.id]="'day-' + day.day">
+                {{ day.day }} <!-- Display the 'day' property -->
+              </div>
+            </div>
+
+            <div class="days-container" *ngIf="!dowloded">
+              <div class="day empty" *ngFor="let emptyDay of emptyStartDays"></div>
+              <div class="day" *ngFor="let day of daysInMonth" [class.today]="isToday(day)"
+                [class.selected]="isSelected(day)" [class.selected-day]="isSelected(day)" (click)="selectDay(day)"
+                [attr.id]="'day-' + day.day">
+                {{ day }} <!-- Display the 'day' property -->
+              </div>
+              <div class="day empty" *ngFor="let emptyDay of emptyEndDays"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-container">
+          <div class="vider" (click)="videcra()">Vider le CRA</div>
+        </div>
+        <div class="flex-container" style="margin-top: -60px;">
+          <div class="button1">
+            <button (click)="updatemoncre()">Enregistrer</button>
+          </div>
+          <div class="button1">
+            <button (click)="generatePdf()" style="background-color: #00C97B;">PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

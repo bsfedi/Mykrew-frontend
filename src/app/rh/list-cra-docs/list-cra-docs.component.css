@@ -1,0 +1,10 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 250fr 0.5fr;
+    font-family: "Poppins", sans-serif !important;
+  }
+  .second-container {
+    margin-left: 240px;
+  
+    flex-shrink: 0;
+  }

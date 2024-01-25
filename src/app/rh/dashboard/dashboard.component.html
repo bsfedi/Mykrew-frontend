@@ -1,34 +1,46 @@
 <body>
-    <div class="wrapper">
-        <app-left-bar> </app-left-bar>
-        <div class="second-container">
-            <div class="title"> Tableau de bord - RH </div>
-            <div class="search-bar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                        d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-                        fill="#1E1E1E" />
-                </svg>
-                <div class="Search-text">
-                    <input type="search" placeholder="Search Anything Here...">
-                </div>
-                <div>
-                    <button class="button"> Rechercher </button>
-                </div>
-            </div>
+  <div class="wrapper">
+    <app-left-bar> </app-left-bar>
+    <div class="second-container">
+      <div class="title">Tableau de bord - RH</div>
+      <div class="search-bar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+            fill="#1E1E1E"
+          />
+        </svg>
+        <div class="Search-text">
+          <input type="search" placeholder="Search Anything Here..." />
+        </div>
+        <div>
+          <button class="button">Rechercher</button>
+        </div>
+      </div>
 
-            <div id="chart">
-                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-                    [dataLabels]="chartOptions.dataLabels" [yaxis]="chartOptions.yaxis" [colors]="chartOptions.colors"
-                    [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
-            </div>
-            <div class="Tableau" style="margin-left: 80px;">
-                <div class="chiffre_affaire ">
-                    <div class="Tableau">
-                        <div class="chaffaire">
-                            Chiffre d’Affaire
-                        </div>
-                        <!-- <div class="pourcentage Tableau">
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [dataLabels]="chartOptions.dataLabels"
+          [yaxis]="chartOptions.yaxis"
+          [colors]="chartOptions.colors"
+          [legend]="chartOptions.legend"
+          [fill]="chartOptions.fill"
+        ></apx-chart>
+      </div>
+      <div class="Tableau" style="margin-left: 80px">
+        <div class="chiffre_affaire">
+          <div class="Tableau">
+            <div class="chaffaire">Chiffre d’Affaire</div>
+            <!-- <div class="pourcentage Tableau">
     
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none">
                                     <path
@@ -39,135 +51,207 @@
     
     
                             </div> -->
-                    </div>
-                    <div class="Tableau">
-                        <div class="nb_money">
-                            <b> 67 000€</b>
-                        </div>
-                        <div class="graph">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="560" viewBox="0 0 91 56"
-                                fill="none">
-                                <path
-                                    d="M2 54.1485C21.1808 54.9943 30.3079 49.9052 32.5 42.7153C35.0789 34.2567 39.5 28.816 43 27.2153C50.4957 23.7873 53.8751 30.4547 62 28.2153C69.0285 26.2781 71.3103 21.6768 74 16.7153C76.1698 12.7128 79.5 0.214852 89 2.21525"
-                                    stroke="#FEFCF1" stroke-width="3" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="tjm_moyen">
-                    <div class="chaffaire">
-                        TJM Moyen
-                    </div>
-                    <div class="nb_money">
-                        <b> 650€ </b>
-                    </div>
-                </div>
-                <div class="tjm_moyen  ">
-                    <div class="chaffaire">
-                        Nb de Consultants
-                    </div>
-                    <div class="nb_money">
-                        <b> 55 </b>
-                    </div>
-                </div>
+          </div>
+          <div class="Tableau">
+            <div class="nb_money">
+              <b> {{ cardstats.totalRevenue }}€</b>
             </div>
-            <br>
-            <div class="Tableau">
-                <div class="first">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M11.5996 11.6001L13.9996 11.6001" stroke="#1E1E1E" stroke-width="0.8"
-                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M2 4.3999L4.4 4.3999" stroke="#1E1E1E" stroke-width="0.8" stroke-miterlimit="10"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M9.2002 4.3999L14.0002 4.3999" stroke="#1E1E1E" stroke-width="0.8"
-                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M6.80039 2L4.40039 2L4.40039 6.8L6.80039 6.8L6.80039 2Z" stroke="#1E1E1E"
-                            stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M11.6002 9.2002L9.2002 9.2002L9.2002 14.0002L11.6002 14.0002L11.6002 9.2002Z"
-                            stroke="#1E1E1E" stroke-width="0.8" stroke-miterlimit="10" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M2 11.6001L6.8 11.6001" stroke="#1E1E1E" stroke-width="0.8" stroke-miterlimit="10"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                </div>
-                <div class="first">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <div> Sort: Last updated </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M7 12.5L7 1.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M11 8.5L7 12.5L3 8.5" stroke="#171A1F" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </div>
-                <div class="first">
-                    <div style="margin-right: 5px;">
-                        Tous les Consultants
-                    </div>
-                    <div>
-                        <div class="second">
-
-                            Missions
-
-
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="Tableau" style="margin-left: 125px;">
-                    <div class="first">
-                        Ajouter un consultant
-
-                    </div>
-                    <div class="first">
-                        Export list
-
-                    </div>
-                </div>
-
+            <div class="graph">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                height="560"
+                viewBox="0 0 91 56"
+                fill="none"
+              >
+                <path
+                  d="M2 54.1485C21.1808 54.9943 30.3079 49.9052 32.5 42.7153C35.0789 34.2567 39.5 28.816 43 27.2153C50.4957 23.7873 53.8751 30.4547 62 28.2153C69.0285 26.2781 71.3103 21.6768 74 16.7153C76.1698 12.7128 79.5 0.214852 89 2.21525"
+                  stroke="#FEFCF1"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
             </div>
-            <br>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="border-radius: 0.6875rem 0rem 0rem 0rem;">Tous les demandes</th>
-                        <th>Email</th>
-                        <th>Téléphone</th>
-                        <th>Nationalité</th>
-                        <th>Dernière Con.</th>
+          </div>
+        </div>
+        <div class="tjm_moyen">
+          <div class="chaffaire">TJM Moyen</div>
+          <div class="nb_money">
+            <b> {{ cardstats.averageTJM | number : "1.0-0" }}€ </b>
+          </div>
+        </div>
+        <div class="tjm_moyen">
+          <div class="chaffaire">Nb de Consultants</div>
+          <div class="nb_money">
+            <b> {{ cardstats.numberOfConsultants }} </b>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="Tableau">
+        <div class="first">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M11.5996 11.6001L13.9996 11.6001"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 4.3999L4.4 4.3999"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.2002 4.3999L14.0002 4.3999"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.80039 2L4.40039 2L4.40039 6.8L6.80039 6.8L6.80039 2Z"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11.6002 9.2002L9.2002 9.2002L9.2002 14.0002L11.6002 14.0002L11.6002 9.2002Z"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 11.6001L6.8 11.6001"
+              stroke="#1E1E1E"
+              stroke-width="0.8"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="first">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+          >
+            <path
+              d="M1.5 2.5L12.5 2.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6 11.5H8"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 5.5L11 5.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4.5 8.5L9.5 8.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div>Sort: Last updated</div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+          >
+            <path
+              d="M7 12.5L7 1.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11 8.5L7 12.5L3 8.5"
+              stroke="#171A1F"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div class="first">
+          <div style="margin-right: 5px">Tous les Consultants</div>
+          <div>
+            <div class="second">Missions</div>
+          </div>
+        </div>
+        <div class="Tableau" style="margin-left: 105px">
+          <div class="first">Ajouter un consultant</div>
+          <div class="first">Export list</div>
+        </div>
+      </div>
+      <br />
+      <table>
+        <thead>
+          <tr>
+            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+              Tous les demandes
+            </th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Nationalité</th>
+            <th>Dernière Con.</th>
 
-
-                        <th style="border-radius: 0rem 0.6875rem 0rem 0rem;">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of items ;let i = index">
-
-                        <td class="Tableau">
-                            <div class="image"> <img src="/assets/Rectangle 2.jpg" width="80%" height="80%"></div>
-                            <div style="margin-top: 12px;margin-left: 5px;">
-                                <div> {{ item.personalInfo?.firstName.value }} {{
-                                    item.personalInfo?.lastName.value }} </div>
-                            </div>
-                        </td>
-                        <td>
-                            {{ item.personalInfo?.email.value }}
-                        </td>
-                        <td>
-                            {{ item.personalInfo?.phoneNumber.value }}
-                        </td>
-                        <td>
-
-                            <div style="width: 115px;">
-                                <div style="display: flex;
+            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td class="Tableau">
+              <div class="image">
+                <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+              </div>
+              <div style="margin-top: 12px; margin-left: 5px">
+                <div>
+                  {{ item.personalInfo?.firstName.value }}
+                  {{ item.personalInfo?.lastName.value }}
+                </div>
+              </div>
+            </td>
+            <td>
+              {{ item.personalInfo?.email.value }}
+            </td>
+            <td>
+              {{ item.personalInfo?.phoneNumber.value }}
+            </td>
+            <td>
+              <div style="width: 115px">
+                <div
+                  style="
+                    display: flex;
                     width: auto;
                     height: 1.75rem;
                     padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
@@ -175,42 +259,53 @@
                     align-items: center;
                     flex-shrink: 0;
                     border-radius: 0.875rem;
-                    background: #F3F4F6;">
-                                    {{ item.personalInfo?.nationality.value }}
-                                </div>
-                            </div>
-                        </td>
+                    background: #f3f4f6;
+                  "
+                >
+                  {{ item.personalInfo?.nationality.value }}
+                </div>
+              </div>
+            </td>
 
-                        <td>
-                            {{ item.addedDate.split('T')[0] }}
-                        </td>
-                        <td>
-                            <div>
-                                <div>
+            <td>
+              {{ item.addedDate.split("T")[0] }}
+            </td>
+            <td>
+              <div>
+                <div>
+                  <div style="margin-left: 8px">
+                    <div>
+                      <span (click)="toggleMenu(i)">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                            fill="black"
+                          />
+                        </svg>
+                      </span>
+                      <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
+                        <!-- Menu items go here -->
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div
+                            (click)="gotovalidation(item._id)"
+                            style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            "
+                          >
+                            Valider l’inscription
+                          </div>
+                        </div>
 
-                                    <div style="margin-left: 8px;">
-
-                                        <div>
-                                            <span (click)="toggleMenu(i)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                                                        fill="black" />
-                                                </svg>
-
-                                            </span>
-                                            <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
-                                                <!-- Menu items go here -->
-                                                <div style="display: flex;cursor: pointer;">
-                                                    <img src="/assets/Checkmark.svg" width="12%">
-                                                    <div (click)="gotovalidation(item._id)"
-                                                        style="margin-top: 7px; margin-bottom: 10px; margin-left: 5px;">
-                                                        Valider l’inscription
-                                                    </div>
-                                                </div>
-
-                                                <!-- <div style="display: flex;cursor: pointer; ">
+                        <!-- <div style="display: flex;cursor: pointer; ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24"
                                                         viewBox="0 0 24 24" style="margin-left: -13px;" fill="none">
                                                         <path
@@ -240,24 +335,17 @@
                                                     <div (click)="openPopup()" style="margin-top: 11px;">Voir le profil
                                                     </div>
                                                 </div> -->
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                </tbody>
-            </table>
-
-
-
-        </div>
-
-        <app-notificaion-rh></app-notificaion-rh>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <app-notificaion-rh></app-notificaion-rh>
+  </div>
 </body>

@@ -152,9 +152,10 @@
 
                     <div class="label"> Pièce d'identité (CIN) :</div>
                     <div class="Tableau">
-                        <div class="zoom">
-                            <img formControlName="identificationDocument"
-                                [src]="personalInfo.identificationDocument.value" />
+                        <div class="zoom" (click)="openidentificationDocumentInput()">
+                            <img [src]="'https://my-krew-8nnq.onrender.com/uploads/' + personalInfo.identificationDocument.value"
+                                formControlName="identificationDocument" />
+
                         </div><label class="toggle-switch" *ngIf="!personalInfo?.identificationDocument.validated">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -165,31 +166,8 @@
                             </svg>
                         </label>
                     </div>
-                    <div class="upload-icon" onclick="document.getElementById('fileInput').click()">
-                        <div class="chose-file" *ngIf="!cin_img"> choisir un fichier <br>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                class="icon-file" fill="none">
-                                <g clip-path="url(#clip0_972_185)">
-                                    <path
-                                        d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
-                                        stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_972_185">
-                                        <rect width="14" height="14" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div *ngIf="cin_img" style="align-items: center; text-align: center;">
-                            <img [src]="cin_img" alt="Selected Image"
-                                style="max-width: 320%; max-height: 50px; margin:5px; margin-top: 10px;" />
-                        </div>
-                    </div>
+                    <input type="file" style="display: none" (change)="setFileInput('identificationDocument', $event)"
+                        #identificationDocument />
                     <div class="cause">
                         {{ personalInfo?.identificationDocument.causeNonValidation}}
                     </div>
@@ -218,7 +196,8 @@
                     <div class="label"> Permis : </div>
                     <div class="Tableau">
                         <div class="zoom">
-                            <img formControlName="drivingLicense" [src]="personalInfo?.carInfo.drivingLicense.value" />
+                            <img formControlName="drivingLicense"
+                                [src]="'https://my-krew-8nnq.onrender.com/uploads/' +personalInfo?.carInfo.drivingLicense.value" />
                         </div>
 
                         <label class="toggle-switch" *ngIf="!personalInfo?.carInfo.drivingLicense.validated">
@@ -252,6 +231,7 @@
                         {{ personalInfo?.rib.causeNonValidation}}
                     </div>
                     <div class="label"> RIB Document : </div>
+
                     <div class="Tableau">
                         <div id="pdfContainer1"></div>
                     </div>
@@ -276,6 +256,24 @@
                     <div class="cause">
                         {{ personalInfo?.socialSecurityNumber.causeNonValidation }}
                     </div>
+                    <div class="label"> Boite de rattachement :</div>
+                    <div class="Tableau">
+                        <input formControlName="portage" [ngModel]="personalInfo?.portage.value" type="text" required
+                            placeholder="RIB" />
+                        <!-- [readonly]="personalInfo?.portage.validated" -->
+                        <!-- <label class="toggle-switch" *ngIf="!missionInfo?.portage.validated">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                            </svg>
+                        </label> -->
+                    </div>
+                    <!-- <div class="cause">
+                        {{ missionInfo?.portage.causeNonValidation }}
+                    </div> -->
                 </div>
 
             </div>
@@ -505,6 +503,8 @@
 
 
                     <div class="label"> Simulation : </div>
+                    <input formControlName="portage" [ngModel]="personalInfo?.portage.value" type="text" required
+                        placeholder="RIB" />
                     <div class="Tableau">
                         <div id="pdfContainer"></div>
                     </div>
@@ -514,11 +514,11 @@
             </div>
         </form>
         <div style="margin-right: 60px;margin-top: 20px;" *ngIf="status_preregister == 'NOTVALIDATED'">
-            <button (click)="edit()">Terminé</button>
+            <button (click)=" edit()">Terminé</button>
         </div>
 
     </div>
-    <div class="right-item">
+    <!-- <div class="right-item">
         <div class="profil">
             <img src="/assets/unsplash_dt60oksDTx8.png">
             <div class="nom-prenom"> Prénom Nom</div>
@@ -575,5 +575,5 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -1,0 +1,270 @@
+.calendar-container {
+  font-family: "Poppins", sans-serif !important;
+  margin-left: 100px;
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  width: 600px;
+
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  border: 1px solid rgba(30, 30, 30, 0.92);
+}
+.wrapper {
+  font-family: "Poppins", sans-serif !important;
+}
+.month-label {
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.week-labels {
+  display: flex;
+  background: #fcf6d3;
+  border-radius: 0.9375rem 0.9375rem 0rem 0rem;
+}
+
+.week-labels span {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.week-labels span:last-child {
+  border-right: none;
+}
+
+.days-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  padding: 20px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  min-height: 10px;
+}
+
+.day.empty {
+  background-color: #fafafa;
+}
+
+.day.today {
+  background-color: #def;
+}
+f
+  /* Clear day borders on the right for the last column */
+  .day:nth-child(7n) {
+  border-right: none;
+}
+
+/* Clear day borders at the bottom for the last row */
+.day:nth-last-child(-n + 7) {
+  border-bottom: none;
+}
+
+.day.selected {
+  background: #c9e2c4;
+  color: white; /* Optional: Change text color for better visibility */
+  cursor: pointer;
+}
+
+.button {
+  float: right;
+}
+
+.button1 {
+  margin-top: 55px;
+}
+button {
+  color: white;
+  display: flex;
+  width: 7.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: #1e1e1e;
+  margin-top: 2px;
+  margin: 10px;
+}
+
+.Search-text {
+  width: 75%;
+  color: #bebcbc;
+  padding-top: 11px;
+}
+.selected-day {
+  background-color: #00ff00; /* Green background color */
+  color: #ffffff; /* White text color on selected days */
+}
+input[type="search"] {
+  border: none;
+  width: 100%;
+  height: 80%;
+  border: none none;
+  outline: none;
+}
+
+input[type="search"]:focus {
+  border: none none;
+  color: none;
+}
+
+.search-bar {
+  width: 70%;
+  flex-shrink: 1;
+  border-radius: 0.4375rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.second-container {
+  margin-left: 270px;
+
+  flex-shrink: 0;
+}
+
+svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+.search-bar svg {
+  margin-top: 8px;
+  margin-left: 25px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.compterendu {
+  margin-top: 8px;
+  height: 1.6875rem;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+}
+
+hr {
+  width: 150px;
+}
+.signature {
+  width: 20.875rem;
+  height: 9.5rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  border: 1px dashed #1e1e1e;
+}
+
+input[type="text"] {
+  width: 26.0625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+  height: 5.375rem;
+}
+
+.remplir {
+  margin: 8px;
+  width: 7.52744rem;
+  height: 1.68431rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  padding: 8px 8px 0px 15px;
+  border: 1px solid #cdc8bd;
+}
+
+.vider {
+  margin: 8px;
+  width: 7.52744rem;
+  height: 1.68431rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  padding: 8px 8px 0px 15px;
+  border: 1px solid #cdc8bd;
+}
+
+.Informations {
+  color: #000;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 11.625rem;
+  height: 2.5625rem;
+  flex-shrink: 0;
+}
+.time {
+  width: 2.4625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+  height: 2.375rem;
+}
+.days-mission {
+  margin: 10px;
+}
+
+.note {
+  margin-top: 15px;
+  width: 11.625rem;
+  height: 2.5625rem;
+  flex-shrink: 0;
+  color: #000;
+
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.Perso {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  width: 14.9375rem;
+  height: 2.5625rem;
+  flex-shrink: 0;
+  color: #000;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.addsig {
+  width: 11.5rem;
+  height: 1.6875rem;
+  flex-shrink: 0;
+  color: #000;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.0625rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+select {
+  margin-left: 290px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: -2px;
+  width: 6.70075rem;
+  height: 2.3125rem;
+  flex-shrink: 0;
+}

@@ -35,12 +35,21 @@ export class ConsultantMissionComponent {
   selectedFile :any
   myForm: FormGroup;
   docs:any
-  formData: { typeVirement: string; montant: string } = { typeVirement: '', montant: '' };
+  virementTypes = ['Participation', 'Cooptation', 'Frais'];
+  foremData :FormGroup ;
+  show_mission : boolean = true
+  show_doc : boolean =false
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private userservice :UserService,private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
-
+    this.foremData = this.fb.group({
+      userId: [''],
+      typeVirement: ['Participation', Validators.required],
+      montant: ['', Validators.required],
+      // Add other form controls as needed
+    });
   
     this.myForm = this.fb.group({
+      
       documentName: ['', Validators.required],
       userDocument: ['', Validators.required],
       // Add other form controls as needed
@@ -48,7 +57,7 @@ export class ConsultantMissionComponent {
   }
   ngOnInit(): void {
 
-    
+
     const token = localStorage.getItem('token');
     this.route.params.subscribe((params) => {
       this.user_id = params['id'];
@@ -129,6 +138,7 @@ export class ConsultantMissionComponent {
     }
   
   }
+ 
   click() {
     this.router.navigate(['/all-preinscription']);
   }
@@ -154,6 +164,17 @@ export class ConsultantMissionComponent {
   closePopup1(): void {
     this.showPopup1 = false;
 
+  }
+  showdocs(){
+    this.show_doc =true
+    this.show_mission =false
+  }
+  gotocra(_id: string) {
+    this.router.navigate(['/cra-mission/' + _id])
+  }
+  showmidssions(){
+    this.show_doc =false
+    this.show_mission =true
   }
   validatePriseDeContact(id: any, contactClient: any): void {
     console.log(id);
@@ -230,26 +251,7 @@ export class ConsultantMissionComponent {
   gotovalidemission(mission_id:any,id: any) {
     this.router.navigate(['/validationmission/'+mission_id +'/' + id])
   }
-//   adddoc(){
-//     Swal.fire({
-//       title: "Do you want to save the changes?",
-//       html: '<p>Êtes-vous sûr de vouloir soumettre vos informations personnelles ?</p>' +
-//       '<input type="text" placeholder="Enter something" id="swal-input" class="swal2-input">',
-//   showDenyButton: true,
-//   showCancelButton: true,
-//   confirmButtonText: "Save",
-//   denyButtonText: `Don't save`
-// }).then((result) => {
-//   /* Read more about isConfirmed, isDenied below */
-//   if (result.isConfirmed) {
-//     Swal.fire("Saved!", "", "success");
-//   } else if (result.isDenied) {
-//     Swal.fire("Changes are not saved", "", "info");
-//   }
-   
-//     });
-    
-//   }
+
 setFileInput(field: string, event: any): void {
   this.fileInputs[field] = event.target;
   const input = event.target as HTMLInputElement;
@@ -299,6 +301,7 @@ submit(): void {
               showConfirmButton: false,
               timer: 1500
             });
+            this.showPopup=false
           // Handle the response from the server
           console.log(res);
           // Additional logic if needed
@@ -311,27 +314,50 @@ submit(): void {
   }
 }
 onFormSubmit() {
-
-  const formData = {
-    // Extract form data as needed (e.g., fullName, companyName)
-    // Example:
-   
-    
-    userId: this.user_id,
-    typeVirement: this.formData.typeVirement,
-    montant: this.formData.montant,
-    // Add other form data here
-  };
-
-  this.consultantservice.createvirement(formData).subscribe(
-    (response) => {
-      console.log('Virement created successfully:', response);
-      // Add any additional handling or notifications if needed
-    },
-    (error) => {
-      console.error('Error creating virement:', error);
-      // Handle the error or display an error message
+  Swal.fire({
+    title: 'Confirmer le virement',
+    text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
+    icon: 'question',
+    iconColor: '#1E1E1E',
+    showCancelButton: true,
+    confirmButtonText: 'Oui, effectuer le virement !',
+    confirmButtonColor: '#1E1E1E',
+    cancelButtonText: 'Annuler',
+    customClass: {
+      confirmButton: 'custom-confirm-button-class'
     }
-  );
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.foremData.controls['userId'].setValue(this.user_id);
+
+      this.consultantservice.createvirement(this.foremData.value).subscribe(
+        (response) => {
+          Swal.fire({
+            title: 'Virement réussi',
+            text: 'Le virement a été effectué avec succès !',
+            icon: 'success'
+          });
+          this.showPopup1=false
+        },
+        (error) => {
+          Swal.fire({
+            title: 'Erreur de virement',
+            text: "Le virement n'a pas pu être effectué. Veuillez réessayer.",
+            icon: 'error'
+          });
+        }
+      );
+
+    } else {
+      Swal.fire({
+        title: 'Virement annulé',
+        text: 'Aucun virement n\'a été effectué.',
+        icon: 'info',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#1E1E1E',
+      });
+    }
+  });
 }
+
 }

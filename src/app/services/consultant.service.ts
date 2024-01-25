@@ -95,13 +95,13 @@ export class ConsultantService {
 
     return this.http.get(baseUrl + 'newMission/getPendingMissions', options);
   }
-  getpreregisterbyuid(id:any,headers?: HttpHeaders){
+  getpreregisterbyuid(id: any, headers?: HttpHeaders) {
     // Include headers if provided
     const options = headers ? { headers } : {};
 
     return this.http.get(baseUrl + 'user/getPreregisterByUserId/' + id, options);
 
-}
+  }
   getValidatedMissions(headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};
@@ -130,23 +130,23 @@ export class ConsultantService {
     return this.http.get(baseUrl + 'user/getPersonnalInfoByUserId/' + id);
   }
 
-  killnewMission(id_mission: any,data: any, headers?: HttpHeaders): Observable<any> {
+  killnewMission(id_mission: any, data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};
 
-    return this.http.put(baseUrl + 'newMission/killMission/' + id_mission,data, options);
+    return this.http.put(baseUrl + 'newMission/killMission/' + id_mission, data, options);
   }
 
   getlastnotifications(id: any): Observable<any> {
     // Include headers if provided
-    
+
     return this.http.get(baseUrl + 'notification/getlastnotification/' + id);
   }
 
   getlastnotificationsrh(): Observable<any> {
     // Include headers if provided
-    
-    return this.http.get(baseUrl + 'notification/getRhNotification' );
+
+    return this.http.get(baseUrl + 'notification/getRhNotification');
   }
 
   createvirement(data: any, headers?: HttpHeaders): Observable<any> {
@@ -155,36 +155,100 @@ export class ConsultantService {
 
     return this.http.post(baseUrl + 'virement/createVirement', data, options);
   }
-  getallvirements(){
-    return this.http.get(baseUrl + 'virement/virements' );
+  getallvirements() {
+    return this.http.get(baseUrl + 'virement/virements');
   }
 
-  getAllTjmRequest(){
-    return this.http.get(baseUrl + 'tjmRequest/getAllTjmRequest' );
+  virementstatusbar(id_user: any) {
+    return this.http.get(baseUrl + 'virement/virements/year-stats/2024/' + id_user);
+
+  }
+  getAllTjmRequest() {
+    return this.http.get(baseUrl + 'tjmRequest/getAllTjmRequest');
   }
 
-  addDocumentToUser(id:any,data: any, headers?: HttpHeaders): Observable<any> {
+  addDocumentToUser(id: any, data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};
 
-    return this.http.put(baseUrl + 'user/addDocumentToUser/'+id, data, options);
+    return this.http.put(baseUrl + 'user/addDocumentToUser/' + id, data, options);
   }
   createTjmRequest(data: any): Observable<any> {
     // Include headers if provided
     return this.http.post(baseUrl + 'tjmRequest/createTjmRequest', data);
   }
 
-  rhTjmValidation(id:any ,data: any): Observable<any> {
+  rhTjmValidation(id: any, data: any): Observable<any> {
     // Include headers if provided
-    return this.http.put(baseUrl + 'tjmRequest/rhTjmValidation/'+id, data);
+    return this.http.put(baseUrl + 'tjmRequest/rhTjmValidation/' + id, data);
   }
 
-  getTjmRequestsByMissionId(id:any){
-    return this.http.get(baseUrl + 'tjmRequest/getTjmRequestsByMissionId/'+id );
+  getTjmRequestsByMissionId(id: any) {
+    return this.http.get(baseUrl + 'tjmRequest/getTjmRequestsByMissionId/' + id);
   }
-  getMonthlyStatsForAllUsers(){
-    return this.http.get(baseUrl + 'user/getMonthlyStatsForAllUsers' );
-  }  
-  
+  getMonthlyStatsForAllUsers() {
+    return this.http.get(baseUrl + 'user/getMonthlyStatsForAllUsers');
+  }
+
+  getallnotification(id: any) {
+    return this.http.get(baseUrl + 'notification/getAllMyNotifications/' + id);
+
+  }
+
+  getlastvirementnotification(id: any) {
+    return this.http.get(baseUrl + 'notification/getMy5LastvirementsNotification/' + id);
+  }
+
+
+  updateCra(id: any, data: any): Observable<any> {
+    // Include headers if provided
+    return this.http.put(baseUrl + 'user/updateCra/' + id, data);
+  }
+
+  getcrabymissionid(id: any) {
+    return this.http.get(baseUrl + 'user/getCraInformations/' + id);
+  }
+  getallrh() {
+    return this.http.get(baseUrl + 'user/getrhUsers');
+  }
+
+  addrhuser(data: any, headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+    // Include headers if provided
+    return this.http.post(baseUrl + 'user/createByAdmin', data, options);
+  }
+  getTjmStats() {
+    return this.http.get(baseUrl + 'tjmRequest/getTjmStats');
+  }
+
+  getConsultantStats() {
+    return this.http.get(baseUrl + 'user/getConsultantStats');
+  }
+  addCraPdfToUser(id: any, data: any) {
+
+    // Include headers if provided
+    return this.http.put(baseUrl + 'user/addCraPdfToUser/' + id, data);
+  }
+
+  getConsultantusers() {
+    return this.http.get(baseUrl + 'user/getConsultantusers');
+  }
+
+  updateAccountVisibility(id: any, data: any, headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+    // Include headers if provided
+    return this.http.put(baseUrl + 'user/updateAccountVisibility/' + id, data, options);
+  }
+
+  updateUserByAdmin(id: any, data: any, headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+    // Include headers if provided
+    return this.http.put(baseUrl + 'user/updateUserByAdmin/' + id, data, options);
+  }
+
+
 }
 

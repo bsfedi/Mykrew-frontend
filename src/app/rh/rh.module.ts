@@ -18,6 +18,9 @@ import { ChargeDocComponent } from './charge-doc/charge-doc.component';
 import { VirementComponent } from './virement/virement.component';
 import { TjmrequestsComponent } from './tjmrequests/tjmrequests.component';
 import { ValidatedTjmComponent } from './validated-tjm/validated-tjm.component';
+import { CraMissionComponent } from './cra-mission/cra-mission.component';
+import { AdminComponent } from './admin/admin.component';
+import { ListCraDocsComponent } from './list-cra-docs/list-cra-docs.component';
 
 export const routes: Routes = [
   {
@@ -44,33 +47,51 @@ export const routes: Routes = [
   {
     path: 'missions/:id',
     component: ConsultantMissionComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path: 'mission/:id',
     component: MissionByIdComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path: 'validationmission/:id_mission/:id',
     component: ValidationMissionComponent,
+    canActivate: [AuthGuard]
   },
- { 
-  path :'charge-document',
-  component:ChargeDocComponent
-},
-{ 
-  path :'virements/:id',
-  component:VirementComponent
-},
-{ 
-  path :'tjmrequests',
-  component:TjmrequestsComponent
-},
-{ 
-  path :'validated-tjmrequests/:id',
-  component:ValidatedTjmComponent
-}
+  {
+    path: 'charge-document',
+    component: ChargeDocComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'virements/:id',
+    component: VirementComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tjmrequests',
+    component: TjmrequestsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'validated-tjmrequests/:id',
+    component: ValidatedTjmComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cra-mission/:id',
+    component: CraMissionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'members',
+    component: AdminComponent,
+    canActivate: [AuthGuard]
+  }, {
+    path: 'list-cra',
+    component: ListCraDocsComponent
+  }
 ]
 
 @NgModule({
@@ -86,6 +107,9 @@ export const routes: Routes = [
     VirementComponent,
     TjmrequestsComponent,
     ValidatedTjmComponent,
+    CraMissionComponent,
+    AdminComponent,
+    ListCraDocsComponent,
   ],
   imports: [
     CommonModule,

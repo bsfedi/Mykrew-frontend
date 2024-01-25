@@ -31,6 +31,7 @@ export class PreInscriptionComponent {
       lieuNaissance: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       pays: ['France', Validators.required],
+      portage: ['', Validators.required]
       // Add other form controls as needed
     });
 
@@ -91,6 +92,7 @@ export class PreInscriptionComponent {
       formData.append('dateOfBirth', this.myForm.value.birthDate);
       formData.append('location', this.myForm.value.lieuNaissance);
       formData.append('nationality', this.myForm.value.pays);
+      formData.append('portage', this.myForm.value.portage)
       const payload = {
         'firstName': this.myForm.value.firstName,
         'lastName': this.myForm.value.lastName,
@@ -99,6 +101,7 @@ export class PreInscriptionComponent {
         'dateOfBirth': this.myForm.value.birthDate,
         'location': this.myForm.value.lieuNaissance,
         'nationality': this.myForm.value.pays,
+        'portage': this.myForm.value.portage
       }
 
       console.log('Form Data:', this.myForm.value);
@@ -108,23 +111,24 @@ export class PreInscriptionComponent {
         // this.voitureForm.markAllAsTouched()
         return;
       } else {
-      this.inscriptionservice.createinscrption(payload, headers)
-        .subscribe({
-          next: (res) => {
+        this.inscriptionservice.createinscrption(payload, headers)
+          .subscribe({
+            next: (res) => {
 
 
-            // Handle the response from the server
-            console.log(res);
-            this.router.navigate(['/personaldoc']);
-          },
-          error: (e) => {
-            // Handle errors
-            console.error(e);
-          }
-        });
+              // Handle the response from the server
+              console.log(res);
+              this.router.navigate(['/personaldoc']);
+            },
+            error: (e) => {
+              // Handle errors
+              console.error(e);
+            }
+          });
 
 
-    }}
+      }
+    }
   }
 
 

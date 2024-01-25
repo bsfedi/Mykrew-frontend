@@ -12,20 +12,23 @@ import { ConsultantService } from 'src/app/services/consultant.service';
 })
 export class NotificaionRhComponent {
   headers: any
-  items :any  
-  notification : string[]= [];
-  url :any
-  shownb_consultants =false 
-  nb_demanades :any 
+  items: any
+  notification: string[] = [];
+  url: any
+  shownb_consultants = false
+  nb_demanades: any
   shownb_demanades = false
-  nb_consultants :any
-  lastnotifications:any
-  constructor(private inscriptionservice: InscriptionService,private socketService:WebSocketService,private route: Router,private router : ActivatedRoute,private consultantService : ConsultantService) { }
+  nb_consultants: any
+  lastnotifications: any
+  constructor(private inscriptionservice: InscriptionService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
+  gotoallnotification() {
+    this.route.navigate(['/consultant/allnotifications'])
+  }
   ngOnInit(): void {
     this.consultantService.getlastnotificationsrh().subscribe({
       next: (res1) => {
         console.log(res1);
-        this.lastnotifications =res1
+        this.lastnotifications = res1.slice(0, 10);
       },
       error: (e) => {
         // Handle errors
@@ -34,21 +37,22 @@ export class NotificaionRhComponent {
 
       }
     });
-    console.log(this.router.url);
+
     this.url = this.router.url
     console.log(this.url._value[0].path);
-    
+
     const token = localStorage.getItem('token');
     this.socketService.connect()
-  // Listen for custom 'rhNotification' event in WebSocketService
-  this.socketService.onRhNotification().subscribe((event: any) => {
-    console.log();
-    
-    if (event.notification.toWho == "RH"){
-    this.notification.push(event.notification.typeOfNotification) }
-    
-    // Handle your rhNotification event here
-  });
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log();
+
+      if (event.notification.toWho == "RH") {
+        this.notification.push(event.notification.typeOfNotification)
+      }
+
+      // Handle your rhNotification event here
+    });
 
     // Check if token is available
     if (token) {
@@ -59,12 +63,12 @@ export class NotificaionRhComponent {
           // Handle the response from the server
 
           console.log(res);
-          if(this.url._value[0].path == 'allConsultants'){
-            this.shownb_consultants =true
+          if (this.url._value[0].path == 'allConsultants') {
+            this.shownb_consultants = true
             this.nb_consultants = res.length
           }
-          
-          
+
+
 
 
 
@@ -85,8 +89,8 @@ export class NotificaionRhComponent {
           console.log(res);
 
           this.items = res
-          if(this.url._value[0].path == 'dashboard'){
-            this.shownb_demanades =true
+          if (this.url._value[0].path == 'dashboard') {
+            this.shownb_demanades = true
             this.nb_demanades = this.items.length
           }
 
@@ -100,11 +104,11 @@ export class NotificaionRhComponent {
           // You can handle different status codes here
           if (e.status === 404) {
             this.items = []
-            if(this.url._value[0].path == 'dashboard'){
-              this.shownb_demanades =true
+            if (this.url._value[0].path == 'dashboard') {
+              this.shownb_demanades = true
               this.nb_demanades = this.items.length
             }
-            
+
           }
 
           console.error(e);

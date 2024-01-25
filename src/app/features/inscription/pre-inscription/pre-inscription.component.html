@@ -1,17 +1,9 @@
 <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <div class="container">
   <div class="left-panel">
-    <img
-      src="/assets/pre-inscription.png"
-      width="100%"
-      height="100%"
-      style="border-radius: 1.875rem"
-    />
+    <img src="/assets/pre-inscription.png" width="100%" height="100%" style="border-radius: 1.875rem" />
     <div class="text-overlay">
       <h5>
         Créez votre compte MyKrew pour suivre vos investissements, gérer vos
@@ -40,123 +32,76 @@
       <form [formGroup]="myForm" (ngSubmit)="logForm()">
         <div>
           <div>
-            <input
-              type="text"
-              formControlName="firstName"
-              class="form-control"
-              placeholder="Prénom"
-              required
-              name="Prenom"
-            />
+            <input type="text" formControlName="firstName" class="form-control" placeholder="Prénom" required
+              name="Prenom" />
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
               myForm.get('firstName')?.invalid &&
               myForm.get('firstName')?.touched
-            "
-          >
+            ">
             Nom & Prénom is required.
           </div>
           <div>
-            <input
-              type="text"
-              formControlName="lastName"
-              class="form-control"
-              placeholder="Nom"
-              required
-              name="Nom"
-            />
+            <input type="text" formControlName="lastName" class="form-control" placeholder="Nom" required name="Nom" />
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
               myForm.get('firstName')?.invalid &&
               myForm.get('firstName')?.touched
-            "
-          >
+            ">
             Nom & Prénom is required.
           </div>
           <div>
-            <input
-              type="email"
-              formControlName="email"
-              class="form-control"
-              placeholder="Adresse e-mail"
-              required
-              name="email"
-            />
+            <input type="email" formControlName="email" class="form-control" placeholder="Adresse e-mail" required
+              name="email" />
           </div>
-          <div
-            class="error"
-            *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched"
-          >
+          <div class="error" *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
             Email is required.
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
               myForm.get('email')?.hasError('email') &&
               myForm.get('email')?.touched
-            "
-          >
+            ">
             Invalid email format.
           </div>
           <div>
-            <input
-              type="tel"
-              formControlName="phoneNumber"
-              class="form-control"
-              placeholder="Numéro de téléphone"
-              required
-              name="phoneNumber"
-            />
+            <input type="tel" formControlName="phoneNumber" class="form-control" placeholder="Numéro de téléphone"
+              required name="phoneNumber" />
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
               myForm.get('phoneNumber')?.invalid &&
               myForm.get('phoneNumber')?.touched
-            "
-          >
+            ">
             Numéro de téléphone is required.
           </div>
           <div>
-            <input
-              type="date"
-              formControlName="birthDate"
-              class="form-control"
-              placeholder="Date de naissance"
-              required
-              name="birthDate"
-            />
+            <input type="date" formControlName="birthDate" class="form-control" placeholder="Date de naissance" required
+              name="birthDate" />
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
               myForm.get('birthDate')?.invalid &&
               myForm.get('birthDate')?.touched
-            "
-          >
+            ">
             Date de naissance is required.
           </div>
+
           <div>
-            <input
-              type="text"
-              formControlName="lieuNaissance"
-              class="form-control"
-              placeholder="Lieu de naissance"
-              required
-              name="lieuNaissance"
-            />
+            <input type="tel" formControlName="portage" class="form-control" placeholder="Boite de rattachement"
+              required name="portage" />
           </div>
-          <div
-            class="error"
-            *ngIf="
+          <div class="error" *ngIf="
+          myForm.get('portage')?.invalid &&
+          myForm.get('portage')?.touched
+        ">
+            Boite de rattachement is required.
+          </div>
+          <div>
+            <input type="text" formControlName="lieuNaissance" class="form-control" placeholder="Lieu de naissance"
+              required name="lieuNaissance" />
+          </div>
+          <div class="error" *ngIf="
               myForm.get('lieuNaissance')?.invalid &&
               myForm.get('lieuNaissance')?.touched
-            "
-          >
+            ">
             Lieu is required.
           </div>
           <div>
