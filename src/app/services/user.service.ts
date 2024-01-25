@@ -35,50 +35,50 @@ export class UserService {
     return this.http.put(baseUrl + 'registration/consultantEdit/' + id, data, options);
   }
 
-  editIdentificationDocument(id:any , data: any): Observable<any> {
+  editIdentificationDocument(id: any, data: any): Observable<any> {
     // Include headers if provided
-    
 
-    return this.http.put(baseUrl+'user/editIdentificationDocument/'+id, data);
+
+    return this.http.put(baseUrl + 'user/editIdentificationDocument/' + id, data);
   }
 
 
-  editDrivingLiscence(id:any , data: any): Observable<any> {
+  editDrivingLiscence(id: any, data: any): Observable<any> {
     // Include headers if provided
-    
 
-    return this.http.put(baseUrl+'user/editDrivingLiscence/'+id, data);
+
+    return this.http.put(baseUrl + 'user/editDrivingLiscence/' + id, data);
   }
 
 
-  editribdocument(id:any , data: any): Observable<any> {
+  editribdocument(id: any, data: any): Observable<any> {
     // Include headers if provided
-    
 
-    return this.http.put(baseUrl+'user/editRibDocument/'+id, data);
+
+    return this.http.put(baseUrl + 'user/editRibDocument/' + id, data);
   }
-  getMyvirements(id:any ): Observable<any> {
+  getMyvirements(id: any): Observable<any> {
     // Include headers if provided
-    
 
-    return this.http.get(baseUrl+'virement/getMyvirements/'+id);
-  }
-  getpersonalinfobyid(id:any){
-    return this.http.get(baseUrl+'user/getPersonnalInfoByUserId/'+id);
-  }
 
-  filter_by_type(type:any){
-    return this.http.get(baseUrl+'virement/virements/'+type);
+    return this.http.get(baseUrl + 'virement/getMyvirements/' + id);
+  }
+  getpersonalinfobyid(id: any) {
+    return this.http.get(baseUrl + 'user/getPersonnalInfoByUserId/' + id);
   }
 
-  virementByPeriod(period:any){
-    return this.http.get(baseUrl+'virement/virementByPeriod/'+period);
+  filter_by_type(type: any) {
+    return this.http.get(baseUrl + 'virement/virements/' + type);
   }
 
-  getAllDacumentsofuser(id:any){
-    return this.http.get(baseUrl+'user/getAllDacuments/'+id);
+  virementByPeriod(period: any, id: any) {
+    return this.http.get(baseUrl + 'virement/virementByPeriod/participation/' + period + '/' + id);
   }
-  
+
+  getAllDacumentsofuser(id: any) {
+    return this.http.get(baseUrl + 'user/getAllDacuments/' + id);
+  }
+
   isAuthenticated() {
     // your implementation
   }

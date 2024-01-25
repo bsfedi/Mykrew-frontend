@@ -31,6 +31,10 @@ export class MissionComponent {
     });
 
   }
+
+  ngOnInit(): void {
+
+  }
   // Add this method inside your PreInscriptionComponent class
   areAllFieldsFilled(): boolean {
     const formValues = this.myForm.value;
@@ -58,38 +62,74 @@ export class MissionComponent {
       // Include the token in the headers
       const headers = new HttpHeaders().set('Authorization', `${token}`);
 
-    
+
+      this.inscriptionservice.getMyPreRegister(headers).subscribe({
 
 
-      if (this.areAllFieldsFilled() == false) {
-        this.myForm.markAllAsTouched();
-        return;
-      }
-      else {
-        const formData = new FormData();
-        formData.append('profession', this.myForm.value.profession);
-        formData.append('industrySector', this.myForm.value.industrySector);
-        formData.append('finalClient', this.myForm.value.finalClient);
-        formData.append('dailyRate', this.myForm.value.dailyRate);
-        formData.append('endDate', this.myForm.value.endDate);
-        formData.append('startDate', this.myForm.value.startDate);
-        const isSimulationValidatedeee = this.fileInputs.isSimulationValidated.files[0];
-        formData.append('isSimulationValidated', isSimulationValidatedeee);
-        this.inscriptionservice.createinscrptionstep3(formData, headers)
-          .subscribe({
-            next: (res) => {
-              // Handle the response from the server
-              console.log(res);
-              // this.router.navigate(['/client']);
-              // this.router.navigate(['/informations/' + res._id]);
-              this.router.navigate(['/pending'])
-            },
-            error: (e) => {
-              // Handle errors
-              console.error(e);
+        next: (res: any) => {
+          // Handle the response from the server
+
+
+          if (this.areAllFieldsFilled() == false) {
+            this.myForm.markAllAsTouched();
+            return;
+          }
+          else {
+            const formData = new FormData();
+            formData.append('profession', this.myForm.value.profession);
+            formData.append('industrySector', this.myForm.value.industrySector);
+            formData.append('finalClient', this.myForm.value.finalClient);
+            formData.append('dailyRate', this.myForm.value.dailyRate);
+            formData.append('endDate', this.myForm.value.endDate);
+            formData.append('startDate', this.myForm.value.startDate);
+            const isSimulationValidatedeee = this.fileInputs.isSimulationValidated.files[0];
+            formData.append('isSimulationValidated', isSimulationValidatedeee);
+            if (res?.missionInfo.missionKilled == false) {
+              this.inscriptionservice.createinscrptionstep3(formData, headers)
+                .subscribe({
+                  next: (res) => {
+                    // Handle the response from the server
+                    console.log(res);
+                    // this.router.navigate(['/client']);
+                    // this.router.navigate(['/informations/' + res._id]);
+                    this.router.navigate(['/pending'])
+                  },
+                  error: (e) => {
+                    // Handle errors
+                    console.error(e);
+                  }
+                });
+
             }
-          });
-      }
+            else {
+              this.inscriptionservice.createinscrptionstep5(formData, headers)
+                .subscribe({
+                  next: (res) => {
+                    // Handle the response from the server
+                    console.log(res);
+                    // this.router.navigate(['/client']);
+                    // this.router.navigate(['/informations/' + res._id]);
+                    this.router.navigate(['/pending'])
+                  },
+                  error: (e) => {
+                    // Handle errors
+                    console.error(e);
+                  }
+                });
+
+            }
+
+          }
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+
+
     }
   }
   // Assuming you have an object to hold file inputs

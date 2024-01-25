@@ -17,6 +17,8 @@ import { VirementsComponent } from './virements/virements.component';
 import { InfoPersoComponent } from './info-perso/info-perso.component';
 import { NotificationComponent } from 'src/app/layout/notification/notification.component';
 import { LeftBarComponent } from 'src/app/layout/left-bar/left-bar.component';
+import { CRAComponent } from './cra/cra.component';
+import { AllnotificationsComponent } from './allnotifications/allnotifications.component';
 
 
 export const routes: Routes = [
@@ -64,6 +66,15 @@ export const routes: Routes = [
     path: 'consultant/infoperso',
     component: InfoPersoComponent,
 
+  },  
+  {
+    path: 'consultant/allnotifications',
+    component: AllnotificationsComponent,
+
+  },
+  {
+    path: 'CRA/:id', 
+    component : CRAComponent
   }
 
 
@@ -82,6 +93,8 @@ export const routes: Routes = [
     VirementsComponent,
     InfoPersoComponent,
     NotificationComponent,
+    CRAComponent,
+    AllnotificationsComponent,
     
 
   ],

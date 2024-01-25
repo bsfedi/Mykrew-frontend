@@ -40,6 +40,13 @@ export class InscriptionService {
     return this.http.post(baseUrl + 'registration/create3', data, options);
   }
 
+  createinscrptionstep5(data: any, headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+
+    return this.http.post(baseUrl + 'registration/create5', data, options);
+  }
+
 
   getPreinscriptionById(id_preinscription: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided

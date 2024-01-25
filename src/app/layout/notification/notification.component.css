@@ -61,6 +61,7 @@ body {
 .content-container {
   margin-left: 10px;
   padding-right: 10px;
+  margin-top: 10px;
   width: 72%;
 }
 
@@ -112,7 +113,7 @@ p {
 .content-container1 {
   margin-left: 10px;
   width: 82%;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .title {
@@ -127,4 +128,7 @@ p {
 
 .whatsapp {
   margin-left: 30px;
+}
+@media (max-width: 750px) {
+
 }

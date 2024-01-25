@@ -51,8 +51,11 @@ export class AllConsultantsComponent {
   idcontractByPreregister: any
   getContaractByPrerigister: any
   stats :any
+  cardstats : any
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
+
+
   constructor(private inscriptionservice: InscriptionService,private consultantservice :ConsultantService,private socketService:WebSocketService,private fb: FormBuilder, private router: Router) {
     this.chartOptions = {}
     this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
@@ -98,6 +101,8 @@ export class AllConsultantsComponent {
       }
     });
  
+
+
   }
 
   ngOnInit(): void {
@@ -129,8 +134,31 @@ export class AllConsultantsComponent {
 
         }
       });
+      this.consultantservice.getConsultantStats().subscribe({
+        next: (res) => {
+          // Handle the response from the server
+
+          this.cardstats = res
+          
+
+  
+
+
+
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
     }
+    
   }
+
+
   click() {
     this.router.navigate(['/all-preinscription']);
   }

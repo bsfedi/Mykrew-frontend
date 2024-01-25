@@ -15,6 +15,7 @@ import {
   ApexLegend,
   ApexFill
 } from "ng-apexcharts";
+import { ConsultantService } from 'src/app/services/consultant.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -45,54 +46,54 @@ export class DashboardComponent {
   jobCotractEdition: any
   idcontractByPreregister: any
   getContaractByPrerigister: any
+  cardstats : any
+  stats :any
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
-  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router) {
-    // Ensure that the items array is correctly populated here if needed.
-    this.chartOptions = {
-      series: [
-        {
+  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder,private consultantservice :ConsultantService, private router: Router) {
+    this.chartOptions = {}
+    this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
+      next: (res) => {
+        this.stats =res
+        console.log(this.stats.series[0].data);
+        
+        this.chartOptions = {
+          series: [
+            {
+    
+              data: this.stats.series[0].data
+            },
+    
+          ],
+    
+          chart: {
+            height: 200,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          colors: ["#EAE3D5"],
+          xaxis: {
+            type: "category",
+            categories: this.stats.categories,
+          },
+    
+    
+    
+        };
 
-          data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5]
-        },
 
-      ],
 
-      chart: {
-        height: 200,
-        type: "area"
+
       },
-      dataLabels: {
-        enabled: false
-      },
-      colors: ["#EAE3D5"],
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "1/11/2000",
-          "2/11/2000",
-          "3/11/2000",
-          "4/11/2000",
-          "5/11/2000",
-          "6/11/2000",
-          "7/11/2000",
-          "8/11/2000",
-          "9/11/2000",
-          "10/11/2000",
-          "11/11/2000",
-          "12/11/2000",
-          "1/11/2001",
-          "2/11/2001",
-          "3/11/2001",
-          "4/11/2001",
-          "5/11/2001",
-          "6/11/2001"
-        ]
-      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
 
-
-
-    };
+      }
+    });
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -126,6 +127,26 @@ export class DashboardComponent {
             this.nbdemande = 0
           }
 
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+      this.consultantservice.getConsultantStats().subscribe({
+        next: (res) => {
+          // Handle the response from the server
+
+          this.cardstats = res
+          
+
+  
+
+
+
+
+        },
+        error: (e) => {
+          // Handle errors
           console.error(e);
           // Set loading to false in case of an error
 

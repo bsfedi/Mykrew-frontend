@@ -71,6 +71,11 @@
   z-index: 1;
 }
 
+@media screen and (max-width: 1600px) and (min-height: 700px) {
+  .faq-sedeconnecter {
+    margin-top: 450px;
+  }
+}
 @media (max-width: 768px) {
   /* Styles for screens with a maximum width of 768px */
   .first-item {
@@ -91,6 +96,7 @@
 
   /* Adjust other styles for smaller screens if needed */
 }
+
 .board-item {
   width: 12.875rem;
   height: 3rem;

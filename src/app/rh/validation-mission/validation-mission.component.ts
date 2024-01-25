@@ -29,16 +29,18 @@ export class ValidationMissionComponent {
   contract_id: any
   mission_id: any
   noteValue: string = '';
-  noteshow :any ;
+  noteshow: any;
+  stats: any;
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
   }
   ngOnInit(): void {
+
     const token = localStorage.getItem('token');
 
     this.route.params.subscribe((params) => {
       this.contract_id = params['id'];
-      this.mission_id =params['id_mission']
+      this.mission_id = params['id_mission']
     });
 
     // Check if token is available
@@ -50,33 +52,58 @@ export class ValidationMissionComponent {
 
           this.getContaractByPrerigister = res
           console.log(res);
-
+          this.contactClient = res.contactClient
+          this.clientValidation = res.clientValidation
+          this.contractValidation = res.contractValidation
+          this.jobCotractEdition = res.jobCotractEdition
           // Handle the response from the server
           this.idcontractByPreregister = res._id
-          if (res.clientValidation == "VALIDATED") {
-            this.clientValidation = 'true'
-          }
-          else {
-            this.clientValidation = 'false'
-          }
-          if (res.contactClient == "VALIDATED") {
+
+          if (this.contactClient == "VALIDATED") {
             this.contactClient = 'true'
           }
-          else {
+          else if (this.contactClient == 'PENDING') {
             this.contactClient = 'false'
           }
-          if (res.contractValidation == "VALIDATED") {
+          else {
+            this.contactClient = 'DESACTIVATED'
+          }
+
+
+
+          if (this.clientValidation == "VALIDATED") {
+            this.clientValidation = 'true'
+          }
+          else if (this.clientValidation == 'PENDING') {
+            this.clientValidation = 'false'
+          }
+          else {
+            this.clientValidation = 'DESACTIVATED'
+          }
+
+
+          if (this.contractValidation == "VALIDATED") {
             this.contractValidation = 'true'
           }
-          else {
+          else if (this.contractValidation == 'PENDING') {
             this.contractValidation = 'false'
           }
-          if (res.jobCotractEdition == "VALIDATED") {
+          else {
+            this.contractValidation = 'DESACTIVATED'
+          }
+
+
+          if (this.jobCotractEdition == "VALIDATED") {
             this.jobCotractEdition = 'true'
           }
-          else {
+          else if (this.jobCotractEdition == 'PENDING') {
             this.jobCotractEdition = 'false'
           }
+          else {
+            this.jobCotractEdition = 'DESACTIVATED'
+          }
+
+
 
 
 
@@ -92,16 +119,25 @@ export class ValidationMissionComponent {
 
         }
       });
+      this.consultantservice.getTjmStats().subscribe({
 
+
+        next: (res) => {
+          this.stats = res
+          console.log(this.stats);
+
+
+        }
+      });
     }
 
   }
-  shownote(){
-    this.noteshow =true
+  shownote() {
+    this.noteshow = true
   }
-  killmission(message :any){
+  killmission(message: any) {
     const data = {
-      "note":  message
+      "note": message
     }
     Swal.fire({
       title: 'Confirmer les modifications',
@@ -118,27 +154,36 @@ export class ValidationMissionComponent {
       }
     }).then((result) => {
       if (result.isConfirmed) {
+        if (this.contactClient == true ||
+          this.clientValidation == true ||
+          this.contractValidation == true ||
+          this.jobCotractEdition == true) {
+          Swal.fire('Error', 'Tu peut pas terminer une mission validé', 'error');
+        }
+        else {
+
+          this.consultantservice.killnewMission(this.mission_id, data, this.headers).subscribe({
+            next: (res) => {
+              // Handle success
+              Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: 'Registration updated successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.router.navigate(['/dashboard'])
+            },
+            error: (e) => {
+              // Handle errors
+              console.error(e);
+              Swal.fire('Error', 'Tu peut pas terminer une mission validé', 'error');
+            }
+          });
+        }
         // User clicked 'Yes', call the endpoint
-        
-        this.consultantservice.killnewMission(this.mission_id,data,this.headers).subscribe({
-          next: (res) => {
-            // Handle success
-            Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: 'Registration updated successfully!',
-              showConfirmButton: false,
-              timer: 1500
-            });
-            this.router.navigate(['/dashboard'])
-          },
-          error: (e) => {
-            // Handle errors
-            console.error(e);
-            Swal.fire('Error', 'Failed to update registration.', 'error');
-          }
-        });
+
       } else {
         Swal.fire({
           title: 'Annulé',
@@ -155,7 +200,7 @@ export class ValidationMissionComponent {
       }
     });
 
-    
+
   }
   click() {
     this.router.navigate(['/all-preinscription']);
@@ -240,22 +285,29 @@ export class ValidationMissionComponent {
     });
   }
   validateContractValidation(id: any, contractValidation: any): void {
-    const data = {
-      "validated": contractValidation
-    }
-    console.log(data);
+    console.log(contractValidation);
 
-    this.consultantservice.validateContractValidation(this.contract_id, data, this.headers).subscribe({
-      next: (res) => {
-        // Handle the response from the server
-      },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-        // Set loading to false in case of an error
-
+    if (contractValidation == 'true' || contractValidation == 'false') {
+      const data = {
+        "validated": contractValidation
       }
-    });
+      console.log(data);
+
+      this.consultantservice.validateContractValidation(this.contract_id, data, this.headers).subscribe({
+        next: (res) => {
+          // Handle the response from the server
+          console.log(res);
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+    }
+
   }
 
 }

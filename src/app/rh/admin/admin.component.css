@@ -1,0 +1,206 @@
+.flex-container {
+  display: flex;
+}
+
+.right-item {
+  float: right;
+  display: row;
+}
+
+.svg {
+  margin-top: 8px;
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+}
+/* my-component.component.css */
+.dropdown-menu {
+  display: block;
+  position: absolute;
+
+  /* Adjust the margin as needed */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-top: 45px;
+  margin-left: -250px;
+}
+
+.nom-prenom {
+  margin-top: 15px;
+  margin-left: 8px;
+  color: #000;
+
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  /* 1rem */
+}
+.image {
+  display: row;
+  margin-top: 2px;
+  margin-left: 8px;
+}
+.second-container {
+  margin-left: 240px;
+
+  flex-shrink: 0;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.5fr 250fr 0.5fr;
+  font-family: "Poppins", sans-serif !important;
+}
+.profil {
+  width: 12rem;
+  height: 3.125rem;
+
+  border-radius: 1.5625rem;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+}
+
+.profil img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+.svg {
+  margin-top: 8px;
+  width: 0.625rem;
+  height: 0.625rem;
+  flex-shrink: 0;
+}
+svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+.member {
+  margin-top: 8px;
+  height: 1.6875rem;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+}
+
+.button1 {
+  color: black;
+  display: flex;
+  width: auto;
+  margin-left: 405px;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: #ffffff;
+  margin-top: 10px;
+}
+
+.Tableau {
+  display: flex;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.32);
+
+  /* Use your preferred shade of green */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  width: 25.6875rem;
+  margin-left: 50px;
+  height: 28.4375rem;
+  border-radius: 2.125rem;
+  background: white;
+  padding: 30px;
+  margin-top: 15px;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"] {
+  width: 26.04313rem;
+  height: 3.61006rem;
+  flex-shrink: 0;
+
+  padding: 8px;
+  margin-top: 10px;
+
+  border-radius: 0.5rem;
+  border: 1px solid #1e1e1e;
+
+  background: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.Search-text {
+  width: 75%;
+  color: #bebcbc;
+  padding-top: 11px;
+}
+
+input[type="search"] {
+  border: none;
+  width: 100%;
+  height: 80%;
+  border: none none;
+  outline: none;
+}
+
+input[type="search"]:focus {
+  border: none none;
+  color: none;
+}
+/* Style the button */
+button {
+  margin-top: 1px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-bar {
+  width: 52.575rem;
+  height: 2.575rem;
+  flex-shrink: 1;
+  border-radius: 0.4375rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+button {
+  color: white;
+  display: flex;
+  width: 7.5rem;
+  margin-left: 25px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: #1e1e1e;
+}

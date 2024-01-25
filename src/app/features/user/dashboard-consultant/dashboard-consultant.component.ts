@@ -1,8 +1,5 @@
 
 import { Component, ViewChild } from "@angular/core";
-
-
-
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -15,7 +12,7 @@ import {
   ApexFill,
   ApexMarkers,
   ApexYAxis
-} from "ng-apexcharts";
+} from  "ng-apexcharts";
 
 
 export type ChartOptions = {

@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // Check if the user is authenticated and has the required role
-    if (this.authService.hasRole('RH')) {
+    if (this.authService.hasRole('RH') || this.authService.hasRole('ADMIN')  ) {
       return true;
     } else {
       // Redirect to the login page if not authenticated or lacks the required role

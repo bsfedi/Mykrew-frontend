@@ -1,0 +1,312 @@
+<body>
+  <div class="wrapper">
+    <div>
+      <app-left-bar></app-left-bar>
+    </div>
+    <div style="width: 200px; margin-left: 250px">
+      <div style="display: flex">
+        <div
+          style="
+            font-family: 'Poppins', sans-serif !important;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+            flex-shrink: 0;
+            border-radius: 0.9375rem;
+            border: 1px solid rgba(30, 30, 30, 0.92);
+          "
+        >
+          <div class="container">
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+              >
+                <path d="M2.5 7.5L12.5 17.5" />
+                <path d="M11.5 2.5L17.5 8.5" />
+                <path d="M4.14648 9.14558L13.1435 4.14258" />
+                <path d="M10.8535 15.8544L15.8565 6.85742" />
+                <path d="M6 14L2.5 17.5" />
+              </svg>
+            </div>
+            <div class="message-text">Messages Importants</div>
+          </div>
+
+          <div class="message-container" *ngFor="let item of notification">
+            <div class="avatar-container">
+              <p class="avatar-text"><b>RH</b></p>
+            </div>
+            <div class="content-container">
+              <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'">
+                <p>Mission Annulée</p>
+                <b>Cette mission a été annulée par le responsable :</b>
+                <p>{{ item.note }}</p>
+              </div>
+              <div *ngIf="item.typeOfNotification == 'MISSIONVALID'">
+                <p>Mission Validée</p>
+                <b
+                  >Félicitations ! Votre mission a été approuvée avec succès.</b
+                >
+                <p>Continuez votre excellent travail!</p>
+              </div>
+              <div *ngIf="item.typeOfNotification == 'MISSIONNOTVALID'">
+                <p>Mission Non Validée</p>
+                <b>Votre mission n'a pas été approuvée</b>
+                <p>Vous devez effectuer des modifications pour la valider.</p>
+              </div>
+            </div>
+
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M8.5 6.5L8.5 12C8.5 12.828 9.172 13.5 10 13.5C10.828 13.5 11.5 12.828 11.5 12L11.5 5.5C11.5 3.843 10.157 2.5 8.5 2.5C6.843 2.5 5.5 3.843 5.5 5.5L5.5 13C5.5 15.485 7.515 17.5 10 17.5C12.485 17.5 14.5 15.485 14.5 13V6.5"
+                  stroke="#565E6C"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div *ngFor="let notif of lastnotifications">
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'"
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>Nouveau TJM Validée</p>
+                  <b
+                    >Félicitations ! Votre nouveau tjm a été approuvée avec
+                    succès.</b
+                  >
+                  <p>Continuez votre excellent travail!</p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="message-container"
+              *ngIf="
+                notif.typeOfNotification == 'TJMREQUESTRESPONSENOTVALIDATED'
+              "
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>TJM non Validée</p>
+                  <b>Votre demande de nouveau TJM n'a pas été approuvée.</b>
+                  <p>
+                    Assurez-vous que toutes les informations fournies sont
+                    correctes et conformes aux critères requis.
+                  </p>
+                  <p>
+                    N'hésitez pas à contacter le support technique si vous avez
+                    des questions ou des préoccupations.
+                  </p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSE'"
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>Nouveau TJM Validée</p>
+                  <b
+                    >Félicitations ! Votre nouveau tjm a été approuvée avec
+                    succès.</b
+                  >
+                  <p>Continuez votre excellent travail!</p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'MISSIONKILLED'"
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>Mission Annulée</p>
+                  <b>Cette mission a été annulée par le responsable :</b>
+                  <p>{{ notif.note }}</p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'MISSIONVALID'"
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>Mission Validée</p>
+                  <b
+                    >Félicitations ! Votre mission a été approuvée avec
+                    succès.</b
+                  >
+                  <p>Continuez votre excellent travail!</p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'MISSIONNOTVALID'"
+            >
+              <div class="avatar-container">
+                <p class="avatar-text"><b>RH</b></p>
+              </div>
+              <div class="content-container">
+                <div>
+                  <p>Mission Non Validée</p>
+                  <div class="details">Votre mission n'a pas été approuvée</div>
+
+                  <p>Vous devez effectuer des modifications pour la valider.</p>
+                  <b>
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            font-family: 'Poppins', sans-serif !important;
+
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: auto;
+
+            flex-shrink: 0;
+            border-radius: 0.9375rem;
+            border: 1px solid rgba(30, 30, 30, 0.92);
+          "
+        >
+          <div class="container">
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M8.75409 11.5802L10.4041 15.6702C10.5357 15.998 10.5319 16.3646 10.3934 16.6895C10.2549 17.0144 9.99316 17.2711 9.66559 17.4032C9.33774 17.5347 8.97112 17.5308 8.64615 17.3924C8.32118 17.2539 8.06438 16.9922 7.93209 16.6647L5.41309 10.4697"
+                  stroke="#171A1F"
+                  stroke-width="1.2"
+                  stroke-miterlimit="10"
+                />
+                <path
+                  d="M14.75 13.5C16.2688 13.5 17.5 11.0376 17.5 8C17.5 4.96243 16.2688 2.5 14.75 2.5C13.2312 2.5 12 4.96243 12 8C12 11.0376 13.2312 13.5 14.75 13.5Z"
+                  stroke="#171A1F"
+                  stroke-width="1.2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+                <path
+                  d="M14 6.5C14.3978 6.5 14.7794 6.65804 15.0607 6.93934C15.342 7.22064 15.5 7.60218 15.5 8C15.5 8.39782 15.342 8.77936 15.0607 9.06066C14.7794 9.34196 14.3978 9.5 14 9.5"
+                  stroke="#171A1F"
+                  stroke-width="1.2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                />
+                <path
+                  d="M14.2058 2.60742L3.99982 5.99992C3.55733 6.10885 3.16617 6.36755 2.89275 6.73211C2.61933 7.09668 2.4805 7.54463 2.49982 7.99992C2.4805 8.45521 2.61933 8.90317 2.89275 9.26773C3.16617 9.63229 3.55733 9.891 3.99982 9.99992L14.2058 13.3924"
+                  stroke="#171A1F"
+                  stroke-width="1.2"
+                  stroke-miterlimit="10"
+                />
+              </svg>
+            </div>
+            <div class="message-text">Activités Récentes</div>
+          </div>
+          <div *ngFor="let notif of lastnotifications">
+            <div
+              class="message-container"
+              *ngIf="notif.typeOfNotification == 'VIREMENT'"
+            >
+              <div class="avatar-container1">
+                <img
+                  class="avatar-img1"
+                  src="assets/351cfde9c45fc40451723b54283aa78c.png"
+                  alt="Avatar"
+                />
+              </div>
+              <div class="content-container1">
+                <div *ngIf="notif.typeOfNotification == 'VIREMENT'">
+                  <div class="title"><b> Virement </b></div>
+                  <div class="details">Vous avez reçu un virement</div>
+                  <b class="title">
+                    {{ notif.createdAt.split(["T"])[0] }} -
+                    {{ notif.createdAt.split(["T"])[1].split(".")[0] }}</b
+                  >
+                </div>
+              </div>
+              <!-- <div class="time-container">
+        <p></p>
+        <svg
+          class="time-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="10"
+          height="10"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <circle cx="8" cy="8" r="8" fill="#66B2EC" />
+        </svg>
+      </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>

@@ -121,55 +121,6 @@ export class DetailsMissionComponent {
   }
   openPopup1(id: any): void {
 
-
-    // this.inscriptionservice.getContaractByPrerigister(id, this.headers).subscribe({
-    //   next: (res) => {
-
-    //     this.getContaractByPrerigister = res
-    //     console.log(res);
-
-    //     // Handle the response from the server
-    //     this.idcontractByPreregister = res._id
-    //     if (res.clientValidation == "VALIDATED") {
-    //       this.clientValidation = true
-    //     }
-    //     else {
-    //       this.clientValidation = false
-    //     }
-    //     if (res.contactClient == "VALIDATED") {
-    //       this.contactClient = true
-    //     }
-    //     else {
-    //       this.contactClient = false
-    //     }
-    //     if (res.contractValidation == "VALIDATED") {
-    //       this.contractValidation = true
-    //     }
-    //     else {
-    //       this.contractValidation = false
-    //     }
-    //     if (res.jobCotractEdition == "VALIDATED") {
-    //       this.jobCotractEdition = true
-    //     }
-    //     else {
-    //       this.jobCotractEdition = false
-    //     }
-
-
-
-
-
-
-
-    //   },
-    //   error: (e) => {
-    //     // Handle errors
-    //     console.error(e);
-    //     // Set loading to false in case of an error
-
-    //   }
-    // });
-    // this.showPopup1 = true;
   }
   closePopup(): void {
     this.showPopup = false;
@@ -187,54 +138,17 @@ export class DetailsMissionComponent {
       "validated": contactClient
     }
     console.log(data);
-
-    // this.inscriptionservice.validatePriseDeContact(id, data, this.headers).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-
-    //     // Handle the response from the server
-    //   },
-    //   error: (e) => {
-    //     // Handle errors
-    //     console.error(e);
-    //     // Set loading to false in case of an error
-
-    //   }
-    // });
   }
   validateClientValidation(id: any, clientValidation: any): void {
     const data = {
       "validated": clientValidation
     }
-    // this.inscriptionservice.validateClientValidation(id, data, this.headers).subscribe({
-    //   next: (res) => {
-    //     // Handle the response from the server
-    //     console.log(res);
 
-    //   },
-    //   error: (e) => {
-    //     // Handle errors
-    //     console.error(e);
-    //     // Set loading to false in case of an error
-
-    //   }
-    // });
   }
   validateJobCotractEdition(id: any, jobCotractEdition: any): void {
     const data = {
       "validated": jobCotractEdition
     }
-    // this.inscriptionservice.validateJobCotractEdition(id, data, this.headers).subscribe({
-    //   next: (res) => {
-    //     // Handle the response from the server
-    //   },
-    //   error: (e) => {
-    //     // Handle errors
-    //     console.error(e);
-    //     // Set loading to false in case of an error
-
-    //   }
-    // });
   }
   validateContractValidation(id: any, jobCotractEdition: any): void {
     const data = {

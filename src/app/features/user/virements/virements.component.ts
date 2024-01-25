@@ -33,6 +33,7 @@ export type ChartOptions = {
   yaxis: ApexYAxis | any;
   stroke: ApexStroke | any;
   title: ApexTitleSubtitle | any;
+  colors: any
 };
 
 @Component({
@@ -55,120 +56,185 @@ export class VirementsComponent {
   getContaractByPrerigister: any
   @ViewChild("chart") chart: ChartComponent | any;
   selectedType: string = 'all';
-  date : string = 'today'
-  public chartOptions: Partial<ChartOptions>;
-  user_id :any
-  res : any 
-  constructor(private userservice: UserService, private fb: FormBuilder, private router: Router) {
+  date: string = 'year'
+  public chartOptions: Partial<ChartOptions> | any;
+  user_id: any
+  res: any
+  stats: any
+  constructor(private userservice: UserService, private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
     this.user_id = localStorage.getItem('user_id')
+    this.consultantservice.virementstatusbar(this.user_id).subscribe({
 
-    this.chartOptions = {
-      series: [
-        {
+      next: (res) => {
+        this.stats = res
+        console.error(this.stats, "45445454454");
+        const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
 
-          data: [4, 3, 10, 9, 29, 19, 22, 9, 12, 7, 19, 5, 13, 9, 17, 2, 7, 5]
-        },
+        this.chartOptions = {
+          series: [
+            {
+              name: this.stats.series[0].name,
+              data: this.stats.series[0].data,
+            },
+            {
+              name: this.stats.series[1].name,
+              data: this.stats.series[1].data,
+            },
+            // Add more series if needed
+          ],
+          chart: {
 
-      ],
+            height: 250,
+            type: "area",
+            // Background color
+          },
+          colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+          stroke: {
+            width: 2,
+            curve: "smooth",
+          },
+          dataLabels: {
+            enabled: false
+          },
+          xaxis: {
+            type: "date",
+            categories: this.stats.categories
 
-      chart: {
-        height: 250,
-        type: "line"
+          },
+        };
       },
-      stroke: {
-        width: 1,
-        curve: "smooth"
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "1/11/2000",
-          "2/11/2000",
-          "3/11/2000",
-          "4/11/2000",
-          "5/11/2000",
-          "6/11/2000",
-          "7/11/2000",
-          "8/11/2000",
-          "9/11/2000",
-          "10/11/2000",
-          "11/11/2000",
-          "12/11/2000",
-          "1/11/2001",
-          "2/11/2001",
-          "3/11/2001",
-          "4/11/2001",
-          "5/11/2001",
-          "6/11/2001"
-        ]
-      },
+      error: (e) => {
+        if (e.status == 404) {
+          console.error(e, "45445454454");
+          this.stats.series[0].name = []
+          this.stats.series[0].data = []
+          this.stats.series[1].name = []
+          this.stats.series[1].data = []
+          this.stats.categories = []
+          this.chartOptions = {
+            series: [
+              {
+                name: this.stats.series[0].name,
+                data: this.stats.series[0].data,
+              },
+              {
+                name: this.stats.series[1].name,
+                data: this.stats.series[1].data,
+              },
+              // Add more series if needed
+            ],
+            chart: {
+
+              height: 250,
+              type: "area",
+              // Background color
+            },
+            colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+            stroke: {
+              width: 2,
+              curve: "smooth",
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              type: "date",
+              categories: this.stats.categories
+
+            },
+          };
+        }
 
 
 
-    };
+        // Set loading to false in case of an error
+      }
+    });
 
-  
+
+
+
   }
   ngOnInit(): void {
-    
-      this.userservice.getMyvirements(this.user_id).subscribe({
-  
-  
-        next: (res) => {
-          // Handle the response from the server
-          this.res = res
-          console.log(this.res);
-  
-        },
-        error: (e) => {
-          // Handle errors
-          console.error(e);
-          // Set loading to false in case of an error
-  
+
+    this.userservice.getMyvirements(this.user_id).subscribe({
+      next: (res) => {
+        // Sort the response array by createdAt in ascending order
+        this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+
+        this.res = this.res.map((item: any) => ({
+          ...item,
+          createdAt: this.formatDate(item.createdAt),
+        }));
+      },
+      error: (e) => {
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
+
+
+
+  }
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+  }
+
+  getmyvir() {
+
+    this.userservice.getMyvirements(this.user_id).subscribe({
+      next: (res) => {
+        // Sort the response array by createdAt in ascending order
+        this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+
+        this.res = this.res.map((item: any) => ({
+          ...item,
+          createdAt: this.formatDate(item.createdAt),
+        }));
+      },
+      error: (e) => {
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
+  }
+  filterByType(selectedType: any) {
+    if (selectedType == 'all') {
+      this.res = this.getmyvir();
+    } else {
+      this.userservice.filter_by_type(selectedType).subscribe({
+        next: (res: any[]) => { // Explicitly specify the type as an array
+          // Sort the filtered response array by createdAt in descending order
+          this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+          this.res = this.res.map((item: any) => ({
+            ...item,
+            createdAt: this.formatDate(item.createdAt),
+          }));
         }
-      });
-    
+      } as any); // Add 'as any' to suppress TypeScript errors
+    }
   }
 
-  filterByType(){
-    
-    this.userservice.filter_by_type(this.selectedType).subscribe({
-  
-  
-      next: (res) => {
-        // Handle the response from the server
-        this.res = res
-        console.log(this.res);
 
+
+  virementByPeriod() {
+    this.userservice.virementByPeriod(this.date, this.user_id).subscribe({
+      next: (res: any[]) => { // Assuming res is an array of objects
+        // Sort the response array by createdAt in descending order
+        this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+        this.res = this.res.map((item: any) => ({
+          ...item,
+          createdAt: this.formatDate(item.createdAt),
+        }));
       },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-        // Set loading to false in case of an error
-
-      }
-    });
+    } as any);
   }
 
-  virementByPeriod(){
-    
-    this.userservice.virementByPeriod(this.date).subscribe({
-  
-  
-      next: (res) => {
-        // Handle the response from the server
-        this.res = res
-        console.log(this.res);
-
-      },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-        // Set loading to false in case of an error
-
-      }
-    });
-  }
 
 }

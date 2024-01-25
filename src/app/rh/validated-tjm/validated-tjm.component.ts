@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
+import Swal from 'sweetalert2';
 declare const PDFObject: any;
 
 @Component({
@@ -21,6 +22,7 @@ export class ValidatedTjmComponent {
   item: any;
   myForm: FormGroup;
   new_tjm :any
+  pdfData1 :any
   showpdf:any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,private fb: FormBuilder,  private router: Router, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
@@ -102,10 +104,10 @@ export class ValidatedTjmComponent {
             this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.new_tjm.simulationValidated).subscribe({
               next: (res) => {
                 this.showpdf =true
-                this.pdfData = res;
+                this.pdfData1 = res;
   
-                if (this.pdfData) {
-                  this.handleRenderPdf1(this.pdfData);
+                if (this.pdfData1) {
+                  this.handleRenderPdf1(this.pdfData1);
                 }
               },
             });
@@ -145,7 +147,12 @@ export class ValidatedTjmComponent {
       next: (res) => {
         // Handle success
         console.log(res);
-
+        Swal.fire({
+          title: 'TJM Validé',
+          text: 'Le Tarif Journalier Moyen a été validé avec succès !',
+          icon: 'success'
+        });
+        this.router.navigate(['/tjmrequests'])
       },
       error: (e) => {
         // Handle errors
@@ -163,7 +170,12 @@ export class ValidatedTjmComponent {
       next: (res) => {
         // Handle success
         console.log(res);
-
+        Swal.fire({
+          title: 'TJM Invalidé',
+          text: 'Le Tarif Journalier Moyen a été invalidé.',
+          icon: 'error'
+        });
+        this.router.navigate(['/tjmrequests'])
       },
       error: (e) => {
         // Handle errors

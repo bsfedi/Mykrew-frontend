@@ -34,6 +34,7 @@ export class ValidationComponent implements OnInit {
   socialSecurityNumberValue: string = 'true';
   identificationDocumentValue: string = 'true';
   ribValue: string = 'true';
+  portage: string = 'true';
   hasCarValue: string = 'true';
   drivingLicenseValue: string = 'true';
   carRegistrationValue: string = 'true';
@@ -49,7 +50,8 @@ export class ValidationComponent implements OnInit {
   finalClientValue: string = 'true';
   endDateValue: string = 'true';
   clientlastNameValue: string = 'true';
-  commantaireclientlastName: string = '' ;
+  commantaireportageValue: string = '';
+  commantaireclientlastName: string = '';
   commantairetoggleValue: string = '';
   commantairetoggleValue1: string = '';
   commantairedateOfBirthValue: string = '';
@@ -80,7 +82,7 @@ export class ValidationComponent implements OnInit {
   token: any;
   headers: any
   pdfData: any;
-
+  ispdfdocrib: any
   constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
 
@@ -116,13 +118,26 @@ export class ValidationComponent implements OnInit {
           this.personalInfo.identificationDocument.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.identificationDocument.value
           this.personalInfo.dateOfBirth.value = this.personalInfo.dateOfBirth.value.split('T')[0]
           this.personalInfo.carInfo.drivingLicense.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.carInfo.drivingLicense.value
-
+          this.personalInfo.ribDocument.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.ribDocument.value
           this.missionInfo.isSimulationValidated.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.missionInfo.isSimulationValidated.value
           this.missionInfo.startDate.value.split('T')[0]
           this.hasCar = this.personalInfo.carInfo.hasCar.value;
           this.loading = false;
           this.isLoading = true;
-
+          if (this.personalInfo.ribDocument.value.endsWith('.pdf')) {
+            this.inscriptionservice.getPdf(this.personalInfo.ribDocument.value).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                this.isLoading = false;
+                if (this.pdfData) {
+                  this.handlesecondRenderPdf(this.pdfData);
+                }
+              },
+            });
+            this.ispdfdocrib = true
+          } else {
+            this.ispdfdocrib = false
+          }
 
           this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated.value).subscribe({
             next: (res) => {
@@ -145,6 +160,7 @@ export class ValidationComponent implements OnInit {
   }
   update_register() {
     const data = {
+      'portage': this.portage,
       "firstNameValidation": this.toggleValue,
       "firstNameCause": this.commantairetoggleValue,
       "lastNameValidation": this.toggleValue1,
@@ -248,7 +264,11 @@ export class ValidationComponent implements OnInit {
     });
 
   }
+  handlesecondRenderPdf(data: any) {
 
+    const pdfObject = PDFObject.embed(data, '#pdfContainer1');
+
+  }
   killmission(killed: any) {
     console.log(killed);
     if (killed == true) {
