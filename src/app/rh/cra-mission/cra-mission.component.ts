@@ -4,6 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 declare const PDFObject: any;
+
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
+
+
 @Component({
   selector: 'app-cra-mission',
   templateUrl: './cra-mission.component.html',
@@ -107,9 +112,9 @@ export class CraMissionComponent {
 
         // Handle the response from the server
         this.cradetails = res
-        this.cradetails.craInformation.signature = "https://my-krew-8nnq.onrender.com/uploads/" + this.cradetails.craInformation.signature
+        this.cradetails.craInformation.signature = baseUrl + "uploads/" + this.cradetails.craInformation.signature
         this.selectedDays = this.cradetails.craInformation.selectedDates
-        this.cradetails.craInformation.craPDF = "https://my-krew-8nnq.onrender.com/uploads/" + this.cradetails.craInformation.craPDF
+        this.cradetails.craInformation.craPDF = baseUrl + "uploads/" + this.cradetails.craInformation.craPDF
 
         this.inscriptionservice.getPdf(this.cradetails.craInformation.craPDF).subscribe({
           next: (res) => {
@@ -146,7 +151,7 @@ export class CraMissionComponent {
         this.cradetails = res
         console.log(this.cradetails.craInformation);
 
-        this.cradetails.craInformation.signature = "https://my-krew-8nnq.onrender.com/uploads/" + this.cradetails.craInformation.signature
+        this.cradetails.craInformation.signature = baseUrl + "uploads/" + this.cradetails.craInformation.signature
         console.log(this.cradetails);
 
         this.selectedDays = this.cradetails.craInformation.selectedDates

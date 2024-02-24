@@ -14,7 +14,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-
+  pingEndpoint() {
+    // Replace 'http://localhost:3000' with your actual endpoint URL
+    return this.http.get("https://mykrew-backend.onrender.com");
+  }
   create(data: any): Observable<any> {
     return this.http.post(baseUrl + 'user/register', data);
   }
