@@ -55,7 +55,7 @@ export class InformationsComponent {
       dailyRate: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      portage: ['', Validators.required],
+      portage: ['ee', Validators.required],
       simulationValidation: ['', Validators.required],
     });
   }
