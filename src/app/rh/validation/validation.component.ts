@@ -8,7 +8,8 @@ import Swal from 'sweetalert2';
 
 import { delay, of } from 'rxjs';
 
-
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 
 
 declare const PDFObject: any;
@@ -115,11 +116,11 @@ export class ValidationComponent implements OnInit {
           this.personalInfo = res.personalInfo;
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
-          this.personalInfo.identificationDocument.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.identificationDocument.value
+          this.personalInfo.identificationDocument.value = baseUrl + "uploads/" + this.personalInfo.identificationDocument.value
           this.personalInfo.dateOfBirth.value = this.personalInfo.dateOfBirth.value.split('T')[0]
-          this.personalInfo.carInfo.drivingLicense.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.carInfo.drivingLicense.value
-          this.personalInfo.ribDocument.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.ribDocument.value
-          this.missionInfo.isSimulationValidated.value = "https://my-krew-8nnq.onrender.com/uploads/" + this.missionInfo.isSimulationValidated.value
+          this.personalInfo.carInfo.drivingLicense.value = baseUrl + "uploads/" + this.personalInfo.carInfo.drivingLicense.value
+          this.personalInfo.ribDocument.value = baseUrl + "uploads/" + this.personalInfo.ribDocument.value
+          this.missionInfo.isSimulationValidated.value = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated.value
           this.missionInfo.startDate.value.split('T')[0]
           this.hasCar = this.personalInfo.carInfo.hasCar.value;
           this.loading = false;

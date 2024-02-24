@@ -7,24 +7,27 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
 declare const PDFObject: any;
 
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
+
 @Component({
   selector: 'app-validated-tjm',
   templateUrl: './validated-tjm.component.html',
   styleUrls: ['./validated-tjm.component.css']
 })
 export class ValidatedTjmComponent {
-  mission_id :any
-  headers :any
-  clientInfo:any
-  missionInfo:any
-  status :any
-  pdfData :any
+  mission_id: any
+  headers: any
+  clientInfo: any
+  missionInfo: any
+  status: any
+  pdfData: any
   item: any;
   myForm: FormGroup;
-  new_tjm :any
-  pdfData1 :any
-  showpdf:any
-  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,private fb: FormBuilder,  private router: Router, private route: ActivatedRoute) {
+  new_tjm: any
+  pdfData1: any
+  showpdf: any
+  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -69,13 +72,13 @@ export class ValidatedTjmComponent {
         next: (res) => {
           // Handle the response from the server
           this.status = res.newMissionStatus
-        
-          
+
+
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
-          
 
-          this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
+
+          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
             next: (res) => {
               this.pdfData = res;
 
@@ -95,27 +98,27 @@ export class ValidatedTjmComponent {
       this.consultantservice.getTjmRequestsByMissionId(this.mission_id).subscribe({
         next: (res) => {
           // Handle the response from the server
-          this.new_tjm =res
+          this.new_tjm = res
           console.log(this.new_tjm.simulationValidated);
-          
-         
-          
+
+
+
           if (this.new_tjm.simulationValidated.endsWith('.pdf')) {
-            this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.new_tjm.simulationValidated).subscribe({
+            this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.new_tjm.simulationValidated).subscribe({
               next: (res) => {
-                this.showpdf =true
+                this.showpdf = true
                 this.pdfData1 = res;
-  
+
                 if (this.pdfData1) {
                   this.handleRenderPdf1(this.pdfData1);
                 }
               },
             });
-          }else{
-            this.showpdf =false
-            this.new_tjm.simulationValidated="https://my-krew-8nnq.onrender.com/uploads/"+ this.new_tjm.simulationValidated
+          } else {
+            this.showpdf = false
+            this.new_tjm.simulationValidated = baseUrl + "uploads/" + this.new_tjm.simulationValidated
             console.log(this.new_tjm.simulationValidated);
-            
+
           }
 
         },
@@ -126,7 +129,7 @@ export class ValidatedTjmComponent {
 
         }
       });
-      
+
     }
   }
   handleRenderPdf(data: any) {
@@ -139,9 +142,9 @@ export class ValidatedTjmComponent {
     const pdfObject = PDFObject.embed(data, '#pdfContainer1');
 
   }
-  valid(){
+  valid() {
     this.consultantservice.rhTjmValidation(this.new_tjm._id, {
-      "response" :true
+      "response": true
 
     }).subscribe({
       next: (res) => {
@@ -162,9 +165,9 @@ export class ValidatedTjmComponent {
       }
     });
   }
-  invalid(){
+  invalid() {
     this.consultantservice.rhTjmValidation(this.new_tjm._id, {
-      "response" :false
+      "response": false
 
     }).subscribe({
       next: (res) => {

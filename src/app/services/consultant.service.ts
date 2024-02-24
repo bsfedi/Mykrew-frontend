@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { delay, of } from 'rxjs';
 
-const baseUrl = 'https://my-krew-8nnq.onrender.com/';
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 
 @Injectable({
   providedIn: 'root'

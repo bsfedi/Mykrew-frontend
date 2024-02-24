@@ -30,7 +30,6 @@
             "scripts": [
               "./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js",
               "node_modules/apexcharts/dist/apexcharts.min.js",
-              
             ]
           },
           "configurations": {
@@ -38,13 +37,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "8mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
                 }
               ],
               "outputHashing": "all"

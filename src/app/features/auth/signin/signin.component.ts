@@ -68,7 +68,7 @@ export class SigninComponent {
           localStorage.setItem('token', res.token);
           localStorage.setItem('role', res.role);
           localStorage.setItem('user_id', res.id);
-          
+
           if (res.role == 'CONSULTANT') {
             const headers = new HttpHeaders().set('Authorization', `${res.token}`);
 
@@ -140,8 +140,11 @@ export class SigninComponent {
             });
             // 
           }
-          else {
+          else if (res.role == 'RH') {
             this.router.navigate(['/dashboard']);
+          }
+          else {
+            this.router.navigate(['/members']);
           }
           // Navigate to /informations on successful login
 

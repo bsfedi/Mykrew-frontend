@@ -61,6 +61,7 @@ export class VirementsComponent {
   user_id: any
   res: any
   stats: any
+  show_chart: boolean = false
   constructor(private userservice: UserService, private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
     this.user_id = localStorage.getItem('user_id')
@@ -68,50 +69,10 @@ export class VirementsComponent {
 
       next: (res) => {
         this.stats = res
-        console.error(this.stats, "45445454454");
-        const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
+        if (this.stats.series[0].name) {
+          this.show_chart = true
+          const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
 
-        this.chartOptions = {
-          series: [
-            {
-              name: this.stats.series[0].name,
-              data: this.stats.series[0].data,
-            },
-            {
-              name: this.stats.series[1].name,
-              data: this.stats.series[1].data,
-            },
-            // Add more series if needed
-          ],
-          chart: {
-
-            height: 250,
-            type: "area",
-            // Background color
-          },
-          colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
-          stroke: {
-            width: 2,
-            curve: "smooth",
-          },
-          dataLabels: {
-            enabled: false
-          },
-          xaxis: {
-            type: "date",
-            categories: this.stats.categories
-
-          },
-        };
-      },
-      error: (e) => {
-        if (e.status == 404) {
-          console.error(e, "45445454454");
-          this.stats.series[0].name = []
-          this.stats.series[0].data = []
-          this.stats.series[1].name = []
-          this.stats.series[1].data = []
-          this.stats.categories = []
           this.chartOptions = {
             series: [
               {
@@ -145,12 +106,50 @@ export class VirementsComponent {
             },
           };
         }
+        else {
+          this.stats.series[0].name = []
+          this.stats.series[0].data = []
+          this.stats.series[1].name = []
+          this.stats.series[1].data = []
+          this.stats.categories = []
+          this.chartOptions = {
+            series: [
+              {
+                name: [],
+                data: [],
+              },
+              {
+                name: [],
+                data: [],
+              },
+              // Add more series if needed
+            ],
+            chart: {
+
+              height: 250,
+              type: "area",
+              // Background color
+            },
+            colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+            stroke: {
+              width: 2,
+              curve: "smooth",
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              type: "date",
+              categories: this.stats.categories
+
+            },
+          };
+        }
 
 
-
-        // Set loading to false in case of an error
       }
-    });
+    },
+    );
 
 
 

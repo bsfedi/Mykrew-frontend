@@ -4,7 +4,8 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { UserService } from 'src/app/services/user.service';
 
 declare const PDFObject: any;
-
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-info-perso',
   templateUrl: './info-perso.component.html',
@@ -87,12 +88,12 @@ export class InfoPersoComponent {
           // Handle the response from the server
           this.res = res
           console.log(this.res);
-          this.res.carInfo.drivingLicense = "https://my-krew-8nnq.onrender.com/uploads/" + this.res.carInfo.drivingLicense
+          this.res.carInfo.drivingLicense = baseUrl + "uploads/" + this.res.carInfo.drivingLicense
 
-          this.res.identificationDocument = "https://my-krew-8nnq.onrender.com/uploads/" + this.res.identificationDocument
+          this.res.identificationDocument = baseUrl + "uploads/" + this.res.identificationDocument
 
 
-          this.res.ribDocument = "https://my-krew-8nnq.onrender.com/uploads/" + this.res.ribDocument
+          this.res.ribDocument = baseUrl + "uploads/" + this.res.ribDocument
 
 
 
@@ -120,7 +121,7 @@ export class InfoPersoComponent {
 
           if (item.document.endsWith('.pdf')) {
             item.pdf = true
-            item.document = "https://my-krew-8nnq.onrender.com/uploads/" + item.document
+            item.document = baseUrl + "uploads/" + item.document
             this.inscriptionservice.getPdf(item.document).subscribe({
               next: (res) => {
                 this.pdfData = res;
@@ -135,7 +136,7 @@ export class InfoPersoComponent {
 
           } else {
             item.pdf = false
-            item.document = "https://my-krew-8nnq.onrender.com/uploads/" + item.document
+            item.document = baseUrl + "uploads/" + item.document
           }
 
           //   if (item.document.split(['.'][-1] == 'pdf')){

@@ -8,6 +8,11 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 
 declare const PDFObject: any;
 
+
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
+
+
 @Component({
   selector: 'app-details-mission',
   templateUrl: './details-mission.component.html',
@@ -31,7 +36,7 @@ export class DetailsMissionComponent {
   mission_id: any
   pdfData: any;
   myForm: FormGroup;
-  status : any
+  status: any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -78,10 +83,10 @@ export class DetailsMissionComponent {
           // Handle the response from the server
           this.status = res.newMissionStatus
           console.log(this.status);
-          
+
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
-          
+
 
           this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
             next: (res) => {

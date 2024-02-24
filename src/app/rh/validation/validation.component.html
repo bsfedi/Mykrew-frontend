@@ -128,20 +128,16 @@
                     </div>
                     <input *ngIf="!phoneNumberValue" type="text" [value]="personalInfo?.phoneNumber.value"
                         [(ngModel)]="commantairephoneNumberValue">
-
-                    <div class="label"> RIB Document : </div>
-                    <div *ngIf="ispdfdocrib">
-                        <div id="pdfContainer1"></div>
-                    </div>
-                    <div class="Tableau" *ngIf="!ispdfdocrib">
+                    <div class="label"> Pièce d'identité (CIN) :</div>
+                    <div class="Tableau">
                         <div class="zoom">
-                            <img [src]="personalInfo?.ribDocument.value" />
-                        </div>
-                        <!--   <label class="toggle-switch">
+                            <img [src]="personalInfo?.identificationDocument.value" />
+                        </div><label class="toggle-switch">
                             <input type="checkbox" [(ngModel)]="identificationDocumentValue">
                             <span class="slider"></span>
-                        </label> -->
+                        </label>
                     </div>
+
                 </div>
                 <div style="margin-left: 70px;">
                     <div class="label"> Voiture :</div>
@@ -165,15 +161,27 @@
 
                         </div>
                     </div>
-                    <div class="label"> Pièce d'identité (CIN) :</div>
-                    <div class="Tableau">
+
+                    <div class="label"> RIB Document : </div>
+
+                    <div *ngIf="ispdfdocrib">
+                        <div class="Tableau">
+                            <div id="pdfContainer1" style="width: 500px;"></div>
+                        </div>
+
+                    </div>
+                    <div class="Tableau" *ngIf="!ispdfdocrib">
                         <div class="zoom">
-                            <img [src]="personalInfo?.identificationDocument.value" />
-                        </div><label class="toggle-switch">
+                            <img [src]="personalInfo?.ribDocument.value" />
+                        </div>
+                        <!--   <label class="toggle-switch">
                             <input type="checkbox" [(ngModel)]="identificationDocumentValue">
                             <span class="slider"></span>
-                        </label>
+                        </label> -->
                     </div>
+
+
+
 
                     <input *ngIf="!identificationDocumentValue" type="text" placeholder="commantaire"
                         [(ngModel)]="commantaireidentificationDocumentValue">

@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
 import { delay, of } from 'rxjs';
 import { ConsultantService } from 'src/app/services/consultant.service';
 
-
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 
 
 declare const PDFObject: any;
@@ -118,7 +119,7 @@ export class MissionByIdComponent {
 
 
 
-          this.missionInfo.isSimulationValidated = "https://my-krew-8nnq.onrender.com/uploads/" + this.missionInfo.isSimulationValidated
+          this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated
 
           console.log(this.missionInfo.isSimulationValidated);
 
@@ -206,7 +207,7 @@ export class MissionByIdComponent {
       showCancelButton: true,
       confirmButtonText: 'Oui, mettez à jour !',
       confirmButtonColor: "#1E1E1E",
-      
+
 
       cancelButtonText: 'Annuler',
       customClass: {

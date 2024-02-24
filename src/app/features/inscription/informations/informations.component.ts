@@ -7,7 +7,8 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 declare const PDFObject: any;
-
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 
 @Component({
   selector: 'app-informations',
@@ -101,8 +102,9 @@ export class InformationsComponent {
           this.missionInfo = res.missionInfo
           this.personalInfo.dateOfBirth.value = this.personalInfo.dateOfBirth.value.split('T')[0]
           this.hasCar = this.personalInfo.carInfo.hasCar.value;
-
-          this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.missionInfo.isSimulationValidated.value).subscribe({
+          this.personalInfo.identificationDocument.value = baseUrl + "uploads/" + this.personalInfo.identificationDocument.value
+          this.personalInfo.carInfo.drivingLicense.value = baseUrl + "uploads/" + this.personalInfo?.carInfo.drivingLicense.value
+          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated.value).subscribe({
             next: (res) => {
               this.pdfData = res;
               this.isLoading = false;
@@ -112,7 +114,7 @@ export class InformationsComponent {
             },
           });
 
-          this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.personalInfo.ribDocument.value).subscribe({
+          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.personalInfo.ribDocument.value).subscribe({
             next: (res) => {
               this.pdfData = res;
               this.isLoading = false;

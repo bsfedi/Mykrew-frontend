@@ -73,6 +73,7 @@ export class MissionsComponent {
   stats: any;
   cra: string | null = null;
   deposer: any;
+  show_chart: boolean = false
   constructor(private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router, private datePipe: DatePipe) {
     // Ensure that the items array is correctly populated here if needed.
 
@@ -172,38 +173,82 @@ export class MissionsComponent {
 
         // Set the number of data points you want
         const numberOfDataPoints = 10;
-        this.chartOptions = {
-          series: [
-            {
-              name: this.stats.series[0].name,
-              data: this.stats.series[0].data,
-            },
-            {
-              name: this.stats.series[1].name,
-              data: this.stats.series[1].data,
-            },
-            // Add more series if needed
-          ],
-          chart: {
+        if (this.stats.series[0].name) {
+          this.show_chart = true
+          const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
 
-            height: 250,
-            type: "area",
-            // Background color
-          },
-          colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
-          stroke: {
-            width: 2,
-            curve: "smooth",
-          },
-          dataLabels: {
-            enabled: false
-          },
-          xaxis: {
-            type: "date",
-            categories: this.stats.categories
+          this.chartOptions = {
+            series: [
+              {
+                name: this.stats.series[0].name,
+                data: this.stats.series[0].data,
+              },
+              {
+                name: this.stats.series[1].name,
+                data: this.stats.series[1].data,
+              },
+              // Add more series if needed
+            ],
+            chart: {
 
-          },
-        };
+              height: 250,
+              type: "area",
+              // Background color
+            },
+            colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+            stroke: {
+              width: 2,
+              curve: "smooth",
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              type: "date",
+              categories: this.stats.categories
+
+            },
+          };
+        }
+        else {
+          this.stats.series[0].name = []
+          this.stats.series[0].data = []
+          this.stats.series[1].name = []
+          this.stats.series[1].data = []
+          this.stats.categories = []
+          this.chartOptions = {
+            series: [
+              {
+                name: [],
+                data: [],
+              },
+              {
+                name: [],
+                data: [],
+              },
+              // Add more series if needed
+            ],
+            chart: {
+
+              height: 250,
+              type: "area",
+              // Background color
+            },
+            colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+            stroke: {
+              width: 2,
+              curve: "smooth",
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              type: "date",
+              categories: this.stats.categories
+
+            },
+          };
+        }
       },
       error: (e) => {
         console.error(e);

@@ -12,7 +12,10 @@ import { LeftBarComponent } from './layout/left-bar/left-bar.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WebSocketService } from './services/web-socket.service';
 
-const config: SocketIoConfig = { url: 'https://my-krew-8nnq.onrender.com/', options: {} };
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
+
+const config: SocketIoConfig = { url: baseUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -29,10 +32,10 @@ const config: SocketIoConfig = { url: 'https://my-krew-8nnq.onrender.com/', opti
     NgApexchartsModule,
     SocketIoModule.forRoot(config) // Add SocketIoModule with the configuration
 
-    
+
 
   ],
-  providers: [WebSocketService,DatePipe],
+  providers: [WebSocketService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -612,7 +612,7 @@ input[type='text']:focus {
 
 .pdfobject-container {
     max-width: 40%;
-    width: 600px;
+    width: 500px;
     height: 300px;
     border: 10px solid rgba(0, 0, 0, 0.2);
     margin: 0;

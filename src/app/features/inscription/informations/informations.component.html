@@ -153,7 +153,7 @@
                     <div class="label"> Pièce d'identité (CIN) :</div>
                     <div class="Tableau">
                         <div class="zoom" (click)="openidentificationDocumentInput()">
-                            <img [src]="'https://my-krew-8nnq.onrender.com/uploads/' + personalInfo.identificationDocument.value"
+                            <img [src]="personalInfo.identificationDocument.value"
                                 formControlName="identificationDocument" />
 
                         </div><label class="toggle-switch" *ngIf="!personalInfo?.identificationDocument.validated">
@@ -196,8 +196,7 @@
                     <div class="label"> Permis : </div>
                     <div class="Tableau">
                         <div class="zoom">
-                            <img formControlName="drivingLicense"
-                                [src]="'https://my-krew-8nnq.onrender.com/uploads/' +personalInfo?.carInfo.drivingLicense.value" />
+                            <img formControlName="drivingLicense" [src]="personalInfo?.carInfo.drivingLicense.value" />
                         </div>
 
                         <label class="toggle-switch" *ngIf="!personalInfo?.carInfo.drivingLicense.validated">

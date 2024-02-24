@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+const baseUrl = `${environment.baseUrl}`;
 
 
-const baseUrl = 'https://my-krew-8nnq.onrender.com/';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class UserService {
   }
 
   login(data: any): Observable<any> {
+    console.log(baseUrl);
+
     return this.http.post(baseUrl + 'user/login', data);
   }
 
