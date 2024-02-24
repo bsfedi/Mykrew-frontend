@@ -88,7 +88,7 @@ export class DetailsMissionComponent {
           this.missionInfo = res.missionInfo
 
 
-          this.inscriptionservice.getPdf("https://my-krew-8nnq.onrender.com/uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
+          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
             next: (res) => {
               this.pdfData = res;
 
