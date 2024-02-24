@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  baseUrl: 'https://mykrew-backend.onrender.com',// Change this to your local development server URL
+  baseUrl: 'https://mykrew-backend.onrender.com/',// Change this to your local development server URL
   default: ''
 };
 

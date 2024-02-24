@@ -25,7 +25,6 @@ export class SigninComponent {
   contractValidation: any
   jobCotractEdition: any
   validation_rh: any
-  private intervalId: any;
   constructor(private userservice: UserService, private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router) {
     this.signinForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -35,16 +34,6 @@ export class SigninComponent {
 
   ngOnInit(): void {
 
-    this.intervalId = setInterval(() => {
-      this.userservice.pingEndpoint().subscribe(
-        response => {
-          console.log('Ping successful:', response);
-        },
-        error => {
-          console.error('Ping failed:', error);
-        }
-      );
-    }, 1000); // 1 minute
   }
   isAuthenticated() {
     return true;
