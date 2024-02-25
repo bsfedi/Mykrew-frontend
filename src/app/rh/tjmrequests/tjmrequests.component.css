@@ -1,7 +1,23 @@
 .wrapper {
+  font-family: 'Poppins', sans-serif !important;
   display: grid;
   grid-template-columns: 0.5fr 250fr 0.5fr;
 }
+
+.title {
+  color: #000;
+
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
+}
+
+
 
 select,
 input[type="text"],
@@ -59,6 +75,7 @@ input[type="search"] {
 
   font-size: 0.8rem;
 }
+
 .vertical-line {
   height: 58px;
   /* Adjust the height as needed */
@@ -110,6 +127,7 @@ button {
   background: #f7f5ef;
   overflow: hidden;
 }
+
 .transaction-header {
   background: #f7f5ef;
   padding: 10px;
@@ -119,7 +137,8 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-.transaction-header > select {
+
+.transaction-header>select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;

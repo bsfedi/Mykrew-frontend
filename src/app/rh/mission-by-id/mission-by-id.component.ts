@@ -127,7 +127,7 @@ export class MissionByIdComponent {
           this.isLoading = true;
 
 
-          this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated.value).subscribe({
+          this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
             next: (res) => {
               this.pdfData = res;
               this.isLoading = false;
@@ -280,6 +280,5 @@ export class MissionByIdComponent {
       buttonsStyling: false,
     });
   }
-
 
 }

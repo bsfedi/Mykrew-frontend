@@ -315,7 +315,7 @@
             (click)="downloadDocument(item_doc.document, item_doc.documentName)" />
 
           <div style="display: flex;margin-left: 50px;">
-            <div class="telecharger">
+            <div class="telecharger" (click)="downloadDocument(item_doc.document, item_doc.documentName)">
               Telecharger
               <svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
                 <path
@@ -359,9 +359,9 @@
             <td>{{ doc.documentName }}</td>
             <td>{{ doc.createdAt.split(["T"])[0] }}</td>
             <td>
-              <div style="
+              <div (click)="downloadDocument(doc.document, doc.documentName)" style="
                   display: flex;
-
+                  cursor: pointer;
                   height: 1.5rem;
                   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                   justify-content: center;

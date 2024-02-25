@@ -154,16 +154,20 @@ export class ValidationMissionComponent {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        if (this.contactClient == true ||
-          this.clientValidation == true ||
-          this.contractValidation == true ||
-          this.jobCotractEdition == true) {
-          Swal.fire('Error', 'Tu peut pas terminer une mission validé', 'error');
-        }
-        else {
+        console.log(this.contactClient, this.clientValidation, this.contactClient, this.jobCotractEdition);
 
-          this.consultantservice.killnewMission(this.mission_id, data, this.headers).subscribe({
-            next: (res) => {
+
+
+
+        this.consultantservice.killnewMission(this.mission_id, data, this.headers).subscribe({
+          next: (res) => {
+            console.log(res.text);
+
+
+          },
+          error: (e) => {
+            // Handle errors
+            if (e.error.text == 'Mission Killed Successfully') {
               // Handle success
               Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
               Swal.fire({
@@ -174,14 +178,15 @@ export class ValidationMissionComponent {
                 timer: 1500
               });
               this.router.navigate(['/dashboard'])
-            },
-            error: (e) => {
-              // Handle errors
-              console.error(e);
+            }
+
+            else {
               Swal.fire('Error', 'Tu peut pas terminer une mission validé', 'error');
             }
-          });
-        }
+
+          }
+        });
+
         // User clicked 'Yes', call the endpoint
 
       } else {

@@ -40,7 +40,7 @@
 
 .bord-text {
     color: #FEFCF1;
-    font-family: Cabinet Grotesk;
+    font-family: 'Poppins', sans-serif !important;
 
     font-style: normal;
 
@@ -259,7 +259,7 @@ input[type='search']:focus {
     margin-top: 15px;
     margin-left: 8px;
     color: #000;
-    font-family: Cabinet Grotesk;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -292,7 +292,7 @@ svg {
 
 .historique .text {
     color: #000;
-    font-family: Cabinet Grotesk;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
@@ -304,7 +304,7 @@ svg {
 
 .historique-consultants .plus {
     color: #FFD200;
-    font-family: Cabinet Grotesk;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -314,7 +314,7 @@ svg {
 
 .plus {
     color: #FFD200;
-    font-family: Cabinet Grotesk;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -334,7 +334,7 @@ svg {
 .historique-name {
     margin: 10px 30px;
     color: #000;
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -345,7 +345,7 @@ svg {
 .historiqueconsultantdetails {
     margin: 0px 50px;
     color: #000;
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -356,7 +356,7 @@ svg {
 .historique-consultant {
     margin: 4px 10px;
     color: #000;
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 00;
@@ -367,7 +367,7 @@ svg {
 .historique-time {
     margin: 10px 150px;
     color: #000;
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -377,7 +377,7 @@ svg {
 
 .approved {
     color: rgba(0, 0, 0, 0.75);
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 0.9375rem;
     font-style: normal;
     font-weight: 400;
@@ -387,7 +387,7 @@ svg {
 
 .name-of-approved {
     color: rgba(0, 0, 0, 0.35);
-    font-family: Manrope;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;

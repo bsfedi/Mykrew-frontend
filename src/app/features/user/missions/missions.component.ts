@@ -467,7 +467,7 @@ export class MissionsComponent {
     this.showPopup1 = false;
 
   }
-
+  idpdf: any
   setFileInput(field: string, event: any): void {
     this.fileInputs[field] = event.target;
     const input = event.target as HTMLInputElement;
@@ -478,11 +478,17 @@ export class MissionsComponent {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (field == 'document') {
+
           this.document = e.target!.result as string;
 
           const document = this.fileInputs.document.files[0];
           // Append the files if they exist, else append empty strings
           this.formData.append('isSimulationValidated', document);
+          if (document.name.endsWith('.pdf')) {
+            this.idpdf = true
+          } else {
+            this.idpdf = false
+          }
 
         }
         else if (field == 'cra') {

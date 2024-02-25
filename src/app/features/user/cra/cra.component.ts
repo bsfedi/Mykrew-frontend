@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 declare let html2pdf: any
 import { jsPDF } from "jspdf";
 import { InscriptionService } from 'src/app/services/inscription.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cra',
@@ -29,6 +30,7 @@ export class CRAComponent {
   mission_id: any
   permis_img: any
   headers: any
+  myinfo: any;
   mission_details: any
   daysDifference: any
   formData = new FormData();
@@ -46,7 +48,7 @@ export class CRAComponent {
     // Trigger click event on the hidden file input
     this.fileInput.nativeElement.click();
   }
-  constructor(private consultantservice: ConsultantService, private route: ActivatedRoute, private inscriptionservice: InscriptionService, private router: Router) { }
+  constructor(private consultantservice: ConsultantService, private route: ActivatedRoute, private inscriptionservice: InscriptionService, private userservice: UserService, private router: Router) { }
   // fakeSelectedDays: { day: number; month: number }[] = [
   //   { day: 17, month: 0 },
   //   { day: 21, month: 0 },
@@ -103,7 +105,7 @@ export class CRAComponent {
         <body>
           <div style="display:flex;">
           <div>
-            <b> ${this.months[this.currentMonth]} ${this.currentYear} - Prénom NOM </b>
+            <b> ${this.months[this.currentMonth]} ${this.currentYear} - ${this.myinfo.firstName} ${this.myinfo.lastName} </b>
       
             <div style='width: 16.875rem;
                   height: 5.0625rem;
@@ -136,7 +138,7 @@ export class CRAComponent {
                 border: 1px solid #ECECEE;'>
                 <svg style="margin-top:2px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M9.33337 5.33301H10C10.1769 5.33301 10.3464 5.26277 10.4714 5.13775C10.5965 5.01272 10.6667 4.84315 10.6667 4.66634C10.6667 4.48953 10.5965 4.31996 10.4714 4.19494C10.3464 4.06991 10.1769 3.99967 10 3.99967H9.33337C9.15656 3.99967 8.98699 4.06991 8.86197 4.19494C8.73695 4.31996 8.66671 4.48953 8.66671 4.66634C8.66671 4.84315 8.73695 5.01272 8.86197 5.13775C8.98699 5.26277 9.15656 5.33301 9.33337 5.33301ZM9.33337 7.99967H10C10.1769 7.99967 10.3464 7.92944 10.4714 7.80441C10.5965 7.67939 10.6667 7.50982 10.6667 7.33301C10.6667 7.1562 10.5965 6.98663 10.4714 6.8616C10.3464 6.73658 10.1769 6.66634 10 6.66634H9.33337C9.15656 6.66634 8.98699 6.73658 8.86197 6.8616C8.73695 6.98663 8.66671 7.1562 8.66671 7.33301C8.66671 7.50982 8.73695 7.67939 8.86197 7.80441C8.98699 7.92944 9.15656 7.99967 9.33337 7.99967ZM6.00004 5.33301H6.66671C6.84352 5.33301 7.01309 5.26277 7.13811 5.13775C7.26314 5.01272 7.33337 4.84315 7.33337 4.66634C7.33337 4.48953 7.26314 4.31996 7.13811 4.19494C7.01309 4.06991 6.84352 3.99967 6.66671 3.99967H6.00004C5.82323 3.99967 5.65366 4.06991 5.52864 4.19494C5.40361 4.31996 5.33337 4.48953 5.33337 4.66634C5.33337 4.84315 5.40361 5.01272 5.52864 5.13775C5.65366 5.26277 5.82323 5.33301 6.00004 5.33301ZM6.00004 7.99967H6.66671C6.84352 7.99967 7.01309 7.92944 7.13811 7.80441C7.26314 7.67939 7.33337 7.50982 7.33337 7.33301C7.33337 7.1562 7.26314 6.98663 7.13811 6.8616C7.01309 6.73658 6.84352 6.66634 6.66671 6.66634H6.00004C5.82323 6.66634 5.65366 6.73658 5.52864 6.8616C5.40361 6.98663 5.33337 7.1562 5.33337 7.33301C5.33337 7.50982 5.40361 7.67939 5.52864 7.80441C5.65366 7.92944 5.82323 7.99967 6.00004 7.99967ZM14 13.333H13.3334V1.99967C13.3334 1.82286 13.2631 1.65329 13.1381 1.52827C13.0131 1.40325 12.8435 1.33301 12.6667 1.33301H3.33337C3.15656 1.33301 2.98699 1.40325 2.86197 1.52827C2.73695 1.65329 2.66671 1.82286 2.66671 1.99967V13.333H2.00004C1.82323 13.333 1.65366 13.4032 1.52864 13.5283C1.40361 13.6533 1.33337 13.8229 1.33337 13.9997C1.33337 14.1765 1.40361 14.3461 1.52864 14.4711C1.65366 14.5961 1.82323 14.6663 2.00004 14.6663H14C14.1769 14.6663 14.3464 14.5961 14.4714 14.4711C14.5965 14.3461 14.6667 14.1765 14.6667 13.9997C14.6667 13.8229 14.5965 13.6533 14.4714 13.5283C14.3464 13.4032 14.1769 13.333 14 13.333ZM8.66671 13.333H7.33337V10.6663H8.66671V13.333ZM12 13.333H10V9.99967C10 9.82286 9.9298 9.65329 9.80478 9.52827C9.67975 9.40324 9.51018 9.33301 9.33337 9.33301H6.66671C6.4899 9.33301 6.32033 9.40324 6.1953 9.52827C6.07028 9.65329 6.00004 9.82286 6.00004 9.99967V13.333H4.00004V2.66634H12V13.333Z" fill="#1E1E1E"/>
-              </svg>Client <br>
+              </svg>Client <br> 
               <div style='margin:15px'> <b>${this.mission_details.clientInfo.company}  </b></div>
               <b> Date:<b> <b style='margin-left:45px'> Signature : </b> <br>
             </div>
@@ -217,8 +219,33 @@ export class CRAComponent {
     });
 
 
+    const user_id = localStorage.getItem('user_id')
+
+
+
     // Check if token is available
     if (token) {
+      this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+        next: (res) => {
+          // Handle the response from the server
+          this.myinfo = res
+
+
+          console.log("myinfo", this.myinfo);
+
+
+
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
       // Include the token in the headers
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
       this.inscriptionservice.getMyPreRegister(this.headers).subscribe({

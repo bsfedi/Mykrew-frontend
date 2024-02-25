@@ -388,14 +388,26 @@
                           </defs>
                         </svg>
                       </div>
-                      <div *ngIf="document" style="align-items: center; text-align: center">
-                        <img [src]="document" alt="Selected Image" style="
-                            max-width: 320%;
-                            max-height: 50px;
-                            margin: 5px;
-                            margin-top: 10px;
-                          " />
+                      <div *ngIf="!idpdf">
+                        <div *ngIf="document" style="align-items: center; text-align: center">
+                          <img [src]="document" alt="Selected Image" style="
+                              max-width: 320%;
+                              max-height: 50px;
+                              margin: 5px;
+                              margin-top: 10px;
+                            " />
+                        </div>
                       </div>
+
+                      <ng-container *ngIf="idpdf">
+                        <img src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image"
+                          style="
+                          max-width: 320%;
+                          max-height: 50px;
+                          margin: 5px;
+                          margin-top: 10px;
+                        " />
+                      </ng-container>
                     </div>
                   </div>
                 </div>

@@ -252,7 +252,7 @@ export class ConsultantMissionComponent {
   gotovalidemission(mission_id: any, id: any) {
     this.router.navigate(['/validationmission/' + mission_id + '/' + id])
   }
-
+  idpdf: any
   setFileInput(field: string, event: any): void {
     this.fileInputs[field] = event.target;
     const input = event.target as HTMLInputElement;
@@ -271,6 +271,9 @@ export class ConsultantMissionComponent {
 
           // Append the files if they exist, else append empty strings
           formData.append('document', document);
+          if (document.name.endsWith('.pdf')) {
+            this.idpdf = true
+          }
           console.log(formData);
         }
       };
@@ -303,6 +306,7 @@ export class ConsultantMissionComponent {
               timer: 1500
             });
             this.showPopup = false
+            window.location.reload();
             // Handle the response from the server
             console.log(res);
             // Additional logic if needed
@@ -359,6 +363,20 @@ export class ConsultantMissionComponent {
         });
       }
     });
+  }
+  // Dans votre composant TypeScript
+  downloadDocument(documentUrl: string, documentName: string): void {
+    // Créez un élément <a> pour déclencher le téléchargement
+    const link = document.createElement('a');
+    link.href = documentUrl;
+    link.download = documentName;
+
+    // Ajoutez l'élément à la page et déclenchez le téléchargement
+    document.body.appendChild(link);
+    link.click();
+
+    // Supprimez l'élément du DOM après le téléchargement
+    document.body.removeChild(link);
   }
 
 }

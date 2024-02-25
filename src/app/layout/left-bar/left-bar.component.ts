@@ -36,7 +36,9 @@ export class LeftBarComponent {
 
   }
 
-
+  gottodashboard() {
+    this.router.navigate(['dashboard'])
+  }
   gotomission() {
     this.router.navigate(['/consultant/missions'])
 

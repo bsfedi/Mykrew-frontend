@@ -11,7 +11,10 @@
           stroke-linejoin="round" />
       </svg>
     </div>
-    <div class="bord-text">Tableau de bord</div>
+    <div *ngIf="showmenu_consultant" class="bord-text" (click)="gotomission()">
+      Tableau de bord
+    </div>
+    <div *ngIf="!showmenu_consultant" class="bord-text" (click)="gottodashboard()">Tableau de bord</div>
   </div>
   <div class="custom-item">
     <div class="board-svg">
