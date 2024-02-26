@@ -29,6 +29,10 @@ export class ConsultantService {
     return this.http.get(baseUrl + 'user/getMyMissions', options);
   }
 
+  get_all_cra_by_userid(user_id: any) {
+    return this.http.get(baseUrl + 'user/getAllcras/' + user_id)
+
+  }
 
 
   getMissionById(id_mission: any, headers?: HttpHeaders): Observable<any> {

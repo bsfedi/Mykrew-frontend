@@ -1,7 +1,9 @@
 .container {
   display: flex;
   width: 100%;
+  font-family: 'Poppins', sans-serif !important;
 }
+
 .wrapper {
   display: grid;
   grid-template-columns: 0.4fr 4fr 2fr;
@@ -262,8 +264,7 @@ input[type="checkbox"] {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.second-item {
-}
+.second-item {}
 
 .profil {
   width: 12rem;
@@ -593,7 +594,7 @@ input[type="password"] {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: rgb(85, 205, 85);
 }
 
@@ -612,7 +613,7 @@ input[type="password"] {
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 

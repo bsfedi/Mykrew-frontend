@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://mykrew-backend.onrender.com/',
+  baseUrl: 'http://localhost:3001/',
   defaut: ''
 };
 console.log("prod", environment.baseUrl);

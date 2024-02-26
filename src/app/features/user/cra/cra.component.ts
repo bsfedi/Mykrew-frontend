@@ -86,7 +86,7 @@ export class CRAComponent {
         <head>
           <style>
             body {
-              font-family: 'Arial, sans-serif';
+              font-family: 'Poppins', sans-serif !important;
             }
             .custom-class {
               color: red;

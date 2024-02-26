@@ -56,13 +56,44 @@ export class ConsultantMissionComponent {
       // Add other form controls as needed
     });
   }
+  allcra: any
   ngOnInit(): void {
-
 
     const token = localStorage.getItem('token');
     this.route.params.subscribe((params) => {
       this.user_id = params['id'];
     });
+    this.consultantservice.get_all_cra_by_userid(this.user_id).subscribe({
+
+
+      next: (res) => {
+        this.allcra = res
+        console.log("allcra", this.allcra);
+
+        for (let item of this.allcra.craPdfs) {
+          console.log("item", item);
+
+          console.log("filename", item.filename);
+
+
+          item.filename = baseUrl + "uploads/" + item.filename
+          this.inscriptionservice.getPdf(item.filename).subscribe({
+
+          });
+        }
+        // Handle the response from the server
+        console.log("allc_cra_pdf", res);
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
+
 
     this.userservice.getAllDacumentsofuser(this.user_id).subscribe({
 
@@ -166,17 +197,29 @@ export class ConsultantMissionComponent {
     this.showPopup1 = false;
 
   }
+  show_cra: boolean = false
   showdocs() {
     this.show_doc = true
     this.show_mission = false
+    this.show_cra = false
+  }
+
+
+  showcras() {
+    this.show_doc = false
+    this.show_mission = false
+    this.show_cra = true
+  }
+
+  showmidssions() {
+    this.show_doc = false
+    this.show_mission = true
+    this.show_cra = false
   }
   gotocra(_id: string) {
     this.router.navigate(['/cra-mission/' + _id])
   }
-  showmidssions() {
-    this.show_doc = false
-    this.show_mission = true
-  }
+
   validatePriseDeContact(id: any, contactClient: any): void {
     console.log(id);
 
@@ -366,6 +409,8 @@ export class ConsultantMissionComponent {
   }
   // Dans votre composant TypeScript
   downloadDocument(documentUrl: string, documentName: string): void {
+    console.log(documentName, documentUrl);
+
     // Créez un élément <a> pour déclencher le téléchargement
     const link = document.createElement('a');
     link.href = documentUrl;

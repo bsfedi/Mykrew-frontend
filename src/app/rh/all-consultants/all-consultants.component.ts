@@ -50,28 +50,28 @@ export class AllConsultantsComponent {
   jobCotractEdition: any
   idcontractByPreregister: any
   getContaractByPrerigister: any
-  stats :any
-  cardstats : any
+  stats: any
+  cardstats: any
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
 
 
-  constructor(private inscriptionservice: InscriptionService,private consultantservice :ConsultantService,private socketService:WebSocketService,private fb: FormBuilder, private router: Router) {
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router) {
     this.chartOptions = {}
     this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
       next: (res) => {
-        this.stats =res
+        this.stats = res
         console.log(this.stats.series[0].data);
-        
+
         this.chartOptions = {
           series: [
             {
-    
+
               data: this.stats.series[0].data
             },
-    
+
           ],
-    
+
           chart: {
             height: 200,
             type: "area"
@@ -84,9 +84,9 @@ export class AllConsultantsComponent {
             type: "category",
             categories: this.stats.categories,
           },
-    
-    
-    
+
+
+
         };
 
 
@@ -100,7 +100,7 @@ export class AllConsultantsComponent {
 
       }
     });
- 
+
 
 
   }
@@ -121,7 +121,7 @@ export class AllConsultantsComponent {
           this.items = res
           this.nbdemande = this.items.length
 
-  
+
 
 
 
@@ -139,9 +139,9 @@ export class AllConsultantsComponent {
           // Handle the response from the server
 
           this.cardstats = res
-          
 
-  
+
+
 
 
 
@@ -155,7 +155,7 @@ export class AllConsultantsComponent {
         }
       });
     }
-    
+
   }
 
 
@@ -170,6 +170,12 @@ export class AllConsultantsComponent {
   }
   gotomissions(_id: string) {
     this.router.navigate(['/missions/' + _id])
+  }
+
+  gotocdashboad() {
+
+    this.router.navigate(['/dashboard'])
+
   }
   openPopup(): void {
     this.showPopup = true;
@@ -310,8 +316,8 @@ export class AllConsultantsComponent {
       }
     });
   }
-  gotovalidemission(id_mission:any,id: any) {
-    this.router.navigate(['/validationmission/'+id_mission+ '/' + id])
+  gotovalidemission(id_mission: any, id: any) {
+    this.router.navigate(['/validationmission/' + id_mission + '/' + id])
   }
   gottoallConsultants() {
     this.router.navigate(['/dashboard'])

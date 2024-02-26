@@ -46,26 +46,26 @@ export class DashboardComponent {
   jobCotractEdition: any
   idcontractByPreregister: any
   getContaractByPrerigister: any
-  cardstats : any
-  stats :any
+  cardstats: any
+  stats: any
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
-  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder,private consultantservice :ConsultantService, private router: Router) {
+  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private consultantservice: ConsultantService, private router: Router) {
     this.chartOptions = {}
     this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
       next: (res) => {
-        this.stats =res
+        this.stats = res
         console.log(this.stats.series[0].data);
-        
+
         this.chartOptions = {
           series: [
             {
-    
+
               data: this.stats.series[0].data
             },
-    
+
           ],
-    
+
           chart: {
             height: 200,
             type: "area"
@@ -78,9 +78,9 @@ export class DashboardComponent {
             type: "category",
             categories: this.stats.categories,
           },
-    
-    
-    
+
+
+
         };
 
 
@@ -94,6 +94,11 @@ export class DashboardComponent {
 
       }
     });
+  }
+  gotocdashboad() {
+
+    this.router.navigate(['/dashboard'])
+
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -137,9 +142,9 @@ export class DashboardComponent {
           // Handle the response from the server
 
           this.cardstats = res
-          
 
-  
+
+
 
 
 

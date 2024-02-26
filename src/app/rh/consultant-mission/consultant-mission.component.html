@@ -292,10 +292,24 @@
                 font-size: 0.875rem;
                 font-style: normal;
                 font-weight: 400;
+                margin-right: 30px;
                 line-height: 1.375rem; /* 157.143% */
               " (click)="showdocs()">
               Documents Assocciés
-              <b *ngIf="!show_mission">
+              <b *ngIf="show_doc">
+                <hr />
+              </b>
+            </div>
+            <div style="
+            color: #6e7787;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.375rem; /* 157.143% */
+          " (click)="showcras()">
+              List cra
+              <b *ngIf="show_cra">
                 <hr />
               </b>
             </div>
@@ -461,7 +475,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="!show_mission">
+          <div *ngIf="show_doc">
             <div class="popup" *ngIf="showPopup">
               <div class="popup-content">
                 <div style="float: right" (click)="closePopup()">
@@ -638,6 +652,48 @@
               </tbody>
             </table>
           </div>
+
+          <div *ngIf="show_cra">
+            <br />
+            <table class="table">
+              <thead>
+                <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+                <th>ID</th>
+                <th>Document</th>
+                <th>date</th>
+                <th></th>
+                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let doc of allcra.craPdfs ; let i = index">
+                  <td></td>
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ doc.filename.split('uploads/')[1] }}</td>
+                  <td>{{ doc.uploadDate.split(["T"])[0] }}</td>
+                  <td>
+                    <div (click)="downloadDocument(doc.filename, doc.filename)" style="
+                        display: flex;
+
+                        height: 1.5rem;
+                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                        justify-content: center;
+                        align-items: center;
+                        flex-shrink: 0;
+                        border-radius: 0.75rem;
+
+                        margin-left: 0px;
+                        background: #f1f8fd;
+                        color: #379ae6;
+                      ">
+                      Telecharger
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
     </div>

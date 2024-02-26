@@ -55,7 +55,7 @@ export class InformationsComponent {
       dailyRate: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      portage: ['ee', Validators.required],
+      portage: ['', Validators.required],
       simulationValidation: ['', Validators.required],
     });
   }
@@ -158,8 +158,8 @@ export class InformationsComponent {
     const formData = new FormData();
 
     // Append the identificationDocument file
-    const identificationDocumentFile = this.myForm.value.identificationDocument;
-    formData.append('identificationDocument', identificationDocumentFile);
+    // const identificationDocumentFile = this.myForm.value.identificationDocument;
+    // formData.append('identificationDocument', identificationDocumentFile);
     // Append values directly to formData
     formData.append('firstName', this.myForm.value.firstName);
     formData.append('lastName', this.myForm.value.lastName);
@@ -169,10 +169,10 @@ export class InformationsComponent {
     formData.append('location', this.myForm.value.location);
     formData.append('nationality', this.myForm.value.nationality);
     formData.append('socialSecurityNumber', this.myForm.value.socialSecurityNumber);
-    // formData.append('identificationDocument', this.myForm.value.identificationDocument);
+    formData.append('identificationDocument', this.personalInfo.identificationDocument.value.split('uploads/')[1]);
     formData.append('rib', this.myForm.value.rib);
     formData.append('hasCar', this.myForm.value.hasCar);
-    formData.append('drivingLicense', this.myForm.value.drivingLicense);
+    formData.append('drivingLicense', this.personalInfo.drivingLicense.value.split('uploads/')[1]);
     formData.append('company', this.myForm.value.company);
     formData.append('clientfirstName', this.myForm.value.clientfirstName);
     formData.append('clientlastName', this.myForm.value.clientlastName);

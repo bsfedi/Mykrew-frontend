@@ -36,6 +36,8 @@ export class LeftBarComponent {
 
   }
 
+
+
   gottodashboard() {
     this.router.navigate(['dashboard'])
   }

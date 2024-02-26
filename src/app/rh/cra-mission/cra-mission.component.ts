@@ -114,9 +114,11 @@ export class CraMissionComponent {
         this.cradetails = res
         this.cradetails.craInformation.signature = baseUrl + "uploads/" + this.cradetails.craInformation.signature
         this.selectedDays = this.cradetails.craInformation.selectedDates
-        this.cradetails.craInformation.craPDF = baseUrl + "uploads/" + this.cradetails.craInformation.craPDF
+        this.cradetails.craInformation.craPDF[0].filename = baseUrl + "uploads/" + this.cradetails.craInformation.craPDF[0].filename
 
-        this.inscriptionservice.getPdf(this.cradetails.craInformation.craPDF).subscribe({
+
+
+        this.inscriptionservice.getPdf(this.cradetails.craInformation.craPDF[0].filename).subscribe({
           next: (res) => {
             this.pdfData = res;
             this.isLoading = false;
