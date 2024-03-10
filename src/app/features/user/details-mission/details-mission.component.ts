@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
-
+import Swal from 'sweetalert2';
 declare const PDFObject: any;
 
 
@@ -191,22 +191,59 @@ export class DetailsMissionComponent {
     formData.append('endDate', this.myForm.value.endDate);
     formData.append('simulationValidation', '1702545972864-sample.pdf');
 
+    Swal.fire({
+      title: 'Confirmer le virement',
+      text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
+      icon: 'question',
+      iconColor: '#1E1E1E',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, effectuer le virement !',
+      confirmButtonColor: '#1E1E1E',
+      cancelButtonText: 'Annuler',
+      customClass: {
+        confirmButton: 'custom-confirm-button-class'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.consultantservice.editmission(formData, this.mission_id, this.headers).subscribe({
 
 
+          next: (res) => {
+            Swal.fire({
+              title: 'Mission modifié',
+              text: 'Mission a été modifié avec succès !',
+              icon: 'success'
+            });
+            // Handle success
+            console.log(res);
 
-    this.consultantservice.editmission(formData, this.mission_id, this.headers).subscribe({
-      next: (res) => {
-        // Handle success
-        console.log(res);
+          },
+          error: (e) => {
+            // Handle errors
+            console.error(e);
+            Swal.fire({
+              title: 'Erreur de modification',
+              text: "La modification du mission a échoué. Veuillez réessayer.",
+              icon: 'error'
+            });
+            // Set loading to false in case of an error
 
-      },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-        // Set loading to false in case of an error
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'modification annulé',
 
+          icon: 'info',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#1E1E1E',
+        });
       }
     });
+
+
+
 
 
 
