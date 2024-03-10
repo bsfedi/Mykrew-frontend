@@ -23,7 +23,7 @@
             </div>
 
             <div>
-                <button type="submit" style="">
+                <button type="submit" style="" (click)="navigatetoinfomations()">
                     <div class="inscrire"> Suivre votre demande </div>
                 </button>
             </div>
@@ -55,10 +55,14 @@
                 <b> Votre demande
                     n’a pas été acceptée</b>
             </div>
-
+            <div
+                style="background-color: rgb(233, 106, 106); width: 350px;border-radius: 1rem;margin: 10px 10px 10px 0px;padding:  5px;color:white">
+                votre demande de préinscription doit être modifiée, veuillez cliquer sur le
+                bouton « Consulter ma demande » pour effecteur les changements
+            </div>
             <div>
                 <button type="submit" style="width: 320px;">
-                    <div class="inscrire" (click)="navigatetoinfomations()"> Consultez votre demande </div>
+                    <div class="inscrire" (click)="navigatetoinfomations()"> Consulter ma demande </div>
                 </button>
             </div>
 

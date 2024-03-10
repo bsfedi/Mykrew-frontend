@@ -619,7 +619,7 @@ input[type="password"] {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: rgb(85, 205, 85);
 }
 
@@ -638,7 +638,7 @@ input[type="password"] {
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 
@@ -690,6 +690,7 @@ input[type="password"] {
 }
 
 .nb_money {
+  text-align: center;
   margin-top: 15px;
   margin-left: 15px;
   font-size: 1.6875rem;
@@ -714,7 +715,7 @@ input[type="password"] {
 .first {
   display: flex;
   width: auto;
-
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;

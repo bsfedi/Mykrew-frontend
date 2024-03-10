@@ -13,6 +13,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WebSocketService } from './services/web-socket.service';
 
 import { environment } from 'src/environments/environment';
+import { ProfilComponent } from './layout/profil/profil.component';
 const baseUrl = `${environment.baseUrl}`;
 
 const config: SocketIoConfig = { url: baseUrl, options: {} };
@@ -20,6 +21,7 @@ const config: SocketIoConfig = { url: baseUrl, options: {} };
 @NgModule({
   declarations: [
     AppComponent,
+    ProfilComponent,
 
 
   ],

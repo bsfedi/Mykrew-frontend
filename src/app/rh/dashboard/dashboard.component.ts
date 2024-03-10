@@ -97,7 +97,7 @@ export class DashboardComponent {
   }
   gotocdashboad() {
 
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/allConsultants'])
 
   }
   ngOnInit(): void {
@@ -291,6 +291,72 @@ export class DashboardComponent {
 
       }
     });
+  }
+  sortItemsByLastUpdated() {
+    this.items.sort((a: any, b: any) => {
+      return new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime();
+    });
+  }
+  exportTable() {
+    // Select the table element
+    const table = document.querySelector('table');
+
+    // Check if table is not null
+    if (table) {
+      // Get the table rows
+      const rows = Array.from(table.querySelectorAll('tr'));
+
+      // Create an array to store the row data
+      const rowData = [];
+
+      // Get the header row
+      const headerRow = rows[0];
+
+      // Get the cells within the header row
+      const headerCells = Array.from(headerRow.querySelectorAll('th'));
+
+      // Get the header cell content and add it to the rowData array
+      const headerRowDataItem = headerCells.map(cell => cell.innerText.trim());
+      rowData.push(headerRowDataItem.join(','));
+
+      // Iterate over each row (starting from the second row to exclude the header)
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const rowDataItem: any[] = [];
+
+        // Get the cells within the row
+        const cells = Array.from(row.querySelectorAll('td'));
+
+        // Iterate over each cell
+        cells.forEach(cell => {
+          // Add cell content to rowDataItem array
+          rowDataItem.push(cell.innerText.trim());
+        });
+
+        // Add rowDataItem array to rowData array
+        rowData.push(rowDataItem.join(','));
+      }
+
+      // Convert rowData array to CSV string
+      const csvString = rowData.join('\n');
+
+      // Create a Blob object containing the CSV data
+      const blob = new Blob([csvString], { type: 'text/csv' });
+
+      // Create a temporary anchor element to trigger the download
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('style', 'display: none;');
+      a.href = url;
+      a.download = 'table_data.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } else {
+      // Handle the case when the table is not found
+      console.error('Table element not found');
+    }
   }
   validateContractValidation(id: any, contractValidation: any): void {
     const data = {

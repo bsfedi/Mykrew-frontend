@@ -1,0 +1,113 @@
+<div class="wrapper">
+    <div>
+        <app-left-bar></app-left-bar>
+    </div>
+    <div class="second-container">
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                    fill="#1E1E1E" />
+            </svg>
+            <div class="Search-text">
+                <input type="search" placeholder="Search Anything Here..." />
+            </div>
+            <div>
+                <button class="button">Rechercher</button>
+            </div>
+        </div>
+        <br />
+        <br />
+        <!-- <div class="flex-container">
+            <div>
+                <div class="member">Membres de l'équipe</div>
+                Gérez les membres de votre équipe et les autorisations de leur compte
+            </div>
+
+            <div>
+                <button class="button1">
+                    + Ajouter un membre
+                </button>
+            </div>
+
+        </div>
+        <hr /> -->
+        <div>
+            <div>
+                <div><b>CRAS</b></div>
+                <br />
+            </div>
+            <div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+                            <th> id</th>
+                            <th>User</th>
+                            <th>Document</th>
+                            <th>date</th>
+                            <th></th>
+                            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let cra of all_cras; let i = index">
+                            <tr *ngFor="let pdf of cra.craInformation.craPDF; let j = index">
+                                <td></td>
+                                <td>{{ getId(i, j, all_cras) }}</td>
+                                <td>
+                                    <div style="display: flex;">
+
+                                        <div class="image">
+                                            <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+                                        </div>
+                                        <div style="margin-left: 5px; margin-top: 10px;">{{ cra.firstName }} {{
+                                            cra.lastName
+                                            }} </div><br />
+
+                                    </div>
+                                </td>
+                                <!-- Placeholder for additional rows -->
+                                <td>{{ pdf.filename.split('uploads/')[1] }}</td>
+                                <td>{{ pdf.uploadDate | date: 'short' }}</td>
+                                <td>
+                                    <div (click)="downloadDocument(pdf.filename, pdf.filename)" style="
+                                    display: flex;
+            
+                                    height: 1.5rem;
+                                    padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    flex-shrink: 0;
+                                    border-radius: 0.75rem;
+            
+                                    margin-left: 0px;
+                                    background: #f1f8fd;
+                                    color: #379ae6;
+                                  ">
+                                        Telecharger
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <br />
+        <br />
+    </div>
+    <div>
+        <div class="right-item">
+            <div class="profil">
+                <img src="/assets/unsplash_dt60oksDTx8.png" />
+                <div style="" class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>
+
+            </div>
+        </div>
+    </div>
+</div>

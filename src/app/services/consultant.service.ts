@@ -34,6 +34,14 @@ export class ConsultantService {
 
   }
 
+  sendemailconsultant(data: any) {
+    return this.http.post(baseUrl + 'user/sendemailtoconsultant', data)
+
+  }
+
+  get_all_cra() {
+    return this.http.get(baseUrl + 'user/craInformation/')
+  }
 
   getMissionById(id_mission: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided

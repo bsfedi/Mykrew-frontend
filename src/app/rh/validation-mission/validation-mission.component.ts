@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -31,13 +32,39 @@ export class ValidationMissionComponent {
   noteValue: string = '';
   noteshow: any;
   stats: any;
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  res: any
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
   }
   ngOnInit(): void {
 
     const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id');
 
+
+
+
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     this.route.params.subscribe((params) => {
       this.contract_id = params['id'];
       this.mission_id = params['id_mission']
@@ -181,7 +208,7 @@ export class ValidationMissionComponent {
             }
 
             else {
-              Swal.fire('Error', 'Tu peut pas terminer une mission validé', 'error');
+              Swal.fire('Error', 'Tu peux pas terminer une mission validé', 'error');
             }
 
           }

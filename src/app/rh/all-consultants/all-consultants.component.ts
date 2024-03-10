@@ -38,7 +38,7 @@ export type ChartOptions = {
   styleUrls: ['./all-consultants.component.css']
 })
 export class AllConsultantsComponent {
-  items: any;
+  items: any[] = [];
   showPopup: boolean = false;
   showPopup1: boolean = false;
   isMenuOpen: boolean[] = [];
@@ -52,6 +52,7 @@ export class AllConsultantsComponent {
   getContaractByPrerigister: any
   stats: any
   cardstats: any
+  process_statut: any
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
 
@@ -117,23 +118,36 @@ export class AllConsultantsComponent {
       this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
         next: (res) => {
           // Handle the response from the server
+          this.nbdemande = res.length; // Assuming res is an array
 
-          this.items = res
-          this.nbdemande = this.items.length
+          // Update this.items with the response
+          this.items = res;
 
+          // Iterate through each item in this.items
+          for (let item of this.items) {
+            this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
+              next: (contractRes) => {
+                // Set the process_status for the current item
+                item.process_status = contractRes.statut;
+                console.log(contractRes.statut);
+              },
+              error: (e) => {
+                console.error(e);
+                // Handle error for individual contract retrieval
+                // You may want to set a default value for process_status or handle this error differently
+              }
+            });
+          }
 
-
-
-
-
+          console.log('itemssssssss', this.items);
         },
         error: (e) => {
           // Handle errors
           console.error(e);
           // Set loading to false in case of an error
-
         }
       });
+
       this.consultantservice.getConsultantStats().subscribe({
         next: (res) => {
           // Handle the response from the server
@@ -158,7 +172,73 @@ export class AllConsultantsComponent {
 
   }
 
+  sortItemsByLastUpdated() {
+    this.items.sort((a, b) => {
+      return new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime();
+    });
+  }
 
+  exportTable() {
+    // Select the table element
+    const table = document.querySelector('table');
+
+    // Check if table is not null
+    if (table) {
+      // Get the table rows
+      const rows = Array.from(table.querySelectorAll('tr'));
+
+      // Create an array to store the row data
+      const rowData = [];
+
+      // Get the header row
+      const headerRow = rows[0];
+
+      // Get the cells within the header row
+      const headerCells = Array.from(headerRow.querySelectorAll('th'));
+
+      // Get the header cell content and add it to the rowData array
+      const headerRowDataItem = headerCells.map(cell => cell.innerText.trim());
+      rowData.push(headerRowDataItem.join(','));
+
+      // Iterate over each row (starting from the second row to exclude the header)
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const rowDataItem: any[] = [];
+
+        // Get the cells within the row
+        const cells = Array.from(row.querySelectorAll('td'));
+
+        // Iterate over each cell
+        cells.forEach(cell => {
+          // Add cell content to rowDataItem array
+          rowDataItem.push(cell.innerText.trim());
+        });
+
+        // Add rowDataItem array to rowData array
+        rowData.push(rowDataItem.join(','));
+      }
+
+      // Convert rowData array to CSV string
+      const csvString = rowData.join('\n');
+
+      // Create a Blob object containing the CSV data
+      const blob = new Blob([csvString], { type: 'text/csv' });
+
+      // Create a temporary anchor element to trigger the download
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('style', 'display: none;');
+      a.href = url;
+      a.download = 'table_data.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } else {
+      // Handle the case when the table is not found
+      console.error('Table element not found');
+    }
+  }
   click() {
     this.router.navigate(['/all-preinscription']);
   }

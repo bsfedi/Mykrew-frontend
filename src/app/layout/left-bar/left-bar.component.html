@@ -50,7 +50,7 @@
           stroke-linejoin="round" />
       </svg>
     </div>
-    <div *ngIf="!showmenu_consultant" class="bord-text">Entreprise</div>
+    <div *ngIf="!showmenu_consultant" class="bord-text" (click)="gottoallcras()">Consulter CRAs</div>
     <div class="bord-text" *ngIf="showmenu_consultant" (click)="goinfopersot()">
       Mes info
     </div>
@@ -72,7 +72,7 @@
       Mes virements
     </div>
   </div>
-  <div class="custom-item">
+  <!-- <div class="custom-item">
     <div class="board-svg">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
         <g clip-path="url(#clip0_938_2097)">
@@ -97,7 +97,7 @@
       </svg>
     </div>
     <div class="bord-text">Mes contacts</div>
-  </div>
+  </div> -->
   <div class="faq-sedeconnecter">
     <div class="custom-item">
       <div class="board-svg">

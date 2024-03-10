@@ -28,6 +28,12 @@ export class UserService {
     return this.http.post(baseUrl + 'user/login', data);
   }
 
+  forgot_password(data: any) {
+    return this.http.post(baseUrl + 'user/sendForgotPasswordMail', data);
+  }
+  updatePassword(id: any, data: any) {
+    return this.http.post(baseUrl + 'user/resetPassword/' + id, data);
+  }
   createinscrption(data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};

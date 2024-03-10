@@ -42,6 +42,7 @@ export class MissionsComponent {
   closestEndDate: any | null;
   isMenuOpen: boolean[] = [];
   isMenuOpen1: boolean[] = []
+  isMenuOpen2: boolean[] = []
   headers: any
   clientValidation: any
   contactClient: any
@@ -445,6 +446,9 @@ export class MissionsComponent {
   }
   toggleMenu1(i: number) {
     this.isMenuOpen1[i] = !this.isMenuOpen1[i];
+  }
+  toggleMenu2(i: number) {
+    this.isMenuOpen2[i] = !this.isMenuOpen2[i];
   }
   gotovalidation(_id: string) {
     this.router.navigate(['/consultant/details-mission/' + _id])

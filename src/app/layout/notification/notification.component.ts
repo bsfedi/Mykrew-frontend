@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
+import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -9,17 +10,44 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit, OnDestroy {
-  notification : any[]= [];
-  lastnotifications : any;
-  lastnotificationsvir : any;
-  constructor(private socketService: WebSocketService, private consultantservice :ConsultantService,private router : Router ) {}
+  notification: any[] = [];
+  lastnotifications: any;
+  lastnotificationsvir: any;
+  res: any
+  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private userservice: UserService, private router: Router) { }
 
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
+
+
+
+
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
     this.consultantservice.getlastnotifications(user_id).subscribe({
       next: (res1) => {
         console.log(res1);
-        this.lastnotifications =res1
+        this.lastnotifications = res1
       },
       error: (e) => {
         // Handle errors
@@ -31,7 +59,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
     this.consultantservice.getlastvirementnotification(user_id).subscribe({
       next: (res1) => {
         console.log(res1);
-        this.lastnotificationsvir =res1
+        this.lastnotificationsvir = res1
       },
       error: (e) => {
         // Handle errors
@@ -40,7 +68,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
       }
     });
-    
+
     // Connect to Socket.IO server
     this.socketService.connect();
 
@@ -50,21 +78,21 @@ export class NotificationComponent implements OnInit, OnDestroy {
       // Handle your Socket.IO messages here
     });
 
-  // Listen for custom 'rhNotification' event in WebSocketService
+    // Listen for custom 'rhNotification' event in WebSocketService
     this.socketService.onRhNotification().subscribe((event: any) => {
-    console.log('Received rhNotification event:', event);
-    if (event.notification.toWho == "CONSULTANT"){
-      
-      if (event.notification.typeOfNotification == 'VIREMENT' ){
-        this.lastnotificationsvir.push(event.notification)
-      }else{
-        this.lastnotifications.push(event.notification)
+      console.log('Received rhNotification event:', event);
+      if (event.notification.toWho == "CONSULTANT") {
+
+        if (event.notification.typeOfNotification == 'VIREMENT') {
+          this.lastnotificationsvir.push(event.notification)
+        } else {
+          this.lastnotifications.push(event.notification)
+        }
+
       }
-      
-    }
-    
-    // Handle your rhNotification event here
-  });
+
+      // Handle your rhNotification event here
+    });
   }
 
   ngOnDestroy(): void {
@@ -72,7 +100,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
     this.socketService.disconnect();
   }
 
-  gotoallnotification(){
+  gotoallnotification() {
     this.router.navigate(['/consultant/allnotifications'])
   }
 

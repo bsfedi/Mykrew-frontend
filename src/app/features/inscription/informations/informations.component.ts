@@ -172,7 +172,7 @@ export class InformationsComponent {
     formData.append('identificationDocument', this.personalInfo.identificationDocument.value.split('uploads/')[1]);
     formData.append('rib', this.myForm.value.rib);
     formData.append('hasCar', this.myForm.value.hasCar);
-    formData.append('drivingLicense', this.personalInfo.drivingLicense.value.split('uploads/')[1]);
+    formData.append('drivingLicense', this.personalInfo.carInfo.drivingLicense.value.split('uploads/')[1]);
     formData.append('company', this.myForm.value.company);
     formData.append('clientfirstName', this.myForm.value.clientfirstName);
     formData.append('clientlastName', this.myForm.value.clientlastName);
@@ -185,8 +185,9 @@ export class InformationsComponent {
     formData.append('dailyRate', this.myForm.value.dailyRate);
     formData.append('startDate', this.myForm.value.startDate);
     formData.append('endDate', this.myForm.value.endDate);
-    formData.append('simulationValidation', this.myForm.value.simulationValidation);
-    formData.append('portage', this.myForm.value.portage)
+    formData.append('simulationValidation', this.missionInfo.isSimulationValidated.value);
+    formData.append('portage', ' ')  //this.myForm.value.portage
+
 
 
     // Display confirmation popup

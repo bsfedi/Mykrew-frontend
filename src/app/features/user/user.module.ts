@@ -19,6 +19,8 @@ import { NotificationComponent } from 'src/app/layout/notification/notification.
 import { LeftBarComponent } from 'src/app/layout/left-bar/left-bar.component';
 import { CRAComponent } from './cra/cra.component';
 import { AllnotificationsComponent } from './allnotifications/allnotifications.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 
 export const routes: Routes = [
@@ -66,15 +68,23 @@ export const routes: Routes = [
     path: 'consultant/infoperso',
     component: InfoPersoComponent,
 
-  },  
+  },
+  {
+    path: "mot-de-passe-oublier",
+    component: ForgetPasswordComponent
+  },
+  {
+    path: "change-mot-de-passe/:user_id",
+    component: UpdatePasswordComponent
+  },
   {
     path: 'consultant/allnotifications',
     component: AllnotificationsComponent,
 
   },
   {
-    path: 'CRA/:id', 
-    component : CRAComponent
+    path: 'CRA/:id',
+    component: CRAComponent
   }
 
 
@@ -95,7 +105,9 @@ export const routes: Routes = [
     NotificationComponent,
     CRAComponent,
     AllnotificationsComponent,
-    
+    ForgetPasswordComponent,
+    UpdatePasswordComponent,
+
 
   ],
   imports: [

@@ -21,6 +21,7 @@ import { ValidatedTjmComponent } from './validated-tjm/validated-tjm.component';
 import { CraMissionComponent } from './cra-mission/cra-mission.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListCraDocsComponent } from './list-cra-docs/list-cra-docs.component';
+import { AllCrasComponent } from './all-cras/all-cras.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,12 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'signin',
   },
+  {
+    path: 'allcras',
+    component: AllCrasComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -110,6 +117,7 @@ export const routes: Routes = [
     CraMissionComponent,
     AdminComponent,
     ListCraDocsComponent,
+    AllCrasComponent,
   ],
   imports: [
     CommonModule,

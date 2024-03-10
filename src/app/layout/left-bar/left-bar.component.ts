@@ -49,7 +49,9 @@ export class LeftBarComponent {
     this.router.navigate(['/consultant/virements'])
 
   }
-
+  gottoallcras() {
+    this.router.navigate(['/allcras'])
+  }
   goinfopersot() {
     this.router.navigate(['/consultant/infoperso'])
   }

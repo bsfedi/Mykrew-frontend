@@ -53,7 +53,7 @@
         </div>
         <div class="tjm_moyen">
           <div class="chaffaire">TJM Moyen</div>
-          <div class="nb_money">
+          <div class="nb_money" style=" justify-content: center;">
             <b> {{ cardstats.averageTJM | number : "1.0-0" }}€ </b>
           </div>
         </div>
@@ -82,7 +82,7 @@
               stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <div class="first">
+        <div class="first" (click)="sortItemsByLastUpdated()">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
@@ -97,13 +97,13 @@
         </div>
         <div class="first">
           <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants</div>
-          <div>
+          <!-- <div>
             <div class="second">Missions</div>
-          </div>
+          </div> -->
         </div>
-        <div class="Tableau" style="margin-left: 105px">
-          <div class="first">Ajouter un consultant</div>
-          <div class="first">Export list</div>
+        <div class="Tableau" style="margin-left: 335px">
+
+          <div class="first" (click)="exportTable()">Export list</div>
         </div>
       </div>
       <br />

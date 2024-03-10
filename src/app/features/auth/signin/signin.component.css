@@ -22,7 +22,7 @@
     width: 30.5rem;
     color: #FFF;
 
-    
+
     font-size: 2.5rem;
     font-style: normal;
     font-weight: 700;
@@ -107,7 +107,7 @@ button {
 
 .inscrire {
     color: #FFF;
-   
+
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
@@ -120,7 +120,7 @@ button {
 
 .mdp {
     color: #000;
-
+    cursor: pointer;
     margin-left: 260px;
     font-style: normal;
     font-weight: 400;

@@ -20,6 +20,22 @@ body {
   margin-right: 10px;
 }
 
+.type {
+  display: flex;
+  margin-top: 7px;
+  width: 25.625rem;
+
+  height: 3.5rem;
+  padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  margin: 10px;
+  background: #f3f4f6;
+  margin-left: 20px;
+}
+
 .message-text {
   margin-right: 150px;
   width: 140px;
@@ -95,11 +111,13 @@ body {
 p {
   margin: 0px;
 }
+
 .second-container {
   margin-left: 300px;
   box-shadow: inset;
   flex-shrink: 0;
 }
+
 .avatar-container1 {
   width: 2.75rem;
   height: 2.75rem;

@@ -4,6 +4,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-notificaion-rh',
@@ -20,11 +21,44 @@ export class NotificaionRhComponent {
   shownb_demanades = false
   nb_consultants: any
   lastnotifications: any
-  constructor(private inscriptionservice: InscriptionService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
+  res: any
+  token: any
+  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
   gotoallnotification() {
     this.route.navigate(['/consultant/allnotifications'])
   }
   ngOnInit(): void {
+
+    const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id')
+
+
+    // Check if token is available
+    if (token) {
+      // Include the token in the headers
+      this.headers = new HttpHeaders().set('Authorization', `${token}`);
+      this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+        next: (res) => {
+          // Handle the response from the server
+          this.res = res
+          console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+    }
     this.consultantService.getlastnotificationsrh().subscribe({
       next: (res1) => {
         console.log(res1);
@@ -41,7 +75,7 @@ export class NotificaionRhComponent {
     this.url = this.router.url
     console.log(this.url._value[0].path);
 
-    const token = localStorage.getItem('token');
+
     this.socketService.connect()
     // Listen for custom 'rhNotification' event in WebSocketService
     this.socketService.onRhNotification().subscribe((event: any) => {
@@ -120,5 +154,11 @@ export class NotificaionRhComponent {
   }
   gottoallConsultants() {
     this.route.navigate(['/dashboard'])
+  }
+  gotovalidation(_id: string) {
+    this.route.navigate(['/validation/' + _id])
+  }
+  gotovalidationmission(_id: string) {
+    this.route.navigate(['mission/' + _id])
   }
 }

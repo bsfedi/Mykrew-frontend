@@ -24,7 +24,7 @@
           [dataLabels]="chartOptions.dataLabels" [yaxis]="chartOptions.yaxis" [colors]="chartOptions.colors"
           [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
       </div>
-      <div class="Tableau" style="margin-left: 80px">
+      <div class="Tableau" style=" justify-content: center;">
         <div class="chiffre_affaire">
           <div class="Tableau">
             <div class="chaffaire">Chiffre d’Affaire</div>
@@ -85,7 +85,7 @@
               stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <div class="first">
+        <div class="first" (click)="sortItemsByLastUpdated()">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
@@ -99,14 +99,14 @@
           </svg>
         </div>
         <div class="first">
-          <div style="margin-right: 5px;cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants</div>
-          <div>
+          <div style="margin-right: 5px;cursor: pointer;" (click)="gotocdashboad()">Tous les demandes</div>
+          <!-- <div>
             <div class="second">Missions</div>
-          </div>
+          </div> -->
         </div>
-        <div class="Tableau" style="margin-left: 105px">
-          <div class="first">Ajouter un consultant</div>
-          <div class="first">Export list</div>
+        <div class="Tableau" style="margin-left: 360px">
+
+          <div class="first" (click)="exportTable()">Export list</div>
         </div>
       </div>
       <br />
@@ -125,13 +125,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items; let i = index">
+          <tr *ngFor="let item of items; let i = index" style="height: auto;">
             <td class="Tableau">
               <div class="image">
                 <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
               </div>
 
-              <div style="margin-top: 12px">
+              <div style="margin-top: 12px;max-width: 150px;">
                 {{ item.personalInfo?.firstName.value }}
                 {{ item.personalInfo?.lastName.value }}
               </div>
@@ -175,7 +175,7 @@
                       </svg>
                     </span>
                     <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
-                      <div style="display: flex; cursor: pointer">
+                      <div style="display: flex; cursor: pointer" *ngIf="item.process_status === 'PENDING'">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
                           style="margin-left: -13px" fill="none">
                           <path

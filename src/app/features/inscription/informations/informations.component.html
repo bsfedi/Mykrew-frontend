@@ -256,10 +256,10 @@
                     <div class="cause">
                         {{ personalInfo?.socialSecurityNumber.causeNonValidation }}
                     </div>
-                    <div class="label"> Boite de rattachement :</div>
+                    <!-- <div class="label"> Boite de rattachement :</div> -->
                     <div class="Tableau">
-                        <input formControlName="portage" [ngModel]="personalInfo?.portage.value" type="text" required
-                            placeholder="RIB" />
+                        <!-- <input formControlName="portage" [ngModel]="personalInfo?.portage.value" type="text" required
+                            placeholder="RIB" /> -->
                         <!-- [readonly]="personalInfo?.portage.validated" -->
                         <!-- <label class="toggle-switch" *ngIf="!missionInfo?.portage.validated">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -357,7 +357,7 @@
                         <input type="text" formControlName="clientPostion"
                             [ngModel]="clientInfo?.clientContact.position.value"
                             [readonly]="clientInfo?.clientContact.position.validated">
-                        <label class="toggle-switch" *ngIf="!clientInfo?.clientContact.position.validated">
+                        <label class="toggle-switch" *ngIf="!missionInfo?.profession.validated">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path
@@ -411,7 +411,7 @@
                     <div class="cause">
                         {{ missionInfo?.profession.causeNonValidation }}
                     </div>
-                    <div class="label"> TJM : :</div>
+                    <div class="label"> TJM : </div>
                     <div class="Tableau">
                         <input formControlName="dailyRate" [ngModel]="missionInfo?.dailyRate.value"
                             [readonly]="missionInfo?.dailyRate.validated" type="text" placeholder="Société" required />

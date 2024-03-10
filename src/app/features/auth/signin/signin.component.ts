@@ -159,4 +159,7 @@ export class SigninComponent {
 
     console.log(data);
   }
+  gotoforgotpassword() {
+    this.router.navigate(['/mot-de-passe-oublier']);
+  }
 }

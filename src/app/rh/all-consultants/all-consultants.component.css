@@ -33,6 +33,7 @@ body {
 }
 
 .first-item {
+
   color: white;
   position: fixed;
   background: #1e1e1e;
@@ -692,6 +693,7 @@ input[type="password"] {
 .nb_money {
   margin-top: 15px;
   margin-left: 15px;
+  text-align: center;
   font-size: 1.6875rem;
 }
 
@@ -714,7 +716,7 @@ input[type="password"] {
 .first {
   display: flex;
   width: auto;
-
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;

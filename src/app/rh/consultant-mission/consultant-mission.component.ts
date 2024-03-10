@@ -38,14 +38,23 @@ export class ConsultantMissionComponent {
   docs: any
   virementTypes = ['Participation', 'Cooptation', 'Frais'];
   foremData: FormGroup;
+  formData1: FormGroup;
   show_mission: boolean = true
   show_doc: boolean = false
+  res: any
+  showPopup3: any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
     this.foremData = this.fb.group({
       userId: [''],
       typeVirement: ['Participation', Validators.required],
       montant: ['', Validators.required],
+      // Add other form controls as needed
+    });
+    this.formData1 = this.fb.group({
+      email: [''],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
       // Add other form controls as needed
     });
 
@@ -58,7 +67,32 @@ export class ConsultantMissionComponent {
   }
   allcra: any
   ngOnInit(): void {
+    const user_id = localStorage.getItem('user_id');
 
+
+
+
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     const token = localStorage.getItem('token');
     this.route.params.subscribe((params) => {
       this.user_id = params['id'];
@@ -170,7 +204,58 @@ export class ConsultantMissionComponent {
     }
 
   }
-
+  sendmail(email: any) {
+    Swal.fire({
+      title: 'Confirmer le virement',
+      text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
+      icon: 'question',
+      iconColor: '#1E1E1E',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, effectuer le virement !',
+      confirmButtonColor: '#1E1E1E',
+      cancelButtonText: 'Annuler',
+      customClass: {
+        confirmButton: 'custom-confirm-button-class'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const formData1 = this.formData1.value;
+        const data = {
+          "email": email,
+          "subject": formData1.subject,
+          "message": formData1.message
+        };
+        this.consultantservice.sendemailconsultant(data).subscribe({
+          next: (res) => {
+            // Handle the response from the server
+            Swal.fire({
+              title: 'Email envoyé',
+              text: 'L\'email a été envoyé avec succès !',
+              icon: 'success'
+            });
+            this.showPopup3 = false;
+          },
+          error: (e) => {
+            console.log(e);
+            // Handle errors
+            Swal.fire({
+              title: 'Erreur d\'envoi',
+              text: "L'envoi de l'email a échoué. Veuillez réessayer.",
+              icon: 'error'
+            });
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Envoi annulé',
+          text: 'Aucun email n\'a été envoyé.',
+          icon: 'info',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#1E1E1E',
+        });
+      }
+    });
+  }
   click() {
     this.router.navigate(['/all-preinscription']);
   }
@@ -189,12 +274,19 @@ export class ConsultantMissionComponent {
   openPopup1(): void {
     this.showPopup1 = true;
   }
+  openPopup3(): void {
+    this.showPopup3 = true;
+  }
   closePopup(): void {
     this.showPopup = false;
 
   }
   closePopup1(): void {
     this.showPopup1 = false;
+
+  }
+  closePopup3(): void {
+    this.showPopup3 = false;
 
   }
   show_cra: boolean = false
