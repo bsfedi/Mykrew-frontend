@@ -43,7 +43,7 @@ export class NotificaionRhComponent {
         next: (res) => {
           // Handle the response from the server
           this.res = res
-          console.log('inffffffffoooooo', this.res);
+
 
 
 
@@ -63,6 +63,16 @@ export class NotificaionRhComponent {
       next: (res1) => {
         console.log(res1);
         this.lastnotifications = res1.slice(0, 10);
+        for (let item of this.lastnotifications) {
+          //getuserinfomation
+          this.consultantService.getuserinfomation(item["userId"], this.headers).subscribe({
+            next: (info) => {
+              console.log(info);
+
+              item["userId"] = info["firstName"] + ' ' + info["lastName"]
+            }
+          })
+        }
       },
       error: (e) => {
         // Handle errors

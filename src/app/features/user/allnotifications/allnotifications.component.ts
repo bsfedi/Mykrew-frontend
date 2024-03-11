@@ -25,6 +25,7 @@ export class AllnotificationsComponent {
           this.lastnotifications = res1;
           console.log(this.lastnotifications);
 
+
         },
         error: (e) => {
           // Handle errors

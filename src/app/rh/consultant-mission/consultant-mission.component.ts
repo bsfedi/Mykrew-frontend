@@ -206,12 +206,12 @@ export class ConsultantMissionComponent {
   }
   sendmail(email: any) {
     Swal.fire({
-      title: 'Confirmer le virement',
-      text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
+      title: 'Confirmer l\'envoi de l\'email',
+      text: 'Êtes-vous sûr de vouloir envoyer cet email ?',
       icon: 'question',
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, effectuer le virement !',
+      confirmButtonText: 'Oui, envoyer l\'email !',
       confirmButtonColor: '#1E1E1E',
       cancelButtonText: 'Annuler',
       customClass: {

@@ -57,7 +57,7 @@ export class SigninComponent {
       email: this.signinForm.value.email,
       password: this.signinForm.value.password
     };
-    console.log(data);
+
 
     this.userservice.login(data)
       .subscribe({

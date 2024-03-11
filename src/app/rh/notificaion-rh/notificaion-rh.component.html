@@ -90,7 +90,7 @@
     </div>
     <div *ngFor="let item of lastnotifications">
       <div class="type" *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidationmission(item.missionId)">
-        Nouvelle mission <br>
+        Nouvelle mission - {{item.userId}} <br>
 
         {{ item.createdAt.split(["T"])[0] }} -
         {{ item.createdAt.split(["T"])[1].split(".")[0] }}
@@ -98,13 +98,13 @@
 
       </div>
       <div class="type" *ngIf="item.typeOfNotification == 'TJMREQUEST'">
-        Nouvelle demande de TJM <br>
+        Demande TJM - {{item.userId}} <br>
         {{ item.createdAt.split(["T"])[0] }} -
         {{ item.createdAt.split(["T"])[1].split(".")[0] }}
 
         <div class="type" *ngIf="item.typeOfNotification == 'NEWPREREGISTER'"
           (click)="gotovalidation(item.preregisterId)">
-          Nouvelle pre inscription <br>
+          Nouvelle pre-inscription - {{item.userId}} <br>
           {{ item.createdAt.split(["T"])[0] }} -
           {{ item.createdAt.split(["T"])[1].split(".")[0] }}
 

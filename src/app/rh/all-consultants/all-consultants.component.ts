@@ -125,11 +125,24 @@ export class AllConsultantsComponent {
 
           // Iterate through each item in this.items
           for (let item of this.items) {
+            console.log("item", item);
             this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
               next: (contractRes) => {
                 // Set the process_status for the current item
                 item.process_status = contractRes.statut;
-                console.log(contractRes.statut);
+              },
+              error: (e) => {
+                console.error(e);
+                // Handle error for individual contract retrieval
+                // You may want to set a default value for process_status or handle this error differently
+              }
+            });
+            this.consultantservice.getuserinfomation(item.userId, this.headers).subscribe({
+              next: (user) => {
+                // Set the process_status for the current item
+                item.isAvtivated = user.isAvtivated;
+
+
               },
               error: (e) => {
                 console.error(e);
@@ -138,8 +151,6 @@ export class AllConsultantsComponent {
               }
             });
           }
-
-          console.log('itemssssssss', this.items);
         },
         error: (e) => {
           // Handle errors

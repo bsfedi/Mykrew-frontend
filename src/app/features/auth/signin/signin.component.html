@@ -42,6 +42,9 @@
             <div class="mdp" (click)="gotoforgotpassword()">
                 Mot de passe oublié ?
             </div> <br>
+            <div *ngIf="showerrormessage" class="error-message" style="text-align: center; margin-top: 10px">
+                <div class="error-msg">{{ failedmessage }}</div>
+            </div>
             <div>
                 <button type="submit" (click)="login()">
                     <div class="inscrire">Se connecter </div>
