@@ -34,11 +34,12 @@
         <hr /> -->
         <div>
             <div>
-                <div><b>CRAS</b></div>
+                <div><b>CRAS</b> <input type="date" [(ngModel)]="selectedDate"></div>
                 <br />
             </div>
-            <div>
 
+            <div>
+                <!-- 
                 <table>
                     <thead>
                         <tr>
@@ -68,7 +69,7 @@
 
                                     </div>
                                 </td>
-                                <!-- Placeholder for additional rows -->
+                              
                                 <td>{{ pdf.filename.split('uploads/')[1] }}</td>
                                 <td>{{ pdf.uploadDate | date: 'short' }}</td>
                                 <td>
@@ -92,7 +93,68 @@
                             </tr>
                         </ng-container>
                     </tbody>
+                </table> -->
+
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+                            <th> id</th>
+                            <th>User</th>
+                            <th>Document</th>
+                            <th>date</th>
+                            <th></th>
+                            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                        </tr>
+                    </thead>
+                    <!-- Table header and body -->
+                    <tbody>
+                        <ng-container *ngFor="let cra of all_cras; let i = index">
+                            <ng-container *ngFor="let pdf of cra.craInformation.craPDF; let j = index">
+                                <!-- Check if the uploadDate matches the selectedDate -->
+                                <ng-container *ngIf="filterByUploadDate(pdf.uploadDate)">
+                                    <!-- Display table row only if the condition matches -->
+                                    <tr>
+                                        <!-- Table cells -->
+                                        <td></td>
+                                        <td>{{ getId(i, j, all_cras) }}</td>
+                                        <td>
+                                            <div style="display: flex;">
+                                                <div class="image">
+                                                    <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+                                                </div>
+                                                <div style="margin-left: 5px; margin-top: 10px;">{{ cra.firstName }} {{
+                                                    cra.lastName }}</div>
+                                            </div>
+                                        </td>
+                                        <!-- Placeholder for additional rows -->
+                                        <td>{{ pdf.filename.split('uploads/')[1] }}</td>
+                                        <td>{{ pdf.uploadDate | date: 'short' }}</td>
+                                        <td>
+                                            <div (click)="downloadDocument(pdf.filename, pdf.filename)" style="
+                                display: flex;
+                                height: 1.5rem;
+                                padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                                justify-content: center;
+                                align-items: center;
+                                flex-shrink: 0;
+                                border-radius: 0.75rem;
+                                margin-left: 0px;
+                                background: #f1f8fd;
+                                color: #379ae6;
+                                ">
+                                                Telecharger
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </tbody>
                 </table>
+
             </div>
         </div>
         <br />

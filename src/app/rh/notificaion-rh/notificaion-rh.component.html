@@ -92,8 +92,10 @@
       <div class="type" *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidationmission(item.missionId)">
         Nouvelle mission - {{item.userId}} <br>
 
+
         {{ item.createdAt.split(["T"])[0] }} -
         {{ item.createdAt.split(["T"])[1].split(".")[0] }}
+
 
 
       </div>

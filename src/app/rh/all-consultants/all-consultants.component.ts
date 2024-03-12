@@ -125,7 +125,7 @@ export class AllConsultantsComponent {
 
           // Iterate through each item in this.items
           for (let item of this.items) {
-            console.log("item", item);
+
             this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
               next: (contractRes) => {
                 // Set the process_status for the current item
@@ -139,6 +139,8 @@ export class AllConsultantsComponent {
             });
             this.consultantservice.getuserinfomation(item.userId, this.headers).subscribe({
               next: (user) => {
+                console.log(user);
+
                 // Set the process_status for the current item
                 item.isAvtivated = user.isAvtivated;
 

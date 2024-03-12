@@ -618,7 +618,7 @@ input[type="password"] {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: rgb(85, 205, 85);
 }
 
@@ -637,7 +637,7 @@ input[type="password"] {
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 
@@ -750,14 +750,17 @@ tr {
 }
 
 .type {
-  display: flex;
+
   margin-top: 7px;
   width: 17.625rem;
-  height: 3.5rem;
+  height: 3rem;
+  padding-top: 5px;
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-shrink: 0;
+  margin: 4px;
   border-radius: 0.25rem;
   background: #f3f4f6;
   margin-left: 20px;

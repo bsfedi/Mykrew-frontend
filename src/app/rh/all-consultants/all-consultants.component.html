@@ -126,7 +126,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of items; let i = index" style="height: auto;">
-            <td class="Tableau" *ngIf="item.isAvtivated">
+            <td class="Tableau"> <!-- *ngIf="item.isAvtivated"-->
               <div class="image">
                 <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
               </div>
@@ -134,15 +134,16 @@
               <div style="margin-top: 12px;max-width: 150px;">
                 {{ item.personalInfo?.firstName.value }}
                 {{ item.personalInfo?.lastName.value }}
+
               </div>
             </td>
-            <td *ngIf="item.isAvtivated">
+            <td>
               {{ item.personalInfo?.email.value }}
             </td>
-            <td *ngIf="item.isAvtivated">
+            <td>
               {{ item.personalInfo?.phoneNumber.value }}
             </td>
-            <td *ngIf="item.isAvtivated">
+            <td>
               <div style="width: 115px">
                 <div style="
                     display: flex;
@@ -160,10 +161,10 @@
               </div>
             </td>
 
-            <td *ngIf="item.isAvtivated">
+            <td>
               {{ item.addedDate.split("T")[0] }}
             </td>
-            <td *ngIf="item.isAvtivated">
+            <td>
               <div>
                 <div>
                   <div style="margin-left: 8px">

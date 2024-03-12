@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
@@ -13,10 +14,25 @@ const baseUrl = `${environment.baseUrl}`;
 export class AllCrasComponent {
   all_cras: any
   res: any
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
+  selectedDate: any;
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
   }
   idCounter: number = 0;
+  // Variable to store selected date
 
+
+
+  // Method to filter by upload date
+  filterByUploadDate(uploadDate: Date): boolean {
+    if (!this.selectedDate) {
+      return true; // No filter applied
+    }
+    // Format the uploadDate to match selectedDate format
+    const formattedUploadDate = this.datePipe.transform(uploadDate, 'yyyy-MM-dd');
+    const formattedSelectedDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+    // Check if the formatted dates match
+    return formattedUploadDate === formattedSelectedDate;
+  }
   getId(i: number, j: number, all_cras: any[]): number {
     let id = 0;
     for (let index = 0; index < i; index++) {

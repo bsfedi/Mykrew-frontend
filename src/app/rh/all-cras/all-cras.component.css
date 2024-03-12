@@ -166,6 +166,22 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
+input[type="date"] {
+    width: 15.04313rem;
+    height: 3.61006rem;
+    flex-shrink: 0;
+
+    margin-left: 77%;
+    margin-top: 10px;
+
+    border-radius: 0.5rem;
+    border: 1px solid #1e1e1e;
+
+    background: #fff;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
 .Search-text {
     width: 75%;
     color: #bebcbc;
