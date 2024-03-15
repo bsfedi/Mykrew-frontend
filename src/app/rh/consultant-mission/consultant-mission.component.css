@@ -722,7 +722,7 @@ span {
   display: none;
 }
 
-select,
+
 textarea,
 input[type="text"],
 input[type="date"],
@@ -742,6 +742,17 @@ input[type="number"] {
 
   background: #fff;
   border-radius: 6px;
+  box-sizing: border-box;
+}
+
+select {
+
+  flex-shrink: 0;
+
+  border-radius: 0.5rem;
+
+
+
   box-sizing: border-box;
 }
 

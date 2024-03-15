@@ -4,8 +4,8 @@
       <app-left-bar> </app-left-bar>
     </div>
     <div class="second-container">
-      <div class="title">Tableau de bord - RH</div>
-      <div class="search-bar">
+      <div class="title">Consultant - profil</div>
+      <!-- <div class="search-bar">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
             d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
@@ -17,14 +17,15 @@
         <div>
           <button class="button">Rechercher</button>
         </div>
-      </div>
+      </div> -->
 
       <br />
       <div style="display: flex">
         <div style="height: 51.5rem; flex-shrink: 0">
           <div style="display: flex">
-            <img src="/assets/profil-popup.png" />
-            <div style="margin-top: 15px; margin-left: 30px">
+            <img src="/assets/4035887-200.png"
+              style="width: 40px; border-radius: 20%; height: 45px;margin-top: 20px;" />
+            <div style="margin-top: 15px; margin-left: 15px">
               <div style="
                   color: #6e7787;
 
@@ -48,28 +49,7 @@
               </div>
             </div>
 
-            <div style="
-                display: flex;
-                width: 1.25rem;
-                height: 1.25rem;
-                padding: 0.4375rem;
-                justify-content: center;
-                align-items: center;
-                flex-shrink: 0;
-                border-radius: 1.125rem;
-                background: #eaecef;
-                margin-left: 130px;
-                margin-top: 10px;
-              ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M3.2998 19.25L18.6998 19.25" stroke="#565E6C" stroke-width="1.1" stroke-miterlimit="10"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M13.7498 2.75L17.0498 6.05L7.6998 15.4L3.2998 16.5L4.3998 12.1L13.7498 2.75Z" stroke="#565E6C"
-                  stroke-width="1.1" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M11.5498 4.9502L14.8498 8.2502" stroke="#565E6C" stroke-width="1.1" stroke-miterlimit="10"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
+
           </div>
           <br />
           <div style="display: flex">
@@ -77,6 +57,7 @@
               <div style="
                   display: inline-flex;
                   padding: 0.4375rem 0.75rem;
+                  height: 1.5rem;
                   justify-content: center;
                   width: 150px;
                   align-items: center;
@@ -98,7 +79,7 @@
                 <div style="color: #825410; font-size: 15px" (click)="openPopup3()">Envoyer mail</div>
               </div>
             </div>
-            <div style="display: flex; cursor: pointer" (click)="openPopup1()">
+            <div style="display: flex; cursor: pointer">
               <div style="
                   border-radius: 0.25rem;
                   border: 1px solid #dee1e6;
@@ -106,6 +87,7 @@
                   display: inline-flex;
                   padding: 0.4375rem 0.6875rem 0.4375rem 0.75rem;
                   justify-content: center;
+                  height: 1.5rem;
                   align-items: center;
                   gap: 0.375rem;
                   margin-left: 5px;
@@ -121,26 +103,27 @@
                 <div style="color: #825410">Nv Virement</div>
               </div>
               <div style="
-                  display: flex;
-                  width: 2.25rem;
-                  padding: 0.4375rem 0.625rem;
-                  justify-content: center;
-                  align-items: center;
-                  display: flex;
-                  width: 2.25rem;
-                  padding: 0.4375rem 0.625rem;
-                  justify-content: center;
-                  align-items: center;
-                  border-radius: 0.25rem;
-                  border: 1px solid #dee1e6;
-                  background: rgba(0, 0, 0, 0);
-                ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3.07273 4.6665L2 5.73923L8 11.7392L14 5.73923L12.9273 4.6665L8 9.59374L3.07273 4.6665Z"
-                    fill="#171A1F" />
-                </svg>
+              display: flex;
+              max-width: 2.25rem;
+              padding: 0.4375rem 0.625rem;
+              justify-content: center;
+              align-items: center;
+              height: 1.5rem;
+              border-radius: 0.25rem;
+              border: 1px solid #dee1e6;
+              background: rgba(0, 0, 0, 0);
+              cursor: pointer;
+         ">
+                <select formControlName="typeVirement" (change)="onTypeChange($event)" style="max-width: 2.25rem;">
+                  <option *ngFor="let type of virementTypes" [value]="type" style="max-width: 2.25rem;">
+                    {{ type }}
+                  </option>
+                </select>
               </div>
+
+
             </div>
+
           </div>
           <br />
           <div style="display: flex">
@@ -318,7 +301,6 @@
           <table *ngIf="show_mission">
             <thead>
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-              <th>ID</th>
               <th>Client</th>
               <th>Métier</th>
               <th>Secteur</th>
@@ -354,33 +336,24 @@
                     non validée
                   </div>
                 </td>
-                <td>
-                  <div style="
-                      color: #323842;
 
-                      font-size: 0.875rem;
-                      font-style: normal;
-                      font-weight: 400;
-                      line-height: 1.375rem; /* 157.143% */
-                      width: 30px;
-                    ">
-                    # {{ i + 1 }}
-                  </div>
-                </td>
-                <td>
+                <td style="min-width: 120px; max-width: 120px;">
                   {{ item.clientInfo.firstName }} {{ item.clientInfo.lastName }}
                 </td>
-                <td>
+                <td style="min-width: 80px; max-width: 80px;">
                   {{ item.missionInfo.profession }}
                 </td>
-                <td>
+                <td style="min-width: 80px; max-width: 80px;">
                   {{ item.missionInfo.industrySector }}
                 </td>
-                <td>
-                  {{ item.missionInfo.profession }}
+
+                <td style="min-width: 80px; max-width: 80px;">
+
+                  {{item.validated_by}}
                 </td>
                 <td>
-                  {{ item.missionInfo.startDate.split("T")[0] }}
+                  {{ formatDate(item.missionInfo.startDate.split("T")[0]) }}
+
                 </td>
                 <td (click)="toggleMenu(i)" style="cursor: pointer">
                   <span>
@@ -444,11 +417,11 @@
                 <form (submit)="onFormSubmit()" style="display: flex" [formGroup]="foremData">
                   <div class="form-section">
                     <div class="grid-container">
-                      <select formControlName="typeVirement">
+                      <!-- <select formControlName="typeVirement">
                         <option *ngFor="let type of virementTypes" [value]="type">
                           {{ type }}
                         </option>
-                      </select>
+                      </select> -->
 
                       <!-- <div class="grid-item">
                         <input
@@ -476,22 +449,24 @@
             </div>
           </div>
           <div class="popup" *ngIf="showPopup3">
-            <div class="popup-content">
+            <div class="popup-content" style="height: 19.4375rem;">
               <div style="float: right" (click)="closePopup3()">
                 <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
               </div>
               <div>
-                <h3>Envoyer un mail au {{ user_info.personalInfo.email.value }}</h3>
+                <h3>Envoyer un mail a {{ user_info.personalInfo.email.value }}</h3>
                 <form (submit)="sendmail(user_info.personalInfo.email.value )" style="display: flex"
                   [formGroup]="formData1">
                   <div class="form-section">
                     <div class="grid-container">
                       <div class="grid-item">
+                        <b style="margin: 5px;"> Sujet d"email </b>
                         <input type="text" id="subject" placeholder="subject" name="subject" required
                           formControlName="subject" />
                       </div>
-
+                      <br>
                       <div class="grid-item">
+                        <b style="margin: 8px 5px 5px 5px;"> Votre message </b>
                         <textarea id="message" placeholder="message" name="message" required
                           style="max-height: 90px;max-width:  26.04313rem;" formControlName="message"></textarea>
 
@@ -610,7 +585,7 @@
                   <td></td>
                   <td>1</td>
                   <td>Fichier Simulation</td>
-                  <td>2024-01-22</td>
+                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
                     <div style="
                         display: flex;
@@ -635,7 +610,7 @@
                   <td></td>
                   <td>2</td>
                   <td>Permis de Conduire</td>
-                  <td>2024-01-22</td>
+                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
                     <div style="
                         display: flex;
@@ -661,7 +636,7 @@
                   <td></td>
                   <td>{{ i + 3 }}</td>
                   <td>{{ doc.documentName }}</td>
-                  <td>{{ doc.createdAt.split(["T"])[0] }}</td>
+                  <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadDocument(doc.document, doc.documentName)" style="
                         display: flex;
@@ -702,7 +677,7 @@
                   <td></td>
                   <td>{{ i + 1 }}</td>
                   <td>{{ doc.filename.split('uploads/')[1] }}</td>
-                  <td>{{ doc.uploadDate.split(["T"])[0] }}</td>
+                  <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadDocument(doc.filename, doc.filename)" style="
                         display: flex;

@@ -42,7 +42,8 @@
   height: 100%;
   padding: 0;
   font-family: "Poppins", sans-serif !important;
-  transition: margin-left 0.3s; /* Add transition for smoother animation */
+  transition: margin-left 0.3s;
+  /* Add transition for smoother animation */
 }
 
 .menu-toggle {
@@ -51,7 +52,9 @@
   left: 20px;
   cursor: pointer;
   z-index: 1;
-} /* Default styles for larger screens */
+}
+
+/* Default styles for larger screens */
 .first-item {
   position: fixed;
   background: #1e1e1e;
@@ -60,7 +63,8 @@
   height: 100%;
   padding: 0;
   font-family: "Poppins", sans-serif !important;
-  transition: margin-left 0.3s; /* Add transition for smoother animation */
+  transition: margin-left 0.3s;
+  /* Add transition for smoother animation */
 }
 
 .menu-toggle {
@@ -76,22 +80,28 @@
     margin-top: 450px;
   }
 }
+
 @media (max-width: 768px) {
+
   /* Styles for screens with a maximum width of 768px */
   .first-item {
-    margin-left: -270px; /* Collapse the navigation bar */
+    margin-left: -270px;
+    /* Collapse the navigation bar */
   }
 
   .first-item.collapsed {
-    margin-left: 0; /* Adjust margin for collapsed state */
+    margin-left: 0;
+    /* Adjust margin for collapsed state */
   }
 
   .second-container {
-    margin-left: 0; /* Adjust the content container when the navigation bar is collapsed */
+    margin-left: 0;
+    /* Adjust the content container when the navigation bar is collapsed */
   }
 
   .menu-toggle {
-    display: block; /* Show the menu toggle icon */
+    display: block;
+    /* Show the menu toggle icon */
   }
 
   /* Adjust other styles for smaller screens if needed */
@@ -137,7 +147,7 @@ svg {
 }
 
 .faq-sedeconnecter {
-  margin-top: 250px;
+  margin-top: 300px;
 }
 
 .second-container {

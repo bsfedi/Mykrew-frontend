@@ -9,22 +9,24 @@
       <div>
         <table>
           <thead>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+            <th style="border-radius: 0.6875rem 0rem 0rem 0rem"> consultant</th>
+
             <th>Date</th>
-            <th>consultant</th>
+
             <th>TJM</th>
-            <th>status</th>
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">status</th>
+
           </thead>
           <tbody>
-            <tr *ngFor="let tjm of tjmrequests; let j = index">
-              <td>{{ j + 1 }}</td>
-              <td style="width: 20%">{{ tjm.createdAt.split("T")[0] }}</td>
+            <tr *ngFor="let tjm of tjmrequests; let j = index" (click)="gotovalidation(tjm.missionId)">
+
               <td>{{ tjm.username }}</td>
+              <td style="width: 20%;">{{ tjm.createdAt.split("T")[0] }}</td>
+
               <td>{{ tjm.valueOfNewTjm }}</td>
               <td>En attente</td>
 
-              <td>
+              <!-- <td>
                 <div>
                   <div>
                     <span (click)="toggleMenu(j)">
@@ -37,7 +39,7 @@
                     <div *ngIf="isMenuOpen[j]" class="dropdown-menu">
                       <div style="display: flex; cursor: pointer">
                         <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotovalidation(tjm.missionId)" style="
+                        <div  style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
@@ -48,7 +50,7 @@
                     </div>
                   </div>
                 </div>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>

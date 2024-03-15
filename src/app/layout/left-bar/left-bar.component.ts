@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Add this line
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   imports: [CommonModule]
 })
 export class LeftBarComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     document.addEventListener("DOMContentLoaded", function () {
       const menuToggle = document.querySelector(".menu-toggle") as HTMLElement;
       const firstItem = document.querySelector(".first-item") as HTMLElement;
@@ -35,7 +35,9 @@ export class LeftBarComponent {
 
 
   }
-
+  isActiveRoute(route: string): boolean {
+    return this.route.snapshot.url.join('/') === route;
+  }
 
 
   gottodashboard() {
@@ -60,6 +62,10 @@ export class LeftBarComponent {
   }
   gototjm() {
     this.router.navigate(['/tjmrequests'])
+
+  }
+  gotomembres() {
+    this.router.navigate(['/members'])
 
   }
   role: any

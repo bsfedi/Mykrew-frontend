@@ -3,7 +3,52 @@
     <div>
       <app-left-bar></app-left-bar>
     </div>
-    <div style="width: 200px; margin-left: 250px">
+    <div>
+      <div *ngIf="role != 'CONSULTANT'" style="margin-left: 250px ;">
+        <div style="font-size: 2rem;">
+          <b> Toutes les notifications</b>
+        </div><br>
+        <table style="width: 90%;">
+          <thead>
+            <tr>
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+                Type
+              </th>
+              <th> Consultant</th>
+
+
+              <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of lastnotifications; let i = index"
+              style="height: auto;text-align: left;cursor: pointer;">
+              <td class="Tableau" style="height: auto; width: 400px;">
+                <!-- *ngIf="item.isAvtivated"-->
+                <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidation(item.missionId)">
+                  Nouvelle mission
+                </div>
+                <div *ngIf="item.typeOfNotification == 'TJMREQUEST'">
+                  Nouvelle demande de TJM
+                </div>
+                <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'">
+                  Nouvelle pre inscription <br>
+                </div>
+              </td>
+              <td style="min-width: 350px;">
+                {{item.userId}}
+              </td>
+              <td>
+                {{ formatDate(item.createdAt.split(["T"])[0]) }}
+              </td>
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="width: 200px; margin-left: 250px" *ngIf="role === 'CONSULTANT'">
       <div style="display: flex">
         <div style="
             font-family: 'Poppins', sans-serif !important;
@@ -27,31 +72,7 @@
             </div>
             <div class="message-text">Messages Importants</div>
           </div>
-          <div *ngIf="role != 'CONSULTANT'">
-            <div *ngFor="let item of lastnotifications">
-              <div class="type" *ngIf="item.typeOfNotification == 'NEWMISSION'"
-                (click)="gotovalidation(item.missionId)">
-                Nouvelle mission <br>
 
-                {{ item.createdAt.split(["T"])[0] }} -
-                {{ item.createdAt.split(["T"])[1].split(".")[0] }}
-
-
-              </div>
-              <div class="type" *ngIf="item.typeOfNotification == 'TJMREQUEST'">
-                Nouvelle demande de TJM <br>
-                {{ item.createdAt.split(["T"])[0] }} -
-                {{ item.createdAt.split(["T"])[1].split(".")[0] }}
-
-                <div class="type" *ngIf="item.typeOfNotification == 'NEWPREREGISTER'">
-                  Nouvelle pre inscription <br>
-                  {{ item.createdAt.split(["T"])[0] }} -
-                  {{ item.createdAt.split(["T"])[1].split(".")[0] }}
-
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div class="message-container" *ngFor="let item of notification">
             <div class="avatar-container">

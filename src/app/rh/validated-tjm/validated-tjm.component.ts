@@ -76,17 +76,25 @@ export class ValidatedTjmComponent {
 
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
+          if (this.missionInfo.isSimulationValidated.endsWith('.pdf')) {
+            this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated).subscribe({
+              next: (res) => {
+                this.showpdf = true
+                this.pdfData = res;
+
+                if (this.pdfData) {
+                  this.handleRenderPdf(this.pdfData);
+                }
+              },
+            });
+          } else {
+            this.showpdf = false
+            this.item.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated
 
 
-          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
-            next: (res) => {
-              this.pdfData = res;
+          }
 
-              if (this.pdfData) {
-                this.handleRenderPdf(this.pdfData);
-              }
-            },
-          });
+
         },
         error: (e) => {
           // Handle errors

@@ -5,6 +5,7 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { environment } from 'src/environments/environment';
+import { saveAs } from 'file-saver';
 const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-all-cras',
@@ -16,6 +17,12 @@ export class AllCrasComponent {
   res: any
   selectedDate: any;
   constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
+    // Set the initial value of selectedDate to today's date
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // Month is zero-based, so add 1
+    const day = today.getDate();
+    this.selectedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
   }
   idCounter: number = 0;
   // Variable to store selected date
@@ -27,12 +34,15 @@ export class AllCrasComponent {
     if (!this.selectedDate) {
       return true; // No filter applied
     }
+
     // Format the uploadDate to match selectedDate format
-    const formattedUploadDate = this.datePipe.transform(uploadDate, 'yyyy-MM-dd');
-    const formattedSelectedDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
-    // Check if the formatted dates match
-    return formattedUploadDate === formattedSelectedDate;
+    const formattedUploadMonth = this.datePipe.transform(uploadDate, 'yyyy-MM');
+    const formattedSelectedMonth = this.datePipe.transform(this.selectedDate, 'yyyy-MM');
+
+    // Check if the formatted months match
+    return formattedUploadMonth === formattedSelectedMonth;
   }
+
   getId(i: number, j: number, all_cras: any[]): number {
     let id = 0;
     for (let index = 0; index < i; index++) {
@@ -94,21 +104,24 @@ export class AllCrasComponent {
 
     }
   }
-
-  // Dans votre composant TypeScript
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   downloadDocument(documentUrl: string, documentName: string): void {
     console.log(documentName, documentUrl);
 
-    // Créez un élément <a> pour déclencher le téléchargement
+    // Create an <a> element to trigger the download
     const link = document.createElement('a');
     link.href = documentUrl;
-    link.download = documentName;
+    link.target = '_blank'; // Open in a new tab/window
+    link.download = documentName + '.pdf'; // Ensure the file is downloaded with .pdf extension
 
-    // Ajoutez l'élément à la page et déclenchez le téléchargement
+    // Add the element to the page and trigger the download
     document.body.appendChild(link);
     link.click();
 
-    // Supprimez l'élément du DOM après le téléchargement
+    // Remove the element from the DOM after download
     document.body.removeChild(link);
   }
+
 }

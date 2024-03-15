@@ -121,6 +121,29 @@ body {
 
 }
 
+.profil1 {
+    width: 13rem;
+    height: 3.125rem;
+
+    border-radius: 1.5625rem;
+    background: #fef9f1;
+    display: flex;
+    float: right;
+}
+
+.profil1 svg {
+    width: 32px;
+    height: 31px;
+}
+
+.profil1 img {
+    border-radius: 100%;
+    width: 2.625rem;
+    height: 2.175rem;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
 .primry-button {
     float: right;
     color: white;
@@ -133,7 +156,7 @@ body {
     border-radius: 0.625rem;
     background: #1E1E1E;
     margin-top: 2px;
-    margin: 20px 0 0 240px;
+    margin: 20px 0 0 200px;
 }
 
 .Search-text {
@@ -180,7 +203,7 @@ input[type='search']:focus {
 
 .demande {
     margin-top: 0px;
-    width: 52.756rem;
+    width: 50.856rem;
     height: 5rem;
     flex-shrink: 0;
     border-radius: 0.4375rem;

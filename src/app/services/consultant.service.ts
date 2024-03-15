@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { delay, of } from 'rxjs';
-
 import { environment } from 'src/environments/environment';
 const baseUrl = `${environment.baseUrl}`;
 

@@ -2,6 +2,7 @@ import { ConsultantService } from 'src/app/services/consultant.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-allnotifications',
@@ -12,8 +13,10 @@ export class AllnotificationsComponent {
   notification: any[] = [];
   lastnotifications: any;
   role: any
-  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private router: Router) { }
-
+  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private router: Router, private datePipe: DatePipe) { }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
     this.role = localStorage.getItem('role')
@@ -24,7 +27,22 @@ export class AllnotificationsComponent {
 
           this.lastnotifications = res1;
           console.log(this.lastnotifications);
+          for (let item of this.lastnotifications) {
+            //getuserinfomation
+            this.consultantservice.getuserinfomation(item["userId"]).subscribe({
+              next: (info) => {
+                console.log(info);
 
+                item["userId"] = info["firstName"] + ' ' + info["lastName"]
+              }, error: (e) => {
+                // Handle errors
+                console.error(e);
+                item["userId"] = ""
+                // Set loading to false in case of an error
+
+              }
+            })
+          }
 
         },
         error: (e) => {
@@ -39,6 +57,7 @@ export class AllnotificationsComponent {
         next: (res1) => {
           console.log(res1);
           this.lastnotifications = res1
+
         },
         error: (e) => {
           // Handle errors

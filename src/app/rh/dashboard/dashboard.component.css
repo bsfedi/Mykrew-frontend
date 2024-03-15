@@ -41,7 +41,7 @@ body {
   margin-left: -10px;
 
   margin-top: -8px;
-  padding: 0px;
+
 }
 
 .Tableau {
@@ -517,7 +517,7 @@ input[type="file"],
 input[type="password"] {
   padding-left: 20px;
 
-  width: 18.12494rem;
+  width: 14.12494rem;
   height: 2.62238rem;
   flex-shrink: 0;
 
@@ -690,7 +690,7 @@ input[type="password"] {
 }
 
 .nb_money {
-  text-align: center;
+
   margin-top: 15px;
   margin-left: 15px;
   font-size: 1.6875rem;
@@ -719,10 +719,12 @@ input[type="password"] {
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;
-  border: 1px solid #eae3d5;
+  border: 2px solid #eae3d5;
   background: #fff;
-  margin: 1.25px;
-  padding: 1.25px;
+  margin: 3.25px;
+  padding: 3.25px 8px 3.25px 8px;
+
+
 }
 
 .second {

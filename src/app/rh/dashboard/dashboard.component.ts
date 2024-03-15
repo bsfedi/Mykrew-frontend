@@ -16,6 +16,7 @@ import {
   ApexFill
 } from "ng-apexcharts";
 import { ConsultantService } from 'src/app/services/consultant.service';
+import { DatePipe } from '@angular/common';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -48,9 +49,11 @@ export class DashboardComponent {
   getContaractByPrerigister: any
   cardstats: any
   stats: any
+  searchTerm: any
+  filteredItems: any[] = [];
   @ViewChild("chart") chart: ChartComponent | any;
   public chartOptions: Partial<ChartOptions>;
-  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private consultantservice: ConsultantService, private router: Router) {
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private fb: FormBuilder, private consultantservice: ConsultantService, private router: Router) {
     this.chartOptions = {}
     this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
       next: (res) => {
@@ -100,6 +103,12 @@ export class DashboardComponent {
     this.router.navigate(['/allConsultants'])
 
   }
+  gotovalidemission(id_mission: any, id: any) {
+    this.router.navigate(['/validationmission/' + id_mission + '/' + id])
+  }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
 
@@ -117,7 +126,8 @@ export class DashboardComponent {
 
           this.items = res
           this.nbdemande = this.items.length
-          console.log(this.nbdemande);
+          this.filteredItems = this.items
+
 
 
 
@@ -159,6 +169,8 @@ export class DashboardComponent {
       });
     }
   }
+
+
   click() {
     this.router.navigate(['/all-preinscription']);
   }
@@ -292,6 +304,19 @@ export class DashboardComponent {
       }
     });
   }
+  applyFilter() {
+    // Check if search term is empty
+    if (this.searchTerm.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.filteredItems = this.items;
+    } else {
+      // Apply filter based on search term
+      this.filteredItems = this.items.filter((item: any) =>
+        item.personalInfo.firstName.value.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.personalInfo.lastName.value.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
   sortItemsByLastUpdated() {
     this.items.sort((a: any, b: any) => {
       return new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime();
@@ -376,9 +401,7 @@ export class DashboardComponent {
       }
     });
   }
-  gotovalidemission(id: any) {
-    this.router.navigate(['/validationmission/' + id])
-  }
+
   gottoallConsultants() {
     this.router.navigate(['/allConsultants'])
   }

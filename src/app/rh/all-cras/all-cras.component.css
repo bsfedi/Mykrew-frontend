@@ -171,15 +171,25 @@ input[type="date"] {
     height: 3.61006rem;
     flex-shrink: 0;
 
-    margin-left: 77%;
-    margin-top: 10px;
+    margin-left: 88%;
+
 
     border-radius: 0.5rem;
     border: 1px solid #1e1e1e;
-
     background: #fff;
     border-radius: 6px;
     box-sizing: border-box;
+
+
+    width: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+
+    padding: 4.25px 9px 4.25px 9px;
 }
 
 .Search-text {

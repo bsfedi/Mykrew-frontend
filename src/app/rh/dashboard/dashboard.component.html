@@ -3,7 +3,7 @@
     <app-left-bar> </app-left-bar>
     <div class="second-container">
       <div class="title">Tableau de bord - RH</div>
-      <div class="search-bar">
+      <!-- <div class="search-bar">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
             d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
@@ -15,7 +15,7 @@
         <div>
           <button class="button">Rechercher</button>
         </div>
-      </div>
+      </div> -->
 
       <div id="chart">
         <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
@@ -89,19 +89,23 @@
             <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <div>Sort: Last updated</div>
+          <div>Trier: Date de création</div>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M7 12.5L7 1.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M11 8.5L7 12.5L3 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <div class="first">
-          <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants</div>
-          <!-- <div>
+        <!--   <div class="first">
+          <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants
+          </div>
+          <div>
             <div class="second">Missions</div>
-          </div> -->
+          </div> 
+        </div>-->
+        <div class="first">
+          <input type="search" placeholder="filter par nom consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
         </div>
-        <div class="Tableau" style="margin-left: 335px">
+        <div class="Tableau" style="margin-left: 27%;">
 
           <div class="first" (click)="exportTable()">Export list</div>
         </div>
@@ -115,20 +119,25 @@
             </th>
             <th>Email</th>
             <th>Téléphone</th>
-            <th>Nationalité</th>
-            <th>Dernière Con.</th>
+            <th>Status</th>
+            <th>Date de création</th>
 
             <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items; let i = index">
+          <tr *ngFor="let item of filteredItems; let i = index">
             <td class="Tableau">
               <div class="image">
-                <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-top: 4%;" class="bi bi-person-fill"
+                  viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                </svg>
               </div>
               <div style="margin-top: 12px; margin-left: 5px">
                 <div>
+
                   {{ item.personalInfo?.firstName.value }}
                   {{ item.personalInfo?.lastName.value }}
                 </div>
@@ -141,7 +150,7 @@
               {{ item.personalInfo?.phoneNumber.value }}
             </td>
             <td>
-              <div style="width: 115px">
+              <div style="width: 115px" *ngIf="item.status === 'PENDING'">
                 <div style="
                     display: flex;
                     width: auto;
@@ -153,13 +162,28 @@
                     border-radius: 0.875rem;
                     background: #f3f4f6;
                   ">
-                  {{ item.personalInfo?.nationality.value }}
+                  En attente
+                </div>
+              </div>
+              <div style="width: 115px" *ngIf="item.status != 'PENDING'">
+                <div style="
+                    display: flex;
+                    width: auto;
+                    height: 1.75rem;
+                    padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                    justify-content: center;
+                    align-items: center;
+                    flex-shrink: 0;
+                    border-radius: 0.875rem;
+                    background: #f3f4f6;
+                  ">
+                  Contrat
                 </div>
               </div>
             </td>
 
             <td>
-              {{ item.addedDate.split("T")[0] }}
+              {{ formatDate(item.addedDate.split("T")[0]) }}
             </td>
             <td>
               <div>
@@ -175,7 +199,7 @@
                       </span>
                       <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
                         <!-- Menu items go here -->
-                        <div style="display: flex; cursor: pointer">
+                        <div style="display: flex; cursor: pointer" *ngIf="item.status === 'PENDING'">
                           <img src="/assets/Checkmark.svg" width="12%" />
                           <div (click)="gotovalidation(item._id)" style="
                               margin-top: 7px;
@@ -185,7 +209,19 @@
                             Valider l’inscription
                           </div>
                         </div>
-
+                        <div style="display: flex; cursor: pointer" *ngIf="item.status != 'PENDING'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
+                            style="margin-left: -13px" fill="none">
+                            <path
+                              d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <div (click)="
+                              gotovalidemission(item._id, item.contractProcess)
+                            " style="margin-top: 8px; cursor: pointer">
+                            Process de validation
+                          </div>
+                        </div>
                         <!-- <div style="display: flex;cursor: pointer; ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24"
                                                         viewBox="0 0 24 24" style="margin-left: -13px;" fill="none">

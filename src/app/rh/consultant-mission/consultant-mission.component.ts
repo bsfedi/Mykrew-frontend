@@ -8,6 +8,8 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -43,7 +45,9 @@ export class ConsultantMissionComponent {
   show_doc: boolean = false
   res: any
   showPopup3: any
-  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,
+    private datePipe: DatePipe,
+    private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
     this.foremData = this.fb.group({
       userId: [''],
@@ -153,7 +157,7 @@ export class ConsultantMissionComponent {
 
 
         }
-        console.log(this.docs);
+
 
 
 
@@ -184,10 +188,30 @@ export class ConsultantMissionComponent {
         next: (res) => {
           // Handle the response from the server
 
-          console.log(res);
           this.items = res
-          this.nbdemande = this.items.length()
-          console.log(this.nbdemande);
+
+
+          for (let mission of this.items) {
+            if (mission.validated_by) {
+              console.log(this.getvalidateby(mission.validated_by));
+              this.consultantservice.getuserinfomation(mission.validated_by).subscribe({
+                next: (res) => {
+                  mission.validated_by = res.firstName + ' ' + res.lastName
+                },
+                error: (e) => {
+                  // Handle errors
+                  console.error(e);
+                  // Set loading to false in case of an error
+                }
+              });
+
+            } else {
+              mission.validated_by = ''
+            }
+            console.log(mission);
+
+
+          }
 
 
 
@@ -203,6 +227,25 @@ export class ConsultantMissionComponent {
       });
     }
 
+  }
+  getvalidateby(user_id: any) {
+    return this.consultantservice.getuserinfomation(user_id);
+  }
+  onTypeChange(event: any) {
+    const value = event.target.value;
+    // Determine if you want to show the popup based on the selected value
+    // For example:
+    console.log(value);
+
+    if (value === 'Participation' || value === 'Cooptation' || value === 'Frais') {
+      this.showPopup1 = true;
+    } else {
+      this.showPopup1 = false;
+    }
+  }
+
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   sendmail(email: any) {
     Swal.fire({

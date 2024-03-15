@@ -54,53 +54,12 @@ export class AllConsultantsComponent {
   cardstats: any
   process_statut: any
   @ViewChild("chart") chart: ChartComponent | any;
-  public chartOptions: Partial<ChartOptions>;
+  searchTerm: any
 
+  filteredItems: any[] = [];
 
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router) {
-    this.chartOptions = {}
-    this.consultantservice.getMonthlyStatsForAllUsers().subscribe({
-      next: (res) => {
-        this.stats = res
-        console.log(this.stats.series[0].data);
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router) {
 
-        this.chartOptions = {
-          series: [
-            {
-
-              data: this.stats.series[0].data
-            },
-
-          ],
-
-          chart: {
-            height: 200,
-            type: "area"
-          },
-          dataLabels: {
-            enabled: false
-          },
-          colors: ["#EAE3D5"],
-          xaxis: {
-            type: "category",
-            categories: this.stats.categories,
-          },
-
-
-
-        };
-
-
-
-
-      },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-        // Set loading to false in case of an error
-
-      }
-    });
 
 
 
@@ -122,7 +81,7 @@ export class AllConsultantsComponent {
 
           // Update this.items with the response
           this.items = res;
-
+          this.filteredItems = this.items
           // Iterate through each item in this.items
           for (let item of this.items) {
 
@@ -184,13 +143,28 @@ export class AllConsultantsComponent {
     }
 
   }
+  applyFilter() {
+    // Check if search term is empty
+    if (this.searchTerm.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.filteredItems = this.items;
+    } else {
+      // Apply filter based on search term
+      this.filteredItems = this.items.filter((item: any) =>
+        item.personalInfo.firstName.value.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.personalInfo.lastName.value.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
 
   sortItemsByLastUpdated() {
-    this.items.sort((a, b) => {
+    this.filteredItems.sort((a, b) => {
       return new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime();
     });
   }
-
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   exportTable() {
     // Select the table element
     const table = document.querySelector('table');

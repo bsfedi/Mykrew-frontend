@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
 import { delay, of } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { WebSocketService } from 'src/app/services/web-socket.service';
+import { UserService } from 'src/app/services/user.service';
+import { ConsultantService } from 'src/app/services/consultant.service';
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -21,6 +24,7 @@ declare const PDFObject: any;
 
 })
 export class ValidationComponent implements OnInit {
+
   @Input() isLoading: boolean = false;
   personalInfo: any; // Adjust the type as per your data structure
   clientInfo: any;
@@ -84,7 +88,10 @@ export class ValidationComponent implements OnInit {
   headers: any
   pdfData: any;
   ispdfdocrib: any
-  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  lastnotifications: any
+  notification: string[] = [];
+  res: any
+  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private consultantService: ConsultantService, private route: ActivatedRoute, private userservice: UserService, private socketService: WebSocketService) {
 
 
 
@@ -93,12 +100,68 @@ export class ValidationComponent implements OnInit {
 
   zoomState: string = 'normal';
   userSelection: string = 'true';
+
   toggleZoom() {
     this.zoomState = this.zoomState === 'normal' ? 'zoomed' : 'normal';
   }
 
   ngOnInit(): void {
+    this.consultantService.getlastnotificationsrh().subscribe({
+      next: (res1) => {
+        console.log(res1);
+        this.lastnotifications = res1.slice(0, 10);
+        for (let item of this.lastnotifications) {
+          //getuserinfomation
+          this.consultantService.getuserinfomation(item["userId"], this.headers).subscribe({
+            next: (info) => {
+              console.log(info);
 
+              item["userId"] = info["firstName"] + ' ' + info["lastName"]
+            }
+          })
+        }
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+    const user_id = localStorage.getItem('user_id')
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
+
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.notification.push(event.notification.typeOfNotification)
+      }
+
+      // Handle your rhNotification event here
+    });
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
       this.preinscription_id = params['id'];
@@ -215,54 +278,55 @@ export class ValidationComponent implements OnInit {
     // Display confirmation popup
     Swal.fire({
       title: 'Confirmer les modifications',
-      text: "Êtes-vous sûr de vouloir mettre à jour l'inscription ?",
-      icon: 'question',
+      text: "Êtes-vous sûr de vouloir soumettre vos informations personnelles ? <br> Veuillez vérifier que toutes les données saisies sont correctes et à jour.",
+
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, mettez à jour !',
-      confirmButtonColor: "#1E1E1E",
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: "#28a745", // Green color
 
       cancelButtonText: 'Annuler',
       customClass: {
         confirmButton: 'custom-confirm-button-class'
       }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // User clicked 'Yes', call the endpoint
-        this.inscriptionservice.rhvalidation(this.preinscription_id, data, this.headers).subscribe({
-          next: (res) => {
-            // Handle success
-            Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: 'Registration updated successfully!',
-              showConfirmButton: false,
-              timer: 1500
-            });
-            this.router.navigate(['/dashboard'])
-          },
-          error: (e) => {
-            // Handle errors
-            console.error(e);
-            Swal.fire('Error', 'Failed to update registration.', 'error');
-          }
-        });
-      } else {
-        Swal.fire({
-          title: 'Annulé',
-          text: "Aucune modification n'a été apportée.",
-          icon: 'info',
-          iconColor: '#1E1E1E',
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          // User clicked 'Yes', call the endpoint
+          this.inscriptionservice.rhvalidation(this.preinscription_id, data, this.headers).subscribe({
+            next: (res) => {
+              // Handle success
+              Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: 'Inscription mise à jour avec succès !',
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.router.navigate(['/dashboard'])
+            },
+            error: (e) => {
+              // Handle errors
+              console.error(e);
+              Swal.fire('Error', "Échec de la mise à jour de l'enregistrement.", 'error');
+            }
+          });
+        } else {
+          Swal.fire({
+            title: 'Annulé',
+            text: "Aucune modification n'a été apportée.",
+            icon: 'info',
+            iconColor: '#1E1E1E',
 
-          confirmButtonText: 'Ok',
-          confirmButtonColor: "#1E1E1E",
-        })
-        // // User clicked 'Cancel' or closed the popup
-        // Swal.fire('Annulé',
-        //   "Aucune modification n'a été apportée.", 'info');
-      }
-    });
+            confirmButtonText: 'Ok',
+            confirmButtonColor: "#1E1E1E",
+          })
+          // // User clicked 'Cancel' or closed the popup
+          // Swal.fire('Annulé',
+          //   "Aucune modification n'a été apportée.", 'info');
+        }
+      });
 
   }
   handlesecondRenderPdf(data: any) {

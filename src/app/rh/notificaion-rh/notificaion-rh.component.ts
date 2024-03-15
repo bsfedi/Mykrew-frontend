@@ -5,6 +5,7 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { UserService } from 'src/app/services/user.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-notificaion-rh',
@@ -23,9 +24,12 @@ export class NotificaionRhComponent {
   lastnotifications: any
   res: any
   token: any
-  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private userservice: UserService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
   gotoallnotification() {
     this.route.navigate(['/consultant/allnotifications'])
+  }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   ngOnInit(): void {
 
@@ -89,9 +93,10 @@ export class NotificaionRhComponent {
     this.socketService.connect()
     // Listen for custom 'rhNotification' event in WebSocketService
     this.socketService.onRhNotification().subscribe((event: any) => {
-      console.log();
+      console.log(event);
 
       if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
         this.notification.push(event.notification.typeOfNotification)
       }
 
