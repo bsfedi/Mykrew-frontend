@@ -61,10 +61,10 @@ export class ConsultantService {
     // this.http.get(baseUrl, { responseType: 'blob' }).subscribe(blob => {
     //   // Save the downloaded blob to a file
     //   saveAs(blob, fileName);
-    // });
+    // });uploads/1710409543811-permis.jpg
     const url = baseUrl + 'api/download?url=' + pdfurl; // Endpoint on your server
     this.http.get(url, { responseType: 'blob' }).subscribe(blob => {
-      saveAs(blob, filename + '.' + pdfurl.split('.')[1]);
+      saveAs(blob, filename + '.' + pdfurl.split('uploads')[1].split('.')[1]);
       // Handle the downloaded blob (e.g., save to local filesystem)
     });
   }
