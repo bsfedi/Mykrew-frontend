@@ -5,6 +5,8 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { saveAs } from 'file-saver';
 const baseUrl = `${environment.baseUrl}`;
 @Component({
@@ -16,7 +18,7 @@ export class AllCrasComponent {
   all_cras: any
   res: any
   selectedDate: any;
-  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private http: HttpClient, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
     // Set the initial value of selectedDate to today's date
     const today = new Date();
     const year = today.getFullYear();
@@ -28,7 +30,11 @@ export class AllCrasComponent {
   // Variable to store selected date
 
 
+  downloadFile(urlpdf: any, filename: any) {
 
+    this.consultantservice.downloadpdffile(urlpdf, filename)
+
+  }
   // Method to filter by upload date
   filterByUploadDate(uploadDate: Date): boolean {
     if (!this.selectedDate) {

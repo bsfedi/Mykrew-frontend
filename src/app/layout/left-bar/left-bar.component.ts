@@ -57,6 +57,9 @@ export class LeftBarComponent {
   goinfopersot() {
     this.router.navigate(['/consultant/infoperso'])
   }
+  gomyprofil() {
+    this.router.navigate(['/edit-profil'])
+  }
   goallConsultants() {
     this.router.navigate(['/allConsultants'])
   }

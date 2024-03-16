@@ -176,6 +176,11 @@ export class ConsultantMissionComponent {
       this.consultantservice.getpreregisterbyuid(this.user_id).subscribe({
         next: (res) => {
           this.user_info = res
+          console.log('use_info', this.user_info);
+          this.user_info.personalInfo.carInfo.drivingLicense.value = baseUrl + "uploads/" + this.user_info.personalInfo.carInfo.drivingLicense.value
+          this.user_info.personalInfo.identificationDocument.value = baseUrl + "uploads/" + this.user_info.personalInfo.identificationDocument.value
+          this.user_info.personalInfo.ribDocument.value = baseUrl + "uploads/" + this.user_info.personalInfo.ribDocument.value
+
         },
         error: (e) => {
           // Handle errors
@@ -249,17 +254,23 @@ export class ConsultantMissionComponent {
   }
   sendmail(email: any) {
     Swal.fire({
-      title: 'Confirmer l\'envoi de l\'email',
-      text: 'Êtes-vous sûr de vouloir envoyer cet email ?',
-      icon: 'question',
+      title: 'Confirmez l\'envoi de l\'email',
+      html: `
+        <div>
+          <div style="font-size:2rem;">Êtes-vous sûr de vouloir <br> envoyer cet email ?'</div> 
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, envoyer l\'email !',
-      confirmButtonColor: '#1E1E1E',
-      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui',
+      confirmButtonColor: "#91c593",
+      cancelButtonText: 'Non',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
-      }
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
         const formData1 = this.formData1.value;
@@ -292,9 +303,9 @@ export class ConsultantMissionComponent {
         Swal.fire({
           title: 'Envoi annulé',
           text: 'Aucun email n\'a été envoyé.',
-          icon: 'info',
+          confirmButtonColor: "#91c593",
           confirmButtonText: 'Ok',
-          confirmButtonColor: '#1E1E1E',
+
         });
       }
     });
@@ -481,13 +492,15 @@ export class ConsultantMissionComponent {
               icon: "success",
               title: 'Document ajouté avec succès!',
               showConfirmButton: false,
-              timer: 1500
+              timer: 3000 // Adjusted timer to 3000 milliseconds (3 seconds)
             });
-            this.showPopup = false
-            window.location.reload();
+            // Hide the popup after 3 seconds
+            setTimeout(() => {
+              this.showPopup = false;
+              // Reload the page after hiding the popup
+              window.location.reload();
+            }, 1000);
             // Handle the response from the server
-            console.log(res);
-            // Additional logic if needed
           },
           error: (e) => {
             // Handle errors
@@ -496,19 +509,31 @@ export class ConsultantMissionComponent {
         });
     }
   }
+  downloadFile(urlpdf: any, filename: any) {
+
+    this.consultantservice.downloadpdffile(urlpdf, filename)
+
+  }
   onFormSubmit() {
+
     Swal.fire({
       title: 'Confirmer le virement',
-      text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
-      icon: 'question',
+      html: `
+        <div>
+          <div style="font-size:2rem;">Êtes-vous sûr de vouloir effectuer ce virement ?'</div> 
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, effectuer le virement !',
-      confirmButtonColor: '#1E1E1E',
-      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui',
+      confirmButtonColor: "#91c593",
+      cancelButtonText: 'Non',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
-      }
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
         this.foremData.controls['userId'].setValue(this.user_id);
@@ -535,9 +560,8 @@ export class ConsultantMissionComponent {
         Swal.fire({
           title: 'Virement annulé',
           text: 'Aucun virement n\'a été effectué.',
-          icon: 'info',
           confirmButtonText: 'Ok',
-          confirmButtonColor: '#1E1E1E',
+          confirmButtonColor: '#91c593',
         });
       }
     });

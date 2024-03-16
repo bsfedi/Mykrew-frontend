@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 declare const PDFObject: any;
 
 import { environment } from 'src/environments/environment';
+import { UserService } from 'src/app/services/user.service';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 const baseUrl = `${environment.baseUrl}`;
 
 @Component({
@@ -27,7 +29,11 @@ export class ValidatedTjmComponent {
   new_tjm: any
   pdfData1: any
   showpdf: any
-  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  showpdf1: any
+  res: any
+  notification: string[] = [];
+  lastnotifications: any
+  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private socketService: WebSocketService, private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -58,12 +64,68 @@ export class ValidatedTjmComponent {
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id');
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
       this.mission_id = params['id'];
     });
 
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
 
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
+    this.consultantservice.getlastnotificationsrh().subscribe({
+      next: (res1) => {
+        console.log(res1);
+        this.lastnotifications = res1.slice(0, 10);
+        for (let item of this.lastnotifications) {
+          //getuserinfomation
+          this.consultantservice.getuserinfomation(item["userId"], this.headers).subscribe({
+            next: (info) => {
+              console.log(info);
+
+              item["userId"] = info["firstName"] + ' ' + info["lastName"]
+            }
+          })
+        }
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
+
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.notification.push(event.notification.typeOfNotification)
+      }
+
+      // Handle your rhNotification event here
+    });
     // Check if token is available
     if (token) {
       // Include the token in the headers
@@ -114,7 +176,7 @@ export class ValidatedTjmComponent {
           if (this.new_tjm.simulationValidated.endsWith('.pdf')) {
             this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.new_tjm.simulationValidated).subscribe({
               next: (res) => {
-                this.showpdf = true
+                this.showpdf1 = true
                 this.pdfData1 = res;
 
                 if (this.pdfData1) {
@@ -123,7 +185,7 @@ export class ValidatedTjmComponent {
               },
             });
           } else {
-            this.showpdf = false
+            this.showpdf1 = false
             this.new_tjm.simulationValidated = baseUrl + "uploads/" + this.new_tjm.simulationValidated
             console.log(this.new_tjm.simulationValidated);
 

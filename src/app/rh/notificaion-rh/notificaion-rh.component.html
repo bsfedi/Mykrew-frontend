@@ -42,13 +42,13 @@
 
   <div class="historique">
     <div class="historique-demandes">
-      <div class="text">Historique des demandes</div>
+      <div class="text"><b>Nouvelles pre-inscription </b></div>
       <div class="plus" style="cursor: pointer" (click)="gottoallConsultants()">
         Voir tout
       </div>
     </div>
     <div *ngFor="let item of items">
-      <div style="display: flex; margin-bottom: 10px" (click)="gotovalidation(item._id)">
+      <div style="display: flex; margin-bottom: 10px ; margin-left: 20px;" (click)="gotovalidation(item._id)">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;" class="bi bi-person-fill"
           viewBox="0 0 16 16">
@@ -68,41 +68,74 @@
   </div>
   <div class="historique">
     <div class="historique-consultants">
-      <div class="text" style="margin-right: 30px">Notifications</div>
+      <div class="text" style="margin-right: 30px"><b> Notifications </b></div>
       <div class="plus" (click)="gotoallnotification()">Voir tout</div>
     </div>
     <div *ngFor="let item of lastnotifications">
-      <div class="type" *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidationmission(item.missionId)">
-        <div style="margin-bottom: 5px;">
-          Nouvelle mission - {{item.userId}}
-        </div>
-        <div>
-          {{ formatDate(item.createdAt.split(["T"])[0]) }}
-        </div>
+      <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidationmission(item.missionId)">
+        <div style="display: flex;">
 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-left: 2%; margin-right: 2%;"
+            class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+          </svg>
+
+          <div>
+          </div>
+          <div style="margin-bottom: 5px;">
+            Nouvelle mission - <b> {{item.userId}} </b>
+
+            <div> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
+          </div>
+        </div>
+        <hr>
 
 
       </div>
-      <div class="type" *ngIf="item.typeOfNotification == 'TJMREQUEST'">
-        <div style="margin-bottom: 5px;">
-          Demande TJM - {{item.userId}}
-        </div>
-        <div>
-          {{ formatDate(item.createdAt.split(["T"])[0]) }}
-        </div>
 
+      <div *ngIf="item.typeOfNotification == 'TJMREQUEST'">
+        <div style="display: flex;">
 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-left: 2%; margin-right: 2%;"
+            class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+          </svg>
 
-        <div class="type" *ngIf="item.typeOfNotification == 'NEWPREREGISTER'"
-          (click)="gotovalidation(item.preregisterId)">
-
-
-          <div style="margin-bottom: 5px;">
-            Nouvelle pre-inscription - {{item.userId}}
-          </div>
           <div>
-            {{ formatDate(item.createdAt.split(["T"])[0]) }}
           </div>
+          <div style="margin-bottom: 5px;">
+            Demande TJM - <b> {{item.userId}} </b>
+
+            <div> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
+          </div>
+        </div>
+        <hr>
+
+
+
+
+        <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'" (click)="gotovalidation(item.preregisterId)">
+          <div style="display: flex;">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-left: 2%; margin-right: 2%;"
+              class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+            </svg>
+
+            <div>
+            </div>
+            <div style="margin-bottom: 5px;">
+              Nouvelle pre-inscription - <b> {{item.userId}} </b>
+
+              <div> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
+            </div>
+          </div>
+          <hr>
+
+
 
         </div>
       </div>

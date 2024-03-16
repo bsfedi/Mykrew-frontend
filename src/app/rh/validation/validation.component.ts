@@ -28,6 +28,7 @@ export class ValidationComponent implements OnInit {
   @Input() isLoading: boolean = false;
   personalInfo: any; // Adjust the type as per your data structure
   clientInfo: any;
+  consultant_id: any
   missionInfo: any;
   toggleValue: boolean = true;
   toggleValue1: string = 'true'
@@ -176,6 +177,7 @@ export class ValidationComponent implements OnInit {
       this.inscriptionservice.getPreinscriptionById(this.preinscription_id, this.headers).subscribe({
         next: (res) => {
           // Handle the response from the server
+          this.consultant_id = res.userId
           this.personalInfo = res.personalInfo;
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
@@ -275,58 +277,59 @@ export class ValidationComponent implements OnInit {
       "endDateCause": this.commantaireendDateValue
     }
 
-    // Display confirmation popup
     Swal.fire({
-      title: 'Confirmer les modifications',
-      text: "Êtes-vous sûr de vouloir soumettre vos informations personnelles ? <br> Veuillez vérifier que toutes les données saisies sont correctes et à jour.",
-
+      title: 'Confirmez Vos Informations',
+      html: `
+        <div>
+        <div style="font-size:2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
+          <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.?</div>
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
-      confirmButtonColor: "#28a745", // Green color
-
+      confirmButtonColor: "#91c593",
       cancelButtonText: 'Annuler',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User clicked 'Yes', call the endpoint
+        this.inscriptionservice.rhvalidation(this.preinscription_id, data, this.headers).subscribe({
+          next: (res) => {
+            // Handle success
+            Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: 'Inscription mise à jour avec succès !',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            this.router.navigate(['/dashboard'])
+          },
+          error: (e) => {
+            // Handle errors
+            console.error(e);
+            Swal.fire('Error', "Échec de la mise à jour de l'enregistrement.", 'error');
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Annulé',
+          text: "Aucune modification n'a été apportée.",
+          confirmButtonText: 'Ok',
+          confirmButtonColor: "#91c593",
+        })
+        // // User clicked 'Cancel' or closed the popup
+        // Swal.fire('Annulé',
+        //   "Aucune modification n'a été apportée.", 'info');
       }
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          // User clicked 'Yes', call the endpoint
-          this.inscriptionservice.rhvalidation(this.preinscription_id, data, this.headers).subscribe({
-            next: (res) => {
-              // Handle success
-              Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: 'Inscription mise à jour avec succès !',
-                showConfirmButton: false,
-                timer: 1500
-              });
-              this.router.navigate(['/dashboard'])
-            },
-            error: (e) => {
-              // Handle errors
-              console.error(e);
-              Swal.fire('Error', "Échec de la mise à jour de l'enregistrement.", 'error');
-            }
-          });
-        } else {
-          Swal.fire({
-            title: 'Annulé',
-            text: "Aucune modification n'a été apportée.",
-            icon: 'info',
-            iconColor: '#1E1E1E',
-
-            confirmButtonText: 'Ok',
-            confirmButtonColor: "#1E1E1E",
-          })
-          // // User clicked 'Cancel' or closed the popup
-          // Swal.fire('Annulé',
-          //   "Aucune modification n'a été apportée.", 'info');
-        }
-      });
+    });
 
   }
   handlesecondRenderPdf(data: any) {
@@ -349,7 +352,10 @@ export class ValidationComponent implements OnInit {
     }
 
   }
+  gotoconsultantprofil() {
+    this.router.navigate(['/missions/' + this.consultant_id])
 
+  }
   onRadioChange(value: boolean) {
     // Update hasCar based on radio button change
     this.hasCar = value;

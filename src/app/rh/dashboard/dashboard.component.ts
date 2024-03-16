@@ -71,7 +71,36 @@ export class DashboardComponent {
 
           chart: {
             height: 200,
-            type: "area"
+            type: "area",
+
+            toolbar: {
+              show: true, // Show or hide the toolbar
+              tools: {
+                download: true, // Show or hide the download option in the toolbar
+                selection: true, // Show or hide the selection tool in the toolbar
+                zoom: false, // Show or hide the zoom tool in the toolbar
+                zoomin: true, // Show or hide the zoom in button in the toolbar
+                zoomout: true, // Show or hide the zoom out button in the toolbar
+                pan: false, // Show or hide the pan tool in the toolbar
+                reset: true, // Show or hide the reset zoom button in the toolbar
+                customIcons: [] // Custom icons for the toolbar, e.g., [{icon: 'image-url', click: function() { // Custom action }}]
+              },
+              autoSelected: 'zoom' // Automatically select the tool on chart render, options: 'zoom', 'pan', 'selection', null
+            },
+            animations: {
+              enabled: true, // Enable or disable animations
+              easing: 'easeout', // Easing function for animations, options: 'linear', 'easein', 'easeout', 'easeinout', etc.
+              speed: 800, // Animation speed in milliseconds
+              animateGradually: {
+                enabled: true, // Enable or disable gradual animation for chart updates
+                delay: 150 // Delay in milliseconds between each data point animation
+              },
+              dynamicAnimation: {
+                enabled: true, // Enable or disable dynamic animation for chart updates
+                speed: 300 // Animation speed in milliseconds for dynamic animations
+              }
+            },
+
           },
           dataLabels: {
             enabled: false

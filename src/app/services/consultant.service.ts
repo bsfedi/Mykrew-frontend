@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 const baseUrl = `${environment.baseUrl}`;
-
+import { saveAs } from 'file-saver';
 @Injectable({
   providedIn: 'root'
 })
@@ -47,7 +47,27 @@ export class ConsultantService {
 
     return this.http.get(baseUrl + 'newMission/getMissionById/' + id_mission, options);
   }
+  downloadpdffile(pdfurl: any, filename: any) {
+    console.log(pdfurl);
 
+    // // Endpoint on your server for downloading files
+    // const url = baseUrl + 'api/download?url=' + pdfurl;
+
+    // // Determine file extension to set appropriate filename
+    // const fileExtension = url.split('.').pop(); // Get the file extension
+
+    // const fileName = 'downloaded_file.' + fileExtension; // Construct the filename
+
+    // this.http.get(baseUrl, { responseType: 'blob' }).subscribe(blob => {
+    //   // Save the downloaded blob to a file
+    //   saveAs(blob, fileName);
+    // });
+    const url = baseUrl + 'api/download?url=' + pdfurl; // Endpoint on your server
+    this.http.get(url, { responseType: 'blob' }).subscribe(blob => {
+      saveAs(blob, filename + '.' + pdfurl.split('.')[1]);
+      // Handle the downloaded blob (e.g., save to local filesystem)
+    });
+  }
   getUserMissionById(id_mission: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};

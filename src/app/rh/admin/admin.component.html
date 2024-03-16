@@ -4,18 +4,18 @@
   </div>
   <div class="second-container">
     <!-- <div class="search-bar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-          fill="#1E1E1E" />
-      </svg>
-      <div class="Search-text">
-        <input type="search" placeholder="Search Anything Here..." />
-      </div>
-      <div>
-        <button class="button">Rechercher</button>
-      </div>
-    </div> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+            fill="#1E1E1E" />
+        </svg>
+        <div class="Search-text">
+          <input type="search" placeholder="Search Anything Here..." />
+        </div>
+        <div>
+          <button class="button">Rechercher</button>
+        </div>
+      </div> -->
     <br />
     <br />
     <div class="flex-container">
@@ -73,7 +73,7 @@
     <hr />
     <div>
       <div>
-        <div><b> RH utilisateurs </b></div>
+        <div><b>Utilisateurs RH </b></div>
         <br />
       </div>
       <div>
@@ -81,11 +81,11 @@
           <thead>
             <tr>
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
-                utilisateur
+                Utilisateur
               </th>
-
-              <th>status</th>
-              <th>identifiant</th>
+              <th></th>
+              <th>Status</th>
+              <th>Identifiant</th>
 
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
             </tr>
@@ -105,16 +105,39 @@
               </td>
 
               <td>
-                <div *ngIf="rh.isAvtivated == true">
+                <div *ngIf="rh.isAvtivated == true" style="
+                  display: flex;
+                  width: auto;
+                  height: 1.75rem;
+                  padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                  justify-content: center;
+                  align-items: center;
+                  flex-shrink: 0;
+                  border-radius: 0.875rem;
+                  background: #f3f4f6;
+                ">
                   Activé
                 </div>
-                <div *ngIf="rh.isAvtivated != true">
+                <div *ngIf="rh.isAvtivated != true" style="
+                  display: flex;
+                  width: auto;
+                  height: 1.75rem;
+                  padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                  justify-content: center;
+                  align-items: center;
+                  flex-shrink: 0;
+                  border-radius: 0.875rem;
+                  background: #f3f4f6;
+                ">
                   désactivé
                 </div>
               </td>
 
               <td>{{ rh.personalInfo.immatriculation }}</td>
-              <td (click)="toggleMenu1(i)" style="cursor: pointer">
+              <td style="cursor: pointer">
+
+              </td>
+              <td style="cursor: pointer" class="dropdown">
                 <div>
                   <div>
                     <div style="margin-left: 8px">
@@ -128,34 +151,34 @@
                     </div>
                   </div>
                 </div>
+                <div class="dropdown-content">
+                  <!-- Your dropdown content here -->
+                  <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
+                    *ngIf="rh.isAvtivated == true">
+                    <img src="/assets/Checkmark.svg" width="12%" />
+                    <div style="
+                        margin-top: 7px;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                      ">
+                      désactiver le compte
+                    </div>
+                  </div>
+                  <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
+                    *ngIf="rh.isAvtivated == false">
+                    <img src="/assets/Checkmark.svg" width="12%" />
+                    <div style="
+                        margin-top: 7px;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                      ">
+                      activer le compte
+                    </div>
+                  </div>
+
+                </div>
               </td>
-              <div *ngIf="isMenuOpen1[i]" class="dropdown-menu">
-                <!-- Menu items go here -->
-                <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
-                  *ngIf="rh.isAvtivated == true">
-                  <img src="/assets/Checkmark.svg" width="12%" />
-                  <div style="
-                      margin-top: 7px;
-                      margin-bottom: 10px;
-                      margin-left: 5px;
-                    ">
-                    désactiver le compte
-                  </div>
-                </div>
-                <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
-                  *ngIf="rh.isAvtivated == false">
-                  <img src="/assets/Checkmark.svg" width="12%" />
-                  <div style="
-                      margin-top: 7px;
-                      margin-bottom: 10px;
-                      margin-left: 5px;
-                    ">
-                    activer le compte
-                  </div>
-                </div>
 
-
-              </div>
             </tr>
           </tbody>
         </table>
@@ -165,19 +188,19 @@
     <br />
     <div>
       <div>
-        <div><b> consultant utilisateurs </b></div>
+        <div><b> Consultants </b></div>
         <br />
       </div>
       <div>
         <table>
           <thead>
             <tr>
-              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
-                utilisateur
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;">
+                Nom
               </th>
 
-              <th>status</th>
-              <th>identifiant</th>
+              <th>Status</th>
+              <th>Télephone</th>
 
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
             </tr>
@@ -192,24 +215,51 @@
                 <div style="margin-top: 0px; text-align: left;width:260px;">
                   <div *ngIf="rh.personalInfo">
                     {{ rh.personalInfo.firstName }}
-                    {{ rh.personalInfo.lastName }}
-                  </div> <br />
-                  {{ rh.email }}
+                    {{ rh.personalInfo.lastName }} <br>
+
+                  </div>
+                  <div *ngIf="rh.personalInfo">
+                    {{ rh.email }}
+                  </div>
+                  <div *ngIf="!rh.personalInfo" style="margin-top: 10px;">
+                    {{ rh.email }}
+                  </div>
+
                 </div>
               </td>
 
               <td>
-                <div *ngIf="rh.isAvtivated == true">
+                <div *ngIf="rh.isAvtivated == true" style="
+                  display: flex;
+                  width: auto;
+                  height: 1.75rem;
+                  padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                  justify-content: center;
+                  align-items: center;
+                  flex-shrink: 0;
+                  border-radius: 0.875rem;
+                  background: #f3f4f6;
+                ">
                   Activé
                 </div>
-                <div *ngIf="rh.isAvtivated != true">
-                  désactivé
+                <div *ngIf="rh.isAvtivated != true" style="
+                  display: flex;
+                  width: auto;
+                  height: 1.75rem;
+                  padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
+                  justify-content: center;
+                  align-items: center;
+                  flex-shrink: 0;
+                  border-radius: 0.875rem;
+                  background: #f3f4f6;
+                ">
+                  Désactivé
                 </div>
               </td>
 
-              <td *ngIf="rh.personalInfo">{{ rh.personalInfo.nationality }}</td>
+              <td *ngIf="rh.personalInfo">{{ rh.personalInfo.phoneNumber }}</td>
               <td *ngIf="!rh.personalInfo"></td>
-              <td (click)="toggleMenu(i)" style="cursor: pointer">
+              <td style="cursor: pointer" class="dropdown">
                 <div>
                   <div>
                     <div style="margin-left: 8px">
@@ -223,34 +273,45 @@
                     </div>
                   </div>
                 </div>
+                <div class="dropdown-content">
+                  <!-- Your dropdown content here -->
+                  <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
+                    *ngIf="rh.isAvtivated == true">
+                    <img src="/assets/Checkmark.svg" width="12%" />
+                    <div style="
+                        margin-top: 7px;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                      ">
+                      désactiver le compte
+                    </div>
+                  </div>
+                  <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
+                    *ngIf="rh.isAvtivated == false">
+                    <img src="/assets/Checkmark.svg" width="12%" />
+                    <div style="
+                        margin-top: 7px;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                      ">
+                      activer le compte
+                    </div>
+                  </div>
+                  <div style="display: flex; cursor: pointer" (click)="gotomissions(rh._id)">
+                    <img src="/assets/Checkmark.svg" width="12%" />
+                    <div style="
+                        margin-top: 7px;
+                        margin-bottom: 10px;
+                        margin-left: 5px;
+                      ">
+                      Profil
+                    </div>
+                  </div>
+                </div>
               </td>
-              <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
-                <!-- Menu items go here -->
-                <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
-                  *ngIf="rh.isAvtivated == true">
-                  <img src="/assets/Checkmark.svg" width="12%" />
-                  <div style="
-                      margin-top: 7px;
-                      margin-bottom: 10px;
-                      margin-left: 5px;
-                    ">
-                    désactiver le compte
-                  </div>
-                </div>
-                <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
-                  *ngIf="rh.isAvtivated == false">
-                  <img src="/assets/Checkmark.svg" width="12%" />
-                  <div style="
-                      margin-top: 7px;
-                      margin-bottom: 10px;
-                      margin-left: 5px;
-                    ">
-                    activer le compte
-                  </div>
-                </div>
 
 
-              </div>
+
             </tr>
           </tbody>
         </table>

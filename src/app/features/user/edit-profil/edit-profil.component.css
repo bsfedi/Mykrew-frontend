@@ -1,0 +1,80 @@
+.container-items {
+    display: flex;
+    margin-left: 5%;
+}
+
+.second-container {
+    margin-left: 240px;
+
+    flex-wrap: 1;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+
+svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    padding: 10px;
+    padding-top: 10px;
+}
+
+
+.separator {
+    width: 22.5625rem;
+    height: 0.2rem;
+    flex-shrink: 0;
+    stroke-width: 1px;
+    stroke: rgba(205, 199, 185, 0.52);
+}
+
+.separator1 {
+    width: 45.5625rem;
+    height: 1rem;
+    flex-shrink: 0;
+    stroke-width: 1px;
+    stroke: rgba(205, 199, 185, 0.52);
+}
+
+.button {
+    float: right;
+}
+
+button {
+    color: white;
+    display: flex;
+    width: 20%;
+    padding: 0.5rem;
+    margin-left: 40%;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.625rem;
+    background: black;
+    margin-top: 2px;
+
+
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 22.04313rem;
+    height: 2.61006rem;
+    flex-shrink: 0;
+
+    padding: 8px;
+    margin-top: 15px;
+    margin: 8px;
+    border-radius: 0.5rem;
+    border: 1px solid #1e1e1e;
+
+    background: #fff;
+    border-radius: 6px;
+    box-sizing: border-box;
+}

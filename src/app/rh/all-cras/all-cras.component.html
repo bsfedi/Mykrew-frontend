@@ -83,9 +83,11 @@
                                             {{ formatDate(pdf.uploadDate.split("T")[0]) }}
                                         </td>
                                         <td>
-                                            <div (click)="downloadDocument(pdf.filename, pdf.filename)" style="
+                                            <div (click)="downloadFile(pdf.filename,pdf.filename.split('uploads/')[1].split('.')[0])"
+                                                style="
                                                 display: flex;
                                                 height: 1.5rem;
+                                                cursor: pointer;
                                                 padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                                                 justify-content: center;
                                                 align-items: center;

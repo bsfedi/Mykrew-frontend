@@ -196,12 +196,12 @@
                 <div class="encours">en cours</div>
               </div>
               <div *ngIf="isDateToday(item.missionInfo.endDate.split('T')[0])">
-                <div class="done">Termineé</div>
+                <div class="done">Terminé</div>
               </div>
               <div *ngIf="
                   isDateBeforeToday(item.missionInfo.endDate.split('T')[0])
                 ">
-                <div class="done">Termineé</div>
+                <div class="done">Terminé</div>
               </div>
             </td>
             <td>#{{ j + 1 }}</td>

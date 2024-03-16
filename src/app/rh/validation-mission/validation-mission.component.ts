@@ -168,17 +168,22 @@ export class ValidationMissionComponent {
     }
     Swal.fire({
       title: 'Confirmer les modifications',
-      text: "Êtes-vous sûr de vouloir mettre à jour l'inscription ?",
-      icon: 'question',
+      html: `
+        <div>
+        <div style="font-size:2rem;">  Êtes-vous sûr de vouloir <br> mettre à jour la mission ?  </div> 
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, mettez à jour !',
-      confirmButtonColor: "#1E1E1E",
-
-      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui',
+      confirmButtonColor: "#91c593",
+      cancelButtonText: 'Non',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
-      }
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(this.contactClient, this.clientValidation, this.contactClient, this.jobCotractEdition);
@@ -196,7 +201,7 @@ export class ValidationMissionComponent {
             // Handle errors
             if (e.error.text == 'Mission Killed Successfully') {
               // Handle success
-              Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
+              Swal.fire('Success', "la mission est  mis a jour avec succées!", 'success');
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -220,11 +225,8 @@ export class ValidationMissionComponent {
         Swal.fire({
           title: 'Annulé',
           text: "Aucune modification n'a été apportée.",
-          icon: 'info',
-          iconColor: '#1E1E1E',
-
           confirmButtonText: 'Ok',
-          confirmButtonColor: "#1E1E1E",
+          confirmButtonColor: "#91c593",
         })
         // // User clicked 'Cancel' or closed the popup
         // Swal.fire('Annulé',

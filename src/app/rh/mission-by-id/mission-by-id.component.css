@@ -23,6 +23,51 @@
   /* 2.25rem */
 }
 
+.profil {
+  width: 12rem;
+  height: 3.125rem;
+
+  border-radius: 1.5625rem;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+}
+
+.profil img {
+  border-radius: 100%;
+  width: 2.125rem;
+  height: 1.875rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+.profil1 {
+  width: 13rem;
+  height: 3.125rem;
+
+  border-radius: 1.5625rem;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+}
+
+.custom-confirm-button-class {
+  float: right;
+  background-color: #91c593;
+}
+
+.custom-cancel-button-class {
+  float: left;
+}
+
+.profil1 img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
 .first-item {
   color: white;
   flex-shrink: 0;
@@ -281,8 +326,7 @@ input[type="checkbox"] {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.second-item {
-}
+.second-item {}
 
 .profil {
   width: 12rem;
@@ -525,7 +569,7 @@ input[type="text"]:focus {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: rgb(85, 205, 85);
 }
 
@@ -544,12 +588,12 @@ input[type="text"]:focus {
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch.commantaire-style input:checked + .slider:before {
+.toggle-switch.commantaire-style input:checked+.slider:before {
   transform: translateX(0px);
 }
 
@@ -581,7 +625,7 @@ input[type="text"]:focus {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch.commantaire-style input:checked + .slider {
+.toggle-switch.commantaire-style input:checked+.slider {
   background-color: #ccc;
 }
 
@@ -613,5 +657,6 @@ input[type="text"]:focus {
 
 /* Add the desired text color */
 .custom-text-color-class {
-  color: #000000; /* Black text color */
+  color: #000000;
+  /* Black text color */
 }

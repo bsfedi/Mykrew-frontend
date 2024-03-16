@@ -10,6 +10,8 @@ import { delay, of } from 'rxjs';
 import { ConsultantService } from 'src/app/services/consultant.service';
 
 import { environment } from 'src/environments/environment';
+import { UserService } from 'src/app/services/user.service';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -81,8 +83,10 @@ export class MissionByIdComponent {
   token: any;
   headers: any
   pdfData: any;
-
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  res: any
+  lastnotifications: any
+  notification: string[] = [];
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private userservice: UserService, private router: Router, private route: ActivatedRoute) {
 
 
 
@@ -96,7 +100,7 @@ export class MissionByIdComponent {
   }
 
   ngOnInit(): void {
-
+    const user_id = localStorage.getItem('user_id')
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
       this.mission_id = params['id'];
@@ -107,7 +111,20 @@ export class MissionByIdComponent {
     // Check if token is available
     if (this.token) {
       // Include the token in the headers
+      this.userservice.getpersonalinfobyid(user_id).subscribe({
 
+
+        next: (res) => {
+          // Handle the response from the server
+          this.res = res
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
       this.consultantservice.getMissionuserbyid(this.mission_id, this.headers).subscribe({
         next: (res) => {
           // Handle the response from the server
@@ -143,6 +160,41 @@ export class MissionByIdComponent {
           // Set loading to false in case of an error
           this.loading = false;
         }
+      });
+      this.consultantservice.getlastnotificationsrh().subscribe({
+        next: (res1) => {
+          console.log(res1);
+          this.lastnotifications = res1.slice(0, 10);
+          for (let item of this.lastnotifications) {
+            //getuserinfomation
+            this.consultantservice.getuserinfomation(item["userId"], this.headers).subscribe({
+              next: (info) => {
+                console.log(info);
+
+                item["userId"] = info["firstName"] + ' ' + info["lastName"]
+              }
+            })
+          }
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+
+      this.socketService.connect()
+      // Listen for custom 'rhNotification' event in WebSocketService
+      this.socketService.onRhNotification().subscribe((event: any) => {
+        console.log(event);
+
+        if (event.notification.toWho == "RH") {
+          this.lastnotifications.push(event.notification.typeOfNotification)
+          this.notification.push(event.notification.typeOfNotification)
+        }
+
+        // Handle your rhNotification event here
       });
     }
   }
@@ -198,21 +250,25 @@ export class MissionByIdComponent {
       "endDateCause": this.commantaireendDateValue
     }
 
-    // Display confirmation popup
     Swal.fire({
-      title: 'Confirmer les modifications',
-      text: "Êtes-vous sûr de vouloir soumettre vos informations personnelles ? ",
-      icon: 'question',
+      title: 'Confirmez Vos Informations',
+      html: `
+        <div>
+        <div style="font-size:2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
+          <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.?</div>
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, mettez à jour !',
-      confirmButtonColor: "#1E1E1E",
-
-
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: "#91c593",
       cancelButtonText: 'Annuler',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
-      }
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
         // User clicked 'Yes', call the endpoint
@@ -238,11 +294,10 @@ export class MissionByIdComponent {
         Swal.fire({
           title: 'Annulé',
           text: "Aucune modification n'a été apportée.",
-          icon: 'info',
           iconColor: '#1E1E1E',
 
           confirmButtonText: 'Ok',
-          confirmButtonColor: "#1E1E1E",
+          confirmButtonColor: "#91c593",
         })
         // // User clicked 'Cancel' or closed the popup
         // Swal.fire('Annulé',

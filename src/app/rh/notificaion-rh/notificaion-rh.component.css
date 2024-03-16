@@ -350,9 +350,9 @@ input[type="checkbox"] {
 .historique .text {
   color: #000;
 
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 280;
   line-height: 100%;
   margin: 10px;
 

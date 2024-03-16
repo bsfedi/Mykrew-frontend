@@ -21,6 +21,7 @@ import { CRAComponent } from './cra/cra.component';
 import { AllnotificationsComponent } from './allnotifications/allnotifications.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { EditProfilComponent } from 'src/app/features/user/edit-profil/edit-profil.component';
 
 
 export const routes: Routes = [
@@ -85,6 +86,10 @@ export const routes: Routes = [
   {
     path: 'CRA/:id',
     component: CRAComponent
+  },
+  {
+    path: 'edit-profil',
+    component: EditProfilComponent
   }
 
 
@@ -106,6 +111,7 @@ export const routes: Routes = [
     CRAComponent,
     AllnotificationsComponent,
     ForgetPasswordComponent,
+    EditProfilComponent,
     UpdatePasswordComponent,
 
 

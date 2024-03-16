@@ -14,6 +14,7 @@ import { WebSocketService } from './services/web-socket.service';
 
 import { environment } from 'src/environments/environment';
 import { ProfilComponent } from './layout/profil/profil.component';
+import { EditProfilComponent } from './features/user/edit-profil/edit-profil.component';
 const baseUrl = `${environment.baseUrl}`;
 
 const config: SocketIoConfig = { url: baseUrl, options: {} };
@@ -22,6 +23,7 @@ const config: SocketIoConfig = { url: baseUrl, options: {} };
   declarations: [
     AppComponent,
     ProfilComponent,
+
 
 
   ],

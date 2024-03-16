@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +21,7 @@ export class AdminComponent {
   isMenuOpen: boolean[] = [];
   isMenuOpen1: boolean[] = [];
   res: any
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService, private fb: FormBuilder) {
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private router: Router, private userservice: UserService, private socketService: WebSocketService, private fb: FormBuilder) {
     this.myForm = this.fb.group({
 
       email: ['', Validators.required],
@@ -33,6 +34,8 @@ export class AdminComponent {
   }
 
   ngOnInit(): void {
+
+
     const user_id = localStorage.getItem('user_id');
 
 
@@ -85,6 +88,9 @@ export class AdminComponent {
   toggleMenu1(i: number) {
     this.isMenuOpen1[i] = !this.isMenuOpen1[i];
   }
+  gotomissions(_id: string) {
+    this.router.navigate(['/missions/' + _id])
+  }
   openPopup(): void {
     this.showPopup = true;
   }
@@ -92,6 +98,7 @@ export class AdminComponent {
     this.showPopup = false;
 
   }
+
   add_userrh() {
     const token = localStorage.getItem('token');
     if (token) {
@@ -122,7 +129,7 @@ export class AdminComponent {
     }
     this.consultantservice.updateAccountVisibility(id, data, headers).subscribe({
       next: (res) => {
-        Swal.fire('Success', 'compte desactivé avec succès!', 'success');
+        Swal.fire('Success', 'Compte desactivé avec succès!', 'success');
         this.showPopup = false;
         window.location.reload();
         // Handle the response from the server
@@ -145,7 +152,7 @@ export class AdminComponent {
     }
     this.consultantservice.updateUserByAdmin(id, data, headers).subscribe({
       next: (res) => {
-        Swal.fire('Success', 'compte desactivé avec succès!', 'success');
+        Swal.fire('Success', 'Compte desactivé avec succès!', 'success');
         this.showPopup = false;
         window.location.reload();
         // Handle the response from the server

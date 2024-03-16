@@ -574,7 +574,7 @@
             <table class="table">
               <thead>
                 <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-                <th>ID</th>
+                <th></th>
                 <th>Document</th>
                 <th>date</th>
                 <th></th>
@@ -584,12 +584,14 @@
                 <tr>
                   <td></td>
                   <td>1</td>
-                  <td>Fichier Simulation</td>
+                  <td>RIB</td>
                   <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
-                    <div style="
+                    <div
+                      (click)="downloadFile(user_info.personalInfo.ribDocument.value, user_info.personalInfo.firstName.value)"
+                      style="
                         display: flex;
-
+                        cursor: pointer;
                         height: 1.5rem;
                         padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                         justify-content: center;
@@ -609,12 +611,41 @@
                 <tr>
                   <td></td>
                   <td>2</td>
+                  <td>CNI</td>
+                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
+                  <td>
+                    <div
+                      (click)="downloadFile(user_info.personalInfo.carInfo.drivingLicense.value, user_info.personalInfo.firstName.value)"
+                      style="
+                        display: flex;
+                        cursor: pointer;
+                        height: 1.5rem;
+                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                        justify-content: center;
+                        align-items: center;
+                        flex-shrink: 0;
+                        border-radius: 0.75rem;
+
+                        margin-left: 0px;
+                        background: #f1f8fd;
+                        color: #379ae6;
+                      ">
+                      Telecharger
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>3</td>
                   <td>Permis de Conduire</td>
                   <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
-                    <div style="
+                    <div
+                      (click)="downloadFile(user_info.personalInfo.carInfo.drivingLicense.value, user_info.personalInfo.firstName.value)"
+                      style="
                         display: flex;
-
+                        cursor: pointer;
                         height: 1.5rem;
                         padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                         justify-content: center;
@@ -634,13 +665,13 @@
 
                 <tr *ngFor="let doc of docs; let i = index">
                   <td></td>
-                  <td>{{ i + 3 }}</td>
+                  <td>{{ i + 4 }}</td>
                   <td>{{ doc.documentName }}</td>
                   <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
                   <td>
-                    <div (click)="downloadDocument(doc.document, doc.documentName)" style="
+                    <div (click)="downloadFile(doc.document, doc.documentName)" style="
                         display: flex;
-
+                        cursor: pointer;
                         height: 1.5rem;
                         padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                         justify-content: center;
@@ -679,9 +710,9 @@
                   <td>{{ doc.filename.split('uploads/')[1] }}</td>
                   <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
                   <td>
-                    <div (click)="downloadDocument(doc.filename, doc.filename)" style="
+                    <div (click)="downloadFile(doc.filename, doc.filename.split('uploads/')[1].split('.')[0])" style="
                         display: flex;
-
+                      cursor: pointer;
                         height: 1.5rem;
                         padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
                         justify-content: center;
