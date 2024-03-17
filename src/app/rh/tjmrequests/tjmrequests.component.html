@@ -18,7 +18,7 @@
 
           </thead>
           <tbody>
-            <tr *ngFor="let tjm of tjmrequests; let j = index" (click)="gotovalidation(tjm.missionId)">
+            <tr *ngFor="let tjm of tjmrequests; let j = index" (click)="gotovalidation(tjm._id)">
 
               <td>{{ tjm.username }}</td>
               <td style="width: 20%;">{{ tjm.createdAt.split("T")[0] }}</td>

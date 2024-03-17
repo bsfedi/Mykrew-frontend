@@ -535,6 +535,7 @@ export class MissionsComponent {
         error: (e) => {
           // Handle errors
           console.error(e);
+          Swal.fire('Error', e.error.error, 'error');
         }
       });
 
@@ -575,6 +576,7 @@ export class MissionsComponent {
           error: (e) => {
             // Handle errors
             console.error(e);
+            Swal.fire('Error', e.error.message);
           }
         });
     }

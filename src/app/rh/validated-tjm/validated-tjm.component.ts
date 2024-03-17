@@ -29,6 +29,7 @@ export class ValidatedTjmComponent {
   new_tjm: any
   pdfData1: any
   showpdf: any
+  tjmid: any
   showpdf1: any
   res: any
   notification: string[] = [];
@@ -67,7 +68,7 @@ export class ValidatedTjmComponent {
     const user_id = localStorage.getItem('user_id');
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
-      this.mission_id = params['id'];
+      this.tjmid = params['id'];
     });
 
     this.userservice.getpersonalinfobyid(user_id).subscribe({
@@ -130,46 +131,46 @@ export class ValidatedTjmComponent {
     if (token) {
       // Include the token in the headers
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
-      this.consultantservice.getUserMissionById(this.mission_id, this.headers).subscribe({
-        next: (res) => {
-          // Handle the response from the server
-          this.status = res.newMissionStatus
-
-
-          this.clientInfo = res.clientInfo;
-          this.missionInfo = res.missionInfo
-          if (this.missionInfo.isSimulationValidated.endsWith('.pdf')) {
-            this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated).subscribe({
-              next: (res) => {
-                this.showpdf = true
-                this.pdfData = res;
-
-                if (this.pdfData) {
-                  this.handleRenderPdf(this.pdfData);
-                }
-              },
-            });
-          } else {
-            this.showpdf = false
-            this.item.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated
-
-
-          }
-
-
-        },
-        error: (e) => {
-          // Handle errors
-          console.error(e);
-          // Set loading to false in case of an error
-
-        }
-      });
-      this.consultantservice.getTjmRequestsByMissionId(this.mission_id).subscribe({
+      this.consultantservice.getTjmRequestsByMissionId(this.tjmid).subscribe({
         next: (res) => {
           // Handle the response from the server
           this.new_tjm = res
-          console.log(this.new_tjm.simulationValidated);
+          this.mission_id = this.new_tjm.missionId
+          this.consultantservice.getUserMissionById(this.mission_id, this.headers).subscribe({
+            next: (res) => {
+              // Handle the response from the server
+              this.status = res.newMissionStatus
+
+
+              this.clientInfo = res.clientInfo;
+              this.missionInfo = res.missionInfo
+              if (this.missionInfo.isSimulationValidated.endsWith('.pdf')) {
+                this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated).subscribe({
+                  next: (res) => {
+                    this.showpdf = true
+                    this.pdfData = res;
+
+                    if (this.pdfData) {
+                      this.handleRenderPdf(this.pdfData);
+                    }
+                  },
+                });
+              } else {
+                this.showpdf = false
+                this.item.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated
+
+
+              }
+
+
+            },
+            error: (e) => {
+              // Handle errors
+              console.error(e);
+              // Set loading to false in case of an error
+
+            }
+          });
 
 
 
@@ -199,6 +200,8 @@ export class ValidatedTjmComponent {
 
         }
       });
+
+
 
     }
   }
