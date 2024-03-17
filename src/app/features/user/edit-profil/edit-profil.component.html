@@ -13,23 +13,24 @@
                     </svg>
                 </div>
                 <div style="
-              margin-top: 7px;
-  
-              font-size: 1.75rem;
-              font-style: normal;
-              font-weight: 300;
-              line-height: normal;
-              letter-spacing: 0.0225rem;
-            ">
+                  margin-top: 7px;
+      
+                  font-size: 1.75rem;
+                  font-style: normal;
+                  font-weight: 300;
+                  line-height: normal;
+                  letter-spacing: 0.0225rem;
+                ">
                     Mes infos Personnelles
                 </div>
             </div>
             <div style="display: flex; margin: 0px 15px">
                 <div>
-                    <img src="assets/profil-popup.png" />
+                    <img src="/assets/4035887-200.png"
+                        style="width: 40px; border-radius: 20%; height: 45px;margin-top: 20px;" />
                 </div>
-                <div style="margin: 15px; margin-top: 40px; font-size: 15px">
-                    <b> Nom Penom </b>
+                <div style="margin: 15px; margin-top: 20px; font-size: 15px">
+                    <div> {{ res.firstName }} <br> {{ res.lastName }} </div>
                 </div>
             </div>
             <svg class="separator" xmlns="http://www.w3.org/2000/svg" width="361" height="" viewBox="0 0 361 2"
@@ -37,22 +38,41 @@
                 <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
             </svg>
             <h3 style="margin-left: 15px">Informations Personnelles</h3>
-            <div style="display: flex">
-                <input type="text" placeholder="Nom" />
-                <input type="text" placeholder="Prénom" />
+            <div>
+                <div style="display: flex">
+                    <div>
+                        <b style="margin-left: 12px;"> Nom :</b><br>
+                        <input type="text" [(ngModel)]="firstName" />
+                    </div>
+                    <div>
+                        <b style="margin-left: 12px;"> Prénom :</b><br>
+                        <input type="text" [(ngModel)]="lastName" />
+                    </div>
+                </div>
+                <div style="display: flex">
+                    <div>
+                        <b style="margin-left: 12px;"> Email :</b><br>
+                        <input type="email" [(ngModel)]="email" />
+                    </div>
+                    <div>
+                        <b style="margin-left: 12px;"> Télephone :</b><br>
+                        <input type="text" [(ngModel)]="phoneNumber" />
+                    </div>
+                </div>
+                <div style="display: flex">
+                    <div>
+                        <b style="margin-left: 12px;"> Emplacement :</b><br>
+                        <input type="text" [(ngModel)]="location" />
+                    </div>
+                    <div>
+                        <b style="margin-left: 12px;"> Nationalité :</b><br>
+                        <input type="text" [(ngModel)]="nationality" />
+                    </div>
+                </div>
+                <div style="display: flex">
+                </div>
+                <button (click)="updateUser()">Modifier</button>
             </div>
-            <div style="display: flex">
-                <input type="email" placeholder="email" />
-                <input type="text" placeholder="Télephone" />
-            </div>
-            <div style="display: flex">
-                <input type="date" />
-                <input type="text" placeholder="nationality" />
-            </div>
-            <div style="display: flex">
-                <input type="text" placeholder="location" />
-            </div>
-            <button> Modifier</button>
             <svg class="separator1" xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 361 2"
                 fill="none">
                 <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
@@ -62,17 +82,16 @@
             <h3 style="margin-left: 15px">Changer mot de passe</h3>
             <div style="margin-left: 25px">
                 <div>
-                    <input type="text" placeholder="mot de passe actuel" />
+                    <input type="password" [(ngModel)]="currentPassword" placeholder="Mot de passe actuel" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Nouveau mot de passe" />
+                    <input type="password" [(ngModel)]="newPassword" placeholder="Nouveau mot de passe" />
                 </div>
                 <div>
-                    <input type="text" placeholder="Confirmer nouveau mot de passe" />
+                    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirmer nouveau mot de passe" />
                 </div>
             </div>
-            <button> Modifier</button>
-
+            <button (click)="changePassword()">Modifier</button>
         </div>
 
 

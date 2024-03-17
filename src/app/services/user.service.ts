@@ -34,6 +34,9 @@ export class UserService {
   updatePassword(id: any, data: any) {
     return this.http.post(baseUrl + 'user/resetPassword/' + id, data);
   }
+  updatepassword(id: any, data: any) {
+    return this.http.put(baseUrl + 'user/updatepassword/' + id, data);
+  }
   createinscrption(data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};
@@ -46,7 +49,9 @@ export class UserService {
 
     return this.http.put(baseUrl + 'registration/consultantEdit/' + id, data, options);
   }
-
+  updateUser(id: any, updatedUserInfo: any) {
+    return this.http.put(baseUrl + 'user/updateuser/' + id, updatedUserInfo);
+  }
   editIdentificationDocument(id: any, data: any): Observable<any> {
     // Include headers if provided
 

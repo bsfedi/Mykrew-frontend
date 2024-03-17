@@ -24,6 +24,10 @@
   /* 2.25rem */
 }
 
+#chart {
+  width: 840px;
+}
+
 .first-item {
   color: white;
   position: fixed;
@@ -218,8 +222,7 @@ input[type="search"]:focus {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.second-item {
-}
+.second-item {}
 
 .profil {
   width: 12rem;
@@ -253,7 +256,7 @@ input[type="search"]:focus {
 }
 
 .right-item {
-  width: 40%;
+  width: 25%;
   float: right;
   margin-left: 30px;
   display: row;
@@ -507,6 +510,7 @@ input[type="search"]:focus {
   background: #f7f5ef;
   overflow: hidden;
 }
+
 .transaction-header {
   background: #f7f5ef;
   padding: 10px;
@@ -516,19 +520,23 @@ input[type="search"]:focus {
   justify-content: space-between;
   align-items: center;
 }
-.transaction-header > select {
+
+.transaction-header>select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
 }
+
 td {
   width: 33%;
   padding: 12px;
 }
+
 table {
   background: #f7f5ef;
 }
+
 th {
   /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
   background: #f7f5ef;

@@ -46,14 +46,14 @@ button {
     display: flex;
     width: 20%;
     padding: 0.5rem;
-    margin-left: 40%;
-    margin-top: 10px;
+    margin-left: 39%;
+    margin-top: 15px;
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
     border-radius: 0.625rem;
     background: black;
-    margin-top: 2px;
+
 
 
 }

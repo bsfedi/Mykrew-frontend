@@ -86,7 +86,7 @@ input[type="search"]:focus {
 }
 
 .right-item {
-  width: 30%;
+  width: 25%;
   float: right;
   display: row;
 }
@@ -240,6 +240,7 @@ body {
   font-weight: 600;
   line-height: 1.375rem;
 }
+
 /* Add more classes for other styles as needed */
 
 .nonvalidée {
@@ -491,9 +492,11 @@ input[type="number"] {
 
   font-size: 0.8rem;
 }
+
 .newmissionbutton {
   width: 100%;
 }
+
 .mesmissions {
   margin-top: 10px;
   margin-right: 435px;
@@ -516,20 +519,21 @@ input[type="number"] {
   thead {
     background-color: #187111;
   }
+
   .mesmissions {
     margin-top: 10px;
     margin-right: 35px;
-  
+
     font-size: 1.35rem;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     letter-spacing: 0.0225rem;
   }
-  
+
   .newmissionbutton {
     width: 200px;
-    
+
   }
 
 
@@ -540,6 +544,7 @@ input[type="number"] {
     border: 1px solid rgba(0, 0, 0, 0.5);
     display: flex;
   }
+
   .second-container {
     margin-left: 260px;
     margin-right: 20px;
@@ -548,6 +553,7 @@ input[type="number"] {
     flex-grow: 1;
     flex-shrink: 0;
   }
+
   .Tableau {
     display: table-row;
   }
@@ -556,8 +562,9 @@ input[type="number"] {
 @media (max-width: 750px) {
   .newmissionbutton {
     width: 200px;
-    
+
   }
+
   .search-bar {
     width: 42.575rem;
     flex-shrink: 1;
@@ -565,24 +572,29 @@ input[type="number"] {
     border: 1px solid rgba(0, 0, 0, 0.5);
     display: flex;
   }
+
   .Tableau {
     display: table-row;
   }
+
   .search-bar svg {
     margin-top: 14px;
     margin-left: 15px;
     margin-right: 10px;
   }
+
   .container {
     display: table-row;
     font-family: "Poppins", sans-serif !important;
   }
+
   .right-item {
-  float: right;
+    float: right;
     width: 60%;
 
     display: row;
   }
+
   .profil {
     width: 12rem;
     height: 3.125rem;
@@ -591,6 +603,7 @@ input[type="number"] {
     background: #fef9f1;
     display: flex;
   }
+
   .second-container {
     margin-left: 0px;
     margin-right: 20px;
@@ -608,5 +621,3 @@ input[type="number"] {
     margin-top: 8px;
   }
 }
-
-
