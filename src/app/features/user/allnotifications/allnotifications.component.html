@@ -28,7 +28,7 @@
                 <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidation(item.missionId)">
                   Nouvelle mission
                 </div>
-                <div *ngIf="item.typeOfNotification == 'TJMREQUEST'">
+                <div *ngIf="item.typeOfNotification == 'TJMREQUEST'" (click)="gotovalidationtjm(item.tjmRequestId)">
                   Nouvelle demande de TJM
                 </div>
                 <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'">

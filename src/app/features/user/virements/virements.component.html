@@ -53,13 +53,13 @@
       <div class="transaction-header">
         <span>Virement</span>
         <div>
-          <select [(ngModel)]="selectedType" (change)="filterByType(selectedType)">
+          <select [(ngModel)]="selectedType" (change)="filterByType(selectedType,date)">
             <option value="all">Tous les virements</option>
             <option value="Participation">Participation</option>
             <option value="Cooptation">Coopation</option>
             <option value="Frais">Frais</option>
           </select>
-          <select [(ngModel)]="date" (change)="virementByPeriod()">
+          <select [(ngModel)]="date" (change)="filterByType(selectedType,date)">
             <option value="today">Aujourd’hui</option>
             <option value="7days">7 Derniers Jours</option>
             <option value="month">Dernier mois</option>

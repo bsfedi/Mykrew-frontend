@@ -88,8 +88,9 @@ export class UserService {
     return this.http.get(baseUrl + 'virement/virements/' + type);
   }
 
-  virementByPeriod(period: any, id: any) {
-    return this.http.get(baseUrl + 'virement/virementByPeriod/participation/' + period + '/' + id);
+  virementByPeriod(id: string, typevirement: string, periode: string) {
+    const url = `${baseUrl}virement/virementByPeriod/${id}?typevirement=${typevirement}&periode=${periode}`;
+    return this.http.get(url);
   }
 
   getAllDacumentsofuser(id: any) {

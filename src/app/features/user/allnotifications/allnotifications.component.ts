@@ -105,4 +105,7 @@ export class AllnotificationsComponent {
   gotovalidation(_id: string) {
     this.router.navigate(['mission/' + _id])
   }
+  gotovalidationtjm(_id: string) {
+    this.router.navigate(['/validated-tjmrequests/' + _id])
+  }
 }

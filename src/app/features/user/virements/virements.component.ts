@@ -203,11 +203,11 @@ export class VirementsComponent {
       }
     });
   }
-  filterByType(selectedType: any) {
+  filterByType(selectedType: any, date: any) {
     if (selectedType == 'all') {
       this.res = this.getmyvir();
     } else {
-      this.userservice.filter_by_type(selectedType).subscribe({
+      this.userservice.virementByPeriod(this.user_id, selectedType, date).subscribe({
         next: (res: any[]) => { // Explicitly specify the type as an array
           // Sort the filtered response array by createdAt in descending order
           this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
@@ -222,18 +222,18 @@ export class VirementsComponent {
 
 
 
-  virementByPeriod() {
-    this.userservice.virementByPeriod(this.date, this.user_id).subscribe({
-      next: (res: any[]) => { // Assuming res is an array of objects
-        // Sort the response array by createdAt in descending order
-        this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
-        this.res = this.res.map((item: any) => ({
-          ...item,
-          createdAt: this.formatDate(item.createdAt),
-        }));
-      },
-    } as any);
-  }
+  // virementByPeriod() {
+  //   this.userservice.virementByPeriod(this.date, this.user_id).subscribe({
+  //     next: (res: any[]) => { // Assuming res is an array of objects
+  //       // Sort the response array by createdAt in descending order
+  //       this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+  //       this.res = this.res.map((item: any) => ({
+  //         ...item,
+  //         createdAt: this.formatDate(item.createdAt),
+  //       }));
+  //     },
+  //   } as any);
+  // }
 
 
 }

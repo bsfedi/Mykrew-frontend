@@ -66,7 +66,7 @@ export class NotificaionRhComponent {
     this.consultantService.getlastnotificationsrh().subscribe({
       next: (res1) => {
         console.log(res1);
-        this.lastnotifications = res1.slice(0, 10);
+        this.lastnotifications = res1.slice(0, 6);
         for (let item of this.lastnotifications) {
           //getuserinfomation
           this.consultantService.getuserinfomation(item["userId"], this.headers).subscribe({

@@ -11,6 +11,9 @@
     flex-shrink: 0;
 }
 
+.container {
+    font-family: "Poppins", sans-serif !important;
+}
 
 svg {
     width: 18px;

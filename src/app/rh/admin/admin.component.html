@@ -80,10 +80,10 @@
         <table>
           <thead>
             <tr>
-              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem ; text-align: left;">
                 Utilisateur
               </th>
-              <th></th>
+
               <th>Status</th>
               <th>Identifiant</th>
 
@@ -93,11 +93,15 @@
           <tbody>
             <tr *ngFor="let rh of all_rh ; let i =index">
               <td class="Tableau">
-                <div class="image">
-                  <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
+                    style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;" class="bi bi-person-fill"
+                    viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                  </svg>
                 </div>
 
-                <div style="margin-top: 0px; text-align: left;width:260px;">
+                <div style="margin-top: 0px; text-align: left;width:260px;margin-left: 15px;color: rgb(75, 74, 74);">
                   {{ rh.personalInfo.firstName }}
                   {{ rh.personalInfo.lastName }} <br />
                   {{ rh.email }}
@@ -134,9 +138,7 @@
               </td>
 
               <td>{{ rh.personalInfo.immatriculation }}</td>
-              <td style="cursor: pointer">
 
-              </td>
               <td style="cursor: pointer" class="dropdown">
                 <div>
                   <div>
@@ -208,11 +210,15 @@
           <tbody>
             <tr *ngFor="let rh of all_users;let i =index;">
               <td class="Tableau">
-                <div class="image">
-                  <img src="/assets/Rectangle 2.jpg" width="80%" height="80%" />
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
+                    style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;" class="bi bi-person-fill"
+                    viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                  </svg>
                 </div>
 
-                <div style="margin-top: 0px; text-align: left;width:260px;">
+                <div style="margin-top: 0px; text-align: left;width:260px;margin-left: 15px;color: rgb(75, 74, 74);">
                   <div *ngIf="rh.personalInfo">
                     {{ rh.personalInfo.firstName }}
                     {{ rh.personalInfo.lastName }} <br>
