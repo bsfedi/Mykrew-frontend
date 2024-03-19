@@ -203,22 +203,33 @@ export class VirementsComponent {
       }
     });
   }
-  filterByType(selectedType: any, date: any) {
-    if (selectedType == 'all') {
+  filterByType(selectedType: string, date: any) {
+    if (selectedType === 'all') {
       this.res = this.getmyvir();
     } else {
       this.userservice.virementByPeriod(this.user_id, selectedType, date).subscribe({
-        next: (res: any[]) => { // Explicitly specify the type as an array
-          // Sort the filtered response array by createdAt in descending order
-          this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
-          this.res = this.res.map((item: any) => ({
-            ...item,
-            createdAt: this.formatDate(item.createdAt),
-          }));
+        next: (res: any) => {
+          if (res && res.length > 0) {
+            // Sort the filtered response array by createdAt in descending order
+            this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt ? 1 : -1));
+            this.res = this.res.map((item: any) => ({
+              ...item,
+              createdAt: this.formatDate(item.createdAt),
+            }));
+          } else {
+            // Handle case when response is empty
+            this.res = [];
+          }
+        },
+        error: (err) => {
+          this.res = [];
+          console.error('Error occurred while fetching data:', err);
+          // Handle error gracefully
         }
-      } as any); // Add 'as any' to suppress TypeScript errors
+      });
     }
   }
+
 
 
 
