@@ -190,6 +190,10 @@ export class ConsultantService {
     return this.http.get(baseUrl + 'virement/virements');
   }
 
+  markNotificationAsSeen(notification_id: any) {
+    return this.http.get(baseUrl + 'notification/markNotificationAsSeen/' + notification_id);
+  }
+
   virementstatusbar(id_user: any) {
     return this.http.get(baseUrl + 'virement/virements/year-stats/2024/' + id_user);
 

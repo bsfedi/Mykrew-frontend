@@ -5,10 +5,12 @@
     </div>
     <div>
       <div *ngIf="role != 'CONSULTANT'" style="margin-left: 250px ;">
+
         <div style="font-size: 2rem;">
           <b> Toutes les notifications</b>
         </div><br>
-        <table style="width: 90%;">
+        <div class="loader" *ngIf="!show"></div>
+        <table style="width: 90%;" *ngIf="show">
           <thead>
             <tr>
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
@@ -20,18 +22,21 @@
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
             </tr>
           </thead>
+
           <tbody>
             <tr *ngFor="let item of lastnotifications; let i = index"
-              style="height: auto;text-align: left;cursor: pointer;">
+              style="height: auto; text-align: left; cursor: pointer;" [ngClass]="{ 'seen-background': item.isSeen }">
               <td class="Tableau" style="height: auto; width: 400px;">
                 <!-- *ngIf="item.isAvtivated"-->
-                <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidation(item.missionId)">
+                <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidation(item._id,item.missionId)">
                   Nouvelle mission
                 </div>
-                <div *ngIf="item.typeOfNotification == 'TJMREQUEST'" (click)="gotovalidationtjm(item.tjmRequestId)">
+                <div *ngIf="item.typeOfNotification == 'TJMREQUEST'"
+                  (click)="gotovalidationtjm(item._id,item.tjmRequestId)">
                   Nouvelle demande de TJM
                 </div>
-                <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'">
+                <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'"
+                  (click)="gotovalidationpreregister(item._id,item.preregisterId)">
                   Nouvelle pre inscription <br>
                 </div>
               </td>
@@ -281,4 +286,6 @@
     </div>
 
   </div>
+
+
 </body>

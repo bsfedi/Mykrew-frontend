@@ -86,6 +86,7 @@ export class MissionByIdComponent {
   res: any
   lastnotifications: any
   notification: string[] = [];
+  new_notif: any
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private userservice: UserService, private router: Router, private route: ActivatedRoute) {
 
 
@@ -100,6 +101,7 @@ export class MissionByIdComponent {
   }
 
   ngOnInit(): void {
+    this.new_notif = localStorage.getItem('new_notif');
     const user_id = localStorage.getItem('user_id')
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
@@ -192,6 +194,7 @@ export class MissionByIdComponent {
         if (event.notification.toWho == "RH") {
           this.lastnotifications.push(event.notification.typeOfNotification)
           this.notification.push(event.notification.typeOfNotification)
+          localStorage.setItem('new_notif', 'true');
         }
 
         // Handle your rhNotification event here

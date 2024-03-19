@@ -32,6 +32,7 @@ export class ValidatedTjmComponent {
   tjmid: any
   showpdf1: any
   res: any
+  new_notif: any
   notification: string[] = [];
   lastnotifications: any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private socketService: WebSocketService, private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -66,6 +67,7 @@ export class ValidatedTjmComponent {
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id');
+    this.new_notif = localStorage.getItem('new_notif');
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
       this.tjmid = params['id'];
@@ -123,6 +125,7 @@ export class ValidatedTjmComponent {
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
         this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
       }
 
       // Handle your rhNotification event here

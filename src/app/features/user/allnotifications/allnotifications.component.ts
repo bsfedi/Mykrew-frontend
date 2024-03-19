@@ -13,36 +13,24 @@ export class AllnotificationsComponent {
   notification: any[] = [];
   lastnotifications: any;
   role: any
+  show: any
   constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private router: Router, private datePipe: DatePipe) { }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
+    localStorage.setItem('new_notif', 'false')
+
     this.role = localStorage.getItem('role')
 
     if (this.role == 'ADMIN' || this.role == 'RH') {
       this.consultantservice.getlastnotificationsrh().subscribe({
         next: (res1) => {
-
+          this.show = true
           this.lastnotifications = res1;
           console.log(this.lastnotifications);
-          for (let item of this.lastnotifications) {
-            //getuserinfomation
-            this.consultantservice.getuserinfomation(item["userId"]).subscribe({
-              next: (info) => {
-                console.log(info);
 
-                item["userId"] = info["firstName"] + ' ' + info["lastName"]
-              }, error: (e) => {
-                // Handle errors
-                console.error(e);
-                item["userId"] = ""
-                // Set loading to false in case of an error
-
-              }
-            })
-          }
 
         },
         error: (e) => {
@@ -55,7 +43,7 @@ export class AllnotificationsComponent {
     } else {
       this.consultantservice.getallnotification(user_id).subscribe({
         next: (res1) => {
-          console.log(res1);
+          this.show = true
           this.lastnotifications = res1
 
         },
@@ -82,17 +70,27 @@ export class AllnotificationsComponent {
       console.log('Received rhNotification event:', event);
       if (event.notification.toWho == "CONSULTANT") {
         this.lastnotifications.push(event.notification)
-        for (let ee of this.notification) {
 
-
-        }
 
       }
 
       // Handle your rhNotification event here
     });
   }
+  markNotificationAsSeen(notification_id: any) {
+    this.consultantservice.markNotificationAsSeen(notification_id).subscribe({
+      next: (res1) => {
 
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
+  }
   ngOnDestroy(): void {
     // Disconnect from Socket.IO server when the component is destroyed
     this.socketService.disconnect();
@@ -102,10 +100,16 @@ export class AllnotificationsComponent {
     // Send a sample message to the Socket.IO server
     this.socketService.sendMessage({ content: 'Hello, Socket.IO!' });
   }
-  gotovalidation(_id: string) {
+  gotovalidation(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
     this.router.navigate(['mission/' + _id])
   }
-  gotovalidationtjm(_id: string) {
+  gotovalidationtjm(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
     this.router.navigate(['/validated-tjmrequests/' + _id])
+  }
+  gotovalidationpreregister(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
+    this.router.navigate(['/validation/' + _id])
   }
 }

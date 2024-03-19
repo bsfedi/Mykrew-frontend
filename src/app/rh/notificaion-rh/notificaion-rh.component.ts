@@ -22,8 +22,10 @@ export class NotificaionRhComponent {
   shownb_demanades = false
   nb_consultants: any
   lastnotifications: any
+  nblastnotifications: any
   res: any
   token: any
+  new_notif: any
   constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private userservice: UserService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
   gotoallnotification() {
     this.route.navigate(['/consultant/allnotifications'])
@@ -35,7 +37,7 @@ export class NotificaionRhComponent {
 
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
-
+    this.new_notif = localStorage.getItem('new_notif');
 
     // Check if token is available
     if (token) {
@@ -65,18 +67,9 @@ export class NotificaionRhComponent {
     }
     this.consultantService.getlastnotificationsrh().subscribe({
       next: (res1) => {
-        console.log(res1);
+        this.nblastnotifications = res1.length
         this.lastnotifications = res1.slice(0, 6);
-        for (let item of this.lastnotifications) {
-          //getuserinfomation
-          this.consultantService.getuserinfomation(item["userId"], this.headers).subscribe({
-            next: (info) => {
-              console.log(info);
 
-              item["userId"] = info["firstName"] + ' ' + info["lastName"]
-            }
-          })
-        }
       },
       error: (e) => {
         // Handle errors
@@ -98,6 +91,7 @@ export class NotificaionRhComponent {
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
         this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
       }
 
       // Handle your rhNotification event here

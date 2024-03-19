@@ -68,6 +68,11 @@
   margin-top: 8px;
 }
 
+.profil1 svg {
+  width: 32px;
+  height: 31px;
+}
+
 .first-item {
   color: white;
   flex-shrink: 0;

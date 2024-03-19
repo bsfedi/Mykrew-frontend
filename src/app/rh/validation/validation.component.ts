@@ -92,6 +92,7 @@ export class ValidationComponent implements OnInit {
   lastnotifications: any
   notification: string[] = [];
   res: any
+  new_notif: any
   constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private consultantService: ConsultantService, private route: ActivatedRoute, private userservice: UserService, private socketService: WebSocketService) {
 
 
@@ -107,6 +108,7 @@ export class ValidationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.new_notif = localStorage.getItem('new_notif');
     this.consultantService.getlastnotificationsrh().subscribe({
       next: (res1) => {
         console.log(res1);
@@ -159,6 +161,7 @@ export class ValidationComponent implements OnInit {
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
         this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
       }
 
       // Handle your rhNotification event here

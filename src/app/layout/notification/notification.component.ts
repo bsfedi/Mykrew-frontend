@@ -20,7 +20,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
     const user_id = localStorage.getItem('user_id');
 
 
-
+    localStorage.setItem('new_notif', 'false')
 
     this.userservice.getpersonalinfobyid(user_id).subscribe({
 
@@ -80,6 +80,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
     // Listen for custom 'rhNotification' event in WebSocketService
     this.socketService.onRhNotification().subscribe((event: any) => {
+      localStorage.setItem('new_notif', 'true');
       console.log('Received rhNotification event:', event);
       if (event.notification.toWho == "CONSULTANT") {
 
