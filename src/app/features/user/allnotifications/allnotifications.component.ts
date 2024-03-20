@@ -32,9 +32,8 @@ export class AllnotificationsComponent {
         next: (res1) => {
           this.show = true
           this.lastnotifications = res1;
-          console.log(this.lastnotifications);
           this.totalPages = Math.ceil(this.lastnotifications.length / this.pageSize);
-          console.log(this.totalPages);
+
 
         },
         error: (e) => {
@@ -49,7 +48,7 @@ export class AllnotificationsComponent {
         next: (res1) => {
           this.show = true
           this.lastnotifications = res1
-
+          this.totalPages = Math.ceil(this.lastnotifications.length / this.pageSize);
 
         },
         error: (e) => {

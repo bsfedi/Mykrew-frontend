@@ -5,6 +5,8 @@ import { UserService } from 'src/app/services/user.service';
 
 declare const PDFObject: any;
 import { environment } from 'src/environments/environment';
+import { ConsultantService } from 'src/app/services/consultant.service';
+import { DatePipe } from '@angular/common';
 const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-info-perso',
@@ -34,13 +36,20 @@ export class InfoPersoComponent {
   openfileInputdibInput() {
     this.fileInputdib.nativeElement.click();
   }
-  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private http: HttpClient) {
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private http: HttpClient, private datePipe: DatePipe) {
 
   }
   card_view() {
     this.card = true
   }
+  downloadFile(urlpdf: any, filename: any) {
+    console.log(urlpdf);
+    console.log(filename);
 
+
+    this.consultantservice.downloadpdffile(urlpdf, filename)
+
+  }
   list_view() {
     this.card = false
   }
@@ -72,6 +81,7 @@ export class InfoPersoComponent {
         }
       );
   }
+
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
@@ -165,6 +175,9 @@ export class InfoPersoComponent {
   editIdentificationDocument(id: any) {
 
 
+  }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   // Assuming you have an object to hold file inputs
   fileInputs: any = {};

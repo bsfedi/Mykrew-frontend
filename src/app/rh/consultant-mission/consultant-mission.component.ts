@@ -257,7 +257,7 @@ export class ConsultantMissionComponent {
       title: 'Confirmez l\'envoi de l\'email',
       html: `
         <div>
-          <div style="font-size:2rem;">Êtes-vous sûr de vouloir <br> envoyer cet email ?'</div> 
+          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir <br> envoyer cet email ?'</div> 
         </div>
       `,
       iconColor: '#1E1E1E',
@@ -520,7 +520,7 @@ export class ConsultantMissionComponent {
       title: 'Confirmer le virement',
       html: `
         <div>
-          <div style="font-size:2rem;">Êtes-vous sûr de vouloir effectuer ce virement ?'</div> 
+          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir effectuer ce virement ?'</div> 
         </div>
       `,
       iconColor: '#1E1E1E',

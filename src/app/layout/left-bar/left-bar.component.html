@@ -1,7 +1,8 @@
 <div class="item first-item">
   <!-- <div class="menu-toggle">☰</div> -->
   <div class="logo"><img src="/assets/Logo.svg" /></div>
-  <div class="custom-item" [ngClass]="{ 'board-item': isActiveRoute('dashboard') }">
+  <div class="custom-item"
+    [ngClass]="{ 'board-item': isActiveRoute('dashboard')  || isActiveRoute('consultant/missions') }">
     <div class="board-svg">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none">
         <path
@@ -16,7 +17,7 @@
     </div>
     <div *ngIf="!showmenu_consultant" class="bord-text" (click)="gottodashboard()">Tableau de bord</div>
   </div>
-  <div class="custom-item"
+  <div class="custom-item" *ngIf="!showmenu_consultant"
     [ngClass]="{ 'board-item': isActiveRoute('consultant/missions') || isActiveRoute('allConsultants') }">
     <div class="board-svg">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -28,9 +29,9 @@
           stroke="#FEFCF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-    <div *ngIf="showmenu_consultant" class="bord-text" (click)="gotomission()">
+    <!-- <div *ngIf="showmenu_consultant" class="bord-text" (click)="gotomission()">
       Mes mission
-    </div>
+    </div> -->
     <div *ngIf="!showmenu_consultant" class="bord-text" (click)="goallConsultants()">
       Consultants
     </div>
@@ -188,7 +189,7 @@
       <div class="bord-text" (click)="clearLocalStorage()">Se déconnecter</div>
     </div>
   </div>
-  <div class="faq-sedeconnecter" *ngIf="showmenu_consultant" style="margin-top: 300px;">
+  <div class="faq-sedeconnecter" *ngIf="showmenu_consultant" style="margin-top: 360px;">
     <!-- <div class="custom-item">
       <div class="board-svg">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

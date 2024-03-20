@@ -86,9 +86,26 @@ export class DetailsMissionComponent {
 
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
+          if (this.status == 'VALIDATED') {
+            this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo?.isSimulationValidated
 
+            console.log(this.missionInfo.isSimulationValidated);
 
-          this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.item.missionInfo.isSimulationValidated).subscribe({
+            this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+
+                if (this.pdfData) {
+                  this.handleRenderPdf(this.pdfData);
+                }
+              },
+            });
+          }
+          this.missionInfo.isSimulationValidated.value = baseUrl + "uploads/" + this.missionInfo?.isSimulationValidated.value
+
+          console.log(this.missionInfo.isSimulationValidated.value);
+
+          this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated.value).subscribe({
             next: (res) => {
               this.pdfData = res;
 
@@ -189,20 +206,26 @@ export class DetailsMissionComponent {
     formData.append('dailyRate', this.myForm.value.dailyRate);
     formData.append('startDate', this.myForm.value.startDate);
     formData.append('endDate', this.myForm.value.endDate);
-    formData.append('simulationValidation', '1702545972864-sample.pdf');
+
 
     Swal.fire({
-      title: 'Confirmer le virement',
-      text: 'Êtes-vous sûr de vouloir effectuer ce virement ?',
-      icon: 'question',
+      title: 'Confirmez les modifications',
+      html: `
+        <div>
+          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir modifer les informations ?'</div> 
+        </div>
+      `,
       iconColor: '#1E1E1E',
       showCancelButton: true,
-      confirmButtonText: 'Oui, effectuer le virement !',
-      confirmButtonColor: '#1E1E1E',
-      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui',
+      confirmButtonColor: "#91c593",
+      cancelButtonText: 'Non',
+      cancelButtonColor: "black",
       customClass: {
-        confirmButton: 'custom-confirm-button-class'
-      }
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
 

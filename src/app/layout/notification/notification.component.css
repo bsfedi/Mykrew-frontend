@@ -18,10 +18,7 @@
   margin-right: 10px;
 }
 
-.message-text {
-  margin-right: 150px;
-  width: 140px;
-}
+.message-text {}
 
 .svg {
   margin-top: 8px;
@@ -73,6 +70,7 @@
 .message-container {
   display: flex;
   background: #fff;
+  border-radius: 1rem;
   padding: 5px;
   margin: 5px;
 }
@@ -115,7 +113,7 @@
 }
 
 .icon-container1 svg {
-  margin-left: 19px;
+  margin-left: 166px;
   fill: none;
   stroke: #171a1f;
   stroke-width: 2;

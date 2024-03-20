@@ -170,7 +170,7 @@ export class ValidationMissionComponent {
       title: 'Confirmer les modifications',
       html: `
         <div>
-        <div style="font-size:2rem;">  Êtes-vous sûr de vouloir <br> mettre à jour la mission ?  </div> 
+        <div style="font-size:1.2rem;">  Êtes-vous sûr de vouloir <br> mettre à jour la mission ?  </div> 
         </div>
       `,
       iconColor: '#1E1E1E',
@@ -186,11 +186,6 @@ export class ValidationMissionComponent {
       reverseButtons: true // Reversing button order
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(this.contactClient, this.clientValidation, this.contactClient, this.jobCotractEdition);
-
-
-
-
         this.consultantservice.killnewMission(this.mission_id, data, this.headers).subscribe({
           next: (res) => {
             console.log(res.text);
@@ -209,7 +204,7 @@ export class ValidationMissionComponent {
                 showConfirmButton: false,
                 timer: 1500
               });
-              this.router.navigate(['/dashboard'])
+              // this.router.navigate(['/dashboard'])
             }
 
             else {
@@ -269,7 +264,7 @@ export class ValidationMissionComponent {
     this.consultantservice.validatePriseDeContact(this.contract_id, data, this.headers).subscribe({
       next: (res) => {
         console.log(res);
-
+        window.location.reload();
         // Handle the response from the server
       },
       error: (e) => {
@@ -288,7 +283,7 @@ export class ValidationMissionComponent {
       next: (res) => {
         // Handle the response from the server
         console.log(res);
-
+        window.location.reload();
       },
       error: (e) => {
         // Handle errors
@@ -308,7 +303,7 @@ export class ValidationMissionComponent {
       next: (res) => {
         // Handle the response from the server
         console.log(res);
-
+        window.location.reload();
       },
       error: (e) => {
         // Handle errors
@@ -331,7 +326,7 @@ export class ValidationMissionComponent {
         next: (res) => {
           // Handle the response from the server
           console.log(res);
-
+          window.location.reload();
         },
         error: (e) => {
           // Handle errors

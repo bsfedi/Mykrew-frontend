@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
@@ -14,8 +15,10 @@ export class NotificationComponent implements OnInit, OnDestroy {
   lastnotifications: any;
   lastnotificationsvir: any;
   res: any
-  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private userservice: UserService, private router: Router) { }
-
+  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private userservice: UserService, private router: Router, private datePipe: DatePipe) { }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
 

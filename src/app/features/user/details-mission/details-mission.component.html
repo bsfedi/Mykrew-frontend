@@ -370,7 +370,7 @@
 
             </div>
         </form>
-        <div style="margin-right: 60px;margin-top: 20px;">
+        <div style="margin-right: 60px;margin-top: 20px;" *ngIf="status === 'NOTVALIDATE' || status === 'PENDING' ">
             <button (click)="edit()">Terminer</button>
         </div>
 

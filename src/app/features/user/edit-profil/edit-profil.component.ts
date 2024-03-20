@@ -68,7 +68,7 @@ export class EditProfilComponent {
       title: 'Confirmez Vos Informations',
       html: `
         <div>
-          <div style="font-size:2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
+          <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
           <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.</div>
         </div>
       `,
@@ -133,7 +133,7 @@ export class EditProfilComponent {
       title: 'Confirmez Vos Informations',
       html: `
         <div>
-          <div style="font-size:2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
+          <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
           <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.</div>
         </div>
       `,
