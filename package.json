@@ -24,6 +24,7 @@
     "html2pdf.js": "^0.10.1",
     "jspdf": "^2.5.1",
     "ng-apexcharts": "^1.8.0",
+    "ngx-pagination": "^6.0.3",
     "ngx-socket-io": "^4.6.1",
     "pdfobject": "^2.2.12",
     "rxjs": "~7.8.0",

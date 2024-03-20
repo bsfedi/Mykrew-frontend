@@ -52,7 +52,6 @@ button {
 /* div {
     font-family: 'Poppins', sans-serif !important;
 } */
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -72,6 +71,7 @@ td {
 td {
   padding: 7px 7px;
 }
+
 th {
   /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
   background: #e0d7c2;
@@ -129,9 +129,11 @@ td:nth-child(8) {
 }
 
 .status-label.en-attente {
-  background-color: #ffc107; /* Assuming yellow for 'En attente' */
+  background-color: #ffc107;
+  /* Assuming yellow for 'En attente' */
 }
 
 .status-label.nouvelle {
-  background-color: #28a745; /* Assuming green for 'Nouvelle' */
+  background-color: #28a745;
+  /* Assuming green for 'Nouvelle' */
 }

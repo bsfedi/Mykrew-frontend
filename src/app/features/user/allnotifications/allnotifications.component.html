@@ -10,7 +10,8 @@
           <b> Toutes les notifications</b>
         </div><br>
         <div class="loader" *ngIf="!show"></div>
-        <table style="width: 90%;" *ngIf="show">
+
+        <table style="width: 100%;" *ngIf="show">
           <thead>
             <tr>
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
@@ -24,7 +25,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of lastnotifications; let i = index"
+            <tr *ngFor="let item of getDisplayedNotifications(); let i = index"
               style="height: auto; text-align: left; cursor: pointer;" [ngClass]="{ 'seen-background': item.isSeen }">
               <td class="Tableau" style="height: auto; width: 400px;">
                 <!-- *ngIf="item.isAvtivated"-->
@@ -51,6 +52,30 @@
             </tr>
           </tbody>
         </table>
+        <div class="pagination">
+          <div (click)="previousPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+              <path fill-rule="evenodd"
+                d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+            </svg>
+          </div>
+
+
+          <span> {{ currentPage }} of {{ totalPages }}</span>
+          <div (click)="nextPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+              <path fill-rule="evenodd"
+                d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+            </svg>
+          </div>
+
+        </div>
       </div>
     </div>
     <div style="width: 200px; margin-left: 250px" *ngIf="role === 'CONSULTANT'">

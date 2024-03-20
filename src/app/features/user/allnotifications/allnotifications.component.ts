@@ -14,6 +14,9 @@ export class AllnotificationsComponent {
   lastnotifications: any;
   role: any
   show: any
+  pageSize = 15; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
   constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private router: Router, private datePipe: DatePipe) { }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
@@ -30,7 +33,8 @@ export class AllnotificationsComponent {
           this.show = true
           this.lastnotifications = res1;
           console.log(this.lastnotifications);
-
+          this.totalPages = Math.ceil(this.lastnotifications.length / this.pageSize);
+          console.log(this.totalPages);
 
         },
         error: (e) => {
@@ -45,6 +49,7 @@ export class AllnotificationsComponent {
         next: (res1) => {
           this.show = true
           this.lastnotifications = res1
+
 
         },
         error: (e) => {
@@ -76,6 +81,24 @@ export class AllnotificationsComponent {
 
       // Handle your rhNotification event here
     });
+
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  getDisplayedNotifications(): any[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.lastnotifications.length);
+    return this.lastnotifications.slice(startIndex, endIndex);
   }
   markNotificationAsSeen(notification_id: any) {
     this.consultantservice.markNotificationAsSeen(notification_id).subscribe({

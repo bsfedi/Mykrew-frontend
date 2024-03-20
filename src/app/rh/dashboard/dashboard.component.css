@@ -100,6 +100,10 @@ svg {
   float: right;
 }
 
+#chart {
+  width: 95%;
+}
+
 button {
   color: white;
   display: flex;
