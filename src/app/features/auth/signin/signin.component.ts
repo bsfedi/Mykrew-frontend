@@ -149,7 +149,7 @@ export class SigninComponent {
             this.router.navigate(['/dashboard']);
           }
           else {
-            this.router.navigate(['/members']);
+            this.router.navigate(['/dashboard']);
           }
           // Navigate to /informations on successful login
 

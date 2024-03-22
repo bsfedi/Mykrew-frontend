@@ -33,6 +33,32 @@ export class NotificaionRhComponent {
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
+  markNotificationAsSeen(notification_id: any) {
+    this.consultantService.markNotificationAsSeen(notification_id).subscribe({
+      next: (res1) => {
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
+  }
+  gotovalidationmission(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
+    this.route.navigate(['mission/' + _id])
+  }
+  gotovalidationtjm(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
+    this.route.navigate(['/validated-tjmrequests/' + _id])
+  }
+  gotovalidationpreregister(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
+    this.route.navigate(['/validation/' + _id])
+  }
   ngOnInit(): void {
 
     const token = localStorage.getItem('token');
@@ -65,10 +91,10 @@ export class NotificaionRhComponent {
         }
       });
     }
-    this.consultantService.getlastnotificationsrh().subscribe({
+    this.consultantService.getRhNotificationsnotseen().subscribe({
       next: (res1) => {
         this.nblastnotifications = res1.length
-        this.lastnotifications = res1.slice(0, 6);
+        this.lastnotifications = res1
 
       },
       error: (e) => {
@@ -90,6 +116,7 @@ export class NotificaionRhComponent {
 
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
         this.notification.push(event.notification.typeOfNotification)
         localStorage.setItem('new_notif', 'true');
       }
@@ -167,7 +194,8 @@ export class NotificaionRhComponent {
   gotovalidation(_id: string) {
     this.route.navigate(['/validation/' + _id])
   }
-  gotovalidationmission(_id: string) {
-    this.route.navigate(['mission/' + _id])
+
+  gotomyprofile() {
+    this.route.navigate(['/edit-profil'])
   }
 }

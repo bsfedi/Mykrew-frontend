@@ -20,7 +20,7 @@
     <br />
     <div class="flex-container">
       <div>
-        <div class="member">Membres de l'équipe</div>
+        <div class="title">Membres de l'équipe</div>
         Gérez les membres de votre équipe et les autorisations de leur compte
       </div>
 
@@ -83,7 +83,7 @@
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem ; text-align: left;">
                 Utilisateur
               </th>
-
+              <th style="min-width: 20px;">Email</th>
               <th>Status</th>
               <th>Identifiant</th>
 
@@ -101,16 +101,18 @@
                   </svg>
                 </div>
 
-                <div style="margin-top: 0px; text-align: left;width:260px;margin-left: 15px;color: rgb(75, 74, 74);">
+                <div style="margin-top: 0px; text-align: left;min-width: 100px;margin-left: 15px;margin-top: 12px;">
                   {{ rh.personalInfo.firstName }}
                   {{ rh.personalInfo.lastName }} <br />
-                  {{ rh.email }}
+
                 </div>
               </td>
-
-              <td>
+              <td style="min-width: 180px;">
+                {{ rh.email }}
+              </td>
+              <td style="min-width: 40px;">
                 <div *ngIf="rh.isAvtivated == true" style="
-                  display: flex;
+                    display: flex;
                   width: auto;
                   height: 1.75rem;
                   padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
@@ -118,7 +120,7 @@
                   align-items: center;
                   flex-shrink: 0;
                   border-radius: 0.875rem;
-                  background: #f3f4f6;
+                  background: #b4ee8a;
                 ">
                   Activé
                 </div>
@@ -131,7 +133,7 @@
                   align-items: center;
                   flex-shrink: 0;
                   border-radius: 0.875rem;
-                  background: #f3f4f6;
+                  background: #e98989;
                 ">
                   désactivé
                 </div>
@@ -163,7 +165,7 @@
                         margin-bottom: 10px;
                         margin-left: 5px;
                       ">
-                      désactiver le compte
+                      Désactiver le compte
                     </div>
                   </div>
                   <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
@@ -200,7 +202,7 @@
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;">
                 Nom
               </th>
-
+              <th> Email</th>
               <th>Status</th>
               <th>Télephone</th>
 
@@ -218,23 +220,25 @@
                   </svg>
                 </div>
 
-                <div style="margin-top: 0px; text-align: left;width:260px;margin-left: 15px;color: rgb(75, 74, 74);">
+                <div style="margin-top: 0px; text-align: left;min-width: 100px;margin-left: 15px;margin-top: 15px;">
                   <div *ngIf="rh.personalInfo">
                     {{ rh.personalInfo.firstName }}
                     {{ rh.personalInfo.lastName }} <br>
 
                   </div>
-                  <div *ngIf="rh.personalInfo">
-                    {{ rh.email }}
-                  </div>
-                  <div *ngIf="!rh.personalInfo" style="margin-top: 10px;">
-                    {{ rh.email }}
-                  </div>
+
 
                 </div>
               </td>
-
-              <td>
+              <td style="min-width: 100px;">
+                <div *ngIf="rh.personalInfo">
+                  {{ rh.email }}
+                </div>
+                <div *ngIf="!rh.personalInfo">
+                  {{ rh.email }}
+                </div>
+              </td>
+              <td style="min-width: 40px;">
                 <div *ngIf="rh.isAvtivated == true" style="
                   display: flex;
                   width: auto;
@@ -244,7 +248,7 @@
                   align-items: center;
                   flex-shrink: 0;
                   border-radius: 0.875rem;
-                  background: #f3f4f6;
+                  background: #b4ee8a;
                 ">
                   Activé
                 </div>
@@ -257,7 +261,7 @@
                   align-items: center;
                   flex-shrink: 0;
                   border-radius: 0.875rem;
-                  background: #f3f4f6;
+                  background: #e98989;
                 ">
                   Désactivé
                 </div>
@@ -289,7 +293,7 @@
                         margin-bottom: 10px;
                         margin-left: 5px;
                       ">
-                      désactiver le compte
+                      Désactiver le compte
                     </div>
                   </div>
                   <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
@@ -327,9 +331,9 @@
     <br />
   </div>
   <div>
-    <div class="right-item">
+    <div class="right-item" (click)="gotomyprofile()" style="cursor: pointer;">
       <div class="profil">
-        <img src="/assets/unsplash_dt60oksDTx8.png" />
+        <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div style="" class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>
 
       </div>

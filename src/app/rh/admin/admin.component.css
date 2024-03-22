@@ -107,6 +107,7 @@ svg {
 .button1 {
   color: black;
   display: flex;
+  border: 2px solid #eae3d5;
   width: auto;
   margin-left: 405px;
   padding: 0.5rem;
@@ -116,6 +117,19 @@ svg {
   border-radius: 0.625rem;
   background: #ffffff;
   margin-top: 10px;
+}
+
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
 }
 
 .Tableau {

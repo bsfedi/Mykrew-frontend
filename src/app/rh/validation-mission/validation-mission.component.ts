@@ -162,6 +162,9 @@ export class ValidationMissionComponent {
   shownote() {
     this.noteshow = true
   }
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
   killmission(message: any) {
     const data = {
       "note": message
@@ -196,13 +199,12 @@ export class ValidationMissionComponent {
             // Handle errors
             if (e.error.text == 'Mission Killed Successfully') {
               // Handle success
-              Swal.fire('Success', "la mission est  mis a jour avec succées!", 'success');
               Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: 'Registration updated successfully!',
-                showConfirmButton: false,
-                timer: 1500
+                title: 'Mission terminé',
+                text: "La mission est terminé avec succès",
+                confirmButtonText: 'OK',
+                confirmButtonColor: "#91c593",
+
               });
               // this.router.navigate(['/dashboard'])
             }

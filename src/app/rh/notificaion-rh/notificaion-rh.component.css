@@ -214,6 +214,10 @@ input[type="search"]:focus {
   background: #f9fafc;
 }
 
+.date {
+  font-size: 12px;
+}
+
 .item-preinscription {
   width: 52.51rem;
   height: 4.5625rem;

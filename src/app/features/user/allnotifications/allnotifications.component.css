@@ -22,6 +22,7 @@ body {
   display: flex;
   float: right;
   text-align: right;
+  margin-bottom: 15px;
 }
 
 .pagination button {
@@ -34,8 +35,25 @@ body {
   cursor: pointer;
 }
 
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
+}
+
 .pagination button:hover {
   background-color: #0056b3;
+}
+
+td {
+  padding: 15px;
 }
 
 .pagination button[disabled] {
@@ -195,9 +213,7 @@ p {
   margin-top: 4px;
 }
 
-.title {
-  color: #9095a0;
-}
+
 
 .details {
   color: #323842;

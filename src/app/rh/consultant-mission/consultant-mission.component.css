@@ -21,13 +21,13 @@ body {
 }
 
 .title {
-  color: #000;
+  margin-top: 7px;
 
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
   margin-bottom: 15px;
   flex-shrink: 0;
   /* 2.25rem */
@@ -164,7 +164,7 @@ button {
 input[type="search"] {
   border: none;
   width: 100%;
-  height: 80%;
+  height: 100%;
   border: none none;
   outline: none;
 }
@@ -659,8 +659,9 @@ span {
   float: right;
   margin-top: 10px;
   border-radius: 0.25rem;
-  border: 1px solid #dee1e6;
-  background: #fdf8f1;
+  border: 1px solid #eae3d5;
+  border-radius: 0.5rem;
+  background: #ffffff;
   display: inline-flex;
   padding: 0.4375rem 0.6875rem 0.4375rem 0.75rem;
   justify-content: center;
@@ -672,7 +673,7 @@ span {
 .custom-file-input {
   display: flex;
   align-items: center;
-  border: 1px solid #1e1e1e;
+  border: 1px solid #eae3d5;
   border-radius: 0.5rem;
 
   width: 26.04313rem;
@@ -696,9 +697,64 @@ span {
 .vertical-line {
   height: 58px;
   /* Adjust the height as needed */
-  border-left: 1px solid #000;
+  border-left: 1px solid #eae3d5;
   /* Adjust the color as needed */
   margin-right: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  text-align: right;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  margin: 0 2px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="search"] {
+  border: none;
+  width: 280px;
+  height: 40%;
+  border: none none;
+  outline: none;
+}
+
+input[type="search"]:focus {
+  border: none none;
+  color: none;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.first {
+  display: flex;
+  width: auto;
+  cursor: pointer;
+  justify-content: left;
+  align-items: left;
+  border-radius: 0.625rem;
+  border: 2px solid #eae3d5;
+  background: #fff;
+  margin: 3.25px;
+  padding: 7.25px 8px 3.25px 8px;
+
+
+}
+
+.pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 .chose-file {
@@ -722,7 +778,7 @@ span {
   display: none;
 }
 
-
+select,
 textarea,
 input[type="text"],
 input[type="date"],
@@ -738,7 +794,7 @@ input[type="number"] {
   margin-top: 10px;
 
   border-radius: 0.5rem;
-  border: 1px solid #1e1e1e;
+  border: 1px solid #eae3d5;
 
   background: #fff;
   border-radius: 6px;

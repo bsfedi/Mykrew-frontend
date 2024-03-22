@@ -20,13 +20,13 @@ body {
 }
 
 .title {
-  color: #000;
+  margin-top: 7px;
 
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
   margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
@@ -89,6 +89,18 @@ svg {
   /* 1.125rem */
 }
 
+.pending1 {
+  width: 100%;
+}
+
+.pending1 .export {
+  margin-left: 53.5%;
+}
+
+.export {
+  margin-left: 39.5%;
+}
+
 .faq-sedeconnecter {
   margin-top: 250px;
 }
@@ -124,7 +136,7 @@ button {
 
 input[type="search"] {
   border: none;
-  width: 100%;
+  width: 280px;
   height: 40%;
   border: none none;
   outline: none;
@@ -278,9 +290,9 @@ input[type="checkbox"] {
 }
 
 .profil {
-  width: 12rem;
+  margin-left: 10px;
   height: 3.125rem;
-
+  width: 10rem;
   border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;
@@ -289,21 +301,24 @@ input[type="checkbox"] {
 
 .profil img {
   border-radius: 100%;
-  width: 2.625rem;
-  height: 2.175rem;
+  width: 2.125rem;
+  height: 1.875rem;
   margin-left: 15px;
   margin-top: 8px;
 }
 
 .profil1 {
-  width: 12rem;
+  width: 13rem;
   height: 3.125rem;
+  margin-left: -20px;
 
   border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;
   float: right;
 }
+
+
 
 .profil1 img {
   border-radius: 100%;
@@ -342,7 +357,8 @@ input[type="checkbox"] {
   margin-top: 15px;
   margin-left: 8px;
   color: #000;
-
+  width: 100%;
+  margin-right: 10px;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -653,7 +669,8 @@ input[type="password"] {
 
 .chiffre_affaire {
   margin: 5px;
-  width: 14.25rem;
+  padding: 10px;
+  width: 15.25rem;
   height: 6.6875rem;
   flex-shrink: 0;
   border-radius: 0.8125rem;
@@ -664,8 +681,9 @@ input[type="password"] {
 
 .tjm_moyen {
   margin: 5px;
+  padding: 10px;
   margin-left: 15px;
-  width: 14.25rem;
+  width: 16.25rem;
   height: 6.6875rem;
   flex-shrink: 0;
   border-radius: 0.8125rem;

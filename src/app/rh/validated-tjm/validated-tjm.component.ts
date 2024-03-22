@@ -218,6 +218,12 @@ export class ValidatedTjmComponent {
     const pdfObject = PDFObject.embed(data, '#pdfContainer1');
 
   }
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
+  gotoallnotification() {
+    this.router.navigate(['/consultant/allnotifications'])
+  }
   valid() {
     this.consultantservice.rhTjmValidation(this.new_tjm._id, {
       "response": true
@@ -229,7 +235,6 @@ export class ValidatedTjmComponent {
         Swal.fire({
           title: 'TJM Validé',
           text: 'Le Tarif Journalier Moyen a été validé avec succès !',
-          icon: 'success',
           confirmButtonText: 'OK',
           confirmButtonColor: "#91c593",
         });
@@ -252,11 +257,11 @@ export class ValidatedTjmComponent {
         // Handle success
         console.log(res);
         Swal.fire({
-          title: 'TJM Invalidé',
-          text: 'Le Tarif Journalier Moyen a été invalidé.',
+          title: 'TJM réfusé',
+          text: "La demande de TJM a été refusé.",
           confirmButtonText: 'OK',
           confirmButtonColor: "#91c593",
-          icon: 'error'
+
         });
         this.router.navigate(['/tjmrequests'])
       },

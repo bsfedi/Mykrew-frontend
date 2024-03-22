@@ -126,6 +126,13 @@ export class ConsultantService {
 
     return this.http.get(baseUrl + 'newMission/getPendingMissions', options);
   }
+  getAllPendingMissions(headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+
+    return this.http.get(baseUrl + 'newMission/getAllPendingMissions', options);
+  }
+
   getpreregisterbyuid(id: any, headers?: HttpHeaders) {
     // Include headers if provided
     const options = headers ? { headers } : {};
@@ -178,6 +185,12 @@ export class ConsultantService {
     // Include headers if provided
 
     return this.http.get(baseUrl + 'notification/getRhNotification');
+  }
+
+  getRhNotificationsnotseen(): Observable<any> {
+    // Include headers if provided
+
+    return this.http.get(baseUrl + 'notification/getRhNotificationsnotseen');
   }
 
   createvirement(data: any, headers?: HttpHeaders): Observable<any> {

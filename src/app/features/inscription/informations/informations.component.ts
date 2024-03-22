@@ -193,12 +193,11 @@ export class InformationsComponent {
     // Display confirmation popup
     Swal.fire({
       title: 'Confirmer les modifications',
-      text: "Êtes-vous sûr de vouloir mettre à jour l'enregistrement ?",
-      icon: 'question',
+      text: "Êtes-vous sûr de vouloir mettre à jour la demande de pré-inscription ?",
       iconColor: '#1E1E1E',
       showCancelButton: true,
       confirmButtonText: 'Oui, mettez à jour !',
-      confirmButtonColor: "#1E1E1E",
+      confirmButtonColor: "#91c593",
 
       cancelButtonText: 'Annuler',
       customClass: {
@@ -211,13 +210,11 @@ export class InformationsComponent {
         this.userservice.editinscription(formData, this.preinscription_id, this.headers).subscribe({
           next: (res) => {
             // Handle success
-            Swal.fire('Success', 'Registration updated successfully!', 'success');
             Swal.fire({
-              position: "top-end",
               icon: "success",
-              title: 'Registration updated successfully!',
-              showConfirmButton: false,
-              timer: 1500
+              title: 'Pré-inscription mise à jour avec succès !',
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#91c593",
             });
             this.router.navigate(['/pending'])
           },

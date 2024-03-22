@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { saveAs } from 'file-saver';
+import { Router } from '@angular/router';
 const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-all-cras',
@@ -18,7 +19,14 @@ export class AllCrasComponent {
   all_cras: any
   res: any
   selectedDate: any;
-  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private http: HttpClient, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
+
+
+  new_notif: any
+  nblastnotifications: any
+  lastnotifications: any
+  notification: string[] = [];
+  shownotiff: boolean = false
+  constructor(private inscriptionservice: InscriptionService, private router: Router, private datePipe: DatePipe, private http: HttpClient, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
     // Set the initial value of selectedDate to today's date
     const today = new Date();
     const year = today.getFullYear();
@@ -29,7 +37,9 @@ export class AllCrasComponent {
   idCounter: number = 0;
   // Variable to store selected date
 
-
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
   downloadFile(urlpdf: any, filename: any) {
 
     this.consultantservice.downloadpdffile(urlpdf, filename)
@@ -56,11 +66,45 @@ export class AllCrasComponent {
     }
     return id + j + 1;
   }
+  shownotif() {
+
+    this.shownotiff = !this.shownotiff
+  }
   ngOnInit(): void {
-    const user_id = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id')
+    this.new_notif = localStorage.getItem('new_notif');
 
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
 
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
+        this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
+      }
 
+      // Handle your rhNotification event here
+    });
+    // Check if token is available
+    if (token) {
+      this.consultantservice.getRhNotificationsnotseen().subscribe({
+        next: (res1) => {
+          this.nblastnotifications = res1.length
+          this.lastnotifications = res1
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+    }
 
     this.userservice.getpersonalinfobyid(user_id).subscribe({
 

@@ -19,6 +19,7 @@ import {
 } from "ng-apexcharts";
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { ConsultantService } from 'src/app/services/consultant.service';
+import { UserService } from 'src/app/services/user.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -39,9 +40,13 @@ export type ChartOptions = {
 })
 export class AllConsultantsComponent {
   items: any[] = [];
+  sortDirection: 'asc' | 'desc' = 'asc'; // Initial sorting direction
+  sortDirectionAlpha: 'A-Z' | 'Z-A' = 'A-Z'
+  sortType: 'date' | 'alpha' = 'date'; // Initial sorting type
   showPopup: boolean = false;
   showPopup1: boolean = false;
   isMenuOpen: boolean[] = [];
+  isMenuOpen1: boolean = false;
   headers: any
   clientValidation: any
   contactClient: any
@@ -55,70 +60,82 @@ export class AllConsultantsComponent {
   process_statut: any
   @ViewChild("chart") chart: ChartComponent | any;
   searchTerm: any
-
+  shownotiff: boolean = false
   filteredItems: any[] = [];
-
-  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router) {
+  res: any
+  new_notif: any
+  nblastnotifications: any
+  lastnotifications: any
+  notification: string[] = [];
+  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private datePipe: DatePipe, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router) {
 
 
 
 
   }
+  shownotif() {
 
+    this.shownotiff = !this.shownotiff
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id')
+    this.new_notif = localStorage.getItem('new_notif');
 
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
 
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
+        this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
+      }
 
+      // Handle your rhNotification event here
+    });
     // Check if token is available
     if (token) {
-      // Include the token in the headers
-      this.headers = new HttpHeaders().set('Authorization', `${token}`);
-      this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
-        next: (res) => {
-          // Handle the response from the server
-          this.nbdemande = res.length; // Assuming res is an array
+      this.consultantservice.getRhNotificationsnotseen().subscribe({
+        next: (res1) => {
+          this.nblastnotifications = res1.length
+          this.lastnotifications = res1
 
-          // Update this.items with the response
-          this.items = res;
-          this.filteredItems = this.items
-          // Iterate through each item in this.items
-          for (let item of this.items) {
-
-            this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
-              next: (contractRes) => {
-                // Set the process_status for the current item
-                item.process_status = contractRes.statut;
-              },
-              error: (e) => {
-                console.error(e);
-                // Handle error for individual contract retrieval
-                // You may want to set a default value for process_status or handle this error differently
-              }
-            });
-            this.consultantservice.getuserinfomation(item.userId, this.headers).subscribe({
-              next: (user) => {
-                console.log(user);
-
-                // Set the process_status for the current item
-                item.isAvtivated = user.isAvtivated;
-
-
-              },
-              error: (e) => {
-                console.error(e);
-                // Handle error for individual contract retrieval
-                // You may want to set a default value for process_status or handle this error differently
-              }
-            });
-          }
         },
         error: (e) => {
           // Handle errors
           console.error(e);
           // Set loading to false in case of an error
+
         }
       });
+      this.userservice.getpersonalinfobyid(user_id).subscribe({
+
+
+        next: (res) => {
+          // Handle the response from the server
+          this.res = res
+          console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+        },
+        error: (e) => {
+          // Handle errors
+          console.error(e);
+          // Set loading to false in case of an error
+
+        }
+      });
+      // Include the token in the headers
+      this.headers = new HttpHeaders().set('Authorization', `${token}`);
+
+      this.getpreregister()
 
       this.consultantservice.getConsultantStats().subscribe({
         next: (res) => {
@@ -143,6 +160,68 @@ export class AllConsultantsComponent {
     }
 
   }
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
+  getpreregister() {
+    this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
+      next: (res) => {
+        // Handle the response from the server
+        this.nbdemande = res.length; // Assuming res is an array
+
+        // Update this.items with the response
+        this.items = res;
+        this.filteredItems = this.items
+        // Iterate through each item in this.items
+        for (let item of this.items) {
+
+          this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
+            next: (contractRes) => {
+              // Set the process_status for the current item
+              item.process_status = contractRes.statut;
+            },
+            error: (e) => {
+              console.error(e);
+              // Handle error for individual contract retrieval
+              // You may want to set a default value for process_status or handle this error differently
+            }
+          });
+          this.consultantservice.getuserinfomation(item.userId, this.headers).subscribe({
+            next: (user) => {
+              console.log(user);
+
+              // Set the process_status for the current item
+              item.isAvtivated = user.isAvtivated;
+
+
+            },
+            error: (e) => {
+              console.error(e);
+              // Handle error for individual contract retrieval
+              // You may want to set a default value for process_status or handle this error differently
+            }
+          });
+        }
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
+  }
+  resetFilter() {
+    this.searchTerm = ''; // Reset the search term
+    this.sortDirection = 'asc'; // Reset sorting direction for date
+    this.sortType = 'date'; // Reset sorting type to date
+    this.sortDirectionAlpha = 'A-Z'; // Reset sorting direction for alphabetical order
+    this.sortItems(); // Apply default sorting
+    this.getpreregister()
+
+  }
+  toggleMenu1() {
+    this.isMenuOpen1 = !this.isMenuOpen1;
+  }
   applyFilter() {
     // Check if search term is empty
     if (this.searchTerm.trim() === '') {
@@ -157,9 +236,49 @@ export class AllConsultantsComponent {
     }
   }
 
-  sortItemsByLastUpdated() {
-    this.filteredItems.sort((a, b) => {
-      return new Date(b.addedDate).getTime() - new Date(a.addedDate).getTime();
+  toggleSortDirection(type: any) {
+    if (this.sortType !== type) {
+      this.sortType = type;
+      this.sortDirection = 'asc'; // Reset sorting direction if changing sorting type
+      if (type === 'alpha') {
+        this.sortDirectionAlpha = 'A-Z'; // Reset sorting direction for alphabetical order
+      }
+    } else {
+      if (type === 'date') {
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc'; // Toggle sorting direction for date
+      } else if (type === 'alpha') {
+        this.sortDirectionAlpha = this.sortDirectionAlpha === 'A-Z' ? 'Z-A' : 'A-Z'; // Toggle sorting direction for alpha
+      }
+    }
+    this.sortItems(); // Call the sorting function
+  }
+
+  sortItems() {
+    if (this.sortType === 'date') {
+      this.sortItemsByDate();
+    } else if (this.sortType === 'alpha') {
+      this.sortItemsByAlpha();
+    }
+  }
+
+  sortItemsByDate() {
+    this.items.sort((a: any, b: any) => {
+      const timeDiff = new Date(a.addedDate).getTime() - new Date(b.addedDate).getTime();
+      return this.sortDirection === 'asc' ? timeDiff : -timeDiff; // Reverse sorting direction if 'desc'
+    });
+  }
+
+  sortItemsByAlpha() {
+    this.items.sort((a: any, b: any) => {
+      const nameA = a.personalInfo.firstName.value.toUpperCase(); // Convert to uppercase for case-insensitive comparison
+      const nameB = b.personalInfo.firstName.value.toUpperCase();
+      if (nameA < nameB) {
+        return this.sortDirection === 'asc' ? -1 : 1;
+      }
+      if (nameA > nameB) {
+        return this.sortDirection === 'asc' ? 1 : -1;
+      }
+      return 0;
     });
   }
   formatDate(date: string): string {

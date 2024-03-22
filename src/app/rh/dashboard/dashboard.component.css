@@ -20,13 +20,13 @@ body {
 }
 
 .title {
-  color: #000;
+  margin-top: 7px;
 
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-
-  margin-top: 12px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
   margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
@@ -101,7 +101,7 @@ svg {
 }
 
 #chart {
-  width: 95%;
+  position: relative;
 }
 
 button {
@@ -125,7 +125,7 @@ button {
 
 input[type="search"] {
   border: none;
-  width: 100%;
+  width: 280px;
   height: 40%;
   border: none none;
   outline: none;
@@ -328,8 +328,9 @@ input[type="checkbox"] {
 }
 
 .right-item {
-  float: right;
+
   display: row;
+  margin-left: -15px;
 }
 
 .svg {
@@ -654,7 +655,8 @@ input[type="password"] {
 
 .chiffre_affaire {
   margin: 5px;
-  width: 14.25rem;
+  padding: 10px;
+  width: 15.25rem;
   height: 6.6875rem;
   flex-shrink: 0;
   border-radius: 0.8125rem;
@@ -665,8 +667,9 @@ input[type="password"] {
 
 .tjm_moyen {
   margin: 5px;
+  padding: 10px;
   margin-left: 15px;
-  width: 14.25rem;
+  width: 16.25rem;
   height: 6.6875rem;
   flex-shrink: 0;
   border-radius: 0.8125rem;
@@ -708,8 +711,8 @@ input[type="password"] {
 }
 
 .graph svg {
-  margin-left: 10px;
-  margin-top: 5px;
+  margin-left: 20px;
+  margin-top: 1px;
   width: 5.0375rem;
   height: 3.265rem;
   stroke-width: 3px;

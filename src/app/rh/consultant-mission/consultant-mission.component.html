@@ -79,10 +79,10 @@
                 <div style="color: #825410; font-size: 15px" (click)="openPopup3()">Envoyer mail</div>
               </div>
             </div>
-            <div style="display: flex; cursor: pointer">
+            <div style="display: flex; cursor: pointer" (click)="onTypeChange()">
               <div style="
                   border-radius: 0.25rem;
-                  border: 1px solid #dee1e6;
+                  border: 1px solid #eae3d5;
                   background: rgba(0, 0, 0, 0);
                   display: inline-flex;
                   padding: 0.4375rem 0.6875rem 0.4375rem 0.75rem;
@@ -101,24 +101,6 @@
                   </svg>
                 </div>
                 <div style="color: #825410">Nv Virement</div>
-              </div>
-              <div style="
-              display: flex;
-              max-width: 2.25rem;
-              padding: 0.4375rem 0.625rem;
-              justify-content: center;
-              align-items: center;
-              height: 1.5rem;
-              border-radius: 0.25rem;
-              border: 1px solid #dee1e6;
-              background: rgba(0, 0, 0, 0);
-              cursor: pointer;
-         ">
-                <select formControlName="typeVirement" (change)="onTypeChange($event)" style="max-width: 2.25rem;">
-                  <option *ngFor="let type of virementTypes" [value]="type" style="max-width: 2.25rem;">
-                    {{ type }}
-                  </option>
-                </select>
               </div>
 
 
@@ -254,18 +236,30 @@
             {{ user_info.personalInfo.lastName.value }}
           </h3>
           <div style="display: flex">
-            <div style="
-                color: #171a1f;
-                cursor: pointer;
-                font-size: 0.875rem;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 1.375rem; /* 157.143% */
-                margin-bottom: 0px;
-                margin-right: 30px;
-              " (click)="showmidssions()">
-              Missions ({{ items.length }})
+            <div style="margin-right: 30px;" (click)="showmidssions()">
+              <div style="color: #6e7787;
+              cursor: pointer;
+              font-size: 0.875rem;
+              font-style: normal;
+              font-weight: 400;
+             
+              line-height: 1.375rem; /* 157.143% */" *ngIf="!show_mission">
+                Missions ({{ items.length }})
+              </div>
+              <div style="
+              color: #171a1f;
+              cursor: pointer;
+              font-size: 0.875rem;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 1.375rem; /* 157.143% */
+              margin-bottom: 0px;
+              
+            " *ngIf="show_mission">
+                Missions ({{ items.length }})
+              </div>
               <b *ngIf="show_mission">
+
                 <hr />
               </b>
             </div>
@@ -278,8 +272,18 @@
                 margin-right: 30px;
                 line-height: 1.375rem; /* 157.143% */
               " (click)="showdocs()">
-              Documents Assocciés
+              <div *ngIf="!show_doc">
+                Documents Associés
+              </div>
               <b *ngIf="show_doc">
+                <b style="color: #171a1f;
+                cursor: pointer;
+                font-size: 0.875rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.375rem; /* 157.143% */
+                margin-bottom: 0px;
+                "> Documents Associés</b>
                 <hr />
               </b>
             </div>
@@ -291,124 +295,172 @@
             font-weight: 400;
             line-height: 1.375rem; /* 157.143% */
           " (click)="showcras()">
-              List cra
+
+              <div style="color: #6e7787;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+           
+            line-height: 1.375rem; /* 157.143% */" *ngIf="!show_cra">
+                CRA
+              </div>
+              <div style="
+            color: #171a1f;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.375rem; /* 157.143% */
+            margin-bottom: 0px;
+            
+          " *ngIf="show_cra">
+                CRA
+              </div>
+
               <b *ngIf="show_cra">
                 <hr />
               </b>
             </div>
           </div>
-
-          <table *ngIf="show_mission">
-            <thead>
-              <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-              <th>Client</th>
-              <th>Métier</th>
-              <th>Secteur</th>
-              <th>Validée par</th>
-              <th>Date</th>
-              <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of items; let i = index">
-                <td>
-                  <div style="
-                      display: flex;
-                      width: 4.9375rem;
-                      height: 1.5rem;
-                      padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
-                      justify-content: center;
-                      align-items: center;
-
-                      border-radius: 0.75rem;
-                      background: #eefdf3;
-                      margin: 5px;
-                      color: #187111;
-                    " *ngIf="item.newMissionStatus == 'VALIDATED'">
-                    Termineé
-                  </div>
-                  <div class="new" *ngIf="item.newMissionStatus == 'PENDING'">
-                    Nouvelle
-                  </div>
-                  <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="waiting">
-                    attente de contrat
-                  </div>
-                  <div *ngIf="item.newMissionStatus == 'NOTVALIDATED'" class="nonvalidée">
-                    non validée
-                  </div>
-                </td>
-
-                <td style="min-width: 120px; max-width: 120px;">
-                  {{ item.clientInfo.firstName }} {{ item.clientInfo.lastName }}
-                </td>
-                <td style="min-width: 80px; max-width: 80px;">
-                  {{ item.missionInfo.profession }}
-                </td>
-                <td style="min-width: 80px; max-width: 80px;">
-                  {{ item.missionInfo.industrySector }}
-                </td>
-
-                <td style="min-width: 80px; max-width: 80px;">
-
-                  {{item.validated_by}}
-                </td>
-                <td>
-                  {{ formatDate(item.missionInfo.startDate.split("T")[0]) }}
-
-                </td>
-                <td (click)="toggleMenu(i)" style="cursor: pointer">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                        fill="black" />
-                    </svg>
-                  </span>
-                  <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
-                    <!-- Menu items go here -->
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotovalidation(item._id)" style="
-                          margin-top: 7px;
-                          margin-bottom: 10px;
-                          margin-left: 5px;
-                        ">
-                        Voir details
-                      </div>
+          <div *ngIf="show_mission">
+            <table>
+              <thead>
+                <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+                <th>Client</th>
+                <th>Métier</th>
+                <th>Secteur</th>
+                <th>Validée par</th>
+                <th>Date</th>
+                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of getDisplayeddocs(); let i = index">
+                  <td>
+                    <div style="
+                        display: flex;
+                        width: 4.9375rem;
+                        height: 1.5rem;
+                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                        justify-content: center;
+                        align-items: center;
+  
+                        border-radius: 0.75rem;
+                        background: #eefdf3;
+                        margin: 5px;
+                        color: #187111;
+                      " *ngIf="item.newMissionStatus == 'VALIDATED'">
+                      Terminé
                     </div>
-                    <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotocra(item._id)" style="
-                          margin-top: 7px;
-                          margin-bottom: 10px;
-                          margin-left: 5px;
-                        ">
-                        CRA
-                      </div>
+                    <div class="new" *ngIf="item.newMissionStatus == 'PENDING'">
+                      Nouvelle
                     </div>
-                    <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
-                        style="margin-left: -13px" fill="none">
+                    <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="waiting">
+                      Attente de contrat
+                    </div>
+                    <div *ngIf="item.newMissionStatus == 'NOTVALIDATED'" class="nonvalidée">
+                      non validée
+                    </div>
+                  </td>
+
+                  <td style="min-width: 120px; max-width: 120px;">
+                    {{ item.clientInfo.firstName }} {{ item.clientInfo.lastName }}
+                  </td>
+                  <td style="min-width: 80px; max-width: 80px;">
+                    {{ item.missionInfo.profession }}
+                  </td>
+                  <td style="min-width: 80px; max-width: 80px;">
+                    {{ item.missionInfo.industrySector }}
+                  </td>
+
+                  <td style="min-width: 80px; max-width: 80px;">
+
+                    {{item.validated_by}}
+                  </td>
+                  <td>
+                    {{ formatDate(item.missionInfo.startDate.split("T")[0]) }}
+
+                  </td>
+                  <td (click)="toggleMenu(i)" style="cursor: pointer">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
-                          d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
-                          stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                          fill="black" />
                       </svg>
-                      <div (click)="
-                          gotovalidemission(item._id, item.contractProcess)
-                        " style="
-                          margin-top: 12px;
-                          cursor: pointer;
-                          margin-left: -5px;
-                        ">
-                        Process de validation
+                    </span>
+                    <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
+                      <!-- Menu items go here -->
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotovalidation(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                          Voir details
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotocra(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                          CRA
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
+                          style="margin-left: -13px" fill="none">
+                          <path
+                            d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                            stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div (click)="
+                            gotovalidemission(item._id, item.contractProcess)
+                          " style="
+                            margin-top: 12px;
+                            cursor: pointer;
+                            margin-left: -5px;
+                          ">
+                          Process de validation
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pagination">
+              <div (click)="previousPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  <path fill-rule="evenodd"
+                    d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                </svg>
+              </div>
+
+
+              <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+              <div (click)="nextPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                  <path fill-rule="evenodd"
+                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
           <div class="popup" *ngIf="showPopup1">
-            <div class="popup-content" style="height: 10rem ;">
+            <div class="popup-content">
               <div style="float: right" (click)="closePopup1()">
                 <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
               </div>
@@ -433,6 +485,11 @@
                         />
                       </div> -->
                       <div class="grid-item">
+                        <select formControlName="typeVirement">
+                          <option *ngFor="let type of virementTypes" [value]="type">
+                            {{ type }}
+                          </option>
+                        </select>
                         <input type="number" id="montant" placeholder="montant" name="montant" required
                           formControlName="montant" />
                       </div>
@@ -564,27 +621,37 @@
               </div>
             </div>
             <div (click)="openPopup()">
-              <div (click)="openPopup()" class="charge" style="margin-left: 150px">
-                + Ajouter document
+              <div (click)="openPopup()" class="charge" style="margin-left: 150px; ">
+                Ajouter document
               </div>
             </div>
             <br /><br />
             <br />
             <br />
+            <div class="first">
+              <svg style="margin-top: -10px;margin-left: -10px;" xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                  fill="#1E1E1E" />
+              </svg> <br>
+              <input type="search" placeholder="Rechercher un document" [(ngModel)]="searchTerm"
+                (input)="applyFilter()">
+            </div><br>
             <table class="table">
               <thead>
-                <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-                <th></th>
-                <th>Document</th>
-                <th>Date</th>
-                <th></th>
+
+
+                <th style="text-align: left;border-radius: 0.6875rem 0rem 0rem 0rem">Document</th>
+                <th>Date de dépôt</th>
+
                 <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
-                  <td>1</td>
-                  <td>RIB</td>
+
+
+                  <td style="text-align: left;">RIB</td>
                   <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
                     <div
@@ -606,12 +673,12 @@
                       Telecharger
                     </div>
                   </td>
-                  <td></td>
+
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>2</td>
-                  <td>CNI</td>
+
+
+                  <td style="text-align: left;">CNI</td>
                   <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
                     <div
@@ -633,12 +700,12 @@
                       Telecharger
                     </div>
                   </td>
-                  <td></td>
+
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>3</td>
-                  <td>Permis de Conduire</td>
+
+
+                  <td style="text-align: left;">Permis de Conduire</td>
                   <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
                   <td>
                     <div
@@ -660,13 +727,13 @@
                       Telecharger
                     </div>
                   </td>
-                  <td></td>
+
                 </tr>
 
-                <tr *ngFor="let doc of docs; let i = index">
-                  <td></td>
-                  <td>{{ i + 4 }}</td>
-                  <td>{{ doc.documentName }}</td>
+                <tr *ngFor="let doc of getDisplayeddocs(); let i = index">
+
+
+                  <td style="text-align: left;">{{ doc.documentName }}</td>
                   <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadFile(doc.document, doc.documentName)" style="
@@ -686,28 +753,51 @@
                       Telecharger
                     </div>
                   </td>
-                  <td></td>
+
                 </tr>
               </tbody>
             </table>
+            <div class="pagination">
+              <div (click)="previousPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  <path fill-rule="evenodd"
+                    d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                </svg>
+              </div>
+
+
+              <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+              <div (click)="nextPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                  <path fill-rule="evenodd"
+                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+
+            </div>
           </div>
 
           <div *ngIf="show_cra">
+
             <br />
             <table class="table">
               <thead>
-                <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-                <th>ID</th>
-                <th>Document</th>
-                <th>date</th>
+                <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;"> Document</th>
+                <th>Date de dépôt </th>
                 <th></th>
                 <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
               </thead>
               <tbody>
-                <tr *ngFor="let doc of allcra.craPdfs ; let i = index">
-                  <td></td>
-                  <td>{{ i + 1 }}</td>
-                  <td>{{ doc.filename.split('uploads/')[1] }}</td>
+                <tr *ngFor="let doc of getDisplayeddocs() ; let i = index">
+
+
+                  <td style="text-align: left">{{ doc.filename.split('uploads/')[1] }}</td>
                   <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadFile(doc.filename, doc.filename.split('uploads/')[1].split('.')[0])" style="
@@ -731,15 +821,39 @@
                 </tr>
               </tbody>
             </table>
+            <div class="pagination">
+              <div (click)="previousPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  <path fill-rule="evenodd"
+                    d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                </svg>
+              </div>
+
+
+              <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+              <div (click)="nextPage()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                  <path fill-rule="evenodd"
+                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+
+            </div>
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="right-item">
+    <div class="right-item" (click)="gotomyprofile()" style="cursor: pointer;">
       <div class="profil">
-        <img src="/assets/unsplash_dt60oksDTx8.png" />
+        <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div style="" class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>
 
       </div>

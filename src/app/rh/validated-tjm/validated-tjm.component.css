@@ -18,13 +18,19 @@
 }
 
 .profil {
-  width: 12rem;
-  height: 3.125rem;
 
+  height: 3.125rem;
+  margin-left: 10px;
   border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;
   float: right;
+}
+
+.profil1 svg {
+  width: 32px;
+  height: 31px;
+
 }
 
 .profil img {
@@ -38,6 +44,7 @@
 .profil1 {
   width: 13rem;
   height: 3.125rem;
+  margin-left: -20px;
 
   border-radius: 1.5625rem;
   background: #fef9f1;

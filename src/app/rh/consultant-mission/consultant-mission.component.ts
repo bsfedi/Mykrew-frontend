@@ -26,6 +26,9 @@ export class ConsultantMissionComponent {
   headers: any
   clientValidation: any
   contactClient: any
+  pageSize = 15; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
   nbdemande: any
   contractValidation: any
   jobCotractEdition: any
@@ -44,7 +47,9 @@ export class ConsultantMissionComponent {
   show_mission: boolean = true
   show_doc: boolean = false
   res: any
+  filteredItems: any[] = [];
   showPopup3: any
+  searchTerm: any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,
     private datePipe: DatePipe,
     private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -70,6 +75,10 @@ export class ConsultantMissionComponent {
     });
   }
   allcra: any
+
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
 
@@ -106,9 +115,12 @@ export class ConsultantMissionComponent {
 
       next: (res) => {
         this.allcra = res
+        this.allcra = this.allcra.craPdfs
+
+
         console.log("allcra", this.allcra);
 
-        for (let item of this.allcra.craPdfs) {
+        for (let item of this.allcra) {
           console.log("item", item);
 
           console.log("filename", item.filename);
@@ -139,8 +151,8 @@ export class ConsultantMissionComponent {
       next: (res) => {
         // Handle the response from the server
         this.docs = res
-
-        for (let item of this.docs) {
+        this.filteredItems = this.docs
+        for (let item of this.filteredItems) {
           if (item.document.endsWith('.pdf')) {
             item.pdf = true
             item.document = baseUrl + "uploads/" + item.document
@@ -236,19 +248,22 @@ export class ConsultantMissionComponent {
   getvalidateby(user_id: any) {
     return this.consultantservice.getuserinfomation(user_id);
   }
-  onTypeChange(event: any) {
-    const value = event.target.value;
-    // Determine if you want to show the popup based on the selected value
-    // For example:
-    console.log(value);
+  onTypeChange() {
 
-    if (value === 'Participation' || value === 'Cooptation' || value === 'Frais') {
-      this.showPopup1 = true;
-    } else {
-      this.showPopup1 = false;
+    this.showPopup1 = true;
+
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
     }
   }
 
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
@@ -330,6 +345,58 @@ export class ConsultantMissionComponent {
   }
   openPopup3(): void {
     this.showPopup3 = true;
+  }
+  applyFiltercra() {
+    // Check if search term is empty
+    if (this.searchTerm.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.docs = this.docs;
+    } else {
+      // Apply filter based on search term
+      this.docs = this.docs.filter((item: any) =>
+        item.filename.split('uploads/')[1].toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+  getDisplayeddocs(): any[] {
+    if (this.show_doc) {
+
+      this.totalPages = Math.ceil(this.filteredItems.length / this.pageSize);
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = Math.min(startIndex + this.pageSize, this.filteredItems.length);
+
+
+      return this.filteredItems.slice(startIndex, endIndex);
+    }
+    else if (this.show_mission) {
+      this.totalPages = Math.ceil(this.items.length / this.pageSize);
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = Math.min(startIndex + this.pageSize, this.items.length);
+      return this.items.slice(startIndex, endIndex);
+    } else {
+      this.totalPages = Math.ceil(this.allcra.length / this.pageSize);
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = Math.min(startIndex + this.pageSize, this.allcra.length);
+      return this.allcra.slice(startIndex, endIndex);
+    }
+
+  }
+  applyFilter() {
+    // Check if search term is empty
+
+
+    if (this.searchTerm.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.filteredItems = this.docs;
+    } else {
+
+
+      // Apply filter based on search term
+      this.filteredItems = this.docs.filter((item: any) =>
+        item.documentName.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+      console.log(this.filteredItems);
+    }
   }
   closePopup(): void {
     this.showPopup = false;

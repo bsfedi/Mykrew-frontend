@@ -20,7 +20,6 @@ import { TjmrequestsComponent } from './tjmrequests/tjmrequests.component';
 import { ValidatedTjmComponent } from './validated-tjm/validated-tjm.component';
 import { CraMissionComponent } from './cra-mission/cra-mission.component';
 import { AdminComponent } from './admin/admin.component';
-import { ListCraDocsComponent } from './list-cra-docs/list-cra-docs.component';
 import { AllCrasComponent } from './all-cras/all-cras.component';
 
 export const routes: Routes = [
@@ -95,9 +94,6 @@ export const routes: Routes = [
     path: 'members',
     component: AdminComponent,
     canActivate: [AuthGuard]
-  }, {
-    path: 'list-cra',
-    component: ListCraDocsComponent
   }
 ]
 
@@ -116,7 +112,7 @@ export const routes: Routes = [
     ValidatedTjmComponent,
     CraMissionComponent,
     AdminComponent,
-    ListCraDocsComponent,
+
     AllCrasComponent,
   ],
   imports: [

@@ -6,8 +6,8 @@
     <div>
       <div *ngIf="role != 'CONSULTANT'" style="margin-left: 250px ;">
 
-        <div style="font-size: 2rem;">
-          <b> Toutes les notifications</b>
+        <div class="title">
+          Notifications
         </div><br>
         <div class="loader" *ngIf="!show"></div>
 
@@ -53,7 +53,7 @@
           </tbody>
         </table>
         <div class="pagination">
-          <div (click)="previousPage()">
+          <div (click)="previousPage()" style="cursor: pointer;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-double-left" viewBox="0 0 16 16">
               <path fill-rule="evenodd"
@@ -65,7 +65,7 @@
 
 
           <span> {{ currentPage }} of {{ totalPages }}</span>
-          <div (click)="nextPage()">
+          <div (click)="nextPage()" style="cursor: pointer;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-chevron-double-right" viewBox="0 0 16 16">
               <path fill-rule="evenodd"

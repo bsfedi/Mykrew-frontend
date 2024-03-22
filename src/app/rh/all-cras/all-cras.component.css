@@ -166,12 +166,59 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
+.profil1 svg {
+    width: 32px;
+    height: 31px;
+}
+
+.profil {
+    margin-left: 10px;
+    height: 3.125rem;
+    width: 10rem;
+    border-radius: 1.5625rem;
+    background: #fef9f1;
+    display: flex;
+    float: right;
+}
+
+.profil img {
+    border-radius: 100%;
+    width: 2.125rem;
+    height: 1.875rem;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+.profil1 {
+    width: 13rem;
+    height: 3.125rem;
+    margin-left: -20px;
+
+    border-radius: 1.5625rem;
+    background: #fef9f1;
+    display: flex;
+    float: right;
+}
+
+
+.pending1 {
+    width: 100%;
+}
+
+.profil1 img {
+    border-radius: 100%;
+    width: 2.625rem;
+    height: 2.175rem;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
 input[type="date"] {
     width: 15.04313rem;
     height: 3.61006rem;
     flex-shrink: 0;
 
-    margin-left: 88%;
+    font-family: "Poppins", sans-serif !important;
 
 
     border-radius: 0.5rem;
@@ -190,6 +237,16 @@ input[type="date"] {
     background: #fff;
 
     padding: 4.25px 9px 4.25px 9px;
+}
+
+.title {
+    margin-top: 7px;
+
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
 }
 
 .Search-text {

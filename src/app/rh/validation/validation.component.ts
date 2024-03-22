@@ -305,12 +305,11 @@ export class ValidationComponent implements OnInit {
         this.inscriptionservice.rhvalidation(this.preinscription_id, data, this.headers).subscribe({
           next: (res) => {
             // Handle success
-            Swal.fire('Success', "l'inscription mis a jour avec succées!", 'success');
             Swal.fire({
-              position: "top-end",
               icon: "success",
-              title: 'Inscription mise à jour avec succès !',
-              showConfirmButton: false,
+              title: 'Pré-inscription mise à jour avec succès !',
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#91c593",
               timer: 1500
             });
             this.router.navigate(['/dashboard'])
@@ -359,12 +358,17 @@ export class ValidationComponent implements OnInit {
     this.router.navigate(['/missions/' + this.consultant_id])
 
   }
+  gotoallnotification() {
+    this.router.navigate(['/consultant/allnotifications'])
+  }
   onRadioChange(value: boolean) {
     // Update hasCar based on radio button change
     this.hasCar = value;
   }
 
-
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
   handleRenderPdf(data: any) {
 
     const pdfObject = PDFObject.embed(data, '#pdfContainer');

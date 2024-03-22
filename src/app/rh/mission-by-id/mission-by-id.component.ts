@@ -99,7 +99,12 @@ export class MissionByIdComponent {
   toggleZoom() {
     this.zoomState = this.zoomState === 'normal' ? 'zoomed' : 'normal';
   }
-
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
+  gotoallnotification() {
+    this.router.navigate(['/consultant/allnotifications'])
+  }
   ngOnInit(): void {
     this.new_notif = localStorage.getItem('new_notif');
     const user_id = localStorage.getItem('user_id')
@@ -254,11 +259,11 @@ export class MissionByIdComponent {
     }
 
     Swal.fire({
-      title: 'Confirmez Vos Informations',
+      title: "Confirmez l'action",
       html: `
         <div>
-        <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
-          <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.?</div>
+        <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vote réponse a la demande ?  </div> 
+          
         </div>
       `,
       iconColor: '#1E1E1E',
@@ -277,15 +282,13 @@ export class MissionByIdComponent {
         // User clicked 'Yes', call the endpoint
         this.inscriptionservice.validatenewmission(this.mission_id, data, this.headers).subscribe({
           next: (res) => {
-            // Handle success
-            Swal.fire('Success', 'Mission mise à jour avec succès !', 'success');
             Swal.fire({
-              position: "top-end",
               icon: "success",
               title: 'Mission mise à jour avec succès !',
-              showConfirmButton: false,
-              timer: 1500
+              confirmButtonText: 'OK',
+              confirmButtonColor: "#91c593",
             });
+            this.router.navigate(['/tjmrequests'])
           },
           error: (e) => {
             // Handle errors

@@ -22,7 +22,7 @@
           [dataLabels]="chartOptions.dataLabels" [yaxis]="chartOptions.yaxis" [colors]="chartOptions.colors"
           [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
       </div>
-      <div class="Tableau" style="margin-left: 80px ">
+      <div class="Tableau" style="margin-left: 20px ">
         <div class="chiffre_affaire">
           <div class="Tableau">
             <div class="chaffaire">Chiffre d’Affaire</div>
@@ -65,8 +65,9 @@
         </div>
       </div>
       <br />
+      <h2> Nouvelles pré-inscription </h2>
       <div class="Tableau">
-        <div class="first">
+        <div class="first" (click)="toggleMenu1()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M11.5996 11.6001L13.9996 11.6001" stroke="#1E1E1E" stroke-width="0.8" stroke-miterlimit="10"
               stroke-linecap="round" stroke-linejoin="round" />
@@ -81,19 +82,44 @@
             <path d="M2 11.6001L6.8 11.6001" stroke="#1E1E1E" stroke-width="0.8" stroke-miterlimit="10"
               stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+
         </div>
-        <div class="first" (click)="sortItemsByLastUpdated()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <div>Trier: Date de création</div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M7 12.5L7 1.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M11 8.5L7 12.5L3 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+        <div class="dropdown-menu" style="margin: 60px 0px 0px 10px;" *ngIf="isMenuOpen1">
+          <!-- Menu items go here -->
+          <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('date')">
+            <div class="first">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div>Trier: Date de la demande</div>
+              <svg *ngIf="sortDirection === 'asc'  " xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+              </svg>
+              <svg *ngIf="sortDirection === 'desc'" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
+              </svg>
+            </div>
+          </div>
+          <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('alpha')">
+            <div class="first">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div>Trier: Ordre alphabétique</div>
+              <span style="margin-left: 20px;">{{sortDirectionAlpha}}</span>
+            </div>
+          </div>
         </div>
         <!--   <div class="first">
           <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants
@@ -103,23 +129,36 @@
           </div> 
         </div>-->
         <div class="first">
-          <input type="search" placeholder="filter par nom consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
+          <svg style="margin-top: -2px;margin-left: -10px;" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none">
+            <path
+              d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+              fill="#1E1E1E" />
+          </svg>
+          <input type="search" placeholder="rechercher un consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
         </div>
-        <div class="Tableau" style="margin-left: 27%;">
+        <svg (click)='resetFilter()' style="margin-top: 10px;cursor: pointer;;" xmlns="http://www.w3.org/2000/svg"
+          width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+          <path
+            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+        </svg>
+        <div class="Tableau" style="margin-left: 39.5%;">
 
           <div class="first" (click)="exportTable()">Export list</div>
         </div>
       </div>
+
       <br />
-      <table style="width: 95%;">
+      <table style="width: 97%;border-radius: 0.6875rem 0.6875rem 0rem 0rem">
         <thead>
           <tr>
             <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
-              Tous les demandes
+              Utilisateur
             </th>
             <th>Email</th>
             <th>Téléphone</th>
-            <th>Status</th>
+            <!-- <th>Status</th> -->
             <th>Date de création</th>
 
             <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
@@ -149,39 +188,6 @@
             <td>
               {{ item.personalInfo?.phoneNumber.value }}
             </td>
-            <td>
-              <div style="width: 115px" *ngIf="item.status === 'PENDING'">
-                <div style="
-                    display: flex;
-                    width: auto;
-                    height: 1.75rem;
-                    padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
-                    justify-content: center;
-                    align-items: center;
-                    flex-shrink: 0;
-                    border-radius: 0.875rem;
-                    background: #f3f4f6;
-                  ">
-                  En attente
-                </div>
-              </div>
-              <div style="width: 115px" *ngIf="item.status != 'PENDING'">
-                <div style="
-                    display: flex;
-                    width: auto;
-                    height: 1.75rem;
-                    padding: 0.25rem 0.6875rem 0.25rem 0.5rem;
-                    justify-content: center;
-                    align-items: center;
-                    flex-shrink: 0;
-                    border-radius: 0.875rem;
-                    background: #f3f4f6;
-                  ">
-                  Contrat
-                </div>
-              </div>
-            </td>
-
             <td>
               {{ formatDate(item.addedDate.split("T")[0]) }}
             </td>
@@ -262,7 +268,52 @@
         </tbody>
       </table>
     </div>
+    <div class="right-item" style="cursor: pointer;">
+      <div style="display: flex">
+        <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
+              <path
+                d="M23.2203 20.62C23.2203 21.47 22.5303 22.16 21.6803 22.16H8.32027C7.47027 22.16 6.78027 21.47 6.78027 20.62C6.78027 19.77 7.47027 19.08 8.32027 19.08H8.83027V13.94C8.83027 10.54 11.5903 7.77002 15.0003 7.77002C16.7003 7.77002 18.2403 8.46002 19.3603 9.58002C20.4803 10.69 21.1703 12.23 21.1703 13.94V19.08H21.6803C22.5303 19.08 23.2203 19.77 23.2203 20.62Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15 7.78V6.75" stroke="black" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path
+                d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
+                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
+                *ngIf="notification.length > 0 || new_notif === 'true' " />
+            </svg>
+          </div>
+          <div>
+            <div style="width: 220px; margin-top: 10px; font-size: 0.8125rem">
+              <b> Toutes les notifications </b>
+            </div>
+            <div style="
+                color: rgba(0, 0, 0, 0.52);
+    
+                font-size: 0.8125rem;
+                font-style: normal;
+                font-weight: 400;
+    
+                line-height: 100%; /* 0.8125rem */
+              ">
+              {{ nblastnotifications }} notifications
+            </div>
+          </div>
 
-    <app-notificaion-rh></app-notificaion-rh>
+        </div>
+        <div class="profil" (click)="gotomyprofile()" style="cursor: pointer;">
+          <img src="/assets/avatar-user.png" width="15%" height="10%" />
+          <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
+
+          </div>
+
+        </div>
+      </div>
+      <app-notificaion-rh></app-notificaion-rh>
+
+    </div>
+
   </div>
 </body>

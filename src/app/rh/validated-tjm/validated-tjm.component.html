@@ -61,12 +61,11 @@
               <input type="text" formControlName="clientphoneNumber" [ngModel]="clientInfo?.clientContact.phoneNumber"
                 [readonly]="true" />
             </div>
-            <div class="label">Nouveau Simulation :</div>
-
+            <div class="label"> Ancienne simulation :</div>
             <div class="Tableau">
-              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; "></div>
+              <div id="pdfContainer" style="width: 300px; "></div>
             </div>
-            <div class="Tableau" *ngIf="!showpdf1">
+            <div class="Tableau" *ngIf="!showpdf">
               <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="80%" height="100%" />
             </div>
           </div>
@@ -81,7 +80,7 @@
                 id="birthDate" name="birthDate" required placeholder="RIB" />
             </div>
 
-            <div class="label" style="color: rgb(24, 117, 24)">TJM :</div>
+            <div class="label" style="color: rgb(24, 117, 24)">TJM actuel :</div>
             <div class="Tableau">
               <input formControlName="dailyRate" [ngModel]="missionInfo?.dailyRate" [readonly]="true" type="text"
                 id="companyName" placeholder="Société" name="companyName" required />
@@ -116,14 +115,15 @@
               <input formControlName="finalClient" [ngModel]="missionInfo?.finalClient" [readonly]="true" type="text"
                 id="phoneNumber" name="phoneNumber" placeholder="téléphone" required />
             </div>
+            <div class="label">Nouvelle Simulation :</div>
 
-            <div class="label">Simulation :</div>
             <div class="Tableau">
-              <div id="pdfContainer" style="width: 300px; "></div>
+              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; "></div>
             </div>
-            <div class="Tableau" *ngIf="!showpdf">
+            <div class="Tableau" *ngIf="!showpdf1">
               <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="80%" height="100%" />
             </div>
+
           </div>
         </div>
       </form>
@@ -131,21 +131,22 @@
     <div style="display: flex; margin-left: 480px; margin-top: 20px;">
       <div style="margin-top: 20px">
         <button (click)="invalid()" style="
-            background-color: rgb(221, 224, 226);
+            background-color: rgb(244, 233, 233);
             border-color: rgb(2, 2, 2);
+            opacity: 0.5;
             color: black;
           ">
-          Refuser TJM
+          Refuser la demande
         </button>
       </div>
       <div style="margin-top: 20px">
-        <button (click)="valid()">Valider TJM</button>
+        <button (click)="valid()">Valider la demande</button>
       </div>
     </div>
   </div>
   <div class="right-item">
     <div style="display: flex">
-      <div class="profil1">
+      <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
             <path
@@ -176,7 +177,7 @@
         </div>
 
       </div>
-      <div class="profil">
+      <div class="profil" (click)="  gotomyprofile()" style="cursor: pointer;">
         <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
 

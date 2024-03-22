@@ -82,6 +82,9 @@ export class AdminComponent {
     });
 
   }
+  gotomyprofile() {
+    this.router.navigate(['/edit-profil'])
+  }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
   }
