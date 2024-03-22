@@ -279,9 +279,9 @@ input[type="checkbox"] {
 }
 
 .profil {
-  width: 12rem;
+  margin-left: 10px;
   height: 3.125rem;
-
+  width: 10rem;
   border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;
@@ -328,9 +328,8 @@ input[type="checkbox"] {
 }
 
 .right-item {
-
+  float: right;
   display: row;
-  margin-left: -15px;
 }
 
 .svg {

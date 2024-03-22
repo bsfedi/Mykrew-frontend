@@ -287,6 +287,10 @@ button {
   overflow: hidden;
 }
 
+td {
+  padding: 7px 7px;
+}
+
 .transaction-header {
   background: #f7f5ef;
   padding: 10px;

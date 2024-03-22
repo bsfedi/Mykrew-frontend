@@ -185,14 +185,29 @@ export class ConsultantMissionComponent {
     if (token) {
       // Include the token in the headers
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
-      this.consultantservice.getpreregisterbyuid(this.user_id).subscribe({
+      this.userservice.getpersonalinfobyid(this.user_id).subscribe({
         next: (res) => {
           this.user_info = res
-          console.log('use_info', this.user_info);
-          this.user_info.personalInfo.carInfo.drivingLicense.value = baseUrl + "uploads/" + this.user_info.personalInfo.carInfo.drivingLicense.value
-          this.user_info.personalInfo.identificationDocument.value = baseUrl + "uploads/" + this.user_info.personalInfo.identificationDocument.value
-          this.user_info.personalInfo.ribDocument.value = baseUrl + "uploads/" + this.user_info.personalInfo.ribDocument.value
 
+          this.user_info.carInfo.drivingLicense = baseUrl + "uploads/" + this.user_info.carInfo.drivingLicense
+          this.user_info.identificationDocument = baseUrl + "uploads/" + this.user_info.identificationDocument
+          this.user_info.ribDocument = baseUrl + "uploads/" + this.user_info.ribDocument
+          this.filteredItems.push({
+            "createdAt": this.user_info.addedDate || '',
+            "document": this.user_info.carInfo.drivingLicense,
+            "documentName": "permis" + '.'
+          },
+            {
+              "createdAt": this.user_info.addedDate || '',
+              "document": this.user_info.identificationDocument,
+              "documentName": "CNI"
+            },
+            {
+              "createdAt": this.user_info.addedDate || '',
+              "document": this.user_info.ribDocument,
+              "documentName": "rib"
+            },
+          )
         },
         error: (e) => {
           // Handle errors

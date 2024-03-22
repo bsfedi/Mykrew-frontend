@@ -9,6 +9,7 @@
     <div class="container">
         <app-left-bar> </app-left-bar>
         <div class="second-container">
+            <div class="title">Validation de la pré-inscription</div>
             <div class="demande-ng-consultants ">
                 <div class="demande">
                     <div>
@@ -28,7 +29,7 @@
                         <div> {{personalInfo?.email.value}}</div>
                     </div>
 
-                    <div>
+                    <div style="margin-left: -100px;">
                         <button type="submit" class="primry-button" (click)="gotoconsultantprofil()"> Envoyer un email
                         </button>
                     </div>
@@ -219,7 +220,7 @@
                 </div>
 
             </div>
-            <div class="Information"> Information du client (pour la contractualisation) </div>
+            <div class="Information"> Informations du client </div>
             <div style="display: flex;">
                 <div>
                     <div class="label"> Prénom :</div>

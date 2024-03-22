@@ -151,7 +151,17 @@ export class DashboardComponent {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   ngOnInit(): void {
-
+    this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
+      next: (res) => {
+        // Handle the response from the server
+        this.nbdemande = res.length; // Assuming res is an array
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id');
 
@@ -227,6 +237,7 @@ export class DashboardComponent {
         },
         error: (e) => {
           // Handle errors
+          this.nbdemande = 0
           console.error(e);
           // Set loading to false in case of an error
 
@@ -244,7 +255,7 @@ export class DashboardComponent {
         console.log(res);
 
         this.items = res
-        this.nbdemande = this.items.length
+
         this.filteredItems = this.items
 
 

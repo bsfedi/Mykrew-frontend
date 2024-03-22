@@ -11,12 +11,13 @@
 }
 
 .title {
-  color: #000;
 
-  font-size: 1.25rem;
+
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
   margin-top: 12px;
   margin-bottom: 30px;
   flex-shrink: 0;
@@ -87,6 +88,8 @@ svg {
   flex-shrink: 0;
 }
 
+
+
 .button {
   float: right;
 }
@@ -120,6 +123,7 @@ svg {
 option {
   background-color: white;
 }
+
 body {
   font-family: "Poppins", sans-serif !important;
 }
@@ -675,7 +679,7 @@ input[type="password"] {
 }
 
 /* Style for the slider when the toggle is on */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: rgb(85, 205, 85);
 }
 
@@ -694,7 +698,7 @@ input[type="password"] {
 }
 
 /* Style for the round knob when the toggle is on */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 

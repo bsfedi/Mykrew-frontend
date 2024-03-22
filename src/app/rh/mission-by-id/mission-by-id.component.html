@@ -92,7 +92,7 @@
                     </div>
                     <input *ngIf="!professionValue" type="text" placeholder="commentainer"
                         [(ngModel)]="commantaireprofessionValue">
-                    <div class="label"> TJM ::</div>
+                    <div class="label"> TJM :</div>
                     <div class="Tableau">
                         <input [value]="missionInfo?.dailyRate" type="text" id="companyName" placeholder="Société"
                             name="companyName" required />
@@ -214,6 +214,33 @@
                     </div>
 
                 </div>
+            </div>
+            <div class="historique">
+                <div class="historique-demandes">
+                    <div class="text"><b>Historique TJM </b></div>
+
+                </div>
+                <div *ngFor="let item of TjmRequestsByMissionId">
+                    <div style="display: flex; ">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                <circle cx="8" cy="8" r="8" />
+                            </svg>
+                        </div>
+                        <div style="margin-bottom: 10px ; margin-left: 5px;width: 150px;" class="
+                            historique-consultant">
+                            TJM : <b> {{ item.valueOfNewTjm }} </b>
+
+
+                            <div style="width: 300px;"> Date de prise en compte : {{
+                                formatDate(item.datecompte.split('T')[0]) }}</div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     </div>

@@ -90,6 +90,7 @@ export class MissionsComponent {
 
     this.myForm = this.fb.group({
       TJM: ['', Validators.required],
+      datecompte: ['', Validators.required],
       userDocument: ['', Validators.required],
       // Add other form controls as needed
     });
@@ -452,11 +453,6 @@ export class MissionsComponent {
         },
       });
 
-
-
-
-
-
       this.consultantservice.getNotValidatedMissions(this.headers).subscribe({
         next: (res) => {
           if (res.length != 0) {
@@ -606,8 +602,10 @@ export class MissionsComponent {
 
       // formData.append('simulation', this.selectedFile);
       this.formData.append('valueOfNewTjm', this.myForm.value.TJM);
+      this.formData.append('datecompte', this.myForm.value.datecompte);
       this.formData.append('userId', this.user_id)
       this.formData.append('missionId', this.mission_id)
+
 
 
       // Include the token in the headers

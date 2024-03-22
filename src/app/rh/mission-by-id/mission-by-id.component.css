@@ -159,13 +159,13 @@ button {
 }
 
 .Information {
-  color: #000;
+  margin-top: 7px;
 
-  font-size: 1.5625rem;
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 300;
   line-height: normal;
-  letter-spacing: 0.01563rem;
+  letter-spacing: 0.0225rem;
 }
 
 .primry-button {

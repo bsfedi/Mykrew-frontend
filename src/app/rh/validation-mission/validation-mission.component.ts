@@ -43,7 +43,6 @@ export class ValidationMissionComponent {
 
 
 
-
     this.userservice.getpersonalinfobyid(user_id).subscribe({
 
 
@@ -74,6 +73,7 @@ export class ValidationMissionComponent {
     if (token) {
       // Include the token in the headers
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
+
       this.consultantservice.getContaractById(this.contract_id, this.headers).subscribe({
         next: (res) => {
 

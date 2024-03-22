@@ -1,7 +1,7 @@
 <div class="wrapper">
-    <div>
-        <app-left-bar></app-left-bar>
-    </div>
+
+    <app-left-bar></app-left-bar>
+
     <div class="second-container" [ngClass]="{
         pending1: shownotiff == false,
   
@@ -46,8 +46,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-                            <th>Consultant</th>
+                            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+                                <div style="margin-left: 33px;text-align: left;">
+                                    Consultant
+                                </div>
+                            </th>
+
                             <th>Document</th>
                             <th>Date de dépôt</th>
 
@@ -63,7 +67,7 @@
                                     <!-- Display table row only if the condition matches -->
                                     <tr>
                                         <!-- Table cells -->
-                                        <td></td>
+
                                         <td>
                                             <div style="display: flex;min-width: 200px;">
                                                 <div>

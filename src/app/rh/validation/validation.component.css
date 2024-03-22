@@ -13,14 +13,14 @@
 }
 
 .title {
-    color: #000;
+    margin-top: 7px;
 
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
-    margin-top: 12px;
-    margin-bottom: 30px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
+    margin-bottom: 20px;
     flex-shrink: 0;
     /* 2.25rem */
 }
@@ -84,6 +84,7 @@ svg {
 }
 
 .second-container {
+
     margin-left: 260px;
     width: 55%;
     flex-wrap: 1;
@@ -208,8 +209,9 @@ input[type='search']:focus {
     height: 5rem;
     flex-shrink: 0;
     border-radius: 0.4375rem;
-    background: #fef9f1;
-    margin: 10px 0px 10px 0px;
+    background: white;
+    border: 2px solid #eae3d5;
+    margin: 3px 0px 10px 0px;
     display: flex;
 
 }
@@ -232,6 +234,7 @@ input[type='search']:focus {
 
 .nameofconsultant {
     margin-bottom: 5px;
+    width: 150px;
 }
 
 .nb-demande {

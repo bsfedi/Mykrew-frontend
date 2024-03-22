@@ -91,6 +91,11 @@
               <input [value]="new_tjm.valueOfNewTjm" [ngModel]="new_tjm.valueOfNewTjm" [readonly]="true" type="text"
                 id="companyName" placeholder="47" name="companyName" required />
             </div>
+            <div class="label">Date de prise en compte :</div>
+            <div class="Tableau">
+              <input [value]="new_tjm.datecompte.split('T')[0]" [ngModel]="new_tjm.datecompte" [readonly]="true"
+                type="date" id="companyName" placeholder="47" name="companyName" required />
+            </div>
 
             <div class="label">Secteur d'activité :</div>
             <div class="Tableau">

@@ -44,8 +44,8 @@
                   font-weight: 300;
                   line-height: 2.25rem; /* 150% */
                 ">
-                {{ user_info.personalInfo.firstName.value }}
-                {{ user_info.personalInfo.lastName.value }}
+                {{ user_info.firstName }}
+                {{ user_info.lastName }}
               </div>
             </div>
 
@@ -120,7 +120,7 @@
               </svg>
             </div>
             <div style="margin-top: 10px">
-              {{ user_info.personalInfo.email.value }}
+              {{ user_info.email }}
             </div>
           </div>
           <div style="display: flex">
@@ -132,7 +132,7 @@
               </svg>
             </div>
             <div style="margin-top: 10px">
-              {{ user_info.personalInfo.phoneNumber.value }}
+              {{ user_info.phoneNumber }}
             </div>
           </div>
           <div style="display: flex">
@@ -157,8 +157,8 @@
               </svg>
             </div>
             <div style="margin-top: 10px">
-              {{ user_info.personalInfo.nationality.value }} ,
-              {{ user_info.personalInfo.location.value }}
+              {{ user_info.nationality }} ,
+              {{ user_info.location }}
             </div>
           </div>
 
@@ -187,7 +187,7 @@
                 background: #f3f4f6;
                 margin-left: 40px;
               ">
-              {{ user_info.personalInfo.nationality.value }}
+              {{ user_info.nationality }}
             </div>
           </div>
           <div style="display: flex">
@@ -215,13 +215,13 @@
 
                 margin-left: 38px;
               ">
-              {{ user_info.personalInfo.socialSecurityNumber.value }}
+              {{ user_info.socialSecurityNumber }}
             </div>
           </div>
           <div style="display: flex">
             <div class="rib">RIB</div>
             <div class="rib-info">
-              {{ user_info.personalInfo.rib.value }}
+              {{ user_info.rib }}
             </div>
           </div>
           <div
@@ -232,8 +232,8 @@
 
         <div style="height: auto; margin-left: 20px">
           <h3>
-            Mission de {{ user_info.personalInfo.firstName.value }}
-            {{ user_info.personalInfo.lastName.value }}
+            Mission de {{ user_info.firstName }}
+            {{ user_info.lastName }}
           </h3>
           <div style="display: flex">
             <div style="margin-right: 30px;" (click)="showmidssions()">
@@ -511,9 +511,8 @@
                 <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
               </div>
               <div>
-                <h3>Envoyer un mail a {{ user_info.personalInfo.email.value }}</h3>
-                <form (submit)="sendmail(user_info.personalInfo.email.value )" style="display: flex"
-                  [formGroup]="formData1">
+                <h3>Envoyer un mail a {{ user_info.email }}</h3>
+                <form (submit)="sendmail(user_info.email )" style="display: flex" [formGroup]="formData1">
                   <div class="form-section">
                     <div class="grid-container">
                       <div class="grid-item">
@@ -648,92 +647,14 @@
                 <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
               </thead>
               <tbody>
-                <tr>
 
-
-                  <td style="text-align: left;">RIB</td>
-                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
-                  <td>
-                    <div
-                      (click)="downloadFile(user_info.personalInfo.ribDocument.value, user_info.personalInfo.firstName.value)"
-                      style="
-                        display: flex;
-                        cursor: pointer;
-                        height: 1.5rem;
-                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
-                        justify-content: center;
-                        align-items: center;
-                        flex-shrink: 0;
-                        border-radius: 0.75rem;
-
-                        margin-left: 0px;
-                        background: #f1f8fd;
-                        color: #379ae6;
-                      ">
-                      Telecharger
-                    </div>
-                  </td>
-
-                </tr>
-                <tr>
-
-
-                  <td style="text-align: left;">CNI</td>
-                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
-                  <td>
-                    <div
-                      (click)="downloadFile(user_info.personalInfo.carInfo.drivingLicense.value, user_info.personalInfo.firstName.value)"
-                      style="
-                        display: flex;
-                        cursor: pointer;
-                        height: 1.5rem;
-                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
-                        justify-content: center;
-                        align-items: center;
-                        flex-shrink: 0;
-                        border-radius: 0.75rem;
-
-                        margin-left: 0px;
-                        background: #f1f8fd;
-                        color: #379ae6;
-                      ">
-                      Telecharger
-                    </div>
-                  </td>
-
-                </tr>
-                <tr>
-
-
-                  <td style="text-align: left;">Permis de Conduire</td>
-                  <td>{{ formatDate(user_info.addedDate.split("T")[0]) }}</td>
-                  <td>
-                    <div
-                      (click)="downloadFile(user_info.personalInfo.carInfo.drivingLicense.value, user_info.personalInfo.firstName.value)"
-                      style="
-                        display: flex;
-                        cursor: pointer;
-                        height: 1.5rem;
-                        padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
-                        justify-content: center;
-                        align-items: center;
-                        flex-shrink: 0;
-                        border-radius: 0.75rem;
-
-                        margin-left: 0px;
-                        background: #f1f8fd;
-                        color: #379ae6;
-                      ">
-                      Telecharger
-                    </div>
-                  </td>
-
-                </tr>
 
                 <tr *ngFor="let doc of getDisplayeddocs(); let i = index">
 
 
-                  <td style="text-align: left;">{{ doc.documentName }}</td>
+                  <td style="text-align: left;">
+                    <div style="margin-left: 7px;"> {{ doc.documentName }} </div>
+                  </td>
                   <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadFile(doc.document, doc.documentName)" style="
@@ -797,7 +718,9 @@
                 <tr *ngFor="let doc of getDisplayeddocs() ; let i = index">
 
 
-                  <td style="text-align: left">{{ doc.filename.split('uploads/')[1] }}</td>
+                  <td style="text-align: left">
+                    <div style="margin-left: 7px;"> {{ doc.filename.split('uploads/')[1] }} </div>
+                  </td>
                   <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
                   <td>
                     <div (click)="downloadFile(doc.filename, doc.filename.split('uploads/')[1].split('.')[0])" style="

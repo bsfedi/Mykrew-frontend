@@ -144,9 +144,9 @@
           <path
             d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
         </svg>
-        <div class="Tableau export">
+        <div class="Tableau export" (click)="exportTable()">
 
-          <div class="first" (click)="exportTable()">Export list</div>
+          <div class="first">Export list</div>
         </div>
       </div>
 
@@ -155,7 +155,10 @@
         <thead>
           <tr>
             <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
-              Tous les consultants
+              <div style="margin-left: 39px;text-align: left;">
+                Tous les consultants
+              </div>
+
             </th>
             <th>Email</th>
             <th>Téléphone</th>

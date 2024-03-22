@@ -12,6 +12,7 @@ import { ConsultantService } from 'src/app/services/consultant.service';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
+import { DatePipe } from '@angular/common';
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -87,13 +88,13 @@ export class MissionByIdComponent {
   lastnotifications: any
   notification: string[] = [];
   new_notif: any
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private userservice: UserService, private router: Router, private route: ActivatedRoute) {
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private datePipe: DatePipe, private socketService: WebSocketService, private fb: FormBuilder, private userservice: UserService, private router: Router, private route: ActivatedRoute) {
 
 
 
   }
   loading: boolean = true;
-
+  TjmRequestsByMissionId: any
   zoomState: string = 'normal';
   userSelection: string = 'true';
   toggleZoom() {
@@ -104,6 +105,9 @@ export class MissionByIdComponent {
   }
   gotoallnotification() {
     this.router.navigate(['/consultant/allnotifications'])
+  }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   ngOnInit(): void {
     this.new_notif = localStorage.getItem('new_notif');
@@ -168,19 +172,32 @@ export class MissionByIdComponent {
           this.loading = false;
         }
       });
+
+      this.consultantservice.getallTjmRequestsByMissionId(this.mission_id).subscribe({
+        next: (res) => {
+          this.TjmRequestsByMissionId = res
+          console.log("tjmmission", res);
+        },
+        error: (e) => {
+
+          console.error(e);
+
+
+        }
+      });
       this.consultantservice.getlastnotificationsrh().subscribe({
         next: (res1) => {
           console.log(res1);
           this.lastnotifications = res1.slice(0, 10);
           for (let item of this.lastnotifications) {
             //getuserinfomation
-            this.consultantservice.getuserinfomation(item["userId"], this.headers).subscribe({
-              next: (info) => {
-                console.log(info);
+            // this.consultantservice.getuserinfomation(item["userId"], this.headers).subscribe({
+            //   next: (info) => {
+            //     console.log(info);
 
-                item["userId"] = info["firstName"] + ' ' + info["lastName"]
-              }
-            })
+            //     item["userId"] = info["firstName"] + ' ' + info["lastName"]
+            //   }
+            // })
           }
         },
         error: (e) => {

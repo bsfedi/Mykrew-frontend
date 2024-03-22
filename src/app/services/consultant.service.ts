@@ -214,6 +214,10 @@ export class ConsultantService {
   getAllTjmRequest() {
     return this.http.get(baseUrl + 'tjmRequest/getAllTjmRequest');
   }
+  getallTjmRequestsByMissionId(id: any) {
+    return this.http.get(baseUrl + 'tjmRequest/getallTjmRequestsByMissionId/' + id);
+
+  }
 
   addDocumentToUser(id: any, data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
