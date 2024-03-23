@@ -19,6 +19,24 @@
 
 
 
+.pagination {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  text-align: right;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  margin: 0 2px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 .profil {
   width: 12rem;
   height: 3.125rem;

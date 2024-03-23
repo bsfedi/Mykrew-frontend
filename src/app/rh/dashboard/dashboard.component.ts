@@ -144,6 +144,34 @@ export class DashboardComponent {
     this.router.navigate(['/allConsultants'])
 
   }
+  pageSize = 5; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.filteredItems.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.filteredItems.length);
+
+
+    return this.filteredItems.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
   gotovalidemission(id_mission: any, id: any) {
     this.router.navigate(['/validationmission/' + id_mission + '/' + id])
   }

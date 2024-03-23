@@ -77,6 +77,33 @@ export class AllConsultantsComponent {
 
     this.shownotiff = !this.shownotiff
   }
+  pageSize = 5; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.filteredItems.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.filteredItems.length);
+
+
+    return this.filteredItems.slice(startIndex, endIndex);
+
+
+
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
@@ -163,6 +190,7 @@ export class AllConsultantsComponent {
   gotomyprofile() {
     this.router.navigate(['/edit-profil'])
   }
+
   getpreregister() {
     this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
       next: (res) => {

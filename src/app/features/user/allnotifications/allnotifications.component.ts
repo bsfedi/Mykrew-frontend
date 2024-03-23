@@ -3,6 +3,7 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-allnotifications',
@@ -17,7 +18,8 @@ export class AllnotificationsComponent {
   pageSize = 15; // Number of items per page
   currentPage = 1; // Current page
   totalPages: any;
-  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private router: Router, private datePipe: DatePipe) { }
+  res: any
+  constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private userservice: UserService, private router: Router, private datePipe: DatePipe) { }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
@@ -59,7 +61,27 @@ export class AllnotificationsComponent {
         }
       });
     }
+    this.userservice.getpersonalinfobyid(user_id).subscribe({
 
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     // Connect to Socket.IO server
     this.socketService.connect();
 

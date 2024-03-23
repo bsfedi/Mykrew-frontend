@@ -70,6 +70,34 @@ export class AllCrasComponent {
 
     this.shownotiff = !this.shownotiff
   }
+
+  pageSize = 10; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.all_cras.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.all_cras.length);
+
+
+    return this.all_cras.slice(startIndex, endIndex);
+
+
+
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
