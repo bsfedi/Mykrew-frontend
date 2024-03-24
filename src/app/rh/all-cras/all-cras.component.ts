@@ -74,30 +74,7 @@ export class AllCrasComponent {
   pageSize = 10; // Number of items per page
   currentPage = 1; // Current page
   totalPages: any;
-  getDisplayeddocs(): any[] {
 
-
-    this.totalPages = Math.ceil(this.all_cras.length / this.pageSize);
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = Math.min(startIndex + this.pageSize, this.all_cras.length);
-
-
-    return this.all_cras.slice(startIndex, endIndex);
-
-
-
-  }
-  nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-    }
-  }
-
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
@@ -158,9 +135,9 @@ export class AllCrasComponent {
     this.consultantservice.get_all_cra().subscribe({
       next: (res) => {
         this.all_cras = res
-        for (let item of this.all_cras) {
-          console.log(item.craInformation.craPDF);
+        console.log(this.all_cras.length);
 
+        for (let item of this.all_cras) {
           for (let crapdf of item.craInformation.craPDF) {
             crapdf.filename = baseUrl + "uploads/" + crapdf.filename
             this.inscriptionservice.getPdf(crapdf.filename).subscribe({
@@ -180,6 +157,31 @@ export class AllCrasComponent {
       }
     }); {
 
+    }
+  }
+
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.all_cras.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.all_cras.length);
+
+
+    return this.all_cras.slice(startIndex, endIndex);
+
+
+
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
     }
   }
   formatDate(date: string): string {

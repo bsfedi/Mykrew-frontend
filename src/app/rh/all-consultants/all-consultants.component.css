@@ -94,7 +94,15 @@ svg {
 }
 
 .pending1 .export {
-  margin-left: 52.5%;
+  margin-left: 53.5%;
+}
+
+table {
+  width: 98%;
+}
+
+.pending1 table {
+  width: 100%;
 }
 
 .export {

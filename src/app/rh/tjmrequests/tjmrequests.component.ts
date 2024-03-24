@@ -35,35 +35,50 @@ export class TjmrequestsComponent {
     this.shownotiff = !this.shownotiff
   }
   pageSize = 2; // Number of items per page
-  currentPage = 1; // Current page
+  currentPagemission = 1; // Current page
+  currentPagetjm = 1; // Current page
   totalPages: any;
   getDisplayeddocs(): any[] {
 
 
     if (this.mission) {
+
       this.totalPages = Math.ceil(this.pending_missions.length / this.pageSize);
-      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const startIndex = (this.currentPagemission - 1) * this.pageSize;
       const endIndex = Math.min(startIndex + this.pageSize, this.pending_missions.length);
+
       return this.pending_missions.slice(startIndex, endIndex);
     } else {
       this.totalPages = Math.ceil(this.tjmrequests.length / this.pageSize);
-      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const startIndex = (this.currentPagetjm - 1) * this.pageSize;
       const endIndex = Math.min(startIndex + this.pageSize, this.tjmrequests.length);
       return this.tjmrequests.slice(startIndex, endIndex);
     }
 
   }
   nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
+    if (this.currentPagemission < this.totalPages) {
+      this.currentPagemission++;
     }
   }
 
   previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+    if (this.currentPagemission > 1) {
+      this.currentPagemission--;
     }
   }
+  nextPagetjm() {
+    if (this.currentPagetjm < this.totalPages) {
+      this.currentPagetjm++;
+    }
+  }
+
+  previousPageyjm() {
+    if (this.currentPagetjm > 1) {
+      this.currentPagetjm--;
+    }
+  }
+
   gotomyprofile() {
     this.router.navigate(['/edit-profil'])
   }

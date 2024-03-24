@@ -192,7 +192,7 @@ export class ConsultantMissionComponent {
           this.user_info.carInfo.drivingLicense = baseUrl + "uploads/" + this.user_info.carInfo.drivingLicense
           this.user_info.identificationDocument = baseUrl + "uploads/" + this.user_info.identificationDocument
           this.user_info.ribDocument = baseUrl + "uploads/" + this.user_info.ribDocument
-          this.filteredItems.push({
+          this.docs.push({
             "createdAt": this.user_info.addedDate || '',
             "document": this.user_info.carInfo.drivingLicense,
             "documentName": "permis" + '.'

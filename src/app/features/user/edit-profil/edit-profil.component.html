@@ -1,98 +1,101 @@
-<div class="container">
-    <app-left-bar></app-left-bar>
-    <div class="second-container">
-        <br />
-        <div style="margin-left: 25px">
-            <div style="display: flex">
-                <div>
-                    <svg style="width: 60%; height: 40%" xmlns="http://www.w3.org/2000/svg" width="41" height="41"
-                        viewBox="0 0 41 41" fill="none">
-                        <path
-                            d="M20.5 0C25.9369 0 31.1512 2.15981 34.9957 6.00431C38.8402 9.84881 41 15.0631 41 20.5C41 25.9369 38.8402 31.1512 34.9957 34.9957C31.1512 38.8402 25.9369 41 20.5 41C15.0631 41 9.84881 38.8402 6.00431 34.9957C2.15981 31.1512 0 25.9369 0 20.5C0 15.0631 2.15981 9.84881 6.00431 6.00431C9.84881 2.15981 15.0631 0 20.5 0ZM20.5 2.15789C15.6354 2.15789 10.97 4.09036 7.53017 7.53017C4.09036 10.97 2.15789 15.6354 2.15789 20.5C2.15789 25.3646 4.09036 30.03 7.53017 33.4698C10.97 36.9096 15.6354 38.8421 20.5 38.8421C22.9087 38.8421 25.2939 38.3677 27.5192 37.4459C29.7446 36.5241 31.7666 35.173 33.4698 33.4698C35.173 31.7666 36.5241 29.7446 37.4459 27.5192C38.3677 25.2939 38.8421 22.9087 38.8421 20.5C38.8421 15.6354 36.9096 10.97 33.4698 7.53017C30.03 4.09036 25.3646 2.15789 20.5 2.15789ZM19.4211 10.7895V15.1053H21.5789V10.7895H19.4211ZM19.4211 19.4211V30.2105H21.5789V19.4211H19.4211Z"
-                            fill="black" />
-                    </svg>
+<body>
+    <div class="container">
+        <app-left-bar></app-left-bar>
+        <div class="second-container">
+            <br />
+            <div style="margin-left: 25px">
+                <div style="display: flex">
+                    <div>
+                        <svg style="width: 60%; height: 40%" xmlns="http://www.w3.org/2000/svg" width="41" height="41"
+                            viewBox="0 0 41 41" fill="none">
+                            <path
+                                d="M20.5 0C25.9369 0 31.1512 2.15981 34.9957 6.00431C38.8402 9.84881 41 15.0631 41 20.5C41 25.9369 38.8402 31.1512 34.9957 34.9957C31.1512 38.8402 25.9369 41 20.5 41C15.0631 41 9.84881 38.8402 6.00431 34.9957C2.15981 31.1512 0 25.9369 0 20.5C0 15.0631 2.15981 9.84881 6.00431 6.00431C9.84881 2.15981 15.0631 0 20.5 0ZM20.5 2.15789C15.6354 2.15789 10.97 4.09036 7.53017 7.53017C4.09036 10.97 2.15789 15.6354 2.15789 20.5C2.15789 25.3646 4.09036 30.03 7.53017 33.4698C10.97 36.9096 15.6354 38.8421 20.5 38.8421C22.9087 38.8421 25.2939 38.3677 27.5192 37.4459C29.7446 36.5241 31.7666 35.173 33.4698 33.4698C35.173 31.7666 36.5241 29.7446 37.4459 27.5192C38.3677 25.2939 38.8421 22.9087 38.8421 20.5C38.8421 15.6354 36.9096 10.97 33.4698 7.53017C30.03 4.09036 25.3646 2.15789 20.5 2.15789ZM19.4211 10.7895V15.1053H21.5789V10.7895H19.4211ZM19.4211 19.4211V30.2105H21.5789V19.4211H19.4211Z"
+                                fill="black" />
+                        </svg>
+                    </div>
+                    <div style="
+                      margin-top: 7px;
+          
+                      font-size: 1.75rem;
+                      font-style: normal;
+                      font-weight: 300;
+                      line-height: normal;
+                      letter-spacing: 0.0225rem;
+                    ">
+                        Mes infos Personnelles
+                    </div>
                 </div>
-                <div style="
-                  margin-top: 7px;
-      
-                  font-size: 1.75rem;
-                  font-style: normal;
-                  font-weight: 300;
-                  line-height: normal;
-                  letter-spacing: 0.0225rem;
-                ">
-                    Mes infos Personnelles
+                <div style="display: flex; margin: 0px 15px">
+                    <div>
+                        <img src="/assets/4035887-200.png"
+                            style="width: 40px; border-radius: 20%; height: 45px;margin-top: 20px;" />
+                    </div>
+                    <div style="margin: 15px; margin-top: 20px; font-size: 15px">
+                        <div> {{ res.firstName }} <br> {{ res.lastName }} </div>
+                    </div>
                 </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="361" height="" viewBox="0 0 361 2" fill="none">
+                    <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
+                </svg>
+                <h3 style="margin-left: 15px">Informations Personnelles</h3>
+                <div style="margin-left:3px">
+                    <div style="display: flex">
+                        <div>
+                            <b style="margin-left: 12px;"> Nom :</b><br>
+                            <input type="text" [(ngModel)]="firstName" />
+                        </div>
+                        <div>
+                            <b style="margin-left: 12px;"> Prénom :</b><br>
+                            <input type="text" [(ngModel)]="lastName" />
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <div>
+                            <b style="margin-left: 12px;"> Email :</b><br>
+                            <input type="email" [(ngModel)]="email" />
+                        </div>
+                        <div>
+                            <b style="margin-left: 12px;"> Télephone :</b><br>
+                            <input type="text" [(ngModel)]="phoneNumber" />
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <div>
+                            <b style="margin-left: 12px;"> Adresse :</b><br>
+                            <input type="text" [(ngModel)]="location" />
+                        </div>
+                        <div>
+                            <b style="margin-left: 12px;"> Nationalité :</b><br>
+                            <input type="text" [(ngModel)]="nationality" />
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                    </div>
+                    <button (click)="updateUser()">Modifier</button>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 361 2" fill="none">
+                    <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
+                </svg>
             </div>
-            <div style="display: flex; margin: 0px 15px">
-                <div>
-                    <img src="/assets/4035887-200.png"
-                        style="width: 40px; border-radius: 20%; height: 45px;margin-top: 20px;" />
+            <div style="margin-left: 25px">
+                <h3 style="margin-left: 15px">Changer mot de passe</h3>
+                <div style="margin-left:3px">
+                    <div>
+                        <input type="password" [(ngModel)]="currentPassword" placeholder="Mot de passe actuel" />
+                    </div>
+                    <div>
+                        <input type="password" [(ngModel)]="newPassword" placeholder="Nouveau mot de passe" />
+                    </div>
+                    <div>
+                        <input type="password" [(ngModel)]="confirmPassword"
+                            placeholder="Confirmer nouveau mot de passe" />
+                    </div>
                 </div>
-                <div style="margin: 15px; margin-top: 20px; font-size: 15px">
-                    <div> {{ res.firstName }} <br> {{ res.lastName }} </div>
-                </div>
+                <button (click)="changePassword()">Modifier</button>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="361" height="" viewBox="0 0 361 2" fill="none">
-                <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
-            </svg>
-            <h3 style="margin-left: 15px">Informations Personnelles</h3>
-            <div style="margin-left:3px">
-                <div style="display: flex">
-                    <div>
-                        <b style="margin-left: 12px;"> Nom :</b><br>
-                        <input type="text" [(ngModel)]="firstName" />
-                    </div>
-                    <div>
-                        <b style="margin-left: 12px;"> Prénom :</b><br>
-                        <input type="text" [(ngModel)]="lastName" />
-                    </div>
-                </div>
-                <div style="display: flex">
-                    <div>
-                        <b style="margin-left: 12px;"> Email :</b><br>
-                        <input type="email" [(ngModel)]="email" />
-                    </div>
-                    <div>
-                        <b style="margin-left: 12px;"> Télephone :</b><br>
-                        <input type="text" [(ngModel)]="phoneNumber" />
-                    </div>
-                </div>
-                <div style="display: flex">
-                    <div>
-                        <b style="margin-left: 12px;"> Adresse :</b><br>
-                        <input type="text" [(ngModel)]="location" />
-                    </div>
-                    <div>
-                        <b style="margin-left: 12px;"> Nationalité :</b><br>
-                        <input type="text" [(ngModel)]="nationality" />
-                    </div>
-                </div>
-                <div style="display: flex">
-                </div>
-                <button (click)="updateUser()">Modifier</button>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 361 2" fill="none">
-                <path d="M0 1H361" stroke="#CDC7B9" stroke-opacity="0.52" stroke-dasharray="8 8" />
-            </svg>
+
+
+
         </div>
-        <div style="margin-left: 25px">
-            <h3 style="margin-left: 15px">Changer mot de passe</h3>
-            <div style="margin-left:3px">
-                <div>
-                    <input type="password" [(ngModel)]="currentPassword" placeholder="Mot de passe actuel" />
-                </div>
-                <div>
-                    <input type="password" [(ngModel)]="newPassword" placeholder="Nouveau mot de passe" />
-                </div>
-                <div>
-                    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirmer nouveau mot de passe" />
-                </div>
-            </div>
-            <button (click)="changePassword()">Modifier</button>
-        </div>
-
-
-
     </div>
-</div>
+</body>

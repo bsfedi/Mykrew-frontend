@@ -34,26 +34,12 @@ export class AdminComponent {
   }
 
   ngOnInit(): void {
-
-
     const user_id = localStorage.getItem('user_id');
-
-
-
-
     this.userservice.getpersonalinfobyid(user_id).subscribe({
-
-
       next: (res) => {
         // Handle the response from the server
         this.res = res
         console.log('inffffffffoooooo', this.res);
-
-
-
-
-
-
       },
       error: (e) => {
         // Handle errors
@@ -81,6 +67,66 @@ export class AdminComponent {
       }
     });
 
+  }
+
+  gotocdashboad() {
+
+    this.router.navigate(['/allConsultants'])
+
+  }
+  pageSize = 5; // Number of items per page
+  currentPage = 1; // Current page
+  currentPageconsultant = 1; // Current page
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.all_rh.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.all_rh.length);
+
+
+    return this.all_rh.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  getDisplayedconsultants(): any[] {
+
+    this.totalPages = Math.ceil(this.all_users.length / this.pageSize);
+    const startIndex = (this.currentPageconsultant - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.all_users.length);
+
+
+    return this.all_users.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPageconsultant() {
+    if (this.currentPageconsultant < this.totalPages) {
+      this.currentPageconsultant++;
+    }
+  }
+
+  previousPageconsultant() {
+    if (this.currentPageconsultant > 1) {
+      this.currentPageconsultant--;
+    }
   }
   gotomyprofile() {
     this.router.navigate(['/edit-profil'])

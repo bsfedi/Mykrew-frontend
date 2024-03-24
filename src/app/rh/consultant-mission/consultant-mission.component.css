@@ -722,7 +722,8 @@ span {
 
 input[type="search"] {
   border: none;
-  width: 280px;
+  margin: 5px;
+  width: 600px;
   height: 40%;
   border: none none;
   outline: none;

@@ -315,9 +315,9 @@ input[type="checkbox"] {
 }
 
 .profil1 {
-  width: 12rem;
+  width: 13rem;
   height: 3.125rem;
-
+  margin-left: -20px;
   border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;

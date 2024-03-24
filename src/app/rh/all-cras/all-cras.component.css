@@ -22,6 +22,19 @@
     text-align: right;
 }
 
+.first-item {
+
+    color: white;
+    position: fixed;
+    background: #1e1e1e;
+    align-items: center;
+    justify-content: center;
+    margin-left: -10px;
+    height: 110%;
+    margin-top: -8px;
+    padding: 0px;
+}
+
 .pagination button {
     padding: 5px 10px;
     margin: 0 2px;

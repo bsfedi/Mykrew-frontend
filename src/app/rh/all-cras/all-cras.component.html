@@ -1,198 +1,203 @@
-<div class="wrapper">
+<body>
+    <div class="wrapper">
 
-    <app-left-bar></app-left-bar>
-
-    <div class="second-container" [ngClass]="{
-        pending1: shownotiff == false,
-  
-      }">
-        <!-- <div class="search-bar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                    d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-                    fill="#1E1E1E" />
-            </svg>
-            <div class="Search-text">
-                <input type="search" placeholder="Search Anything Here..." />
-            </div>
-            <div>
-                <button class="button">Rechercher</button>
-            </div>
-        </div> -->
-        <br />
-        <br />
-        <!-- <div class="flex-container">
-            <div>
-                <div class="member">Membres de l'équipe</div>
-                Gérez les membres de votre équipe et les autorisations de leur compte
-            </div>
-
-            <div>
-                <button class="button1">
-                    + Ajouter un membre
-                </button>
-            </div>
-
-        </div>
-        <hr /> -->
         <div>
-            <div>
-                <div class="title">CRAS <br> <input type="date" [(ngModel)]="selectedDate"></div>
+            <app-left-bar> </app-left-bar>
+        </div>
 
-                <br />
+        <div class="second-container" [ngClass]="{
+            pending1: shownotiff == false,
+      
+          }">
+            <!-- <div class="search-bar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
+                        fill="#1E1E1E" />
+                </svg>
+                <div class="Search-text">
+                    <input type="search" placeholder="Search Anything Here..." />
+                </div>
+                <div>
+                    <button class="button">Rechercher</button>
+                </div>
+            </div> -->
+            <br />
+            <br />
+            <!-- <div class="flex-container">
+                <div>
+                    <div class="member">Membres de l'équipe</div>
+                    Gérez les membres de votre équipe et les autorisations de leur compte
+                </div>
+    
+                <div>
+                    <button class="button1">
+                        + Ajouter un membre
+                    </button>
+                </div>
+    
             </div>
-
+            <hr /> -->
             <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
-                                <div style="margin-left: 33px;text-align: left;">
-                                    Consultant
-                                </div>
-                            </th>
+                <div>
+                    <div class="title">CRAS <br> <input type="date" [(ngModel)]="selectedDate"></div>
 
-                            <th>Document</th>
-                            <th>Date de dépôt</th>
+                    <br />
+                </div>
 
-                            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-                        </tr>
-                    </thead>
-                    <!-- Table header and body -->
-                    <tbody>
-                        <ng-container *ngFor="let cra of all_cras; let i = index">
-                            <ng-container *ngFor="let pdf of cra.craInformation.craPDF; let j = index">
-                                <!-- Check if the uploadDate matches the selectedDate -->
-                                <ng-container *ngIf="filterByUploadDate(pdf.uploadDate)">
-                                    <!-- Display table row only if the condition matches -->
-                                    <tr>
-                                        <!-- Table cells -->
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="border-radius: 0.6875rem 0rem 0rem 0rem">
+                                    <div style="margin-left: 33px;text-align: left;">
+                                        Consultant
+                                    </div>
+                                </th>
 
-                                        <td>
-                                            <div style="display: flex;min-width: 200px;">
-                                                <div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor"
-                                                        style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-top: 4%;"
-                                                        class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                                                    </svg>
+                                <th>Document</th>
+                                <th>Date de dépôt</th>
+
+                                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                            </tr>
+                        </thead>
+                        <!-- Table header and body -->
+                        <tbody>
+                            <ng-container *ngFor="let cra of getDisplayeddocs(); let i = index">
+                                <ng-container *ngFor="let pdf of cra.craInformation.craPDF; let j = index">
+                                    <!-- Check if the uploadDate matches the selectedDate -->
+                                    <ng-container *ngIf="filterByUploadDate(pdf.uploadDate)">
+                                        <!-- Display table row only if the condition matches -->
+                                        <tr>
+                                            <!-- Table cells -->
+
+                                            <td>
+                                                <div style="display: flex;min-width: 200px;">
+                                                    <div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor"
+                                                            style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-top: 4%;"
+                                                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                                        </svg>
+                                                    </div>
+                                                    <div style="margin-left: 5px; margin-top: 10px;">{{
+                                                        cra.firstName }} {{
+                                                        cra.lastName }}</div>
                                                 </div>
-                                                <div style="margin-left: 5px; margin-top: 10px;">{{
-                                                    cra.firstName }} {{
-                                                    cra.lastName }}</div>
-                                            </div>
-                                        </td>
-                                        <!-- Placeholder for additional rows -->
-                                        <td>{{ pdf.filename.split('uploads/')[1] }}</td>
-                                        <td>
-                                            {{ formatDate(pdf.uploadDate.split("T")[0]) }}
-                                        </td>
-                                        <td>
-                                            <div (click)="downloadFile(pdf.filename,pdf.filename.split('uploads/')[1].split('.')[0])"
-                                                style="
-                                                display: flex;
-                                                height: 1.5rem;
-                                                cursor: pointer;
-                                                padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
-                                                justify-content: center;
-                                                align-items: center;
-                                                flex-shrink: 0;
-                                                border-radius: 0.75rem;
-                                                margin-left: 0px;
-                                                background: #f1f8fd;
-                                                color: #379ae6;
-                                                ">
-                                                Telecharger
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <!-- Placeholder for additional rows -->
+                                            <td>{{ pdf.filename.split('uploads/')[1] }}</td>
+                                            <td>
+                                                {{ formatDate(pdf.uploadDate.split("T")[0]) }}
+                                            </td>
+                                            <td>
+                                                <div (click)="downloadFile(pdf.filename,pdf.filename.split('uploads/')[1].split('.')[0])"
+                                                    style="
+                                                    display: flex;
+                                                    height: 1.5rem;
+                                                    cursor: pointer;
+                                                    padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    flex-shrink: 0;
+                                                    border-radius: 0.75rem;
+                                                    margin-left: 0px;
+                                                    background: #f1f8fd;
+                                                    color: #379ae6;
+                                                    ">
+                                                    Telecharger
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
                                 </ng-container>
                             </ng-container>
-                        </ng-container>
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-        <div class="pagination">
-            <div (click)="previousPage()" style="cursor: pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                    <path fill-rule="evenodd"
-                        d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                </svg>
-            </div>
-
-
-            <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
-            <div (click)="nextPage()" style="cursor: pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
-                    <path fill-rule="evenodd"
-                        d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
-                </svg>
-            </div>
-
-        </div>
-        <br />
-        <br />
-
-        <br />
-        <br />
-    </div>
-    <div style=" height: 10px;">
-        <div class="right-item" style="cursor: pointer;">
-            <div style="display: flex">
-                <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
-                            <path
-                                d="M23.2203 20.62C23.2203 21.47 22.5303 22.16 21.6803 22.16H8.32027C7.47027 22.16 6.78027 21.47 6.78027 20.62C6.78027 19.77 7.47027 19.08 8.32027 19.08H8.83027V13.94C8.83027 10.54 11.5903 7.77002 15.0003 7.77002C16.7003 7.77002 18.2403 8.46002 19.3603 9.58002C20.4803 10.69 21.1703 12.23 21.1703 13.94V19.08H21.6803C22.5303 19.08 23.2203 19.77 23.2203 20.62Z"
-                                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M15 7.78V6.75" stroke="black" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
-                                stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
-                                *ngIf="notification.length > 0 || new_notif === 'true' " />
-                        </svg>
-                    </div>
-                    <div>
-                        <div style="width: 220px; margin-top: 10px; font-size: 0.8125rem">
-                            <b> Toutes les notifications </b>
-                        </div>
-                        <div style="
-                      color: rgba(0, 0, 0, 0.52);
-          
-                      font-size: 0.8125rem;
-                      font-style: normal;
-                      font-weight: 400;
-          
-                      line-height: 100%; /* 0.8125rem */
-                    ">
-                            {{ nblastnotifications }} notifications
-                        </div>
-                    </div>
-
-                </div>
-                <div class="profil" (click)="gotomyprofile()" style="cursor: pointer;">
-                    <img src="/assets/avatar-user.png" width="15%" height="10%" />
-                    <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
-
-                    </div>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>
+            <div class="pagination">
+                <div (click)="previousPage()" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                        <path fill-rule="evenodd"
+                            d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                    </svg>
+                </div>
 
-            <app-notificaion-rh *ngIf="shownotiff"></app-notificaion-rh>
+
+                <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+                <div (click)="nextPage()" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                        <path fill-rule="evenodd"
+                            d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </div>
+
+            </div>
+            <br />
+            <br />
+
+            <br />
+            <br />
         </div>
-    </div>
+        <div style=" height: 10px;">
+            <div class="right-item" style="cursor: pointer;">
+                <div style="display: flex">
+                    <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31"
+                                fill="none">
+                                <path
+                                    d="M23.2203 20.62C23.2203 21.47 22.5303 22.16 21.6803 22.16H8.32027C7.47027 22.16 6.78027 21.47 6.78027 20.62C6.78027 19.77 7.47027 19.08 8.32027 19.08H8.83027V13.94C8.83027 10.54 11.5903 7.77002 15.0003 7.77002C16.7003 7.77002 18.2403 8.46002 19.3603 9.58002C20.4803 10.69 21.1703 12.23 21.1703 13.94V19.08H21.6803C22.5303 19.08 23.2203 19.77 23.2203 20.62Z"
+                                    stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M15 7.78V6.75" stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
+                                    stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
+                                    *ngIf="notification.length > 0 || new_notif === 'true' " />
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="width: 220px; margin-top: 10px; font-size: 0.8125rem">
+                                <b> Toutes les notifications </b>
+                            </div>
+                            <div style="
+                          color: rgba(0, 0, 0, 0.52);
+              
+                          font-size: 0.8125rem;
+                          font-style: normal;
+                          font-weight: 400;
+              
+                          line-height: 100%; /* 0.8125rem */
+                        ">
+                                {{ nblastnotifications }} notifications
+                            </div>
+                        </div>
 
-</div>
+                    </div>
+                    <div class="profil" (click)="gotomyprofile()" style="cursor: pointer;">
+                        <img src="/assets/avatar-user.png" width="15%" height="10%" />
+                        <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <app-notificaion-rh *ngIf="shownotiff"></app-notificaion-rh>
+            </div>
+        </div>
+
+    </div>
+</body>
