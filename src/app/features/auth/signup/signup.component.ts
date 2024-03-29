@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/services/user.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -26,7 +27,9 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
+  gotosingin() {
+    this.router.navigate([clientName + '/sign-in']);
+  }
   saveUser(): void {
     // Mark all fields as touched if the form is pristine
     if (this.signupForm.pristine) {

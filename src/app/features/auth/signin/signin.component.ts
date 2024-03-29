@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { HttpHeaders } from '@angular/common/http';
 
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-singin',
   templateUrl: './signin.component.html',
@@ -47,6 +48,9 @@ export class SigninComponent {
     }
 
   }
+  gotosingun() {
+    this.router.navigate([clientName + '/sign-up']);
+  }
   login(): void {
     if (this.signinForm.pristine) {
       this.signinForm.markAllAsTouched();
@@ -82,7 +86,7 @@ export class SigninComponent {
 
 
                 if (this.res.status == 'NOTEXIST') {
-                  this.router.navigate(['/pre-inscription']);
+                  this.router.navigate([clientName + '/pre-inscription']);
                 }
                 else if (this.res.status == 'VALIDATED') {
 
@@ -99,10 +103,10 @@ export class SigninComponent {
                       this.contractValidation = res1.contractValidation
                       this.jobCotractEdition = res1.jobCotractEdition
                       if (this.validation_rh == 'VALIDATED' || this.clientValidation == 'VALIDATED' || this.contactClient == 'VALIDATED' || this.contactClient == 'VALIDATED' || this.jobCotractEdition == 'VALIDATED') {
-                        this.router.navigate(['consultant/missions']);
+                        this.router.navigate([clientName + '/consultant/missions']);
                       }
                       else {
-                        this.router.navigate(['consultant/missions']);
+                        this.router.navigate([clientName + '/consultant/missions']);
                       }
 
 
@@ -122,9 +126,9 @@ export class SigninComponent {
                   if (this.res.missionInfo.missionKilled === true) {
 
 
-                    this.router.navigate(['mission']);
+                    this.router.navigate([clientName + '/mission']);
                   } else {
-                    this.router.navigate(['/pending']);
+                    this.router.navigate([clientName + '/pending']);
                   }
 
                 }
@@ -146,10 +150,10 @@ export class SigninComponent {
             // 
           }
           else if (res.role == 'RH') {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate([clientName + '/dashboard']);
           }
           else {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate([clientName + '/dashboard']);
           }
           // Navigate to /informations on successful login
 
@@ -164,6 +168,6 @@ export class SigninComponent {
     console.log(data);
   }
   gotoforgotpassword() {
-    this.router.navigate(['/mot-de-passe-oublier']);
+    this.router.navigate([clientName + '/mot-de-passe-oublier']);
   }
 }

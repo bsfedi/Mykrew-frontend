@@ -8,7 +8,8 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
 
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-validation-mission',
   templateUrl: './validation-mission.component.html',
@@ -49,12 +50,6 @@ export class ValidationMissionComponent {
       next: (res) => {
         // Handle the response from the server
         this.res = res
-        console.log('inffffffffoooooo', this.res);
-
-
-
-
-
 
       },
       error: (e) => {
@@ -160,10 +155,10 @@ export class ValidationMissionComponent {
 
   }
   shownote() {
-    this.noteshow = true
+    this.noteshow = !this.noteshow
   }
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   killmission(message: any) {
     const data = {
@@ -177,6 +172,7 @@ export class ValidationMissionComponent {
         </div>
       `,
       iconColor: '#1E1E1E',
+      background: '#fefcf1',
       showCancelButton: true,
       confirmButtonText: 'Oui',
       confirmButtonColor: "#91c593",
@@ -200,13 +196,14 @@ export class ValidationMissionComponent {
             if (e.error.text == 'Mission Killed Successfully') {
               // Handle success
               Swal.fire({
+                background: '#fefcf1',
                 title: 'Mission terminé',
                 text: "La mission est terminé avec succès",
                 confirmButtonText: 'OK',
                 confirmButtonColor: "#91c593",
 
               });
-              // this.router.navigate(['/dashboard'])
+              // this.router.navigate([clientName +'/dashboard'])
             }
 
             else {
@@ -221,6 +218,7 @@ export class ValidationMissionComponent {
       } else {
         Swal.fire({
           title: 'Annulé',
+          background: '#fefcf1',
           text: "Aucune modification n'a été apportée.",
           confirmButtonText: 'Ok',
           confirmButtonColor: "#91c593",
@@ -234,16 +232,16 @@ export class ValidationMissionComponent {
 
   }
   click() {
-    this.router.navigate(['/all-preinscription']);
+    this.router.navigate([clientName + '/all-preinscription']);
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/validation/' + _id])
+    this.router.navigate([clientName + '/validation/' + _id])
   }
   gotomissions(_id: string) {
-    this.router.navigate(['/missions/' + _id])
+    this.router.navigate([clientName + '/missions/' + _id])
   }
   openPopup(): void {
     this.showPopup = true;
@@ -328,7 +326,8 @@ export class ValidationMissionComponent {
         next: (res) => {
           // Handle the response from the server
           console.log(res);
-          window.location.reload();
+
+          this.router.navigate([clientName + '/dashboard']);
         },
         error: (e) => {
           // Handle errors

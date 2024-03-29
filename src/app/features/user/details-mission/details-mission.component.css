@@ -16,6 +16,10 @@
   padding: 50px;
 }
 
+hr {
+  border: 1px solid #EAE3D5;
+}
+
 .title {
   color: #000;
 
@@ -288,7 +292,7 @@ input[type="checkbox"] {
 
   flex-shrink: 0;
   border-radius: 0.4375rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #EAE3D5;
   margin-top: 15px;
   float: right;
   min-height: 293px;

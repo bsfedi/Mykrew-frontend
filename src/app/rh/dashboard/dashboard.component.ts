@@ -4,7 +4,8 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { InscriptionService } from 'src/app/services/inscription.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -141,7 +142,7 @@ export class DashboardComponent {
   }
   gotocdashboad() {
 
-    this.router.navigate(['/allConsultants'])
+    this.router.navigate([clientName + '/allConsultants'])
 
   }
   pageSize = 5; // Number of items per page
@@ -173,7 +174,7 @@ export class DashboardComponent {
     }
   }
   gotovalidemission(id_mission: any, id: any) {
-    this.router.navigate(['/validationmission/' + id_mission + '/' + id])
+    this.router.navigate([clientName + '/validationmission/' + id_mission + '/' + id])
   }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
@@ -238,6 +239,7 @@ export class DashboardComponent {
 
       },
       error: (e) => {
+        this.nblastnotifications = 0
         // Handle errors
         console.error(e);
         // Set loading to false in case of an error
@@ -265,7 +267,7 @@ export class DashboardComponent {
         },
         error: (e) => {
           // Handle errors
-          this.nbdemande = 0
+
           console.error(e);
           // Set loading to false in case of an error
 
@@ -297,7 +299,7 @@ export class DashboardComponent {
         // You can handle different status codes here
         if (e.status === 404) {
           this.items = []
-          this.nbdemande = 0
+
         }
 
         console.error(e);
@@ -307,7 +309,7 @@ export class DashboardComponent {
     });
   }
   click() {
-    this.router.navigate(['/all-preinscription']);
+    this.router.navigate([clientName + '/all-preinscription']);
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
@@ -316,12 +318,13 @@ export class DashboardComponent {
     this.isMenuOpen1 = !this.isMenuOpen1;
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/validation/' + _id])
+    this.router.navigate([clientName + '/validation/' + _id])
   }
   gotomissions(_id: string) {
-    this.router.navigate(['/missions/' + _id])
+    this.router.navigate([clientName + '/missions/' + _id])
   }
   resetFilter() {
+    this.selectedItem = 'reset';
     this.searchTerm = ''; // Reset the search term
     this.sortDirection = 'asc'; // Reset sorting direction for date
     this.sortType = 'date'; // Reset sorting type to date
@@ -454,10 +457,10 @@ export class DashboardComponent {
     });
   }
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   gotoallnotification() {
-    this.router.navigate(['/consultant/allnotifications'])
+    this.router.navigate([clientName + '/consultant/allnotifications'])
   }
   applyFilter() {
     // Check if search term is empty
@@ -473,6 +476,7 @@ export class DashboardComponent {
     }
   }
   toggleSortDirection(type: any) {
+    this.selectedItem = type;
     if (this.sortType !== type) {
       this.sortType = type;
       this.sortDirection = 'asc'; // Reset sorting direction if changing sorting type
@@ -503,18 +507,28 @@ export class DashboardComponent {
       return this.sortDirection === 'asc' ? timeDiff : -timeDiff; // Reverse sorting direction if 'desc'
     });
   }
-
+  selectedItem: string | null = null;
   sortItemsByAlpha() {
     this.items.sort((a: any, b: any) => {
       const nameA = a.personalInfo.firstName.value.toUpperCase(); // Convert to uppercase for case-insensitive comparison
       const nameB = b.personalInfo.firstName.value.toUpperCase();
-      if (nameA < nameB) {
-        return this.sortDirection === 'asc' ? -1 : 1;
+      if (this.sortDirectionAlpha === 'A-Z') { // Check the sorting direction for alphabetical order
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      } else { // If sorting direction is Z-A
+        if (nameA < nameB) {
+          return 1; // Reverse the comparison
+        }
+        if (nameA > nameB) {
+          return -1; // Reverse the comparison
+        }
+        return 0;
       }
-      if (nameA > nameB) {
-        return this.sortDirection === 'asc' ? 1 : -1;
-      }
-      return 0;
     });
   }
   exportTable() {
@@ -598,7 +612,7 @@ export class DashboardComponent {
   }
 
   gottoallConsultants() {
-    this.router.navigate(['/allConsultants'])
+    this.router.navigate([clientName + '/allConsultants'])
   }
 
 

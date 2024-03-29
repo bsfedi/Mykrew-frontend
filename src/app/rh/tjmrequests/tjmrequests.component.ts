@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-tjmrequests',
   templateUrl: './tjmrequests.component.html',
@@ -34,12 +35,12 @@ export class TjmrequestsComponent {
 
     this.shownotiff = !this.shownotiff
   }
-  pageSize = 2; // Number of items per page
+  pageSize = 0; // Number of items per page
   currentPagemission = 1; // Current page
   currentPagetjm = 1; // Current page
   totalPages: any;
   getDisplayeddocs(): any[] {
-
+    this.pageSize = 8
 
     if (this.mission) {
 
@@ -80,7 +81,7 @@ export class TjmrequestsComponent {
   }
 
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -149,6 +150,7 @@ export class TjmrequestsComponent {
 
         },
         error: (e) => {
+          this.nblastnotifications = 0
           // Handle errors
           console.error(e);
           // Set loading to false in case of an error
@@ -190,6 +192,7 @@ export class TjmrequestsComponent {
         // Add any additional handling or notifications if needed
       },
       (error) => {
+        this.tjmrequests = []
         console.error('Error getting virement:', error);
         // Handle the error or display an error message
       }
@@ -207,13 +210,13 @@ export class TjmrequestsComponent {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/validated-tjmrequests/' + _id])
+    this.router.navigate([clientName + '/validated-tjmrequests/' + _id])
   }
   gotovalidationmission(_id: string) {
-    this.router.navigate(['/mission/' + _id])
+    this.router.navigate([clientName + '/mission/' + _id])
   }
   gotovalidemission(mission_id: any, id: any) {
-    this.router.navigate(['/validationmission/' + mission_id + '/' + id])
+    this.router.navigate([clientName + '/validationmission/' + mission_id + '/' + id])
   }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';

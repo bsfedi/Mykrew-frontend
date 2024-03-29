@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 const baseUrl = `${environment.baseUrl}`;
-
+const clientName = `${environment.default}`;
 
 @Component({
   selector: 'app-consultant-mission',
@@ -26,7 +26,7 @@ export class ConsultantMissionComponent {
   headers: any
   clientValidation: any
   contactClient: any
-  pageSize = 15; // Number of items per page
+  pageSize = 8; // Number of items per page
   currentPage = 1; // Current page
   totalPages: any;
   nbdemande: any
@@ -77,7 +77,7 @@ export class ConsultantMissionComponent {
   allcra: any
 
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
@@ -293,6 +293,7 @@ export class ConsultantMissionComponent {
       iconColor: '#1E1E1E',
       showCancelButton: true,
       confirmButtonText: 'Oui',
+      background: '#fefcf1',
       confirmButtonColor: "#91c593",
       cancelButtonText: 'Non',
       cancelButtonColor: "black",
@@ -313,6 +314,7 @@ export class ConsultantMissionComponent {
           next: (res) => {
             // Handle the response from the server
             Swal.fire({
+              background: '#fefcf1',
               title: 'Email envoyé',
               text: 'L\'email a été envoyé avec succès !',
               icon: 'success'
@@ -323,6 +325,7 @@ export class ConsultantMissionComponent {
             console.log(e);
             // Handle errors
             Swal.fire({
+              background: '#fefcf1',
               title: 'Erreur d\'envoi',
               text: "L'envoi de l'email a échoué. Veuillez réessayer.",
               icon: 'error'
@@ -331,6 +334,7 @@ export class ConsultantMissionComponent {
         });
       } else {
         Swal.fire({
+          background: '#fefcf1',
           title: 'Envoi annulé',
           text: 'Aucun email n\'a été envoyé.',
           confirmButtonColor: "#91c593",
@@ -341,16 +345,16 @@ export class ConsultantMissionComponent {
     });
   }
   click() {
-    this.router.navigate(['/all-preinscription']);
+    this.router.navigate([clientName + '/all-preinscription']);
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/mission/' + _id])
+    this.router.navigate([clientName + '/mission/' + _id])
   }
   addvirement() {
-    this.router.navigate(['virements/' + this.user_id])
+    this.router.navigate([clientName + 'virements/' + this.user_id])
   }
   openPopup(): void {
     this.showPopup = true;
@@ -445,7 +449,7 @@ export class ConsultantMissionComponent {
     this.show_cra = false
   }
   gotocra(_id: string) {
-    this.router.navigate(['/cra-mission/' + _id])
+    this.router.navigate([clientName + '/cra-mission/' + _id])
   }
 
   validatePriseDeContact(id: any, contactClient: any): void {
@@ -521,7 +525,7 @@ export class ConsultantMissionComponent {
     });
   }
   gotovalidemission(mission_id: any, id: any) {
-    this.router.navigate(['/validationmission/' + mission_id + '/' + id])
+    this.router.navigate([clientName + '/validationmission/' + mission_id + '/' + id])
   }
   idpdf: any
   setFileInput(field: string, event: any): void {
@@ -568,9 +572,10 @@ export class ConsultantMissionComponent {
       this.consultantservice.addDocumentToUser(this.user_id, formData, headers)
         .subscribe({
           next: (res) => {
-            Swal.fire('Success', "Document ajouté avec succès!", 'success');
+
             Swal.fire({
-              position: "top-end",
+
+              background: '#fefcf1',
               icon: "success",
               title: 'Document ajouté avec succès!',
               showConfirmButton: false,
@@ -608,6 +613,7 @@ export class ConsultantMissionComponent {
       iconColor: '#1E1E1E',
       showCancelButton: true,
       confirmButtonText: 'Oui',
+      background: '#fefcf1',
       confirmButtonColor: "#91c593",
       cancelButtonText: 'Non',
       cancelButtonColor: "black",
@@ -623,6 +629,7 @@ export class ConsultantMissionComponent {
         this.consultantservice.createvirement(this.foremData.value).subscribe(
           (response) => {
             Swal.fire({
+              background: '#fefcf1',
               title: 'Virement réussi',
               text: 'Le virement a été effectué avec succès !',
               icon: 'success'
@@ -631,6 +638,7 @@ export class ConsultantMissionComponent {
           },
           (error) => {
             Swal.fire({
+              background: '#fefcf1',
               title: 'Erreur de virement',
               text: "Le virement n'a pas pu être effectué. Veuillez réessayer.",
               icon: 'error'
@@ -640,6 +648,7 @@ export class ConsultantMissionComponent {
 
       } else {
         Swal.fire({
+          background: '#fefcf1',
           title: 'Virement annulé',
           text: 'Aucun virement n\'a été effectué.',
           confirmButtonText: 'Ok',

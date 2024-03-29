@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { InscriptionService } from 'src/app/services/inscription.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-personal-doc',
   templateUrl: './personal-doc.component.html',
@@ -22,7 +23,7 @@ export class PersonalDocComponent {
   permis_img: string | null = null;
   carRegistration_img: string | null = null;
   Passport_img: string | null = null;
-  ribdoc_img : string | null =null ;
+  ribdoc_img: string | null = null;
 
   constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router) {
 
@@ -35,7 +36,7 @@ export class PersonalDocComponent {
       idCardFile: ['', Validators.required],
       passportFile: ['', Validators.required],
       rib: ['', Validators.required],
-      ribdoc :['', Validators.required],
+      ribdoc: ['', Validators.required],
       // Add other controls for the additional form as needed
     });
     this.voitureForm = this.fb.group({
@@ -105,35 +106,35 @@ export class PersonalDocComponent {
         formData.append('socialSecurityNumber', this.myForm.value.DocPersolForm.socialSecurityNumber);
         formData.append('rib', this.myForm.value.DocPersolForm.rib);
         formData.append('hasCar', this.myForm.value.voitureForm.voiture);
-     
-  
+
+
         // Assuming these are the file input names in your form 
         const identificationDocument = this.fileInputs.identificationDocument.files[0];
         const ribdoc = this.fileInputs.ribdoc.files[0];
         if (this.myForm.value.voitureForm.voiture === 'true') {
           const drivingLicense = this.fileInputs.drivingLicense.files[0];
-  
-  
+
+
           // Append the files if they exist, else append empty strings
           formData.append('drivingLicense', drivingLicense);
-  
+
         } else {
           formData.append('drivingLicense', ''); // Append an empty string
-  
+
         }
-  
-  
-  
+
+
+
         formData.append('identificationDocument', identificationDocument);
-        formData.append('ribDocument',ribdoc)
+        formData.append('ribDocument', ribdoc)
         this.inscriptionservice.createinscrptiondoc(formData, headers)
           .subscribe({
             next: (res) => {
-              
+
 
               // Handle the response from the server
-            
-              this.router.navigate(['/client']);
+
+              this.router.navigate([clientName + '/client']);
             },
             error: (e) => {
               // Handle errors
@@ -169,8 +170,8 @@ export class PersonalDocComponent {
           this.carRegistration_img = e.target!.result as string;
         }
         else if (field == 'ribdoc') {
-      
-          
+
+
           this.ribdoc_img = e.target!.result as string;
         }
         else {

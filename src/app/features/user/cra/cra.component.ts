@@ -9,6 +9,8 @@ declare let html2pdf: any
 import { jsPDF } from "jspdf";
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 
 @Component({
   selector: 'app-cra',
@@ -127,7 +129,7 @@ export class CRAComponent {
                 <svg style='margin-top:2px;' xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <path d="M14.25 4.875H12V4.125C12 3.52826 11.7629 2.95597 11.341 2.53401C10.919 2.11205 10.3467 1.875 9.75 1.875H8.25C7.65326 1.875 7.08097 2.11205 6.65901 2.53401C6.23705 2.95597 6 3.52826 6 4.125V4.875H3.75C3.15326 4.875 2.58097 5.11205 2.15901 5.53401C1.73705 5.95597 1.5 6.52826 1.5 7.125V13.875C1.5 14.4717 1.73705 15.044 2.15901 15.466C2.58097 15.8879 3.15326 16.125 3.75 16.125H14.25C14.8467 16.125 15.419 15.8879 15.841 15.466C16.2629 15.044 16.5 14.4717 16.5 13.875V7.125C16.5 6.52826 16.2629 5.95597 15.841 5.53401C15.419 5.11205 14.8467 4.875 14.25 4.875ZM7.5 4.125C7.5 3.92609 7.57902 3.73532 7.71967 3.59467C7.86032 3.45402 8.05109 3.375 8.25 3.375H9.75C9.94891 3.375 10.1397 3.45402 10.2803 3.59467C10.421 3.73532 10.5 3.92609 10.5 4.125V4.875H7.5V4.125ZM15 13.875C15 14.0739 14.921 14.2647 14.7803 14.4053C14.6397 14.546 14.4489 14.625 14.25 14.625H3.75C3.55109 14.625 3.36032 14.546 3.21967 14.4053C3.07902 14.2647 3 14.0739 3 13.875V9.75C3.73158 10.0402 4.48364 10.2758 5.25 10.455V10.8975C5.25 11.0964 5.32902 11.2872 5.46967 11.4278C5.61032 11.5685 5.80109 11.6475 6 11.6475C6.19891 11.6475 6.38968 11.5685 6.53033 11.4278C6.67098 11.2872 6.75 11.0964 6.75 10.8975V10.74C7.49576 10.8415 8.24737 10.8941 9 10.8975C9.75263 10.8941 10.5042 10.8415 11.25 10.74V10.8975C11.25 11.0964 11.329 11.2872 11.4697 11.4278C11.6103 11.5685 11.8011 11.6475 12 11.6475C12.1989 11.6475 12.3897 11.5685 12.5303 11.4278C12.671 11.2872 12.75 11.0964 12.75 10.8975V10.455C13.5164 10.2758 14.2684 10.0402 15 9.75V13.875ZM15 8.1075C14.2705 8.41537 13.5183 8.66612 12.75 8.8575V8.625C12.75 8.42609 12.671 8.23532 12.5303 8.09467C12.3897 7.95402 12.1989 7.875 12 7.875C11.8011 7.875 11.6103 7.95402 11.4697 8.09467C11.329 8.23532 11.25 8.42609 11.25 8.625V9.18C9.75844 9.40503 8.24156 9.40503 6.75 9.18V8.625C6.75 8.42609 6.67098 8.23532 6.53033 8.09467C6.38968 7.95402 6.19891 7.875 6 7.875C5.80109 7.875 5.61032 7.95402 5.46967 8.09467C5.32902 8.23532 5.25 8.42609 5.25 8.625V8.8725C4.48172 8.68112 3.72945 8.43037 3 8.1225V7.125C3 6.92609 3.07902 6.73532 3.21967 6.59467C3.36032 6.45402 3.55109 6.375 3.75 6.375H14.25C14.4489 6.375 14.6397 6.45402 14.7803 6.59467C14.921 6.73532 15 6.92609 15 7.125V8.1075Z" fill="#1E1E1E"/>
                 </svg> Prestataire <br>
-                <div style='margin:15px'> <b>${this.mission_details.clientInfo.company}  </b></div>
+                <div style='margin:15px'> <b>${this.myinfo.firstName}  </b></div>
                 <b> Date: ${formattedDate}  <b> <b style='margin-left:45px'> Signature :  <img style='margin-left:155px' src="${imageSrc}" alt="Selected Image" width="30%" height="30%" /> </b> <br>
             </div>
 
@@ -173,12 +175,12 @@ export class CRAComponent {
     this.dowloded = true
     html2pdf(htmlContent, {
       margin: 10,
-      filename: 'document.pdf',
+      filename: this.myinfo.firstName + '.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
 
-    }).pdf.save('document.pdf'), this.router.navigate(['/consultant/missions']);
+    }).pdf.save('document.pdf'), this.router.navigate([clientName + '/consultant/missions']);
 
 
 
@@ -295,7 +297,7 @@ export class CRAComponent {
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const numberOfDaysInMonth = new Date(year, month + 1, 0).getDate();
 
-    for (let i = 0; i < firstDayOfMonth; i++) {
+    for (let i = 1; i < firstDayOfMonth; i++) {
       this.emptyStartDays.push(i);
     }
 

@@ -6,7 +6,8 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { UserService } from 'src/app/services/user.service';
 import { DatePipe } from '@angular/common';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-notificaion-rh',
   templateUrl: './notificaion-rh.component.html',
@@ -28,7 +29,7 @@ export class NotificaionRhComponent {
   new_notif: any
   constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private userservice: UserService, private socketService: WebSocketService, private route: Router, private router: ActivatedRoute, private consultantService: ConsultantService) { }
   gotoallnotification() {
-    this.route.navigate(['/consultant/allnotifications'])
+    this.route.navigate([clientName + '/consultant/allnotifications'])
   }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
@@ -49,15 +50,15 @@ export class NotificaionRhComponent {
   }
   gotovalidationmission(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.route.navigate(['mission/' + _id])
+    this.route.navigate([clientName + 'mission/' + _id])
   }
   gotovalidationtjm(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.route.navigate(['/validated-tjmrequests/' + _id])
+    this.route.navigate([clientName + '/validated-tjmrequests/' + _id])
   }
   gotovalidationpreregister(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.route.navigate(['/validation/' + _id])
+    this.route.navigate([clientName + '/validation/' + _id])
   }
   ngOnInit(): void {
 
@@ -98,6 +99,7 @@ export class NotificaionRhComponent {
 
       },
       error: (e) => {
+        this.nblastnotifications = 0
         // Handle errors
         console.error(e);
         // Set loading to false in case of an error
@@ -189,13 +191,20 @@ export class NotificaionRhComponent {
     }
   }
   gottoallConsultants() {
-    this.route.navigate(['/dashboard'])
+    this.route.navigate([clientName + '/dashboard'])
   }
-  gotovalidation(_id: string) {
-    this.route.navigate(['/validation/' + _id])
+  gotovalidation(item: any) {
+
+    if (item.status == "WAITINGCONTRACT") {
+      this.route.navigate([clientName + '/validationmission/' + item._id + '/' + item.contractProcess])
+
+    } else {
+      this.route.navigate([clientName + '/validation/' + item._id])
+    }
+
   }
 
   gotomyprofile() {
-    this.route.navigate(['/edit-profil'])
+    this.route.navigate([clientName + '/edit-profil'])
   }
 }

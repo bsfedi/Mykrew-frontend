@@ -22,6 +22,10 @@ button {
   background-color: #dff2bf;
 }
 
+.historique {
+  border-color: #EAE3D5;
+}
+
 .warning-msg {
   color: #9f6000;
   background-color: #feefb3;
@@ -108,7 +112,7 @@ th {
 }
 
 tr:hover {
-  background-color: #f5f5f5;
+  background-color: #E5E2D7;
 }
 
 
@@ -122,11 +126,13 @@ input[type="checkbox"] {
 tr td:first-child:contains("En attente") {
   background-color: #fff3cd;
   color: #856404;
+  text-align: center;
 }
 
 tr td:first-child:contains("Nouvelle") {
   background-color: #d4edda;
   color: #155724;
+  text-align: center;
 }
 
 /* Adjust the ID column width */

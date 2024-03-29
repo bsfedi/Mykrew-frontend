@@ -7,8 +7,14 @@
   display: flex;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.5fr 250fr 0.5fr;
+  font-family: "Poppins", sans-serif !important;
+}
+
 .second-container {
-  margin-left: 260px;
+  margin-left: 240px;
   margin-right: 20px;
   width: 56%;
   flex-wrap: 1;
@@ -18,6 +24,14 @@
 
 .button {
   float: right;
+}
+
+.pagination {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  text-align: right;
 }
 
 button {
@@ -269,9 +283,22 @@ tr {
   border-bottom: 5px solid black;
 }
 
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
+}
+
 .eye {
   margin-top: 8px;
-  margin-left: 80%;
+  margin-left: 85%;
   float: right !important;
 }
 

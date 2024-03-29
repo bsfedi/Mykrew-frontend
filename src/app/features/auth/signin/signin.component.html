@@ -3,7 +3,7 @@
 </head>
 <div class="container">
     <div class="left-panel">
-        <img src="/assets/Rectangle 135.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <img src="/assets/Rectangle 135.png" width="70%" height="100%" style="border-radius: 1.875rem;">
         <div class="text-overlay">
             <h5> Gestion Financière Simplifiée avec MyKrew : Suivi, Cooptation et Succès
                 Professionnel </h5>
@@ -43,14 +43,18 @@
                 Mot de passe oublié ?
             </div> <br>
             <div *ngIf="showerrormessage" class="error-message" style="text-align: center; margin-top: 10px">
-                <div class="error-msg">{{ failedmessage }}</div>
+                <div class="error-msg" *ngIf="failedmessage =='Invalid email or password'">email ou mot de passe
+                    invalide</div>
+
             </div>
             <div>
                 <button type="submit" (click)="login()">
                     <div class="inscrire">Se connecter </div>
                 </button>
             </div>
-            <div class="Inscrivez-vous"> Pas encore de compte ? <a href="/sign-up">Inscrivez-vous </a></div>
+            <div class="Inscrivez-vous" (click)="gotosingun()"> Pas encore de compte ? <a class="link"
+                    (click)="gotosingun()">Inscrivez-vous</a>
+            </div>
 
 
         </div>

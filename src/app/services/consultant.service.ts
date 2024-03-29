@@ -92,7 +92,7 @@ export class ConsultantService {
     // Include headers if provided
     const options = headers ? { headers } : {};
 
-    return this.http.get(baseUrl + 'newMission/getMissionById/' + user_id, options);
+    return this.http.get(baseUrl + 'user/getMissionById/' + user_id, options);
   }
 
   validatePriseDeContact(id_mission: any, data: any, headers?: HttpHeaders): Observable<any> {

@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { InscriptionService } from 'src/app/services/inscription.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-mission',
   templateUrl: './mission.component.html',
@@ -90,9 +91,9 @@ export class MissionComponent {
                   next: (res) => {
                     // Handle the response from the server
                     console.log(res);
-                    // this.router.navigate(['/client']);
-                    // this.router.navigate(['/informations/' + res._id]);
-                    this.router.navigate(['/pending'])
+                    // this.router.navigate([clientName +'/client']);
+                    // this.router.navigate([clientName +'/informations/' + res._id]);
+                    this.router.navigate([clientName + '/pending'])
                   },
                   error: (e) => {
                     // Handle errors
@@ -107,9 +108,9 @@ export class MissionComponent {
                   next: (res) => {
                     // Handle the response from the server
                     console.log(res);
-                    // this.router.navigate(['/client']);
-                    // this.router.navigate(['/informations/' + res._id]);
-                    this.router.navigate(['/pending'])
+                    // this.router.navigate([clientName +'/client']);
+                    // this.router.navigate([clientName +'/informations/' + res._id]);
+                    this.router.navigate([clientName + '/pending'])
                   },
                   error: (e) => {
                     // Handle errors

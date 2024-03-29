@@ -7,7 +7,7 @@
         </h1>
         <form action="/submit_form" method="post" [formGroup]="myForm" style="display: flex;">
             <div class="form-section">
-                <b> Information du mission : <br></b>
+                <b> Information de la mission : <br></b>
                 <div class="grid-container">
                     <div class="grid-item">
 
@@ -18,7 +18,7 @@
                       myForm.get('profession')?.invalid &&
                       myForm.get('profession')?.touched
                     ">
-                            Métier is required.
+                            Métier est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -30,7 +30,7 @@
                       myForm.get('dailyRate')?.invalid &&
                       myForm.get('dailyRate')?.touched
                     ">
-                            TJM is required.
+                            TJM est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -42,29 +42,31 @@
                       myForm.get('industrySector')?.invalid &&
                       myForm.get('industrySector')?.touched
                     ">
-                            Secteur d'activité is required.
+                            Secteur d'activité est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
 
-                        <input formControlName="startDate" type="date" id="birthDate" name="birthDate" required />
+                        <input formControlName="startDate" type="text" onfocus="(this.type='date')"
+                            placeholder="Date de début" id="birthDate" name="birthDate" required />
 
                         <div class="error" *ngIf="
                       myForm.get('startDate')?.invalid &&
                       myForm.get('startDate')?.touched
                     ">
-                            Date de début is required.
+                            Date de début est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
 
-                        <input formControlName="endDate" type="date" id="birthDate" name="birthDate" required />
+                        <input formControlName="endDate" type="text" onfocus="(this.type='date')"
+                            placeholder="Date de fin" id="birthDate" name="birthDate" required />
 
                         <div class="error" *ngIf="
                       myForm.get('endDate')?.invalid &&
                       myForm.get('endDate')?.touched
                     ">
-                            Date de fin de mission is required.
+                            Date de fin de mission est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -76,7 +78,7 @@
                       myForm.get('finalClient')?.invalid &&
                       myForm.get('finalClient')?.touched
                     ">
-                            Client final is required.
+                            Client final est obligatoire.
                         </div>
                     </div>
 
@@ -132,7 +134,7 @@
                       myForm.get('firstName')?.invalid &&
                       myForm.get('firstName')?.touched
                     ">
-                            Prénom is required.
+                            Prénom est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -144,7 +146,7 @@
                       myForm.get('lastName')?.invalid &&
                       myForm.get('lastName')?.touched
                     ">
-                            Nom is required.
+                            Nom est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -156,7 +158,7 @@
                       myForm.get('email')?.invalid &&
                       myForm.get('email')?.touched
                     ">
-                            email is required.
+                            email est obligatoire.
                         </div>
                     </div>
 
@@ -169,7 +171,7 @@
                       myForm.get('company')?.invalid &&
                       myForm.get('company')?.touched
                     ">
-                            Société is required.
+                            Société est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
@@ -181,19 +183,19 @@
                       myForm.get('position')?.invalid &&
                       myForm.get('position')?.touched
                     ">
-                            poste is required.
+                            poste est obligatoire.
                         </div>
                     </div>
                     <div class="grid-item">
 
-                        <input formControlName="phoneNumber" type="text" id="phoneNumber" name="phoneNumber"
-                            placeholder="Téléphone" required />
+                        <input formControlName="phoneNumber" pattern="[0-9]*" type="text" id="phoneNumber"
+                            name="phoneNumber" placeholder="Téléphone" required />
 
                         <div class="error" *ngIf="
                       myForm.get('phoneNumber')?.invalid &&
                       myForm.get('phoneNumber')?.touched
                     ">
-                            poste is required.
+                            Téléphone est obligatoire.
                         </div>
                     </div>
 

@@ -5,6 +5,7 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { saveAs } from 'file-saver';
@@ -38,7 +39,7 @@ export class AllCrasComponent {
   // Variable to store selected date
 
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   downloadFile(urlpdf: any, filename: any) {
 
@@ -104,6 +105,7 @@ export class AllCrasComponent {
         },
         error: (e) => {
           // Handle errors
+          this.nblastnotifications = 0
           console.error(e);
           // Set loading to false in case of an error
 

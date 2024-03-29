@@ -1,4 +1,4 @@
-<div class="container">
+<div class="wrapper">
   <div>
     <app-left-bar></app-left-bar>
   </div>
@@ -61,18 +61,18 @@
               <input type="text" formControlName="clientphoneNumber" [ngModel]="clientInfo?.clientContact.phoneNumber"
                 [readonly]="true" />
             </div>
-            <div class="label"> Ancienne simulation :</div>
+            <div class="label" style="color: rgb(255, 0, 0)"> Ancienne simulation :</div>
             <div class="Tableau">
               <div id="pdfContainer" style="width: 300px; "></div>
             </div>
             <div class="Tableau" *ngIf="!showpdf">
-              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="80%" height="100%" />
+              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
             </div>
           </div>
 
           <div style="margin-left: 130px">
             <div class="Information" style="margin-top: -18px">
-              <b> Information du mission </b>
+              <b> Information de la mission </b>
             </div>
             <div class="label">Métier :</div>
             <div class="Tableau">
@@ -120,13 +120,13 @@
               <input formControlName="finalClient" [ngModel]="missionInfo?.finalClient" [readonly]="true" type="text"
                 id="phoneNumber" name="phoneNumber" placeholder="téléphone" required />
             </div>
-            <div class="label">Nouvelle Simulation :</div>
+            <div class="label" style="color: rgb(24, 117, 24)">Nouvelle Simulation :</div>
 
             <div class="Tableau">
               <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; "></div>
             </div>
             <div class="Tableau" *ngIf="!showpdf1">
-              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="80%" height="100%" />
+              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
             </div>
 
           </div>
@@ -149,9 +149,9 @@
       </div>
     </div>
   </div>
-  <div class="right-item">
+  <div class="right-item" style="cursor: pointer;">
     <div style="display: flex">
-      <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
+      <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
             <path
@@ -161,7 +161,8 @@
             <path
               d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
               stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A" *ngIf="notification.length > 0" />
+            <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
+              *ngIf="notification.length > 0 || new_notif === 'true' " />
           </svg>
         </div>
         <div>
@@ -177,12 +178,12 @@
   
               line-height: 100%; /* 0.8125rem */
             ">
-            {{ lastnotifications.length }} notification
+            {{ nblastnotifications }} notifications
           </div>
         </div>
 
       </div>
-      <div class="profil" (click)="  gotomyprofile()" style="cursor: pointer;">
+      <div class="profil" (click)="gotomyprofile()" style="cursor: pointer;">
         <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
 
@@ -190,5 +191,8 @@
 
       </div>
     </div>
+
+    <app-notificaion-rh *ngIf="shownotiff"></app-notificaion-rh>
   </div>
+
 </div>

@@ -10,6 +10,7 @@ declare const PDFObject: any;
 import { environment } from 'src/environments/environment';
 const baseUrl = `${environment.baseUrl}`;
 
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-informations',
   templateUrl: './informations.component.html',
@@ -79,7 +80,7 @@ export class InformationsComponent {
     const fileId = this.missionInfo.isSimulationValidated.value;
     return this.missionInfo.isSimulationValidated.value ? `https://my-krew-8nnq.onrender.com/uploads/${fileId}` : '';
   }
-
+  identificationDocumentpdf: boolean = false
   ngOnInit(): void {
     // Get the user ID from the route parameters
     this.route.params.subscribe((params) => {
@@ -103,6 +104,20 @@ export class InformationsComponent {
           this.personalInfo.dateOfBirth.value = this.personalInfo.dateOfBirth.value.split('T')[0]
           this.hasCar = this.personalInfo.carInfo.hasCar.value;
           this.personalInfo.identificationDocument.value = baseUrl + "uploads/" + this.personalInfo.identificationDocument.value
+          if (this.personalInfo.identificationDocument.value.endsWith('.pdf')) {
+            console.log(this.personalInfo.identificationDocument.value);
+
+            this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.personalInfo.identificationDocument.value).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                this.identificationDocumentpdf = true;
+                if (this.pdfData) {
+                  this.handleRenderPdf1(this.pdfData);
+                }
+              },
+            });
+
+          }
           this.personalInfo.carInfo.drivingLicense.value = baseUrl + "uploads/" + this.personalInfo?.carInfo.drivingLicense.value
           this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated.value).subscribe({
             next: (res) => {
@@ -146,6 +161,11 @@ export class InformationsComponent {
   handleRenderPdf(data: any) {
 
     const pdfObject = PDFObject.embed(data, '#pdfContainer');
+
+  }
+  handleRenderPdf1(data: any) {
+
+    const pdfObject = PDFObject.embed(data, '#identificationDocumentpdf');
 
   }
   handlesecondRenderPdf(data: any) {
@@ -216,7 +236,7 @@ export class InformationsComponent {
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
             });
-            this.router.navigate(['/pending'])
+            this.router.navigate([clientName + '/pending'])
           },
           error: (e) => {
             // Handle errors

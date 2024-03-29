@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { InscriptionService } from 'src/app/services/inscription.service';
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-pre-inscription',
   templateUrl: './pre-inscription.component.html',
@@ -118,7 +120,7 @@ export class PreInscriptionComponent {
 
               // Handle the response from the server
               console.log(res);
-              this.router.navigate(['/personaldoc']);
+              this.router.navigate([clientName + '/personaldoc']);
             },
             error: (e) => {
               // Handle errors

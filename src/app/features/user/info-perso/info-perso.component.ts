@@ -7,6 +7,8 @@ declare const PDFObject: any;
 import { environment } from 'src/environments/environment';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { DatePipe } from '@angular/common';
+
+const clientName = `${environment.default}`;
 const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-info-perso',
@@ -53,34 +55,7 @@ export class InfoPersoComponent {
   list_view() {
     this.card = false
   }
-  downloadImage() {
 
-    const imageUrl = 'https://my-krew-8nnq.onrender.com/uploads/pdf.jpg';
-    const link = document.createElement('a');
-    link.href = imageUrl;
-    link.download = 'downloaded_image.jpg'; // You can set the desired file name here
-    link.click();
-  }
-  downloadItem() {
-    const imageUrl = 'https://my-krew-8nnq.onrender.com/uploads/1705876895687-CIN.jpg';
-
-    this.http.get(imageUrl, { responseType: 'blob' })
-      .subscribe(
-        (data: Blob) => {
-          const blobUrl = window.URL.createObjectURL(data);
-          const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = 'downloaded_image.jpg';
-          link.click();
-          window.URL.revokeObjectURL(blobUrl);
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Download failed:', error);
-          console.error('Status code:', error.status);
-          console.error('Error message:', error.message);
-        }
-      );
-  }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token');
@@ -166,6 +141,35 @@ export class InfoPersoComponent {
       }
     });
 
+  }
+  pageSize = 5; // Number of items per page
+  currentPage = 1; // Current page
+
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.docs.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.docs.length);
+
+
+    return this.docs.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
   handleRenderPdf(data: any) {
 

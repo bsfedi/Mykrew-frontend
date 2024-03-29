@@ -5,7 +5,8 @@ import { DatePipe } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -34,7 +35,7 @@ export type ChartOptions = {
   styleUrls: ['./missions.component.css']
 })
 export class MissionsComponent {
-  hideMissions: boolean = false;
+  hideMissions: boolean = true;
   currentDate: Date | undefined;
   items: any;
   showPopup: boolean = false;
@@ -95,6 +96,8 @@ export class MissionsComponent {
       // Add other form controls as needed
     });
   }
+
+
   getCurrentDate() {
     this.currentDate = new Date();
     console.log(this.currentDate);
@@ -330,8 +333,6 @@ export class MissionsComponent {
 
 
           this.items = res
-          console.log(this.items);
-
           this.nbdemande = this.items.length
 
 
@@ -487,11 +488,103 @@ export class MissionsComponent {
 
   toggleHide() {
     this.hideMissions = !this.hideMissions;
-    console.log(this.hideMissions);
+
 
   }
+  pageSize = 5; // Number of items per page
+  currentPage = 1; // Current page
+
+  totalPages: any;
+  getDisplayeddocs(): any[] {
+
+
+    this.totalPages = Math.ceil(this.validated_mission.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.validated_mission.length);
+
+
+    return this.validated_mission.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+
+  pageSizepending = 5; // Number of items per page
+  currentPagepending = 1; // Current page
+  totalPagespending: any = 1;
+  getDisplayeddocspending(): any[] {
+
+
+    this.totalPages = Math.ceil(this.pending_missions.length / this.pageSizepending);
+    const startIndex = (this.currentPagepending - 1) * this.pageSizepending;
+    const endIndex = Math.min(startIndex + this.pageSizepending, this.pending_missions.length);
+
+
+    return this.pending_missions.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPagepending() {
+    if (this.currentPagepending < this.totalPagespending) {
+      this.currentPagepending++;
+    }
+  }
+
+  previousPagepending() {
+    if (this.currentPagepending > 1) {
+      this.currentPagepending--;
+    }
+  }
+
+
+
+  pageSizenv = 5; // Number of items per page
+  currentPagenv = 1; // Current page
+
+  totalPagesnv: any = 1;
+  getDisplayeddocsnv(): any[] {
+
+
+    this.totalPagesnv = Math.ceil(this.NotValidated_mission.length / this.pageSizenv);
+    const startIndex = (this.currentPagenv - 1) * this.pageSizenv;
+    const endIndex = Math.min(startIndex + this.pageSizenv, this.NotValidated_mission.length);
+
+
+    return this.NotValidated_mission.slice(startIndex, endIndex);
+
+
+
+  }
+
+  nextPagenv() {
+    if (this.currentPagenv < this.totalPagesnv) {
+      this.totalPagesnv++;
+    }
+  }
+
+  previousPagenv() {
+    if (this.currentPagenv > 1) {
+      this.currentPagenv--;
+    }
+  }
+
   click() {
-    this.router.navigate(['/consultant/new-mission']);
+    this.router.navigate([clientName + '/consultant/new-mission']);
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
@@ -503,10 +596,10 @@ export class MissionsComponent {
     this.isMenuOpen2[i] = !this.isMenuOpen2[i];
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/consultant/details-mission/' + _id])
+    this.router.navigate([clientName + '/consultant/details-mission/' + _id])
   }
   gotocra(_id: string) {
-    this.router.navigate(['/CRA/' + _id])
+    this.router.navigate([clientName + '/CRA/' + _id])
   }
   openPopup(id: any): void {
     this.showPopup = true;

@@ -7,11 +7,13 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
 
 import { delay, of } from 'rxjs';
-
 import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
+
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { UserService } from 'src/app/services/user.service';
 import { ConsultantService } from 'src/app/services/consultant.service';
+import { DatePipe } from '@angular/common';
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -41,6 +43,7 @@ export class ValidationComponent implements OnInit {
   identificationDocumentValue: string = 'true';
   ribValue: string = 'true';
   portage: string = 'true';
+  ribDocumentValidation: string = 'true';
   hasCarValue: string = 'true';
   drivingLicenseValue: string = 'true';
   carRegistrationValue: string = 'true';
@@ -56,6 +59,7 @@ export class ValidationComponent implements OnInit {
   finalClientValue: string = 'true';
   endDateValue: string = 'true';
   clientlastNameValue: string = 'true';
+  commantaireribDocumentValidationValue: string = '';
   commantaireportageValue: string = '';
   commantaireclientlastName: string = '';
   commantairetoggleValue: string = '';
@@ -93,10 +97,13 @@ export class ValidationComponent implements OnInit {
   notification: string[] = [];
   res: any
   new_notif: any
-  constructor(private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private consultantService: ConsultantService, private route: ActivatedRoute, private userservice: UserService, private socketService: WebSocketService) {
+  constructor(private inscriptionservice: InscriptionService, private datePipe: DatePipe, private fb: FormBuilder, private router: Router, private consultantService: ConsultantService, private route: ActivatedRoute, private userservice: UserService, private socketService: WebSocketService) {
 
 
 
+  }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
   loading: boolean = true;
 
@@ -106,7 +113,12 @@ export class ValidationComponent implements OnInit {
   toggleZoom() {
     this.zoomState = this.zoomState === 'normal' ? 'zoomed' : 'normal';
   }
+  nblastnotifications: any
+  shownotiff: boolean = false
+  shownotif() {
 
+    this.shownotiff = !this.shownotiff
+  }
   ngOnInit(): void {
     this.new_notif = localStorage.getItem('new_notif');
     this.consultantService.getlastnotificationsrh().subscribe({
@@ -153,6 +165,20 @@ export class ValidationComponent implements OnInit {
 
       }
     });
+    this.consultantService.getRhNotificationsnotseen().subscribe({
+      next: (res1) => {
+        this.nblastnotifications = res1.length
+        this.lastnotifications = res1
+
+      },
+      error: (e) => {
+        // Handle errors
+        this.nblastnotifications = 0
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     this.socketService.connect()
     // Listen for custom 'rhNotification' event in WebSocketService
     this.socketService.onRhNotification().subscribe((event: any) => {
@@ -160,6 +186,7 @@ export class ValidationComponent implements OnInit {
 
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
         this.notification.push(event.notification.typeOfNotification)
         localStorage.setItem('new_notif', 'true');
       }
@@ -277,19 +304,22 @@ export class ValidationComponent implements OnInit {
       "startDateValidation": this.startDateValue,
       "startDateCause": this.commantairestartDateValue,
       "endDateValidation": this.endDateValue,
-      "endDateCause": this.commantaireendDateValue
+      "endDateCause": this.commantaireendDateValue,
+      "ribDocumentValidation": this.ribDocumentValidation
     }
 
     Swal.fire({
-      title: 'Confirmez Vos Informations',
+      title: "Confirmez l'action",
+
       html: `
-        <div>
+        <div  style="backgound-color:red">
         <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vos informations personnelles ?  </div> 
           <div style="color:#a8a3a3;margin-top:5px"">Veuillez vérifier que toutes les données <br> saisies sont correctes et à jour.?</div>
         </div>
       `,
-      iconColor: '#1E1E1E',
+      iconColor: '#CDC7B9',
       showCancelButton: true,
+      background: '#fefcf1',
       confirmButtonText: 'Confirmer',
       confirmButtonColor: "#91c593",
       cancelButtonText: 'Annuler',
@@ -297,6 +327,7 @@ export class ValidationComponent implements OnInit {
       customClass: {
         confirmButton: 'custom-confirm-button-class',
         cancelButton: 'custom-cancel-button-class'
+
       },
       reverseButtons: true // Reversing button order
     }).then((result) => {
@@ -306,13 +337,14 @@ export class ValidationComponent implements OnInit {
           next: (res) => {
             // Handle success
             Swal.fire({
+              background: '#fefcf1',
               icon: "success",
               title: 'Pré-inscription mise à jour avec succès !',
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
               timer: 1500
             });
-            this.router.navigate(['/dashboard'])
+            this.router.navigate([clientName + '/dashboard'])
           },
           error: (e) => {
             // Handle errors
@@ -322,6 +354,7 @@ export class ValidationComponent implements OnInit {
         });
       } else {
         Swal.fire({
+          background: '#fefcf1',
           title: 'Annulé',
           text: "Aucune modification n'a été apportée.",
           confirmButtonText: 'Ok',
@@ -355,11 +388,11 @@ export class ValidationComponent implements OnInit {
 
   }
   gotoconsultantprofil() {
-    this.router.navigate(['/missions/' + this.consultant_id])
+    this.router.navigate([clientName + '/missions/' + this.consultant_id])
 
   }
   gotoallnotification() {
-    this.router.navigate(['/consultant/allnotifications'])
+    this.router.navigate([clientName + '/consultant/allnotifications'])
   }
   onRadioChange(value: boolean) {
     // Update hasCar based on radio button change
@@ -367,7 +400,7 @@ export class ValidationComponent implements OnInit {
   }
 
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   handleRenderPdf(data: any) {
 

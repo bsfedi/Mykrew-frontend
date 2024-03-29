@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 const baseUrl = `${environment.baseUrl}`;
 
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-validated-tjm',
   templateUrl: './validated-tjm.component.html',
@@ -64,7 +65,27 @@ export class ValidatedTjmComponent {
       simulationValidation: ['', Validators.required],
     });
   }
+  nblastnotifications: any
+  shownotiff: boolean = false
+  shownotif() {
+
+    this.shownotiff = !this.shownotiff
+  }
   ngOnInit(): void {
+    this.consultantservice.getRhNotificationsnotseen().subscribe({
+      next: (res1) => {
+        this.nblastnotifications = res1.length
+        this.lastnotifications = res1
+
+      },
+      error: (e) => {
+        // Handle errors
+        this.nblastnotifications = 0
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id');
     this.new_notif = localStorage.getItem('new_notif');
@@ -124,6 +145,7 @@ export class ValidatedTjmComponent {
 
       if (event.notification.toWho == "RH") {
         this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
         this.notification.push(event.notification.typeOfNotification)
         localStorage.setItem('new_notif', 'true');
       }
@@ -219,10 +241,10 @@ export class ValidatedTjmComponent {
 
   }
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   gotoallnotification() {
-    this.router.navigate(['/consultant/allnotifications'])
+    this.router.navigate([clientName + '/consultant/allnotifications'])
   }
   valid() {
     this.consultantservice.rhTjmValidation(this.new_tjm._id, {
@@ -233,12 +255,13 @@ export class ValidatedTjmComponent {
         // Handle success
         console.log(res);
         Swal.fire({
+          background: '#fefcf1',
           title: 'TJM Validé',
           text: 'Le Tarif Journalier Moyen a été validé avec succès !',
           confirmButtonText: 'OK',
           confirmButtonColor: "#91c593",
         });
-        this.router.navigate(['/tjmrequests'])
+        this.router.navigate([clientName + '/tjmrequests'])
       },
       error: (e) => {
         // Handle errors
@@ -257,13 +280,14 @@ export class ValidatedTjmComponent {
         // Handle success
         console.log(res);
         Swal.fire({
+          background: '#fefcf1',
           title: 'TJM réfusé',
           text: "La demande de TJM a été refusé.",
           confirmButtonText: 'OK',
           confirmButtonColor: "#91c593",
 
         });
-        this.router.navigate(['/tjmrequests'])
+        this.router.navigate([clientName + '/tjmrequests'])
       },
       error: (e) => {
         // Handle errors

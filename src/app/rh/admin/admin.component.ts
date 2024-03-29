@@ -7,7 +7,8 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import Swal from 'sweetalert2';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -71,7 +72,7 @@ export class AdminComponent {
 
   gotocdashboad() {
 
-    this.router.navigate(['/allConsultants'])
+    this.router.navigate([clientName + '/allConsultants'])
 
   }
   pageSize = 5; // Number of items per page
@@ -129,7 +130,7 @@ export class AdminComponent {
     }
   }
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
@@ -138,7 +139,7 @@ export class AdminComponent {
     this.isMenuOpen1[i] = !this.isMenuOpen1[i];
   }
   gotomissions(_id: string) {
-    this.router.navigate(['/missions/' + _id])
+    this.router.navigate([clientName + '/missions/' + _id])
   }
   openPopup(): void {
     this.showPopup = true;

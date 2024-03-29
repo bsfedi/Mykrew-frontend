@@ -40,7 +40,7 @@
               DocPersolForm.get('socialSecurityNumber')?.invalid &&
               DocPersolForm.get('socialSecurityNumber')?.touched
             ">
-            Numéro de sécurité sociale / AVS is required.
+            Numéro de sécurité sociale / AVS est obligatoire.
           </div>
           <div class="custom-file-input" (change)="setFileInput('identificationDocument', $event)"
             style="cursor: pointer">
@@ -85,7 +85,7 @@
               DocPersolForm.get('idCardFile')?.invalid &&
               DocPersolForm.get('idCardFile')?.touched
             ">
-            Pièce d’identité is required.
+            Pièce d’identité est obligatoire.
           </div>
           <div class="custom-file-input" (change)="setFileInput('Passport_img', $event)">
             <label class="file-label" for="passport" style="cursor: pointer">
@@ -127,7 +127,7 @@
               DocPersolForm.get('passportFile')?.invalid &&
               DocPersolForm.get('passportFile')?.touched
             ">
-            Passport is required.
+            Passport est obligatoire.
           </div>
           <div>
             <input type="text" formControlName="rib" class="form-control" placeholder="RIB" required name="rib" />
@@ -136,7 +136,7 @@
               DocPersolForm.get('rib')?.invalid &&
               DocPersolForm.get('rib')?.touched
             ">
-            rib is required.
+            rib est obligatoire.
           </div>
           <div>
             <div class="custom-file-input" (change)="setFileInput('ribdoc', $event)">
@@ -180,7 +180,7 @@
               DocPersolForm.get('ribdoc')?.invalid &&
               DocPersolForm.get('ribdoc')?.touched
             ">
-            ribdoc is required.
+            ribdoc est obligatoire.
           </div>
           <form action="/submit_form" method="post" [formGroup]="voitureForm">
             <div>

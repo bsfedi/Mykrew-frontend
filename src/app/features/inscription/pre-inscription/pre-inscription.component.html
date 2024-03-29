@@ -22,7 +22,7 @@
         <img src="/assets/mk 3.svg" width="30%" height="30%" />
       </div>
       <div>
-        <div class="Connectez"><b> Créer votre compte </b></div>
+        <div class="Connectez"><b> Pré-inscription </b></div>
         <div class="under-connect">
           Rejoignez MyKrew : Suivez vos investissements et élargissez votre
           réseau professionnel en quelques clics.
@@ -39,7 +39,7 @@
               myForm.get('firstName')?.invalid &&
               myForm.get('firstName')?.touched
             ">
-            Nom & Prénom is required.
+            Nom & Prénom est obligatoire.
           </div>
           <div>
             <input type="text" formControlName="lastName" class="form-control" placeholder="Nom" required name="Nom" />
@@ -48,14 +48,14 @@
               myForm.get('firstName')?.invalid &&
               myForm.get('firstName')?.touched
             ">
-            Nom & Prénom is required.
+            Nom & Prénom est obligatoire.
           </div>
           <!-- <div>
             <input type="email" formControlName="email" class="form-control" placeholder="Adresse e-mail" required
               name="email" />
           </div>
           <div class="error" *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
-            Email is required.
+            Email est obligatoire.
           </div>
           <div class="error" *ngIf="
               myForm.get('email')?.hasError('email') &&
@@ -65,23 +65,25 @@
           </div> -->
           <div>
             <input type="tel" formControlName="phoneNumber" class="form-control" placeholder="Numéro de téléphone"
-              required name="phoneNumber" />
+              pattern="[0-9]*" required name="phoneNumber" />
           </div>
           <div class="error" *ngIf="
               myForm.get('phoneNumber')?.invalid &&
               myForm.get('phoneNumber')?.touched
             ">
-            Numéro de téléphone is required.
+            Numéro de téléphone est obligatoire.
           </div>
           <div>
-            <input type="date" formControlName="birthDate" class="form-control" placeholder="Date de naissance" required
-              name="birthDate" />
+            <input type="text" formControlName="birthDate" class="form-control" placeholder="Date de naissance" required
+              name="birthDate" onfocus="(this.type='date')">
+            <!-- <input type="date" formControlName="birthDate" class="form-control" placeholder="Date de naissance" required
+              name="birthDate" /> -->
           </div>
           <div class="error" *ngIf="
               myForm.get('birthDate')?.invalid &&
               myForm.get('birthDate')?.touched
             ">
-            Date de naissance is required.
+            Date de naissance est obligatoire.
           </div>
 
           <!-- <div>
@@ -92,17 +94,17 @@
           myForm.get('portage')?.invalid &&
           myForm.get('portage')?.touched
         ">
-            Boite de rattachement is required.
+            Boite de rattachement est obligatoire.
           </div> -->
           <div>
-            <input type="text" formControlName="lieuNaissance" class="form-control" placeholder="Lieu de naissance"
-              required name="lieuNaissance" />
+            <input type="text" formControlName="lieuNaissance" class="form-control" placeholder="Adresse" required
+              name="lieuNaissance" />
           </div>
           <div class="error" *ngIf="
               myForm.get('lieuNaissance')?.invalid &&
               myForm.get('lieuNaissance')?.touched
             ">
-            Lieu is required.
+            Adresse est obligatoire.
           </div>
           <div>
             <select name="pays" formControlName="pays">

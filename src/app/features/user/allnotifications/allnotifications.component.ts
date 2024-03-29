@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 
 @Component({
   selector: 'app-allnotifications',
@@ -146,14 +148,14 @@ export class AllnotificationsComponent {
   }
   gotovalidation(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.router.navigate(['mission/' + _id])
+    this.router.navigate([clientName + '/mission/' + _id])
   }
   gotovalidationtjm(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.router.navigate(['/validated-tjmrequests/' + _id])
+    this.router.navigate([clientName + '/validated-tjmrequests/' + _id])
   }
   gotovalidationpreregister(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
-    this.router.navigate(['/validation/' + _id])
+    this.router.navigate([clientName + '/validation/' + _id])
   }
 }

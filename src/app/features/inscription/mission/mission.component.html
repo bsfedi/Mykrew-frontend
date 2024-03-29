@@ -21,7 +21,7 @@
             </div>
             <div>
                 <div class="Connectez"> <b>
-                        Information du mission
+                        Information de la mission
                     </b> </div>
                 <div class="under-connect"> Rejoignez MyKrew : Suivez vos investissements et élargissez votre réseau
                     professionnel en quelques clics.</div>
@@ -40,7 +40,7 @@
                               myForm.get('profession')?.invalid &&
                               myForm.get('profession')?.touched
                             ">
-                                    Métier is required.
+                                    Métier est obligatoire.
                                 </div>
                             </div>
                             <div class="grid-item">
@@ -52,7 +52,7 @@
                               myForm.get('dailyRate')?.invalid &&
                               myForm.get('dailyRate')?.touched
                             ">
-                                    TJM is required.
+                                    TJM est obligatoire.
                                 </div>
                             </div>
                             <div class="grid-item">
@@ -64,7 +64,7 @@
                               myForm.get('industrySector')?.invalid &&
                               myForm.get('industrySector')?.touched
                             ">
-                                    Secteur d'activité is required.
+                                    Secteur d'activité est obligatoire.
                                 </div>
                             </div>
                             <!-- <div class="grid-item">
@@ -76,30 +76,31 @@
                               myForm.get('portage')?.invalid &&
                               myForm.get('portage')?.touched
                             ">
-                                    Métier is required.
+                                    Métier est obligatoire.
                                 </div>
                             </div> -->
                             <div class="grid-item">
 
-                                <input formControlName="startDate" type="date" id="birthDate" name="birthDate"
-                                    required />
+                                <input formControlName="startDate" type="text" onfocus="(this.type='date')"
+                                    id="birthDate" name="birthDate" required placeholder="Date de début" />
 
                                 <div class="error" *ngIf="
                               myForm.get('startDate')?.invalid &&
                               myForm.get('startDate')?.touched
                             ">
-                                    Date de début is required.
+                                    Date de début est obligatoire.
                                 </div>
                             </div>
                             <div class="grid-item">
 
-                                <input formControlName="endDate" type="date" id="birthDate" name="birthDate" required />
+                                <input formControlName="endDate" type="text" placeholder="Date de fin"
+                                    onfocus="(this.type='date')" id="birthDate" name="birthDate" required />
 
                                 <div class="error" *ngIf="
                               myForm.get('endDate')?.invalid &&
                               myForm.get('endDate')?.touched
                             ">
-                                    Date de fin de mission is required.
+                                    Date de fin de mission est obligatoire.
                                 </div>
                             </div>
                             <div class="grid-item">
@@ -111,7 +112,7 @@
                               myForm.get('finalClient')?.invalid &&
                               myForm.get('finalClient')?.touched
                             ">
-                                    Client final is required.
+                                    Client final est obligatoire.
                                 </div>
                             </div>
 

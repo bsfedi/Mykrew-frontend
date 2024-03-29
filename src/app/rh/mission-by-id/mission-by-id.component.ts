@@ -10,6 +10,7 @@ import { delay, of } from 'rxjs';
 import { ConsultantService } from 'src/app/services/consultant.service';
 
 import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { DatePipe } from '@angular/common';
@@ -94,6 +95,7 @@ export class MissionByIdComponent {
 
   }
   loading: boolean = true;
+  getMissionuserb: any
   TjmRequestsByMissionId: any
   zoomState: string = 'normal';
   userSelection: string = 'true';
@@ -101,10 +103,11 @@ export class MissionByIdComponent {
     this.zoomState = this.zoomState === 'normal' ? 'zoomed' : 'normal';
   }
   gotomyprofile() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
+  nblastnotifications: any
   gotoallnotification() {
-    this.router.navigate(['/consultant/allnotifications'])
+    this.router.navigate([clientName + '/consultant/allnotifications'])
   }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
@@ -118,7 +121,24 @@ export class MissionByIdComponent {
     });
     this.token = localStorage.getItem('token');
     this.headers = new HttpHeaders().set('Authorization', `${this.token}`);
+    // Listen for custom 'rhNotification' event in WebSocketService
 
+    // Check if token is available
+
+    this.consultantservice.getRhNotificationsnotseen().subscribe({
+      next: (res1) => {
+        this.nblastnotifications = res1.length
+        this.lastnotifications = res1
+
+      },
+      error: (e) => {
+        // Handle errors
+        this.nblastnotifications = 0
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     // Check if token is available
     if (this.token) {
       // Include the token in the headers
@@ -136,12 +156,36 @@ export class MissionByIdComponent {
 
         }
       });
+
       this.consultantservice.getMissionuserbyid(this.mission_id, this.headers).subscribe({
         next: (res) => {
-          // Handle the response from the server
-          this.personalInfo = res.personalInfo;
-          this.clientInfo = res.clientInfo;
-          this.missionInfo = res.missionInfo
+
+          if (res.newMissionStatus == "VALIDATED") {
+            this.getMissionuserb = res.newMissionStatus
+            // Handle the response from the server
+            this.personalInfo = res.personalInfo;
+            this.clientInfo = res.clientInfo;
+            this.missionInfo = res.missionInfo
+          }
+          else {
+            this.consultantservice.getMissionById(this.mission_id, this.headers).subscribe({
+              next: (res2) => {
+                this.getMissionuserb = res2.newMissionStatus
+                // Handle the response from the server
+                this.personalInfo = res2.personalInfo;
+                this.clientInfo = res2.clientInfo;
+                this.missionInfo = res2.missionInfo
+              },
+              error: (e) => {
+                // Handle errors
+                console.error(e);
+                // Set loading to false in case of an error
+                this.loading = false;
+              }
+            })
+
+          }
+
 
           console.log(res);
 
@@ -277,6 +321,7 @@ export class MissionByIdComponent {
 
     Swal.fire({
       title: "Confirmez l'action",
+      background: '#fefcf1',
       html: `
         <div>
         <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir soumettre <br> vote réponse a la demande ?  </div> 
@@ -300,12 +345,13 @@ export class MissionByIdComponent {
         this.inscriptionservice.validatenewmission(this.mission_id, data, this.headers).subscribe({
           next: (res) => {
             Swal.fire({
+              background: '#fefcf1',
               icon: "success",
               title: 'Mission mise à jour avec succès !',
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
             });
-            this.router.navigate(['/tjmrequests'])
+            this.router.navigate([clientName + '/tjmrequests'])
           },
           error: (e) => {
             // Handle errors
@@ -315,6 +361,7 @@ export class MissionByIdComponent {
         });
       } else {
         Swal.fire({
+          background: '#fefcf1',
           title: 'Annulé',
           text: "Aucune modification n'a été apportée.",
           iconColor: '#1E1E1E',

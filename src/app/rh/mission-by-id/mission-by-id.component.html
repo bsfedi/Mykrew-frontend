@@ -168,8 +168,9 @@
                 </div>
 
             </div>
-            <div style="margin-right:20px;margin-top: 20px;">
-                <button (click)="update_register()">Terminer</button>
+
+            <div style="margin-right:20px;margin-top: 20px;" *ngIf="getMissionuserb != 'VALIDATED'">
+                <button (click)="update_register()">Valider</button>
             </div>
 
         </div>
@@ -195,14 +196,14 @@
                         </div>
                         <div style="
                       color: rgba(0, 0, 0, 0.52);
-          
+
                       font-size: 0.8125rem;
                       font-style: normal;
                       font-weight: 400;
-          
+
                       line-height: 100%; /* 0.8125rem */
                     ">
-                            {{ lastnotifications.length }} notification
+                            {{ nblastnotifications }} notification
                         </div>
                     </div>
 
@@ -219,16 +220,18 @@
                 <div class="historique-demandes">
                     <div class="text"><b>Historique TJM </b></div>
 
+
                 </div>
+                <hr>
                 <div *ngFor="let item of TjmRequestsByMissionId">
                     <div style="display: flex; ">
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-circle-fill" viewBox="0 0 16 16">
                                 <circle cx="8" cy="8" r="8" />
-                            </svg>
+                            </svg> -->
                         </div>
-                        <div style="margin-bottom: 10px ; margin-left: 5px;width: 150px;" class="
+                        <div style="margin-bottom: 10px ; margin-left: 15px;width: 150px;" class="
                             historique-consultant">
                             TJM : <b> {{ item.valueOfNewTjm }} </b>
 
@@ -239,6 +242,7 @@
                         </div>
 
                     </div>
+                    <hr>
                 </div>
                 <br />
             </div>

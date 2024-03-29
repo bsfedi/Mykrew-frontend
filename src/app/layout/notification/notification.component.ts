@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -105,7 +106,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
   }
 
   gotoallnotification() {
-    this.router.navigate(['/consultant/allnotifications'])
+    this.router.navigate([clientName + '/consultant/allnotifications'])
   }
 
   sendMessage(): void {

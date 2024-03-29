@@ -87,15 +87,26 @@
         </div>
         <div class="dropdown-menu" style="margin: 60px 0px 0px 10px;" *ngIf="isMenuOpen1">
           <!-- Menu items go here -->
+          <div style="display: flex; cursor: pointer" (click)="resetFilter()">
+            <div [ngClass]="{'selected': selectedItem === 'reset' , 'first': selectedItem != 'reset'}">
+              <svg (click)='resetFilter()' style="margin-top: 0px;cursor: pointer;;" xmlns="http://www.w3.org/2000/svg"
+                width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+              </svg>
+              <div>Aucun filter</div>
+            </div>
+          </div>
           <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('date')">
-            <div class="first">
+            <div [ngClass]="{'selected': selectedItem === 'date' , 'first': selectedItem != 'date'}">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <div>Trier: Date de la demande</div>
+              <div>Trier par date de la demande</div>
               <svg *ngIf="sortDirection === 'asc'  " xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -109,19 +120,19 @@
             </div>
           </div>
           <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('alpha')">
-            <div class="first">
-
+            <div [ngClass]="{'selected': selectedItem === 'alpha' , 'first': selectedItem != 'alpha'}">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <div>Trier: Ordre alphabétique</div>
+              <div>Trier par ordre alphabétique</div>
               <span style="margin-left: 20px;">{{sortDirectionAlpha}}</span>
             </div>
           </div>
         </div>
+
         <!--   <div class="first">
           <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants
           </div>
@@ -138,12 +149,7 @@
           </svg>
           <input type="search" placeholder="rechercher un consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
         </div>
-        <svg (click)='resetFilter()' style="margin-top: 10px;cursor: pointer;;" xmlns="http://www.w3.org/2000/svg"
-          width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
-          <path
-            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
-        </svg>
+
         <div class="Tableau export" (click)="exportTable()">
 
           <div class="first">Export list</div>
@@ -168,20 +174,23 @@
         <tbody>
           <tr *ngFor="let item of getDisplayeddocs(); let i = index" style="height: auto;cursor: pointer;"
             (click)="gotomissions(item.userId)">
-            <td class="Tableau"> <!-- *ngIf="item.isAvtivated"-->
-              <div class="image">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-top: 4%;" class="bi bi-person-fill"
-                  viewBox="0 0 16 16">
-                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
+            <td> <!-- *ngIf="item.isAvtivated"-->
+              <div class="Tableau">
+                <div class="image">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin-top: 4%;"
+                    class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                  </svg>
+                </div>
+
+                <div style="margin-top: 16px;margin-left: 1%; justify-content: center;">
+                  {{ item.personalInfo?.firstName.value }}
+                  {{ item.personalInfo?.lastName.value }}
+
+                </div>
               </div>
 
-              <div style="margin-top: 12px;margin-left: 1%; justify-content: center;">
-                {{ item.personalInfo?.firstName.value }}
-                {{ item.personalInfo?.lastName.value }}
-
-              </div>
             </td>
             <td style="width: 1px;">
               {{ item.personalInfo?.email.value }}

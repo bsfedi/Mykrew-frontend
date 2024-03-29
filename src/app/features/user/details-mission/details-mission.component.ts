@@ -7,9 +7,11 @@ import { ConsultantService } from 'src/app/services/consultant.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import Swal from 'sweetalert2';
 declare const PDFObject: any;
-
-
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
+const clientName = `${environment.default}`;
+
+
 const baseUrl = `${environment.baseUrl}`;
 
 
@@ -37,7 +39,8 @@ export class DetailsMissionComponent {
   pdfData: any;
   myForm: FormGroup;
   status: any
-  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  TjmRequestsByMissionId: any
+  constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService, private datePipe: DatePipe, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -66,6 +69,9 @@ export class DetailsMissionComponent {
       simulationValidation: ['', Validators.required],
     });
   }
+  formatDate(date: string): string {
+    return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     // Get the user ID from the route parameters
@@ -73,7 +79,18 @@ export class DetailsMissionComponent {
       this.mission_id = params['id'];
     });
 
+    this.consultantservice.getallTjmRequestsByMissionId(this.mission_id).subscribe({
+      next: (res) => {
+        this.TjmRequestsByMissionId = res
+        console.log("tjmmission", res);
+      },
+      error: (e) => {
 
+        console.error(e);
+
+
+      }
+    });
     // Check if token is available
     if (token) {
       // Include the token in the headers
@@ -130,13 +147,13 @@ export class DetailsMissionComponent {
 
   }
   click() {
-    this.router.navigate(['/all-preinscription']);
+    this.router.navigate([clientName + '/all-preinscription']);
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
   }
   gotovalidation(_id: string) {
-    this.router.navigate(['/validation/' + _id])
+    this.router.navigate([clientName + '/validation/' + _id])
   }
   openPopup(): void {
     this.showPopup = true;

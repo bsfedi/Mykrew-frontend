@@ -20,6 +20,11 @@ const clientRoutes: Routes = [
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: `${clientName}/sign-in`,  // Redirect to the sign-in route
+  },
+  {
     path: `${clientName}`, // Dynamic path parameter for the 'client'
     children: [
       ...clientRoutes,
@@ -28,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: '*', // Note: It's better to use '**' for wildcard routes
-    redirectTo: `${clientName}`, // Redirect to your default route under the dynamic 'client'
+    redirectTo: `${clientName}/sing-in`, // Redirect to your default route under the dynamic 'client'
   },
 ];
 

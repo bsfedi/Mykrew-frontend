@@ -2,20 +2,20 @@
   <div class="container">
     <app-left-bar> </app-left-bar>
     <div class="second-container">
-      <div class="title">Validation Missions</div>
-      <div class="title">Mission de Fedi ben slimen</div>
+      <div class="title">Valider la mission</div>
+
 
       <div style="display: flex">
         <div style="
-            width: 19.02281rem;
+            width: 22.02281rem;
             height: 50rem;
             flex-shrink: 0;
-            background: #f8f9fa;
+            background: #fefcf1;
           ">
           <div style="display: flex">
             <div style="
                 color: #171a1f;
-
+                margin: 15px;
                 font-size: 1.25rem;
                 font-style: normal;
                 font-weight: 300;
@@ -24,7 +24,7 @@
               ">
               Statistiques Demandes
             </div>
-            <div>
+            <div style="margin: 15px;">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
                 <path d="M10.45 11L2.75 11" stroke="#424955" stroke-width="1.1" stroke-linecap="round"
                   stroke-linejoin="round" />
@@ -54,7 +54,7 @@
               <div style="margin-top: 10px; width: 200px">
                 Demande modification TJM
               </div>
-              <div style="margin-top: 10px; margin-left: 20px">
+              <div style="margin-top: 10px; margin-left: 55px">
                 {{ stats.pendingTjmCount }}
               </div>
             </div>
@@ -78,7 +78,7 @@
               <div style="margin-top: 10px; width: 200px">
                 Toutes les demandes
               </div>
-              <div style="margin-top: 10px; margin-left: 20px">
+              <div style="margin-top: 10px; margin-left: 55px">
                 {{ stats.allPreregisters }}
               </div>
             </div>
@@ -95,7 +95,7 @@
               <div style="margin-top: 10px; width: 200px">
                 Nouvelles missions
               </div>
-              <div style="margin-top: 10px; margin-left: 20px">
+              <div style="margin-top: 9px;margin-left: 55px">
                 {{ stats.newMissions }}
               </div>
             </div>
@@ -113,7 +113,7 @@
               <div style="margin-top: 10px; width: 200px">
                 Demandes non traitées
               </div>
-              <div style="margin-top: 10px; margin-left: 20px">
+              <div style="margin-top: 9px; margin-left: 55px">
                 {{ stats.preregistersNonTraites }}
               </div>
             </div>
@@ -129,7 +129,7 @@
               <div style="margin-top: 10px; width: 200px">
                 Demandes Traitées
               </div>
-              <div style="margin-top: 10px; margin-left: 20px">
+              <div style="margin-top: 9px; margin-left: 55px">
                 {{ stats.preregistersTraites }}
               </div>
             </div>
@@ -180,13 +180,13 @@
                 opacity: 0.4;
                 background: #dee1e6;
               ">
-              Préinscription
+              Pré-inscription
             </div>
           </div>
           <div style="display: flex; margin-top: 20px">
             <div style="width: 90px; margin-top: 5px">Demandeur</div>
             <div style="display: flex; margin-left: 10px">
-              <img style="width: 1.75rem; height: 1.75rem; border-radius: 50%" src="/assets/demandeur.png" />
+
               <div style="margin: 7px">Fedi ben slimen</div>
             </div>
           </div>
@@ -293,13 +293,13 @@
             </div>
           </div>
           <div style="display: flex; margin-top: 20px">
-            <div style="width: 100px; margin-top: 5px">Pas d'accord</div>
+
             <div style="display: flex; margin-top: -8px">
               <div>
                 <input type="checkbox" (change)="shownote()" />
               </div>
-              <div style="margin-top: 10px; color: red">
-                Terminer la mission
+              <div style="margin-top: 12px; color: red">
+                Refuser la mission
               </div>
             </div>
           </div>

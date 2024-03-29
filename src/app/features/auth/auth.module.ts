@@ -8,11 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 export const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'sign-in', // Redirect to the sign-in route
-  },
-  {
     path: 'sign-in',
     component: SigninComponent,
   },

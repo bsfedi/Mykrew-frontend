@@ -3,7 +3,7 @@
 </head>
 <div class="container">
     <div class="left-panel">
-        <img src="/assets/Rectangle 135.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <img src="/assets/Rectangle 135.png" width="70%" height="100%" style="border-radius: 1.875rem;">
         <div class="text-overlay">
             <h5> Gestion Financière Simplifiée avec MyKrew : Suivi, Cooptation et Succès
                 Professionnel </h5>
@@ -35,7 +35,7 @@
                     </div>
                     <div *ngIf="signupForm.get('email')?.hasError('required') &&signupForm.get('email')?.touched"
                         class="error-message">
-                        Email is required.
+                        Email est obligatoire.
                     </div>
                     <div *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched"
                         class="error-message">
@@ -47,7 +47,7 @@
                     </div>
                     <div *ngIf="signupForm.get('password')?.hasError('required') &&signupForm.get('password')?.touched"
                         class="error-message">
-                        Password is required.
+                        Password est obligatoire.
                     </div>
                     <div *ngIf=" signupForm.get('password')?.hasError('minlength') &&signupForm.get('password')?.touched"
                         class="error-message">
@@ -63,7 +63,7 @@
                     </div>
                     <div *ngIf="signupForm.get('confirmPassword')?.hasError('required') &&signupForm.get('confirmPassword')?.touched"
                         class="error-message">
-                        Confirm password is required.
+                        Confirm password est obligatoire.
                     </div>
                     <!-- Add error message for password mismatch -->
                     <div *ngIf="signupForm.hasError('passwordMismatch') &&signupForm.get('confirmPassword')?.touched"
@@ -71,7 +71,10 @@
                         Passwords do not match.
                     </div>
                     <div *ngIf="showerrormessage" class="error-message" style="text-align: center; margin-top: 10px">
-                        <div class="error-msg">{{ failedmessage }}</div>
+                        <div class="error-msg" *ngIf="failedmessage =='Email is already in use'">email est déjà utilisé
+                        </div>
+                        <div class="error-msg" *ngIf="failedmessage =='Passwords do not match.'">Les mots de passe ne
+                            correspondent pas</div>
                     </div>
                     <div *ngIf="showsucessmessage" class="succes-message">
                         <div class="success-msg">{{ succesmessage }}</div>
@@ -85,7 +88,7 @@
                     <div class="inscrire" (click)="saveUser()"> S’inscrire </div>
                 </button>
             </div>
-            <div class="Inscrivez-vous"> déjà membre ? <a href="/sign-in">Connectez-vous</a></div>
+            <div class="Inscrivez-vous"> déjà membre ? <a (click)="gotosingin()" class="link">Connectez-vous</a></div>
 
 
         </div>

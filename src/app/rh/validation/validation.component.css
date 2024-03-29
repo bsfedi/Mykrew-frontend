@@ -122,6 +122,7 @@ body {
 
 }
 
+
 .profil1 {
     width: 13rem;
     height: 3.125rem;
@@ -325,15 +326,17 @@ input[type='checkbox'] {
 
 .second-item {}
 
-.profil {
 
-    height: 3.125rem;
+.profil {
     margin-left: 10px;
+    height: 3.125rem;
+    width: 10rem;
     border-radius: 1.5625rem;
     background: #fef9f1;
     display: flex;
     float: right;
 }
+
 
 .profil img {
     border-radius: 100%;
@@ -357,7 +360,6 @@ input[type='checkbox'] {
 }
 
 .right-item {
-    width: 80%;
     float: right;
     display: row;
 
@@ -374,13 +376,15 @@ input[type='checkbox'] {
     margin-top: 15px;
     margin-left: 8px;
     color: #000;
-
+    width: 100%;
+    margin-right: 10px;
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 100%;
     /* 1rem */
 }
+
 
 .historique .text {
     color: #000;

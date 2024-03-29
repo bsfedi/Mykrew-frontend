@@ -11,15 +11,21 @@
   padding: 50px;
 }
 
-.title {
-  color: #000;
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.5fr 250fr 0.5fr;
+  font-family: "Poppins", sans-serif !important;
+}
 
-  font-size: 1.25rem;
+.title {
+
+  margin-top: 7px;
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
-  margin-bottom: 30px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
 }
@@ -34,6 +40,10 @@
 
 .Tableau {
   display: flex;
+}
+
+table {
+  width: 130%;
 }
 
 .board-item {
@@ -74,13 +84,24 @@ svg {
   /* 1.125rem */
 }
 
+.pagination {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  text-align: right;
+}
+
 .faq-sedeconnecter {
   margin-top: 250px;
 }
 
 .second-container {
   margin-left: 240px;
-
+  margin-right: 20px;
+  margin-bottom: 50px;
+  width: 56%;
+  height: autp;
   flex-wrap: 1;
   flex-grow: 1;
   flex-shrink: 0;
@@ -218,8 +239,7 @@ input[type="search"]:focus {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.second-item {
-}
+.second-item {}
 
 .profil {
   width: 12rem;
@@ -547,6 +567,7 @@ input[type="password"] {
   margin: 20px;
   margin-left: 30px;
 }
+
 .telecharger {
   cursor: pointer;
   display: flex;
@@ -569,6 +590,7 @@ input[type="password"] {
   width: 70%;
   height: 65%;
 }
+
 .telecharger svg {
   padding: 2px;
   width: 18px;

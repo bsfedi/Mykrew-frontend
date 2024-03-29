@@ -6,21 +6,28 @@
 
 .left-panel {
   padding: 3px;
-  flex: 1;
+  width: 60%;
   position: relative;
   height: 96.97vh;
+}
+
+.link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .text-overlay {
   position: absolute;
   top: 80%;
-  left: 40%;
+  left: 30%;
   transform: translate(-40%, -50%);
   color: white;
 
   z-index: 2;
-  width: 35.5rem;
-  color: #fff;
+  width: 33rem;
+  color: #FFF;
+
 
   font-size: 2.5rem;
   font-style: normal;
@@ -58,6 +65,8 @@
 
 .form-container {
   width: 420px;
+  margin-left: -80px;
+
 }
 
 .image img {
@@ -78,12 +87,13 @@
 }
 
 .form-panel {
-  flex: 0.7;
+
   padding-top: 150px;
-  padding-left: 80px;
+  padding-left: -200px;
   display: row;
   justify-content: center;
   align-items: center;
+
 }
 
 .error-message {

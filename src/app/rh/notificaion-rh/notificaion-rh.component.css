@@ -210,7 +210,7 @@ input[type="search"]:focus {
   min-height: 140px;
   flex-shrink: 0;
   border-radius: 0.6875rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #EAE3D5;
   background: #f9fafc;
 }
 
@@ -319,7 +319,7 @@ input[type="checkbox"] {
 
   flex-shrink: 0;
   border-radius: 0.4375rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #EAE3D5;
   margin-top: 15px;
   float: right;
   min-height: 293px;

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Add this line
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   standalone: true,
   selector: 'app-left-bar',
@@ -41,34 +42,34 @@ export class LeftBarComponent {
 
 
   gottodashboard() {
-    this.router.navigate(['dashboard'])
+    this.router.navigate([clientName + '/dashboard'])
   }
   gotomission() {
-    this.router.navigate(['/consultant/missions'])
+    this.router.navigate([clientName + '/consultant/missions'])
 
   }
   gotovirment() {
-    this.router.navigate(['/consultant/virements'])
+    this.router.navigate([clientName + '/consultant/virements'])
 
   }
   gottoallcras() {
-    this.router.navigate(['/allcras'])
+    this.router.navigate([clientName + '/allcras'])
   }
   goinfopersot() {
-    this.router.navigate(['/consultant/infoperso'])
+    this.router.navigate([clientName + '/consultant/infoperso'])
   }
   gomyprofil() {
-    this.router.navigate(['/edit-profil'])
+    this.router.navigate([clientName + '/edit-profil'])
   }
   goallConsultants() {
-    this.router.navigate(['/allConsultants'])
+    this.router.navigate([clientName + '/allConsultants'])
   }
   gototjm() {
-    this.router.navigate(['/tjmrequests'])
+    this.router.navigate([clientName + '/tjmrequests'])
 
   }
   gotomembres() {
-    this.router.navigate(['/members'])
+    this.router.navigate([clientName + '/members'])
 
   }
   role: any
@@ -84,7 +85,7 @@ export class LeftBarComponent {
   }
   clearLocalStorage() {
     localStorage.clear();
-    this.router.navigate(['/sign-in'])
+    this.router.navigate([clientName + '/sign-in'])
   }
 }
 

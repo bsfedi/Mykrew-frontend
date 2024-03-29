@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif !important;
-  font-size: 14px;
+
   margin: 0;
   padding: 0;
 
@@ -8,6 +8,12 @@ body {
   border-radius: 0.875rem;
   height: auto;
   padding-bottom: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.5fr 250fr 0.5fr;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .right-item {

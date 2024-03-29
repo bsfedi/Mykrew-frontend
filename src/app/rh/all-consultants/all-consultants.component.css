@@ -19,6 +19,20 @@ body {
   padding: 50px;
 }
 
+.selected {
+  display: flex;
+  width: auto;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid #eae3d5;
+  margin: 3.25px;
+  padding: 3.25px 8px 3.25px 8px;
+  background-color: #fefcf1;
+  /* Change to whatever color you want */
+}
+
 .title {
   margin-top: 7px;
 
@@ -212,10 +226,6 @@ input[type="search"]:focus {
   margin-top: 23px;
 }
 
-.profil1 svg {
-  width: 32px;
-  height: 31px;
-}
 
 .demande1 svg {
   width: 32px;
@@ -233,7 +243,7 @@ input[type="search"]:focus {
   min-height: 140px;
   flex-shrink: 0;
   border-radius: 0.6875rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #EAE3D5;
   background: #f9fafc;
 }
 
@@ -297,6 +307,12 @@ input[type="checkbox"] {
   color: rgba(29, 29, 29, 0.5);
 }
 
+.profil1 svg {
+  width: 32px;
+  height: 31px;
+}
+
+
 .profil {
   margin-left: 10px;
   height: 3.125rem;
@@ -341,7 +357,7 @@ input[type="checkbox"] {
 
   flex-shrink: 0;
   border-radius: 0.4375rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #EAE3D5;
   margin-top: 15px;
   float: right;
   min-height: 293px;

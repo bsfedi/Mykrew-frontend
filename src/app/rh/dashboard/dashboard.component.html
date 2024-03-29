@@ -3,21 +3,7 @@
     <app-left-bar> </app-left-bar>
     <div class="second-container">
       <div class="title">Tableau de bord - RH</div>
-      <!-- <div class="search-bar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-            fill="#1E1E1E" />
-        </svg>
-        <div class="Search-text">
-          <input type="search" placeholder="Search Anything Here..." />
-        </div>
-        <div>
-          <button class="button">Rechercher</button>
-        </div>
-      </div> -->
-
-      <div id="chart">
+      <div id="chart" style="margin-left: 20px ">
         <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
           [dataLabels]="chartOptions.dataLabels" [yaxis]="chartOptions.yaxis" [colors]="chartOptions.colors"
           [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
@@ -86,15 +72,26 @@
         </div>
         <div class="dropdown-menu" style="margin: 60px 0px 0px 10px;" *ngIf="isMenuOpen1">
           <!-- Menu items go here -->
+          <div style="display: flex; cursor: pointer" (click)="resetFilter()">
+            <div [ngClass]="{'selected': selectedItem === 'reset' , 'first': selectedItem != 'reset'}">
+              <svg (click)='resetFilter()' style="margin-top: 0px;cursor: pointer;;" xmlns="http://www.w3.org/2000/svg"
+                width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+              </svg>
+              <div>Aucun filter</div>
+            </div>
+          </div>
           <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('date')">
-            <div class="first">
+            <div [ngClass]="{'selected': selectedItem === 'date' , 'first': selectedItem != 'date'}">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <div>Trier: Date de la demande</div>
+              <div>Trier par date de la demande</div>
               <svg *ngIf="sortDirection === 'asc'  " xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -108,19 +105,19 @@
             </div>
           </div>
           <div style="display: flex; cursor: pointer" (click)="toggleSortDirection('alpha')">
-            <div class="first">
-
+            <div [ngClass]="{'selected': selectedItem === 'alpha' , 'first': selectedItem != 'alpha'}">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M1.5 2.5L12.5 2.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M6 11.5H8" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M3 5.5L11 5.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M4.5 8.5L9.5 8.5" stroke="#171A1F" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <div>Trier: Ordre alphabétique</div>
+              <div>Trier par ordre alphabétique</div>
               <span style="margin-left: 20px;">{{sortDirectionAlpha}}</span>
             </div>
           </div>
         </div>
+
         <!--   <div class="first">
           <div style="margin-right: 5px; cursor: pointer;" (click)="gotocdashboad()">Tous les Consultants
           </div>
@@ -137,15 +134,10 @@
           </svg>
           <input type="search" placeholder="rechercher un consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
         </div>
-        <svg (click)='resetFilter()' style="margin-top: 10px;cursor: pointer;;" xmlns="http://www.w3.org/2000/svg"
-          width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
-          <path
-            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
-        </svg>
-        <div class="Tableau" style="margin-left: 39.5%;">
 
-          <div class="first" (click)="exportTable()">Export list</div>
+        <div class="Tableau export" (click)="exportTable()">
+
+          <div class="first">Export list</div>
         </div>
       </div>
 
@@ -195,7 +187,7 @@
             </td>
             <td>
               <div>
-                <div>
+                <div class="dropdown">
                   <div style="margin-left: 8px">
                     <div>
                       <span (click)="toggleMenu(i)">
@@ -205,7 +197,7 @@
                             fill="black" />
                         </svg>
                       </span>
-                      <div *ngIf="isMenuOpen[i]" class="dropdown-menu">
+                      <div class="dropdown-content">
                         <!-- Menu items go here -->
                         <div style="display: flex; cursor: pointer" *ngIf="item.status === 'PENDING'">
                           <img src="/assets/Checkmark.svg" width="12%" />

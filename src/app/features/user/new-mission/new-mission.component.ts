@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-new-mission',
   templateUrl: './new-mission.component.html',
@@ -65,9 +67,9 @@ export class NewMissionComponent {
             next: (res) => {
               // Handle the response from the server
               console.log(res);
-              // this.router.navigate(['/client']);
-              // this.router.navigate(['/informations/' + res._id]);
-              this.router.navigate(['/consultant/missions'])
+              // this.router.navigate([clientName +'/client']);
+              // this.router.navigate([clientName +'/informations/' + res._id]);
+              this.router.navigate([clientName + '/consultant/missions'])
             },
             error: (e) => {
               // Handle errors

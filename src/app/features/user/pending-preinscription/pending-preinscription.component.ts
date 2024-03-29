@@ -6,7 +6,8 @@ import { UserService } from 'src/app/services/user.service';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 
 @Component({
   selector: 'app-pending-preinscription',
@@ -53,7 +54,7 @@ export class PendingPreinscriptionComponent {
               this.contractValidation = res1.contractValidation
               this.jobCotractEdition = res1.jobCotractEdition
               if (this.validation_rh == 'VALIDATED' && this.clientValidation == 'VALIDATED' && this.contactClient == 'VALIDATED' && this.contractValidation == 'VALIDATED' && this.jobCotractEdition == 'VALIDATED') {
-                this.router.navigate(['/consultant/missions']);
+                this.router.navigate([clientName + '/consultant/missions']);
               }
 
 
@@ -79,7 +80,7 @@ export class PendingPreinscriptionComponent {
   }
 
   navigatetoinfomations() {
-    this.router.navigate(['/informations/' + this.res._id])
+    this.router.navigate([clientName + '/informations/' + this.res._id])
 
   }
 }
