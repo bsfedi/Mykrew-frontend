@@ -68,6 +68,7 @@
 }
 
 .message-container {
+  cursor: pointer;
   display: flex;
   background: #fff;
   border-radius: 1rem;
@@ -80,7 +81,7 @@
   height: 2.25rem;
   flex-shrink: 0;
   border-radius: 1.125rem;
-  background: #136f63;
+  background: #f9f1d6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +90,8 @@
 }
 
 .avatar-text {
-  color: #fff;
+  color: #9095a0;
+  ;
   font-size: 1rem;
   font-weight: bold;
 }

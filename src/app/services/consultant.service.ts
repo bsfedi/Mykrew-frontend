@@ -287,6 +287,12 @@ export class ConsultantService {
     return this.http.get(baseUrl + 'user/getConsultantusers');
   }
 
+  deleteconsultant(id: any) {
+
+    // Include headers if provided
+    return this.http.delete(baseUrl + 'user/delete/' + id);
+  }
+
   updateAccountVisibility(id: any, data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided
     const options = headers ? { headers } : {};

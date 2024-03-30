@@ -112,15 +112,17 @@
         <tbody>
           <tr *ngFor="let item of getDisplayedNotifications(); let i = index"
             style="height: auto; text-align: left; cursor: pointer;" [ngClass]="{ 'seen-background': item.isSeen }">
+
             <td class="Tableau" style="height: auto; text-align: left;width: 300px;">
               <!-- *ngIf="item.isAvtivated"-->
-              <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'">
+              <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'" (click)="detailsmission(item._id,item.missionId)">
                 Mission Annulée
               </div>
-              <div *ngIf="item.typeOfNotification == 'MISSIONVALID'">
+              <div *ngIf="item.typeOfNotification == 'MISSIONVALID'" (click)="detailsmission(item._id,item.missionId)">
                 Mission Validée
               </div>
-              <div *ngIf="item.typeOfNotification == 'MISSIONNOTVALID'">
+              <div *ngIf="item.typeOfNotification == 'MISSIONNOTVALID'"
+                (click)="detailsmission(item._id,item.missionId)">
                 Mission Non Validée <br>
               </div>
               <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'">
@@ -145,7 +147,7 @@
 
         </tbody>
       </table>
-      <div class="pagination">
+      <div class="pagination" style="cursor: pointer;">
         <div (click)="previousPage()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-left" viewBox="0 0 16 16">

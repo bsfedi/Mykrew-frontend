@@ -150,6 +150,12 @@ export class AllnotificationsComponent {
     this.markNotificationAsSeen(notification_id)
     this.router.navigate([clientName + '/mission/' + _id])
   }
+  detailsmission(notification_id: any, _id: string) {
+    this.markNotificationAsSeen(notification_id)
+    this.router.navigate([clientName + '/consultant/details-mission/' + _id])
+  }
+
+
   gotovalidationtjm(notification_id: any, _id: string) {
     this.markNotificationAsSeen(notification_id)
     this.router.navigate([clientName + '/validated-tjmrequests/' + _id])

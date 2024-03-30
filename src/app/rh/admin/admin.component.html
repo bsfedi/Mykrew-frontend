@@ -173,6 +173,17 @@
                     </div>
                     <div class="dropdown-content">
                       <!-- Your dropdown content here -->
+                      <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div style="
+                          margin-top: 7px;
+                          margin-bottom: 10px;
+                          margin-left: 5px;
+                        ">
+                          Supprimer le compte
+                        </div>
+                      </div>
+
                       <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
                         *ngIf="rh.isAvtivated == true">
                         <img src="/assets/Checkmark.svg" width="12%" />
@@ -346,6 +357,16 @@
                       </div>
                     </div>
                     <div class="dropdown-content">
+                      <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div style="
+                         margin-top: 7px;
+                         margin-bottom: 10px;
+                         margin-left: 5px;
+                       ">
+                          Supprimer le compte
+                        </div>
+                      </div>
                       <!-- Your dropdown content here -->
                       <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
                         *ngIf="rh.isAvtivated == true">

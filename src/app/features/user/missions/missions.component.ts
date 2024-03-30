@@ -413,7 +413,7 @@ export class MissionsComponent {
             this.categories.push(this.formattedDate);
 
             const endDate = new Date(mission.missionInfo.endDate);
-            const client = mission.clientInfo.clientContact.firstName;
+            const client = mission.clientInfo.company;
             const tjm = mission.missionInfo.dailyRate;
             const timeDiff = endDate.getTime() - currentDate.getTime();
 

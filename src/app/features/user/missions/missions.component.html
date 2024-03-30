@@ -40,8 +40,8 @@
               <b> En cours</b>
             </div>
             <div class="Tableau" style="margin-left: 15px; margin-top: 15px; color: #cdc7b9">
-              <div>chez {{ clientofcurrentmission }}</div>
-              <div style="margin-left: 30px">
+              <div *ngIf="clientofcurrentmission">chez : {{ clientofcurrentmission }}</div>
+              <div *ngIf="tjmofcurrentmission" style="margin-left: 8px">
                 TJM : {{ tjmofcurrentmission }}€
               </div>
             </div>
@@ -55,17 +55,20 @@
         </div>
         <div class="tjm_moyen">
           <div class="chaffaire">Date de fin de mission</div>
-          <div style="margin-left: 13px; font-size: 25px; margin-top: 17px">
+          <div *ngIf="daysDiff" style="margin-left: 13px; font-size: 25px; margin-top: 17px">
             <b>
               {{ formatDate(closestEndDate) }}
             </b>
           </div>
 
-          <div class="dashboard-card-count" style="display: flex; margin-top: 15px">
+          <div *ngIf="daysDiff" class="dashboard-card-count" style="display: flex; margin-top: 15px">
             <div class="chaffaire week">Il reste encore</div>
             <div class="percentage-change" style="margin-left: 10px">
               {{ daysDiff }} jours
             </div>
+          </div>
+          <div *ngIf="!daysDiff" style="margin-left: 13px; font-size: 25px; margin-top: 17px">
+            <div> <b> Aucune mission en cours </b></div>
           </div>
         </div>
       </div>
@@ -159,7 +162,7 @@
         En cours ({{ validated_mission.length }})
       </div>
       <br />
-      <table>
+      <!-- <table>
         <thead>
           <tr>
             <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
@@ -243,7 +246,7 @@
                       Modifier TJM
                     </div>
                   </div>
-                  <div style="display: flex; cursor: pointer" *ngIf="item.craInformation.selectedDates.length == 0">
+                  <div style="display: flex; cursor: pointer">
                     <img src="/assets/Checkmark.svg" width="12%" />
                     <div (click)="gotocra(item._id)" style="
                         margin-top: 7px;
@@ -253,7 +256,7 @@
                       CRA
                     </div>
                   </div>
-                  <div style="display: flex; cursor: pointer" *ngIf="item.craInformation.selectedDates.length != 0">
+                  <div style="display: flex; cursor: pointer">
                     <img src="/assets/Checkmark.svg" width="12%" />
                     <div (click)="deposercra(item._id)" style="
                         margin-top: 7px;
@@ -270,7 +273,210 @@
 
           </tr>
         </tbody>
+      </table> -->
+      <table>
+        <thead>
+          <tr>
+            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
+            <th>Métier</th>
+            <th>Client</th>
+            <th>Secteur</th>
+            <th>TJM</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Afficher d'abord les éléments avec le statut "en cours" -->
+          <ng-container *ngFor="let item of getDisplayeddocs()">
+            <tr *ngIf="isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
+              <td>
+                <div class="encours">en cours</div>
+              </td>
+              <td>
+                {{ item.missionInfo.profession }}
+              </td>
+              <td>
+                {{ item.clientInfo.company }}
+              </td>
+              <td>
+                {{ item.missionInfo.industrySector }}
+              </td>
+              <td>
+                {{ item.missionInfo.dailyRate }}
+              </td>
+              <td>
+                {{ formatDate(item.missionInfo.startDate.split('T')[0]) }}
+              </td>
+              <td>
+                {{ formatDate(item.missionInfo.endDate.split('T')[0]) }}
+              </td>
+              <td style="cursor: pointer" class="dropdown">
+
+                <div>
+                  <div>
+                    <div style="margin-left: 8px">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                            fill="black" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-content">
+                  <div class="dropdown-menu">
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="gotovalidation(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                        Voir details
+
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="openPopup(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                        Modifier TJM
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="gotocra(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                        CRA
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="deposercra(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                        Déposer fichier CRA
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </td>
+            </tr>
+          </ng-container>
+          <!-- Afficher ensuite les éléments avec d'autres statuts -->
+          <ng-container *ngFor="let item of getDisplayeddocs()">
+            <tr *ngIf="!isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
+
+              <td>
+                <div *ngIf="isDateToday(item.missionInfo.endDate.split('T')[0])">
+                  <div class="done">Terminé</div>
+                </div>
+                <div *ngIf="
+                      isDateBeforeToday(item.missionInfo.endDate.split('T')[0])
+                    ">
+                  <div class="done">Terminé</div>
+                </div>
+              </td>
+              <td>
+                {{ item.missionInfo.profession }}
+              </td>
+              <td>
+                {{ item.clientInfo.company }}
+              </td>
+              <td>
+                {{ item.missionInfo.industrySector }}
+              </td>
+              <td>
+                {{ item.missionInfo.dailyRate }}
+              </td>
+              <td>
+                {{ formatDate( item.missionInfo.startDate.split("T")[0] ) }}
+              </td>
+              <td>
+                {{ formatDate( item.missionInfo.endDate.split("T")[0] ) }}
+              </td>
+              <td style="cursor: pointer" class="dropdown">
+                <div>
+                  <div>
+                    <div style="margin-left: 8px">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                            fill="black" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-content">
+                  <div class="dropdown-menu">
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="gotovalidation(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                        Voir details
+
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="openPopup(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                        Modifier TJM
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="gotocra(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                        CRA
+                      </div>
+                    </div>
+                    <div style="display: flex; cursor: pointer">
+                      <img src="/assets/Checkmark.svg" width="12%" />
+                      <div (click)="deposercra(item._id)" style="
+                            margin-top: 7px;
+                            margin-bottom: 10px;
+                            margin-left: 5px;
+                          ">
+                        Déposer fichier CRA
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </td>
+
+            </tr>
+
+          </ng-container>
+        </tbody>
       </table>
+
       <div class="pagination">
         <div (click)="previousPage()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -450,30 +656,31 @@
             font-weight: 600;
             line-height: 1.75rem; /* 155.556% */
           ">
-          Validées ({{ NotValidated_mission.length }})
+          Non validées ({{ NotValidated_mission.length }})
         </div>
-        <div [hidden]="hideMissions" (click)="toggleHide()" class="eye">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash"
-            viewBox="0 0 16 16">
-            <path
-              d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
-            <path
-              d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
-            <path
-              d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
-          </svg>
-        </div>
-        <div [hidden]="!hideMissions" (click)="toggleHide()" class="eye">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
-            viewBox="0 0 16 16">
-            <path
-              d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
-            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
-          </svg>
-        </div>
+
+      </div>
+      <div [hidden]="hideMissions" (click)="toggleHide()" class="eye">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash"
+          viewBox="0 0 16 16">
+          <path
+            d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+          <path
+            d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+          <path
+            d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+        </svg>
+      </div>
+      <div [hidden]="!hideMissions" (click)="toggleHide()" class="eye">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+          viewBox="0 0 16 16">
+          <path
+            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+        </svg>
       </div>
       <br />
-
+      <br />
       <table [hidden]="!hideMissions">
         <thead>
           <tr>
@@ -518,8 +725,8 @@
           </tr>
         </tbody>
       </table>
-      <div class="pagination">
-        <div (click)="previousPagenv()" style="cursor: pointer;">
+      <div class="pagination" [hidden]="!hideMissions">
+        <div (click)="previousPagenv()" style="cursor: pointer;" [hidden]="!hideMissions">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -530,8 +737,8 @@
         </div>
 
 
-        <span> {{ currentPagenv }} of {{ totalPagesnv }}</span>
-        <div (click)="nextPagenv()" style="cursor: pointer;">
+        <span [hidden]="!hideMissions"> {{ currentPagenv }} of {{ totalPagesnv }}</span>
+        <div (click)="nextPagenv()" style="cursor: pointer;" [hidden]="!hideMissions">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd"

@@ -153,12 +153,12 @@
                     <div class="label"> Pièce d'identité (CNI) :</div>
                     <div class="Tableau">
                         <div class="zoom" (click)="openidentificationDocumentInput()">
-                            <img *ngIf="identificationDocumentpdf" [src]="personalInfo.identificationDocument.value"
+                            <img *ngIf="!identificationDocumentpdf" [src]="personalInfo?.identificationDocument.value"
                                 [ngModel]="personalInfo?.identificationDocument.value"
                                 formControlName="identificationDocument" />
 
-                            <div *ngIf="!identificationDocumentpdf" class="Tableau">
-                                <div id="identificationDocumentpdf"> eeeeeeeee</div>
+                            <div *ngIf="identificationDocumentpdf" class="Tableau">
+                                <div id="identificationDocumentpdf"> </div>
                             </div>
 
 

@@ -69,7 +69,22 @@ export class AdminComponent {
     });
 
   }
+  deleteconsultant(id: any) {
+    this.consultantservice.deleteconsultant(id).subscribe({
+      next: (res) => {
+        Swal.fire('Success', 'le consultant supprimé avec succes', 'success');
 
+        // Handle the response from the server
+        console.log(res);
+        window.location.reload();
+        // Additional logic if needed
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+      },
+    });
+  }
   gotocdashboad() {
 
     this.router.navigate([clientName + '/allConsultants'])

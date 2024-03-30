@@ -194,8 +194,9 @@
                         </label>
                     </div>
                     <input *ngIf="!ribValue" type="text" placeholder="COMMENTAIRE" [(ngModel)]="commantaireribValue">
-                    <div class="label" *ngIf="personalInfo?.carInfo.hasCar.value == 'true'"> Permis : </div>
-                    <div class="Tableau" *ngIf="personalInfo?.carInfo.hasCar.value == 'true'">
+                    <div class="label" *ngIf="personalInfo?.carInfo.hasCar.value ===true"> Permis :
+                    </div>
+                    <div class="Tableau" *ngIf="personalInfo?.carInfo.hasCar.value === true">
                         <div class="zoom">
                             <img [src]="personalInfo?.carInfo.drivingLicense.value" />
                         </div>

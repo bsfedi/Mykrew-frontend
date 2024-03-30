@@ -157,7 +157,7 @@ export class MissionByIdComponent {
         }
       });
 
-      this.consultantservice.getMissionuserbyid(this.mission_id, this.headers).subscribe({
+      this.consultantservice.getMissionById(this.mission_id, this.headers).subscribe({
         next: (res) => {
 
           if (res.newMissionStatus == "VALIDATED") {

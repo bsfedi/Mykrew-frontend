@@ -17,7 +17,7 @@ export class PersonalDocComponent {
   myForm: FormGroup;
   DocPersolForm: FormGroup; // New FormGroup for additional section
   voitureForm: FormGroup;
-  selectedFile: File | null = null;
+  selectedFile: any | null = null;
   cin_img: string | null = null;
   selectedFile1: File | null = null;
   permis_img: string | null = null;
@@ -161,7 +161,11 @@ export class PersonalDocComponent {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (field == 'identificationDocument') {
+          console.log(this.selectedFile.name.split("."));
+
           this.cin_img = e.target!.result as string;
+          console.log(this.cin_img);
+
         }
         else if (field == 'drivingLicense') {
           this.permis_img = e.target!.result as string;

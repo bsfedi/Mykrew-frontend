@@ -45,7 +45,8 @@
           <div class="custom-file-input" (change)="setFileInput('identificationDocument', $event)"
             style="cursor: pointer">
             <label class="file-label" for="fileInput" style="cursor: pointer">
-              {{ fileName ? fileName : "Pièce d’identité (CNI)" }}
+
+              Pièce d’identité (CNI)
             </label>
 
             <div class="vertical-line"></div>
@@ -54,6 +55,7 @@
 
             <div class="upload-icon" onclick="document.getElementById('fileInput').click()">
               <div class="chose-file" *ngIf="!cin_img">
+
                 choisir un fichier <br />
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="icon-file"
                   fill="none">
@@ -72,14 +74,24 @@
                 </svg>
               </div>
               <div *ngIf="cin_img" style="align-items: center; text-align: center">
-                <img [src]="cin_img" alt="Selected Image" style="
+
+                <img *ngIf="cin_img.split('/')[1].split(';')[0]==='pdf'"
+                  src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                max-width: 320%;
+                max-height: 50px;
+                margin: 5px;
+                margin-top: 10px;
+              " />
+                <img *ngIf="cin_img.split('/')[1].split(';')[0]!='pdf'" [src]="cin_img" alt="Selected Image" style="
                     max-width: 320%;
                     max-height: 50px;
                     margin: 5px;
                     margin-top: 10px;
                   " />
               </div>
+
             </div>
+
           </div>
           <div class="error" *ngIf="
               DocPersolForm.get('idCardFile')?.invalid &&
@@ -114,13 +126,30 @@
                 </svg>
               </div>
               <div *ngIf="Passport_img" style="align-items: center; text-align: center">
-                <img [src]="Passport_img" alt="Selected Image" style="
+
+                <img *ngIf="Passport_img.split('/')[1].split(';')[0]==='pdf'"
+                  src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                max-width: 320%;
+                max-height: 50px;
+                margin: 5px;
+                margin-top: 10px;
+              " />
+                <img *ngIf="Passport_img.split('/')[1].split(';')[0]!='pdf'" [src]="Passport_img" alt="Selected Image"
+                  style="
                     max-width: 320%;
                     max-height: 50px;
                     margin: 5px;
                     margin-top: 10px;
                   " />
               </div>
+              <!-- <div *ngIf="Passport_img" style="align-items: center; text-align: center">
+                <img [src]="Passport_img" alt="Selected Image" style="
+                    max-width: 320%;
+                    max-height: 50px;
+                    margin: 5px;
+                    margin-top: 10px;
+                  " />
+              </div> -->
             </div>
           </div>
           <div class="error" *ngIf="
@@ -166,13 +195,30 @@
                   </svg>
                 </div>
                 <div *ngIf="ribdoc_img" style="align-items: center; text-align: center">
-                  <img src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+
+                  <img *ngIf="ribdoc_img.split('/')[1].split(';')[0]==='pdf'"
+                    src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                  max-width: 320%;
+                  max-height: 50px;
+                  margin: 5px;
+                  margin-top: 10px;
+                " />
+                  <img *ngIf="ribdoc_img.split('/')[1].split(';')[0]!='pdf'" [src]="ribdoc_img" alt="Selected Image"
+                    style="
                       max-width: 320%;
                       max-height: 50px;
                       margin: 5px;
                       margin-top: 10px;
                     " />
                 </div>
+                <!-- <div *ngIf="ribdoc_img" style="align-items: center; text-align: center">
+                  <img src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                      max-width: 320%;
+                      max-height: 50px;
+                      margin: 5px;
+                      margin-top: 10px;
+                    " />
+                </div> -->
               </div>
             </div>
           </div>
@@ -226,13 +272,30 @@
                   </svg>
                 </div>
                 <div *ngIf="permis_img" style="align-items: center; text-align: center">
-                  <img [src]="permis_img" alt="Selected Image" style="
+
+                  <img *ngIf="permis_img.split('/')[1].split(';')[0]==='pdf'"
+                    src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                  max-width: 320%;
+                  max-height: 50px;
+                  margin: 5px;
+                  margin-top: 10px;
+                " />
+                  <img *ngIf="permis_img.split('/')[1].split(';')[0]!='pdf'" [src]="permis_img" alt="Selected Image"
+                    style="
                       max-width: 320%;
                       max-height: 50px;
                       margin: 5px;
                       margin-top: 10px;
                     " />
                 </div>
+                <!-- <div *ngIf="permis_img" style="align-items: center; text-align: center">
+                  <img [src]="permis_img" alt="Selected Image" style="
+                      max-width: 320%;
+                      max-height: 50px;
+                      margin: 5px;
+                      margin-top: 10px;
+                    " />
+                </div> -->
               </div>
             </div>
           </form>

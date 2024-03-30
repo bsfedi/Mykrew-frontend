@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
+const clientName = `${environment.default}`;
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -9,7 +12,7 @@ import Swal from 'sweetalert2';
 export class ForgetPasswordComponent {
   email: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   forgetPassword() {
     const data = { email: this.email };
@@ -29,5 +32,11 @@ export class ForgetPasswordComponent {
         }
       }
     );
+  }
+  gotosingin() {
+    this.router.navigate([clientName + '/sign-up']);
+  }
+  gotosinguup() {
+    this.router.navigate([clientName + '/sign-up']);
   }
 }

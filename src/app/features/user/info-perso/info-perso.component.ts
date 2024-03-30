@@ -56,7 +56,7 @@ export class InfoPersoComponent {
     this.card = false
   }
 
-
+  pdfcontainer1: any
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
@@ -74,12 +74,48 @@ export class InfoPersoComponent {
           this.res = res
           console.log(this.res);
           this.res.carInfo.drivingLicense = baseUrl + "uploads/" + this.res.carInfo.drivingLicense
+          if (this.res.carInfo.drivingLicense.split('.')[1] = 'pdf') {
+            this.inscriptionservice.getPdf(this.res.carInfo.drivingLicense).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                console.log(this.pdfData);
 
+                this.pdfcontainer1 = true
+                if (this.pdfData) {
+                  this.handleRenderPdf1(this.pdfData);
+                }
+              },
+            });
+          }
           this.res.identificationDocument = baseUrl + "uploads/" + this.res.identificationDocument
+          if (this.res.identificationDocument.split('.')[1] = 'pdf') {
+            this.inscriptionservice.getPdf(this.res.identificationDocument).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                console.log(this.pdfData);
 
+                this.pdfcontainer1 = true
+                if (this.pdfData) {
+                  this.handleRenderPdf2(this.pdfData);
+                }
+              },
+            });
+          }
 
           this.res.ribDocument = baseUrl + "uploads/" + this.res.ribDocument
+          if (this.res.ribDocument.split('.')[1] = 'pdf') {
+            this.inscriptionservice.getPdf(this.res.ribDocument).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                console.log(this.pdfData);
 
+                this.pdfcontainer1 = true
+                if (this.pdfData) {
+                  this.handleRenderPdf3(this.pdfData);
+                }
+              },
+            });
+          }
 
 
 
@@ -174,6 +210,22 @@ export class InfoPersoComponent {
   handleRenderPdf(data: any) {
 
     const pdfObject = PDFObject.embed(data, '#pdfContainer');
+
+  }
+
+  handleRenderPdf1(data: any) {
+
+    const pdfObject = PDFObject.embed(data, '#pdfContainer1');
+
+  }
+  handleRenderPdf2(data: any) {
+
+    const pdfObject = PDFObject.embed(data, '#pdfContainer2');
+
+  }
+  handleRenderPdf3(data: any) {
+
+    const pdfObject = PDFObject.embed(data, '#pdfContainer3');
 
   }
   editIdentificationDocument(id: any) {
