@@ -18,6 +18,8 @@ import {
   ApexFill
 } from "ng-apexcharts";
 import Swal from 'sweetalert2';
+import { WebSocketService } from 'src/app/services/web-socket.service';
+import { UserService } from 'src/app/services/user.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -76,7 +78,7 @@ export class MissionsComponent {
   cra: string | null = null;
   deposer: any;
   show_chart: boolean = false
-  constructor(private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router, private datePipe: DatePipe) {
+  constructor(private consultantservice: ConsultantService, private fb: FormBuilder, private userservice: UserService, private socketService: WebSocketService, private router: Router, private datePipe: DatePipe) {
     // Ensure that the items array is correctly populated here if needed.
 
     this.getCurrentDate();
@@ -97,7 +99,12 @@ export class MissionsComponent {
     });
   }
 
-
+  gotomyprofile() {
+    this.router.navigate([clientName + '/edit-profil'])
+  }
+  gotoallnotification() {
+    this.router.navigate([clientName + '/consultant/allnotifications'])
+  }
   getCurrentDate() {
     this.currentDate = new Date();
     console.log(this.currentDate);
@@ -145,7 +152,14 @@ export class MissionsComponent {
     // Assume it's in the 'YYYY-MM-DD' format
     return new Date(dateToParse);
   }
-
+  new_notif: any
+  nblastnotifications: any
+  lastnotifications: any
+  pdfcontainer1: any
+  notification: string[] = [];
+  shownotiff: boolean = false
+  res: any
+  res1: any
   ngOnInit(): void {
     this.user_id = localStorage.getItem('user_id')
     this.consultantservice.virementstatusbar(this.user_id).subscribe({
@@ -319,7 +333,57 @@ export class MissionsComponent {
     const token = localStorage.getItem('token');
 
     this.user_id = localStorage.getItem('user_id');
+    this.new_notif = localStorage.getItem('new_notif');
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
 
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
+        this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
+      }
+
+      // Handle your rhNotification event here
+    });
+    this.consultantservice.getallnotification(this.user_id).subscribe({
+      next: (res1) => {
+        this.res1 = res1
+        this.nblastnotifications = this.res1.length
+        this.lastnotifications = this.res1
+
+      },
+      error: (e) => {
+        this.nblastnotifications = 0
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+    this.userservice.getpersonalinfobyid(this.user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     // Check if token is available
     if (token) {
       console.log(token);

@@ -1,8 +1,8 @@
-<div class="profil">
+<!-- <div class="profil">
   <img src="/assets/avatar-user.png" width="15%" height="10%" />
   <div class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>
 
-</div>
+</div> -->
 
 <body>
   <div class="right-item">
@@ -20,16 +20,9 @@
         </svg>
       </div>
       <div class="message-text">Messages Importants</div>
-      <div class="icon-container" style="margin-left: 145px;float: right;cursor: pointer;"
+      <div class="icon-container" style="margin-left: 130px;float: right;cursor: pointer;color: #9095a0;"
         (click)="gotoallnotification()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-          <path
-            d="M4.3 11.4252C5.08701 11.4252 5.725 10.7872 5.725 10.0002C5.725 9.21319 5.08701 8.5752 4.3 8.5752C3.51299 8.5752 2.875 9.21319 2.875 10.0002C2.875 10.7872 3.51299 11.4252 4.3 11.4252Z" />
-          <path
-            d="M10.0002 11.4252C10.7872 11.4252 11.4252 10.7872 11.4252 10.0002C11.4252 9.21319 10.7872 8.5752 10.0002 8.5752C9.21319 8.5752 8.5752 9.21319 8.5752 10.0002C8.5752 10.7872 9.21319 11.4252 10.0002 11.4252Z" />
-          <path
-            d="M15.6999 11.4252C16.4869 11.4252 17.1249 10.7872 17.1249 10.0002C17.1249 9.21319 16.4869 8.5752 15.6999 8.5752C14.9129 8.5752 14.2749 9.21319 14.2749 10.0002C14.2749 10.7872 14.9129 11.4252 15.6999 11.4252Z" />
-        </svg>
+        <b> Voir tout</b>
       </div>
     </div>
 
@@ -167,15 +160,9 @@
         </svg>
       </div>
       <div class="message-text">Activités Récentes</div>
-      <div class="icon-container1" style=" cursor: pointer;" (click)="gotoallnotification()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-          <path
-            d="M4.3 11.4252C5.08701 11.4252 5.725 10.7872 5.725 10.0002C5.725 9.21319 5.08701 8.5752 4.3 8.5752C3.51299 8.5752 2.875 9.21319 2.875 10.0002C2.875 10.7872 3.51299 11.4252 4.3 11.4252Z" />
-          <path
-            d="M10.0002 11.4252C10.7872 11.4252 11.4252 10.7872 11.4252 10.0002C11.4252 9.21319 10.7872 8.5752 10.0002 8.5752C9.21319 8.5752 8.5752 9.21319 8.5752 10.0002C8.5752 10.7872 9.21319 11.4252 10.0002 11.4252Z" />
-          <path
-            d="M15.6999 11.4252C16.4869 11.4252 17.1249 10.7872 17.1249 10.0002C17.1249 9.21319 16.4869 8.5752 15.6999 8.5752C14.9129 8.5752 14.2749 9.21319 14.2749 10.0002C14.2749 10.7872 14.9129 11.4252 15.6999 11.4252Z" />
-        </svg>
+      <div class="icon-container1" style="margin-left: 150px;float: right;cursor: pointer;color: #9095a0;"
+        (click)="gotoallnotification()">
+        <b> Voir tout</b>
       </div>
     </div>
     <div *ngFor="let notif of lastnotificationsvir">

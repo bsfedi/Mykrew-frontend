@@ -1,4 +1,4 @@
-<div class="wrapper" style="font-family: 'Poppin', sans-serif !important;">
+<div class="container" style="font-family: 'Poppin', sans-serif !important;">
   <app-left-bar></app-left-bar>
   <div class="second-container">
     <div class="title">
@@ -259,9 +259,19 @@
       </div>
     </div>
     <h3 class="title">Autres documents</h3>
-    <button (click)="card_view()" *ngIf="!card" style="width:20%;margin-left: 108%;"> Grille </button>
-    <button (click)="list_view()" *ngIf="card" style="width:20%;margin-left: 109%;"> List</button>
-    <div *ngIf="!card" style="display: flex; flex-wrap: wrap; min-width: 860px;margin-left: 25px;">
+
+    <button (click)="card_view()" *ngIf="!card" class="Grille" [ngClass]="{
+      Grille1: shownotiff == false,
+
+    }"> Grille </button>
+    <button (click)="list_view()" *ngIf="card" class="Grille" [ngClass]="{
+      Grille1: shownotiff == false,
+
+    }"> List</button>
+    <div *ngIf="!card" class="docs" [ngClass]="{
+        docs1: shownotiff == false,
+  
+      }">
       <div *ngFor="let item_doc of docs">
         <div class="doc">
           <div style="display: flex">
@@ -392,10 +402,52 @@
 
       </div>
     </div>
+
+
   </div>
 
   <div class="right-item">
+    <div style="display: flex;margin-bottom: 0px;">
+      <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">
+            <path
+              d="M23.2203 20.62C23.2203 21.47 22.5303 22.16 21.6803 22.16H8.32027C7.47027 22.16 6.78027 21.47 6.78027 20.62C6.78027 19.77 7.47027 19.08 8.32027 19.08H8.83027V13.94C8.83027 10.54 11.5903 7.77002 15.0003 7.77002C16.7003 7.77002 18.2403 8.46002 19.3603 9.58002C20.4803 10.69 21.1703 12.23 21.1703 13.94V19.08H21.6803C22.5303 19.08 23.2203 19.77 23.2203 20.62Z"
+              stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15 7.78V6.75" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
+              stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
+              *ngIf="notification.length > 0 || new_notif === 'true' " />
+          </svg>
+        </div>
+        <div>
+          <div style="width: 240px; margin-top: 10px; font-size: 0.8125rem">
+            <b> Toutes les notifications </b>
+          </div>
+          <div style="
+              color: rgba(0, 0, 0, 0.52);
+  
+              font-size: 0.8125rem;
+              font-style: normal;
+              font-weight: 400;
+  
+              line-height: 100%; /* 0.8125rem */
+            ">
+            {{ nblastnotifications }} notifications
+          </div>
+        </div>
 
-    <app-notification></app-notification>
+      </div>
+      <div class="profil" (click)="gotomyprofile()" style="cursor: pointer;">
+        <img src="/assets/avatar-user.png" width="15%" height="10%" />
+        <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
+
+        </div>
+
+      </div>
+    </div>
+    <app-notification *ngIf="shownotiff"></app-notification>
   </div>
 </div>

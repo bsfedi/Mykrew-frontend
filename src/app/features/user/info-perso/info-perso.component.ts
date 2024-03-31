@@ -7,6 +7,8 @@ declare const PDFObject: any;
 import { environment } from 'src/environments/environment';
 import { ConsultantService } from 'src/app/services/consultant.service';
 import { DatePipe } from '@angular/common';
+import { WebSocketService } from 'src/app/services/web-socket.service';
+import { Router } from '@angular/router';
 
 const clientName = `${environment.default}`;
 const baseUrl = `${environment.baseUrl}`;
@@ -38,7 +40,7 @@ export class InfoPersoComponent {
   openfileInputdibInput() {
     this.fileInputdib.nativeElement.click();
   }
-  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private http: HttpClient, private datePipe: DatePipe) {
+  constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private router: Router, private socketService: WebSocketService, private userservice: UserService, private http: HttpClient, private datePipe: DatePipe) {
 
   }
   card_view() {
@@ -55,13 +57,46 @@ export class InfoPersoComponent {
   list_view() {
     this.card = false
   }
-
+  new_notif: any
+  nblastnotifications: any
+  lastnotifications: any
   pdfcontainer1: any
+  notification: string[] = [];
+  res1: any
+  shownotiff: boolean = false
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
+    this.new_notif = localStorage.getItem('new_notif');
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
 
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
+        this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
+      }
 
+      // Handle your rhNotification event here
+    });
+    this.consultantservice.getallnotification(user_id).subscribe({
+      next: (res1) => {
+        this.res1 = res1
+        this.nblastnotifications = this.res1.length
+        this.lastnotifications = this.res1
+
+      },
+      error: (e) => {
+        this.nblastnotifications = 0
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     // Check if token is available
     if (token) {
       // Include the token in the headers
@@ -177,6 +212,16 @@ export class InfoPersoComponent {
       }
     });
 
+  }
+  gotomyprofile() {
+    this.router.navigate([clientName + '/edit-profil'])
+  }
+  gotoallnotification() {
+    this.router.navigate([clientName + '/consultant/allnotifications'])
+  }
+  shownotif() {
+
+    this.shownotiff = !this.shownotiff
   }
   pageSize = 5; // Number of items per page
   currentPage = 1; // Current page

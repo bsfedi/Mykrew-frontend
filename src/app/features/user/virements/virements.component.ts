@@ -1,7 +1,11 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
+
+const clientName = `${environment.default}`;
+const baseUrl = `${environment.baseUrl}`;
 import { Router } from '@angular/router';
 import { ConsultantService } from 'src/app/services/consultant.service';
 
@@ -20,6 +24,7 @@ import {
 } from "ng-apexcharts";
 import { UserService } from 'src/app/services/user.service';
 import { DatePipe } from '@angular/common';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 
 
 export type ChartOptions = {
@@ -63,7 +68,7 @@ export class VirementsComponent {
   res: any
   stats: any
   show_chart: boolean = false
-  constructor(private userservice: UserService, private consultantservice: ConsultantService, private fb: FormBuilder, private router: Router, private datePipe: DatePipe) {
+  constructor(private userservice: UserService, private consultantservice: ConsultantService, private socketService: WebSocketService, private fb: FormBuilder, private router: Router, private datePipe: DatePipe) {
     // Ensure that the items array is correctly populated here if needed.
     this.user_id = localStorage.getItem('user_id')
     this.consultantservice.virementstatusbar(this.user_id).subscribe({
@@ -182,8 +187,78 @@ export class VirementsComponent {
 
 
   }
-  ngOnInit(): void {
+  new_notif: any
+  nblastnotifications: any
+  lastnotifications: any
+  pdfcontainer1: any
+  notification: string[] = [];
+  res1: any
+  res2: any
+  shownotiff: boolean = false
+  gotomyprofile() {
+    this.router.navigate([clientName + '/edit-profil'])
+  }
+  gotoallnotification() {
+    this.router.navigate([clientName + '/consultant/allnotifications'])
+  }
+  shownotif() {
 
+    this.shownotiff = !this.shownotiff
+  }
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    const user_id = localStorage.getItem('user_id')
+    this.new_notif = localStorage.getItem('new_notif');
+    this.socketService.connect()
+    // Listen for custom 'rhNotification' event in WebSocketService
+    this.socketService.onRhNotification().subscribe((event: any) => {
+      console.log(event);
+
+      if (event.notification.toWho == "RH") {
+        this.lastnotifications.push(event.notification.typeOfNotification)
+        this.nblastnotifications = this.lastnotifications.length
+        this.notification.push(event.notification.typeOfNotification)
+        localStorage.setItem('new_notif', 'true');
+      }
+
+      // Handle your rhNotification event here
+    });
+    this.consultantservice.getallnotification(user_id).subscribe({
+      next: (res1) => {
+        this.res1 = res1
+        this.nblastnotifications = this.res1.length
+        this.lastnotifications = this.res1
+
+      },
+      error: (e) => {
+        this.nblastnotifications = 0
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+    this.userservice.getpersonalinfobyid(this.user_id).subscribe({
+
+
+      next: (res) => {
+        // Handle the response from the server
+        this.res2 = res
+        console.log('inffffffffoooooo', this.res);
+
+
+
+
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
     this.userservice.getMyvirements(this.user_id).subscribe({
       next: (res) => {
         // Sort the response array by createdAt in ascending order

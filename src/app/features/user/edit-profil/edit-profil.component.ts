@@ -3,7 +3,12 @@ import { Component } from '@angular/core';
 import { InscriptionService } from 'src/app/services/inscription.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
+
+const clientName = `${environment.default}`;
+const baseUrl = `${environment.baseUrl}`;
 @Component({
   selector: 'app-edit-profil',
   templateUrl: './edit-profil.component.html',
@@ -22,7 +27,7 @@ export class EditProfilComponent {
   currentPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
-  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private http: HttpClient) {
+  constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -62,6 +67,9 @@ export class EditProfilComponent {
       });
 
     }
+  }
+  gotomyprofile() {
+    this.router.navigate([clientName + '/edit-profil'])
   }
   updateUser(): void {
     Swal.fire({

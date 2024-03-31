@@ -43,7 +43,7 @@
 }
 
 table {
-  width: 130%;
+  width: 100%;
 }
 
 .board-item {
@@ -239,17 +239,77 @@ input[type="search"]:focus {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.second-item {}
 
 .profil {
-  width: 12rem;
+  width: auto;
   height: 3.125rem;
+  margin-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
 
-  border-radius: 1.5625rem;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+  margin-right: 12px;
+}
+
+.profil1 svg {
+  width: 32px;
+  height: 31px;
+}
+
+.pending1 {
+  width: 75%;
+}
+
+.right-item {
+  height: 10px;
+}
+
+.docs {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 860px;
+  margin-left: 25px;
+}
+
+.Grille {
+  width: 20%;
+  margin-left: 80%;
+}
+
+.Grille1 {
+  width: 20%;
+  margin-left: 112%;
+}
+
+.docs1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1150px;
+  margin-left: 25px;
+}
+
+.profil1 {
+  width: 13rem;
+  height: 3.125rem;
+  margin-left: -20px;
+  border: 1px solid rgb(247, 227, 227);
+  border-radius: 15px;
   background: #fef9f1;
   display: flex;
   float: right;
 }
+
+.profil1 img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
 
 .profil img {
   border-radius: 100%;

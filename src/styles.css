@@ -137,7 +137,9 @@ tr td:first-child:contains("Nouvelle") {
 
 /* Adjust the ID column width */
 
-
+.profil {
+  border: 45%;
+}
 
 
 /* Style for the 'En attente' and 'Nouvelle' labels */

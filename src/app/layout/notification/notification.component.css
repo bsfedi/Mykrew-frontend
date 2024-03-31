@@ -1,7 +1,8 @@
 .right-item {
   font-family: "Poppins", sans-serif !important;
   font-size: 14px;
-  margin-top: 70px;
+
+
   background: #f8f9fa;
   border-radius: 0.875rem;
   height: auto;
@@ -43,8 +44,10 @@
   width: auto;
   height: 3.125rem;
   padding: 5px;
+  padding-right: 10px;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
 
-  border-radius: 1.5625rem;
   background: #fef9f1;
   display: flex;
   float: right;

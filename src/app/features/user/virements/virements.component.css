@@ -11,22 +11,20 @@
   padding: 50px;
 }
 
-.title {
-  color: #000;
 
-  font-size: 1.25rem;
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
-  margin-bottom: 30px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
 }
 
-#chart {
-  width: 840px;
-}
 
 .first-item {
   color: white;
@@ -59,13 +57,7 @@
   display: flex;
 }
 
-svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  padding: 10px;
-  padding-top: 10px;
-}
+
 
 .bord-text {
   color: #fefcf1;
@@ -224,15 +216,57 @@ input[type="search"]:focus {
 
 .second-item {}
 
-.profil {
-  width: 12rem;
-  height: 3.125rem;
 
-  border-radius: 1.5625rem;
+svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+.profil {
+  width: auto;
+  height: 3.125rem;
+  margin-left: 10px;
+  padding-right: 10px;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
+
+  background: #fef9f1;
+  display: flex;
+  float: right;
+  margin-right: 12px;
+}
+
+.profil1 svg {
+  width: 32px;
+  height: 31px;
+}
+
+.right-item {
+  width: 28%;
+}
+
+.profil1 {
+  width: 13rem;
+  height: 3.125rem;
+  margin-left: -20px;
+  border: 1px solid rgb(247, 227, 227);
+  border-radius: 15px;
   background: #fef9f1;
   display: flex;
   float: right;
 }
+
+.profil1 img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
 
 .profil img {
   border-radius: 100%;
@@ -255,19 +289,7 @@ input[type="search"]:focus {
   padding-bottom: 10px;
 }
 
-.right-item {
-  width: 25%;
-  float: right;
-  margin-left: 30px;
-  display: row;
-}
 
-.svg {
-  margin-top: 8px;
-  width: 0.625rem;
-  height: 0.625rem;
-  flex-shrink: 0;
-}
 
 .nom-prenom {
   margin-top: 15px;
@@ -280,6 +302,7 @@ input[type="search"]:focus {
   line-height: 100%;
   /* 1rem */
 }
+
 
 .historique .text {
   color: #000;
