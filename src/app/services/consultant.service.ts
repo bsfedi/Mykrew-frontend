@@ -299,6 +299,12 @@ export class ConsultantService {
     // Include headers if provided
     return this.http.put(baseUrl + 'user/updateAccountVisibility/' + id, data, options);
   }
+  updateconsultantstauts(id: any, data: any, headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+    // Include headers if provided
+    return this.http.put(baseUrl + 'registration/updateconsultantstauts/' + id, data, options);
+  }
 
   updateUserByAdmin(id: any, data: any, headers?: HttpHeaders): Observable<any> {
     // Include headers if provided

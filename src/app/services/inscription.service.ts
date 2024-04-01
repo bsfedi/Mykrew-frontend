@@ -70,6 +70,13 @@ export class InscriptionService {
     return this.http.get(baseUrl + 'registration/getValidated', options);
 
   }
+  getarichivedPreregisters(headers?: HttpHeaders): Observable<any> {
+    // Include headers if provided
+    const options = headers ? { headers } : {};
+
+    return this.http.get(baseUrl + 'registration/archived', options);
+
+  }
 
 
   rhvalidation(id_preinscription: any, data: any, headers?: HttpHeaders): Observable<any> {

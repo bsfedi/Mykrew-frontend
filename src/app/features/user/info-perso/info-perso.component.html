@@ -272,7 +272,7 @@
         docs1: shownotiff == false,
   
       }">
-      <div *ngFor="let item_doc of docs">
+      <div *ngFor="let item_doc of docs; let i = index">
         <div class="doc">
           <div style="display: flex">
             <div class="cercle">
@@ -305,7 +305,7 @@
               {{ item_doc.documentName }}
             </div>
           </div>
-          <div *ngIf="item_doc.pdf" id="pdfContainer" class="pdfContainer"
+          <div *ngIf="item_doc.pdf" id="pdfContainer{{ i }}" class="pdfContainer"
             (click)=" downloadDocument(item_doc.document, item_doc.documentName)"></div>
 
           <img *ngIf="!item_doc.pdf" [src]="item_doc.document" width="80%" height="50%"
@@ -340,7 +340,10 @@
       </div>
     </div>
     <div *ngIf="card">
-      <table class="table">
+      <table class="table" [ngClass]="{
+        table1: shownotiff == false,
+  
+      }">
         <thead>
           <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
 
@@ -377,7 +380,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="pagination" style="margin-right: -32%;">
+      <div class="pagination" [ngClass]="{
+        pagination1: shownotiff == false,
+  
+      }">
         <div (click)="previousPage()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-left" viewBox="0 0 16 16">

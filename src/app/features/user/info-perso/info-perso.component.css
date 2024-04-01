@@ -46,6 +46,10 @@ table {
   width: 100%;
 }
 
+.table1 {
+  width: 132%;
+}
+
 .board-item {
   width: 12.875rem;
   height: 3rem;
@@ -65,13 +69,6 @@ table {
   display: flex;
 }
 
-svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  padding: 10px;
-  padding-top: 10px;
-}
 
 .bord-text {
   color: #fefcf1;
@@ -89,6 +86,16 @@ svg {
   /* Adjust the spacing between the table and pagination */
   display: flex;
   float: right;
+  text-align: right;
+}
+
+
+.pagination1 {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  margin-right: -250px;
   text-align: right;
 }
 
@@ -240,6 +247,14 @@ input[type="search"]:focus {
 }
 
 
+svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  padding: 10px;
+  padding-top: 10px;
+}
+
 .profil {
   width: auto;
   height: 3.125rem;
@@ -257,6 +272,34 @@ input[type="search"]:focus {
 .profil1 svg {
   width: 32px;
   height: 31px;
+}
+
+.profil1 {
+  width: 13rem;
+  height: 3.125rem;
+  margin-left: -20px;
+  border: 1px solid rgb(247, 227, 227);
+  border-radius: 15px;
+  background: #fef9f1;
+  display: flex;
+  float: right;
+}
+
+.profil1 img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+
+.profil img {
+  border-radius: 100%;
+  width: 2.625rem;
+  height: 2.175rem;
+  margin-left: 15px;
+  margin-top: 8px;
 }
 
 .pending1 {
@@ -291,33 +334,6 @@ input[type="search"]:focus {
   margin-left: 25px;
 }
 
-.profil1 {
-  width: 13rem;
-  height: 3.125rem;
-  margin-left: -20px;
-  border: 1px solid rgb(247, 227, 227);
-  border-radius: 15px;
-  background: #fef9f1;
-  display: flex;
-  float: right;
-}
-
-.profil1 img {
-  border-radius: 100%;
-  width: 2.625rem;
-  height: 2.175rem;
-  margin-left: 15px;
-  margin-top: 8px;
-}
-
-
-.profil img {
-  border-radius: 100%;
-  width: 2.625rem;
-  height: 2.175rem;
-  margin-left: 15px;
-  margin-top: 8px;
-}
 
 .historique {
   width: 21.3125rem;

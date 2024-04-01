@@ -362,6 +362,9 @@ export class ConsultantMissionComponent {
   openPopup1(): void {
     this.showPopup1 = true;
   }
+  gotomissions(_id: string) {
+    this.router.navigate([clientName + '/missions/' + _id])
+  }
   openPopup3(): void {
     this.showPopup3 = true;
   }

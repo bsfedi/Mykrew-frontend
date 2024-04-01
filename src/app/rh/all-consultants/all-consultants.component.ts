@@ -42,6 +42,7 @@ export type ChartOptions = {
 export class AllConsultantsComponent {
   selectedItem: string | null = null;
   items: any[] = [];
+  items1: any[] = [];
   sortDirection: 'asc' | 'desc' = 'asc'; // Initial sorting direction
   sortDirectionAlpha: 'A-Z' | 'Z-A' = 'A-Z'
   sortType: 'date' | 'alpha' = 'date'; // Initial sorting type
@@ -62,8 +63,10 @@ export class AllConsultantsComponent {
   process_statut: any
   @ViewChild("chart") chart: ChartComponent | any;
   searchTerm: any
+  searchTerm1: any
   shownotiff: boolean = false
   filteredItems: any[] = [];
+  filteredItems1: any[] = [];
   res: any
   new_notif: any
   nblastnotifications: any
@@ -82,6 +85,9 @@ export class AllConsultantsComponent {
   pageSize = 5; // Number of items per page
   currentPage = 1; // Current page
   totalPages: any;
+  pageSize1 = 5; // Number of items per page
+  currentPage1 = 1; // Current page
+  totalPages1: any;
   getDisplayeddocs(): any[] {
 
 
@@ -95,6 +101,19 @@ export class AllConsultantsComponent {
 
 
   }
+  getDisplayeddocs1(): any[] {
+
+
+    this.totalPages1 = Math.ceil(this.filteredItems1.length / this.pageSize1);
+    const startIndex = (this.currentPage1 - 1) * this.pageSize1;
+    const endIndex = Math.min(startIndex + this.pageSize1, this.filteredItems1.length);
+
+
+    return this.filteredItems1.slice(startIndex, endIndex);
+
+
+
+  }
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -104,6 +123,17 @@ export class AllConsultantsComponent {
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
+    }
+  }
+  nextPage1() {
+    if (this.currentPage1 < this.totalPages1) {
+      this.currentPage1++;
+    }
+  }
+
+  previousPage1() {
+    if (this.currentPage1 > 1) {
+      this.currentPage1--;
     }
   }
   ngOnInit(): void {
@@ -167,7 +197,7 @@ export class AllConsultantsComponent {
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
 
       this.getpreregister()
-
+      this.getarichivedPreregisters()
       this.consultantservice.getConsultantStats().subscribe({
         next: (res) => {
           // Handle the response from the server
@@ -195,6 +225,77 @@ export class AllConsultantsComponent {
     this.router.navigate([clientName + '/edit-profil'])
   }
 
+
+  getarichivedPreregisters() {
+    this.inscriptionservice.getarichivedPreregisters(this.headers).subscribe({
+      next: (res) => {
+        // Handle the response from the server
+        this.nbdemande = res.length; // Assuming res is an array
+
+        // Update this.items with the response
+        this.items1 = res;
+        this.filteredItems1 = this.items1
+        // Iterate through each item in this.items
+        for (let item of this.items) {
+
+          this.consultantservice.getContaractById(item.contractProcess, this.headers).subscribe({
+            next: (contractRes) => {
+              // Set the process_status for the current item
+              item.process_status = contractRes.statut;
+            },
+            error: (e) => {
+              console.error(e);
+              // Handle error for individual contract retrieval
+              // You may want to set a default value for process_status or handle this error differently
+            }
+          });
+          this.consultantservice.getuserinfomation(item.userId, this.headers).subscribe({
+            next: (user) => {
+              console.log(user);
+
+              // Set the process_status for the current item
+              item.isAvtivated = user.isAvtivated;
+
+
+            },
+            error: (e) => {
+              console.error(e);
+              // Handle error for individual contract retrieval
+              // You may want to set a default value for process_status or handle this error differently
+            }
+          });
+        }
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
+  }
+  updateAccountVisibility(id: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    console.log(id);
+
+    const data: any = {
+      "isArchived": true
+    }
+    this.consultantservice.updateconsultantstauts(id, data, headers).subscribe({
+      next: (res) => {
+
+        this.showPopup = false;
+        window.location.reload();
+        // Handle the response from the server
+        console.log(res);
+        // Additional logic if needed
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+      },
+    });
+  }
   getpreregister() {
     this.inscriptionservice.getvalidatedPreregisters(this.headers).subscribe({
       next: (res) => {
@@ -224,6 +325,11 @@ export class AllConsultantsComponent {
 
               // Set the process_status for the current item
               item.isAvtivated = user.isAvtivated;
+              item.personalInfo.firstName.value = user.firstName
+              item.personalInfo.lastName.value = user.lastName
+              item.personalInfo.email.value = user.email
+              item.personalInfo.phoneNumber.value = user.phoneNumber
+
 
 
             },
@@ -265,6 +371,19 @@ export class AllConsultantsComponent {
       this.filteredItems = this.items.filter((item: any) =>
         item.personalInfo.firstName.value.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         item.personalInfo.lastName.value.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+  applyFilter1() {
+    // Check if search term is empty
+    if (this.searchTerm1.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.filteredItems1 = this.items1;
+    } else {
+      // Apply filter based on search term
+      this.filteredItems1 = this.items1.filter((item: any) =>
+        item.personalInfo.firstName.value.toLowerCase().includes(this.searchTerm1.toLowerCase()) ||
+        item.personalInfo.lastName.value.toLowerCase().includes(this.searchTerm1.toLowerCase())
       );
     }
   }

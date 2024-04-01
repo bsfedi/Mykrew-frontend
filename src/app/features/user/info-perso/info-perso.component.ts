@@ -109,7 +109,7 @@ export class InfoPersoComponent {
           this.res = res
           console.log(this.res);
           this.res.carInfo.drivingLicense = baseUrl + "uploads/" + this.res.carInfo.drivingLicense
-          if (this.res.carInfo.drivingLicense.split('.')[1] = 'pdf') {
+          if (this.res.carInfo.drivingLicense.endsWith('.pdf')) {
             this.inscriptionservice.getPdf(this.res.carInfo.drivingLicense).subscribe({
               next: (res) => {
                 this.pdfData = res;
@@ -123,7 +123,7 @@ export class InfoPersoComponent {
             });
           }
           this.res.identificationDocument = baseUrl + "uploads/" + this.res.identificationDocument
-          if (this.res.identificationDocument.split('.')[1] = 'pdf') {
+          if (this.res.identificationDocument.endsWith('.pdf')) {
             this.inscriptionservice.getPdf(this.res.identificationDocument).subscribe({
               next: (res) => {
                 this.pdfData = res;
@@ -138,7 +138,7 @@ export class InfoPersoComponent {
           }
 
           this.res.ribDocument = baseUrl + "uploads/" + this.res.ribDocument
-          if (this.res.ribDocument.split('.')[1] = 'pdf') {
+          if (this.res.ribDocument.endsWith('.pdf')) {
             this.inscriptionservice.getPdf(this.res.ribDocument).subscribe({
               next: (res) => {
                 this.pdfData = res;
@@ -165,52 +165,41 @@ export class InfoPersoComponent {
     }
 
 
-
     this.userservice.getAllDacumentsofuser(user_id).subscribe({
-
-
       next: (res) => {
         // Handle the response from the server
-        this.docs = res
+        this.docs = res;
 
-        for (let item of this.docs) {
+        for (let i = 0; i < this.docs.length; i++) {
+          const item = this.docs[i];
 
           if (item.document.endsWith('.pdf')) {
-            item.pdf = true
-            item.document = baseUrl + "uploads/" + item.document
+            item.pdf = true;
+            item.document = baseUrl + "uploads/" + item.document;
             this.inscriptionservice.getPdf(item.document).subscribe({
               next: (res) => {
-                this.pdfData = res;
-                console.log(this.pdfData);
+                const pdfData = res;
+                console.log(pdfData);
 
-
-                if (this.pdfData) {
-                  this.handleRenderPdf(this.pdfData);
+                if (pdfData) {
+                  this.handleRenderPdf(i, pdfData); // Pass index to dynamically generate function name
                 }
               },
             });
-
           } else {
-            item.pdf = false
-            item.document = baseUrl + "uploads/" + item.document
+            item.pdf = false;
+            item.document = baseUrl + "uploads/" + item.document;
           }
-
-          //   if (item.document.split(['.'][-1] == 'pdf')){
-
-
         }
         console.log(this.docs);
-
-
-
       },
       error: (e) => {
         // Handle errors
         console.error(e);
         // Set loading to false in case of an error
-
       }
     });
+
 
   }
   gotomyprofile() {
@@ -252,10 +241,8 @@ export class InfoPersoComponent {
       this.currentPage--;
     }
   }
-  handleRenderPdf(data: any) {
-
-    const pdfObject = PDFObject.embed(data, '#pdfContainer');
-
+  handleRenderPdf(index: any, data: any) {
+    const pdfObject = PDFObject.embed(data, `#pdfContainer${index}`);
   }
 
   handleRenderPdf1(data: any) {

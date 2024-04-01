@@ -4,7 +4,7 @@
       <app-left-bar></app-left-bar>
     </div>
     <div>
-      <div *ngIf="role != 'CONSULTANT'" style="margin-left: 250px ;">
+      <div style="margin-left: 250px ;" *ngIf="role != 'CONSULTANT'">
 
         <div class="title">
           Notifications <div class="right-item" style="cursor: pointer;">
@@ -91,10 +91,23 @@
         </div>
       </div>
     </div>
-    <div style=" margin-left: 250px" *ngIf="role === 'CONSULTANT'">
+    <div style=" margin-left: 250px;" *ngIf="role === 'CONSULTANT'">
       <div class="title">
-        Notifications
-      </div>
+        Notifications <div class="right-item" style="cursor: pointer;">
+          <div style="display: flex">
+
+            <div class="profil" style="cursor: pointer;">
+              <img src="/assets/avatar-user.png" width="15%" height="10%" />
+              <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
+
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div><br>
       <div class="loader" *ngIf="!show"></div>
       <table style="width: 100%;" *ngIf="show">
         <thead>

@@ -41,7 +41,8 @@
   width: 12rem;
   height: 3.125rem;
 
-  border-radius: 1.5625rem;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
   background: #fef9f1;
   display: flex;
   float: right;
@@ -49,8 +50,8 @@
 
 .profil img {
   border-radius: 100%;
-  width: 2.625rem;
-  height: 2.175rem;
+  width: 2.125rem;
+  height: 1.875rem;
   margin-left: 15px;
   margin-top: 8px;
 }
@@ -64,7 +65,8 @@
   margin-left: 10px;
   height: 3.125rem;
   width: 10rem;
-  border-radius: 1.5625rem;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
   background: #fef9f1;
   display: flex;
   float: right;
@@ -191,7 +193,8 @@ svg {
   height: 3.125rem;
   margin-left: -20px;
 
-  border-radius: 1.5625rem;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
   background: #fef9f1;
   display: flex;
   float: right;

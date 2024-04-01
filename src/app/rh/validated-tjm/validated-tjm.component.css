@@ -279,7 +279,8 @@ input[type="checkbox"] {
   margin-left: 10px;
   height: 3.125rem;
   width: 10rem;
-  border-radius: 1.5625rem;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
   background: #fef9f1;
   display: flex;
   float: right;
@@ -298,7 +299,8 @@ input[type="checkbox"] {
   height: 3.125rem;
   margin-left: -20px;
 
-  border-radius: 1.5625rem;
+  border-radius: 15px;
+  border: 1px solid rgb(247, 227, 227);
   background: #fef9f1;
   display: flex;
   float: right;
