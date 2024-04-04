@@ -34,10 +34,15 @@ export class ValidationMissionComponent {
   noteshow: any;
   stats: any;
   res: any
+  demandeur: any
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
   }
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.contract_id = params['id'];
+      this.mission_id = params['id_mission']
+    });
 
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id');
@@ -58,10 +63,6 @@ export class ValidationMissionComponent {
         // Set loading to false in case of an error
 
       }
-    });
-    this.route.params.subscribe((params) => {
-      this.contract_id = params['id'];
-      this.mission_id = params['id_mission']
     });
 
     // Check if token is available
