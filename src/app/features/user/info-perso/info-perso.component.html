@@ -81,10 +81,10 @@
           </div>
         </div>
 
-        <img *ngIf="!identificationDocument && res.identificationDocument.split('.')[1]!!='pdf'"
+        <img *ngIf="!identificationDocument && res.identificationDocument.split('/')[-1]!='pdf'"
           formControlName="identificationDocument" [src]="res.identificationDocument" width="80%" height="50%" />
 
-        <div *ngIf="!identificationDocument && res.identificationDocument.split('.')[1]==='pdf'" id="pdfContainer2"
+        <div *ngIf="!identificationDocument && res.identificationDocument.split('/')[-1]==='pdf'" id="pdfContainer2"
           class="pdfContainer"></div>
         <div *ngIf="identificationDocument" style="height: 65%">
           <img [src]="identificationDocument" alt="Selected Image" width="80%" height="60%" />
@@ -119,7 +119,7 @@
             #fileInput />
         </div>
       </div>
-      <div *ngIf="res.carInfo.drivingLicense.split('.')[1] !=  null">
+      <div *ngIf="res.carInfo.drivingLicense.split('/')[-1] !=  null">
 
 
         <div class="doc">
@@ -159,9 +159,9 @@
 
 
 
-          <img *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]!!='pdf'" formControlName="drivingLicense"
+          <img *ngIf="!permis_img && res.carInfo.drivingLicense.split('/')[-1]!='pdf'" formControlName="drivingLicense"
             [src]="res.carInfo.drivingLicense" width="80%" height="50%" />
-          <div *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]==='pdf'" id="pdfContainer1"
+          <div *ngIf="!permis_img && res.carInfo.drivingLicense.split('/')[-1]==='pdf'" id="pdfContainer1"
             class="pdfContainer"></div>
           <div *ngIf="permis_img" style="height: 65%">
             <img [src]="permis_img" alt="Selected Image" width="80%" height="60%" />
@@ -228,11 +228,11 @@
           </div>
         </div>
 
-        <img *ngIf="!rib_img && res.ribDocument.split('.')[1]!='pdf'" formControlName="ribDocument"
+        <img *ngIf="!rib_img && res.ribDocument.split('/')[-1]!='pdf'" formControlName="ribDocument"
           [src]="res.ribDocument" width="80%" height="50%" />
 
 
-        <div *ngIf="!rib_img && res.ribDocument.split('.')[1]==='pdf'" id="pdfContainer3" class="pdfContainer"></div>
+        <div *ngIf="!rib_img && res.ribDocument.split('/')[-1]==='pdf'" id="pdfContainer3" class="pdfContainer"></div>
         <div *ngIf="rib_img" style="height: 65%">
           <img [src]="rib_img" alt="Selected Image" width="80%" height="60%" />
         </div>
