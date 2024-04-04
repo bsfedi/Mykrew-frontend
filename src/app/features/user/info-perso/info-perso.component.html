@@ -84,7 +84,7 @@
         <img *ngIf="!identificationDocument && res.identificationDocument.split('.')[1]!!='pdf'"
           formControlName="identificationDocument" [src]="res.identificationDocument" width="80%" height="50%" />
 
-        <div *ngIf="!permis_img && res.identificationDocument.split('.')[1]==='pdf'" id="pdfContainer2"
+        <div *ngIf="!identificationDocument && res.identificationDocument.split('.')[1]==='pdf'" id="pdfContainer2"
           class="pdfContainer"></div>
         <div *ngIf="identificationDocument" style="height: 65%">
           <img [src]="identificationDocument" alt="Selected Image" width="80%" height="60%" />
@@ -93,7 +93,7 @@
         <div style="display: flex">
           <div class="telecharger"
             (click)="downloadFile(res.identificationDocument,res.identificationDocument.split('uploads/')[1].split('.')[0])">
-            Telecharger
+            Télécharger
             <svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
               <path
                 d="M1.08519 3.99787C1.22762 4.57197 1.54149 5.07927 1.9781 5.44109C2.41471 5.80291 2.94966 5.99902 3.5 5.99902C4.05034 5.99902 4.58529 5.80291 5.0219 5.44109C5.45851 5.07927 5.77238 4.57197 5.91481 3.99787"
@@ -119,28 +119,32 @@
             #fileInput />
         </div>
       </div>
-      <div class="doc">
-        <div style="display: flex">
-          <div class="cercle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <g clip-path="url(#clip0_1577_2830)">
-                <path
-                  d="M3.2002 3.2002L13.4859 3.2002L13.4859 15.2002L11.7716 14.0573L10.0573 15.2002L8.34305 14.0573L6.62877 15.2002L4.91448 14.0573L3.2002 15.2002L3.2002 3.2002Z"
-                  stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
-                <path d="M5.48535 11.2002H8.34249" stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
-                <path d="M10.6279 11.2002H11.1994" stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
-                <path
-                  d="M8.34222 8.91392C9.28899 8.91392 10.0565 8.14641 10.0565 7.19964C10.0565 6.25286 9.28899 5.48535 8.34222 5.48535C7.39544 5.48535 6.62793 6.25286 6.62793 7.19964C6.62793 8.14641 7.39544 8.91392 8.34222 8.91392Z"
-                  stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
-              </g>
-              <defs>
-                <clipPath id="clip0_1577_2830">
-                  <rect width="16" height="16" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </div>
-          <div style="
+      <div *ngIf="res.carInfo.drivingLicense.split('.')[1] !=  null">
+
+
+        <div class="doc">
+          <div style="display: flex">
+            <div class="cercle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g clip-path="url(#clip0_1577_2830)">
+                  <path
+                    d="M3.2002 3.2002L13.4859 3.2002L13.4859 15.2002L11.7716 14.0573L10.0573 15.2002L8.34305 14.0573L6.62877 15.2002L4.91448 14.0573L3.2002 15.2002L3.2002 3.2002Z"
+                    stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
+                  <path d="M5.48535 11.2002H8.34249" stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
+                  <path d="M10.6279 11.2002H11.1994" stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
+                  <path
+                    d="M8.34222 8.91392C9.28899 8.91392 10.0565 8.14641 10.0565 7.19964C10.0565 6.25286 9.28899 5.48535 8.34222 5.48535C7.39544 5.48535 6.62793 6.25286 6.62793 7.19964C6.62793 8.14641 7.39544 8.91392 8.34222 8.91392Z"
+                    stroke="#A67DB8" stroke-miterlimit="10" stroke-linecap="square" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_1577_2830">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+
+            <div style="
               margin-top: 10px;
               margin-left: 0px;
               color: #323842;
@@ -149,46 +153,48 @@
               font-weight: 700;
               line-height: 1.375rem; /* 157.143% */
             ">
-            Permis de Conduire
+              Permis de Conduire
+            </div>
           </div>
-        </div>
 
-        <img *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]!!='pdf'" formControlName="drivingLicense"
-          [src]="res.carInfo.drivingLicense" width="80%" height="50%" />
-        <div *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]==='pdf'" id="pdfContainer1"
-          class="pdfContainer"></div>
-        <div *ngIf="permis_img" style="height: 65%">
-          <img [src]="permis_img" alt="Selected Image" width="80%" height="60%" />
-        </div>
-        <div style="display: flex">
-          <div class="telecharger"
-            (click)="downloadFile(res.carInfo.drivingLicense,res.carInfo.drivingLicense.split('uploads/')[1].split('.')[0])">
-            Telecharger
-            <svg xmlns=" http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
-              <path
-                d="M1.08519 3.99787C1.22762 4.57197 1.54149 5.07927 1.9781 5.44109C2.41471 5.80291 2.94966 5.99902 3.5 5.99902C4.05034 5.99902 4.58529 5.80291 5.0219 5.44109C5.45851 5.07927 5.77238 4.57197 5.91481 3.99787"
-                stroke="#379AE6" stroke-width="0.7" />
-              <path
-                d="M3.5 3.99902L3.26747 4.26062L3.5 4.46731L3.73253 4.26062L3.5 3.99902ZM3.85 0.999023C3.85 0.805724 3.6933 0.649023 3.5 0.649023C3.3067 0.649023 3.15 0.805723 3.15 0.999023L3.85 0.999023ZM1.76747 2.92728L3.26747 4.26062L3.73253 3.73743L2.23253 2.4041L1.76747 2.92728ZM3.73253 4.26062L5.23253 2.92728L4.76747 2.4041L3.26747 3.73743L3.73253 4.26062ZM3.85 3.99902L3.85 0.999023L3.15 0.999023L3.15 3.99902L3.85 3.99902Z"
-                fill="#379AE6" />
-            </svg>
+
+
+          <img *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]!!='pdf'" formControlName="drivingLicense"
+            [src]="res.carInfo.drivingLicense" width="80%" height="50%" />
+          <div *ngIf="!permis_img && res.carInfo.drivingLicense.split('.')[1]==='pdf'" id="pdfContainer1"
+            class="pdfContainer"></div>
+          <div *ngIf="permis_img" style="height: 65%">
+            <img [src]="permis_img" alt="Selected Image" width="80%" height="60%" />
           </div>
-          <div class="Remplacer" (click)="openfileInputdrivinglicenceInput()">
-            Remplacer
-            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7 7" fill="none">
-              <path
-                d="M1.08519 4.14705C1.22762 4.67863 1.54149 5.14836 1.9781 5.48338C2.41471 5.81841 2.94966 6 3.5 6C4.05034 6 4.58529 5.81841 5.0219 5.48338C5.45851 5.14836 5.77238 4.67863 5.91481 4.14705"
-                stroke="#BF6F25" stroke-width="0.7" />
-              <path
-                d="M3.5 1L3.26747 0.738407L3.5 0.531716L3.73253 0.738407L3.5 1ZM3.85 4C3.85 4.1933 3.6933 4.35 3.5 4.35C3.3067 4.35 3.15 4.1933 3.15 4L3.85 4ZM1.76747 2.07174L3.26747 0.738407L3.73253 1.26159L2.23253 2.59493L1.76747 2.07174ZM3.73253 0.738407L5.23253 2.07174L4.76747 2.59493L3.26747 1.26159L3.73253 0.738407ZM3.85 1L3.85 4L3.15 4L3.15 1L3.85 1Z"
-                fill="#BF6F25" />
-            </svg>
+          <div style="display: flex">
+            <div class="telecharger"
+              (click)="downloadFile(res.carInfo.drivingLicense,res.carInfo.drivingLicense.split('uploads/')[1].split('.')[0])">
+              Télécharger
+              <svg xmlns=" http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
+                <path
+                  d="M1.08519 3.99787C1.22762 4.57197 1.54149 5.07927 1.9781 5.44109C2.41471 5.80291 2.94966 5.99902 3.5 5.99902C4.05034 5.99902 4.58529 5.80291 5.0219 5.44109C5.45851 5.07927 5.77238 4.57197 5.91481 3.99787"
+                  stroke="#379AE6" stroke-width="0.7" />
+                <path
+                  d="M3.5 3.99902L3.26747 4.26062L3.5 4.46731L3.73253 4.26062L3.5 3.99902ZM3.85 0.999023C3.85 0.805724 3.6933 0.649023 3.5 0.649023C3.3067 0.649023 3.15 0.805723 3.15 0.999023L3.85 0.999023ZM1.76747 2.92728L3.26747 4.26062L3.73253 3.73743L2.23253 2.4041L1.76747 2.92728ZM3.73253 4.26062L5.23253 2.92728L4.76747 2.4041L3.26747 3.73743L3.73253 4.26062ZM3.85 3.99902L3.85 0.999023L3.15 0.999023L3.15 3.99902L3.85 3.99902Z"
+                  fill="#379AE6" />
+              </svg>
+            </div>
+            <div class="Remplacer" (click)="openfileInputdrivinglicenceInput()">
+              Remplacer
+              <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                <path
+                  d="M1.08519 4.14705C1.22762 4.67863 1.54149 5.14836 1.9781 5.48338C2.41471 5.81841 2.94966 6 3.5 6C4.05034 6 4.58529 5.81841 5.0219 5.48338C5.45851 5.14836 5.77238 4.67863 5.91481 4.14705"
+                  stroke="#BF6F25" stroke-width="0.7" />
+                <path
+                  d="M3.5 1L3.26747 0.738407L3.5 0.531716L3.73253 0.738407L3.5 1ZM3.85 4C3.85 4.1933 3.6933 4.35 3.5 4.35C3.3067 4.35 3.15 4.1933 3.15 4L3.85 4ZM1.76747 2.07174L3.26747 0.738407L3.73253 1.26159L2.23253 2.59493L1.76747 2.07174ZM3.73253 0.738407L5.23253 2.07174L4.76747 2.59493L3.26747 1.26159L3.73253 0.738407ZM3.85 1L3.85 4L3.15 4L3.15 1L3.85 1Z"
+                  fill="#BF6F25" />
+              </svg>
+            </div>
+            <input type="file" style="display: none" (change)="setFileInput('drivingLicense', $event)"
+              #fileInputdrivinglicence />
           </div>
-          <input type="file" style="display: none" (change)="setFileInput('drivingLicense', $event)"
-            #fileInputdrivinglicence />
         </div>
       </div>
-
       <div class="doc">
         <div style="display: flex; margin-left: 25px">
           <div class="cercle">
@@ -222,18 +228,18 @@
           </div>
         </div>
 
-        <img *ngIf="!rib_img && res.ribDocument.split('.')[1]!!='pdf'" formControlName="ribDocument"
+        <img *ngIf="!rib_img && res.ribDocument.split('.')[1]!='pdf'" formControlName="ribDocument"
           [src]="res.ribDocument" width="80%" height="50%" />
 
 
-        <div *ngIf="!permis_img && res.ribDocument.split('.')[1]==='pdf'" id="pdfContainer3" class="pdfContainer"></div>
+        <div *ngIf="!rib_img && res.ribDocument.split('.')[1]==='pdf'" id="pdfContainer3" class="pdfContainer"></div>
         <div *ngIf="rib_img" style="height: 65%">
           <img [src]="rib_img" alt="Selected Image" width="80%" height="60%" />
         </div>
         <div style="display: flex">
           <div class="telecharger"
             (click)="downloadFile(res.ribDocument,res.ribDocument.split('uploads/')[1].split('.')[0])">
-            Telecharger
+            Télécharger
             <svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
               <path
                 d="M1.08519 3.99787C1.22762 4.57197 1.54149 5.07927 1.9781 5.44109C2.41471 5.80291 2.94966 5.99902 3.5 5.99902C4.05034 5.99902 4.58529 5.80291 5.0219 5.44109C5.45851 5.07927 5.77238 4.57197 5.91481 3.99787"
@@ -267,7 +273,7 @@
     <button (click)="list_view()" *ngIf="card" class="Grille" [ngClass]="{
       Grille1: shownotiff == false,
 
-    }"> List</button>
+    }"> Liste</button>
     <div *ngIf="!card" class="docs" [ngClass]="{
         docs1: shownotiff == false,
   
@@ -313,7 +319,7 @@
 
           <div style="display: flex;margin-left: 50px;">
             <div class="telecharger" (click)="downloadFile(item_doc.document,item_doc.documentName)">
-              Telecharger
+              Télécharger
               <svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" viewBox="0 0 7 7" fill="none">
                 <path
                   d="M1.08519 3.99787C1.22762 4.57197 1.54149 5.07927 1.9781 5.44109C2.41471 5.80291 2.94966 5.99902 3.5 5.99902C4.05034 5.99902 4.58529 5.80291 5.0219 5.44109C5.45851 5.07927 5.77238 4.57197 5.91481 3.99787"
@@ -373,7 +379,7 @@
                   background: #f1f8fd;
                   color: #379ae6;
                 ">
-                Telecharger
+                Télécharger
               </div>
             </td>
             <td></td>

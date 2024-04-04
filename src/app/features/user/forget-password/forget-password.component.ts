@@ -34,7 +34,7 @@ export class ForgetPasswordComponent {
     );
   }
   gotosingin() {
-    this.router.navigate([clientName + '/sign-up']);
+    this.router.navigate([clientName + '/sign-in']);
   }
   gotosinguup() {
     this.router.navigate([clientName + '/sign-up']);

@@ -184,6 +184,7 @@ body {
   background-color: #f1f8fd;
   color: #379ae6;
   margin: 5px;
+  margin-left: 10px;
   font-size: 14px;
 }
 
@@ -194,11 +195,12 @@ body {
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
   border-radius: 0.75rem;
   background: #eefdf3;
   color: #187111;
   margin: 5px;
-  margin-top: 10px;
+  margin-left: 10px;
   font-size: 14px;
 }
 

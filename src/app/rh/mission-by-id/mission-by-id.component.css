@@ -518,6 +518,7 @@ input[type="email"],
 input[type="tel"],
 input[type="file"],
 input[type="password"] {
+  font-family: "Poppins", sans-serif !important;
   padding-left: 10px;
   border: none;
   width: 17.25rem;

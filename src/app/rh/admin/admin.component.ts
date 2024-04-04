@@ -70,20 +70,59 @@ export class AdminComponent {
 
   }
   deleteconsultant(id: any) {
-    this.consultantservice.deleteconsultant(id).subscribe({
-      next: (res) => {
-        Swal.fire('Success', 'le consultant supprimé avec succes', 'success');
+    Swal.fire({
+      title: "Confirmez l'action",
+      background: '#fefcf1',
+      html: `
+        <div>
+        <div style="font-size:1.2rem"> Êtes-vous sûr de vouloir supprimer ce compte ?  </div> 
+          
+        </div>
+      `,
+      iconColor: '#1E1E1E',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      confirmButtonColor: "#91c593",
+      cancelButtonText: 'Annuler',
+      cancelButtonColor: "black",
+      customClass: {
+        confirmButton: 'custom-confirm-button-class',
+        cancelButton: 'custom-cancel-button-class'
+      },
+      reverseButtons: true // Reversing button order
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User clicked 'Yes', call the endpoint
+        this.consultantservice.deleteconsultant(id).subscribe({
+          next: (res) => {
+            Swal.fire('Success', 'le consultant supprimé avec succes', 'success');
 
-        // Handle the response from the server
-        console.log(res);
-        window.location.reload();
-        // Additional logic if needed
-      },
-      error: (e) => {
-        // Handle errors
-        console.error(e);
-      },
+            // Handle the response from the server
+            console.log(res);
+            window.location.reload();
+            // Additional logic if needed
+          },
+          error: (e) => {
+            // Handle errors
+            console.error(e);
+          },
+        });
+      } else {
+        Swal.fire({
+          background: '#fefcf1',
+          title: 'Annulé',
+          text: "Aucune modification n'a été apportée.",
+          iconColor: '#1E1E1E',
+
+          confirmButtonText: 'Ok',
+          confirmButtonColor: "#91c593",
+        })
+        // // User clicked 'Cancel' or closed the popup
+        // Swal.fire('Annulé',
+        //   "Aucune modification n'a été apportée.", 'info');
+      }
     });
+
   }
   gotocdashboad() {
 

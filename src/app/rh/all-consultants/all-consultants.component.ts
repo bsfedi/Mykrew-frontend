@@ -230,7 +230,7 @@ export class AllConsultantsComponent {
     this.inscriptionservice.getarichivedPreregisters(this.headers).subscribe({
       next: (res) => {
         // Handle the response from the server
-        this.nbdemande = res.length; // Assuming res is an array
+
 
         // Update this.items with the response
         this.items1 = res;
@@ -273,13 +273,13 @@ export class AllConsultantsComponent {
       }
     });
   }
-  updateAccountVisibility(id: any) {
+  updateAccountVisibility(id: any, isArchived: any) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `${token}`);
     console.log(id);
 
     const data: any = {
-      "isArchived": true
+      "isArchived": isArchived
     }
     this.consultantservice.updateconsultantstauts(id, data, headers).subscribe({
       next: (res) => {

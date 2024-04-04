@@ -112,6 +112,7 @@ export class CRAComponent {
             <div style='width: 16.875rem;
                   height: 5.0625rem;
                 flex-shrink: 0;
+                padding: 8px;
                 border-radius: 0.4375rem;
                 border: 1px solid #ECECEE;'>
                 <svg style='margin-top:2px;' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -124,6 +125,7 @@ export class CRAComponent {
             <div style='width: 16.875rem;
                 height: 12.1875rem;
                 flex-shrink: 0;
+                padding: 8px;
                 border-radius: 0.4375rem;
                 border: 1px solid #ECECEE;'>
                 <svg style='margin-top:2px;' xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -135,6 +137,7 @@ export class CRAComponent {
 
             <div style='width: 16.875rem;
                 height: 12.1875rem;
+                padding: 8px;
                 flex-shrink: 0;
                 border-radius: 0.4375rem;
                 border: 1px solid #ECECEE;'>
@@ -175,7 +178,7 @@ export class CRAComponent {
     this.dowloded = true
     html2pdf(htmlContent, {
       margin: 10,
-      filename: this.myinfo.firstName + '.pdf',
+      filename: 'cra_' + formattedDate + '_' + this.myinfo.firstName + '.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },

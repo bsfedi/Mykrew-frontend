@@ -108,7 +108,7 @@ svg {
 }
 
 .pending1 .export {
-  margin-left: 53.5%;
+  margin-left: 52.5%;
 }
 
 table {
@@ -120,7 +120,7 @@ table {
 }
 
 .export {
-  margin-left: 39.5%;
+  margin-left: 37.5%;
 }
 
 .faq-sedeconnecter {
@@ -389,14 +389,6 @@ input[type="checkbox"] {
   float: right;
   display: row;
 
-}
-
-svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  padding: 10px;
-  padding-top: 10px;
 }
 
 .svg {

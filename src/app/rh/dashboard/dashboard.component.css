@@ -360,6 +360,7 @@ input[type="checkbox"] {
 .right-item {
   float: right;
   display: row;
+  position: relative;
 }
 
 .svg {
@@ -764,7 +765,7 @@ input[type="password"] {
 }
 
 .export {
-  margin-left: 40.5%;
+  margin-left: 37.5%;
 }
 
 .second {

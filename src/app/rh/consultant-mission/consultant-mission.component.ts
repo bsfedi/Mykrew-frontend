@@ -579,7 +579,8 @@ export class ConsultantMissionComponent {
             Swal.fire({
 
               background: '#fefcf1',
-              icon: "success",
+
+              confirmButtonColor: "#91c593",
               title: 'Document ajouté avec succès!',
               showConfirmButton: false,
               timer: 3000 // Adjusted timer to 3000 milliseconds (3 seconds)
@@ -599,18 +600,20 @@ export class ConsultantMissionComponent {
         });
     }
   }
+
   downloadFile(urlpdf: any, filename: any) {
 
     this.consultantservice.downloadpdffile(urlpdf, filename)
 
   }
+
   onFormSubmit() {
 
     Swal.fire({
       title: 'Confirmer le virement',
       html: `
         <div>
-          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir effectuer ce virement ?'</div> 
+          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir effectuer ce virement ?</div> 
         </div>
       `,
       iconColor: '#1E1E1E',
@@ -635,7 +638,8 @@ export class ConsultantMissionComponent {
               background: '#fefcf1',
               title: 'Virement réussi',
               text: 'Le virement a été effectué avec succès !',
-              icon: 'success'
+              confirmButtonColor: "#91c593",
+
             });
             this.showPopup1 = false
           },

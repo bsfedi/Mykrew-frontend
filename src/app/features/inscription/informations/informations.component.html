@@ -200,8 +200,8 @@
 
                         </div>
                     </div>
-                    <div class="label"> Permis : </div>
-                    <div class="Tableau">
+                    <div class="label" *ngIf="personalInfo?.carInfo.hasCar.value === true"> Permis : </div>
+                    <div class="Tableau" *ngIf="personalInfo?.carInfo.hasCar.value === true">
                         <div class="zoom">
                             <img formControlName="drivingLicense" [src]="personalInfo?.carInfo.drivingLicense.value" />
                         </div>
