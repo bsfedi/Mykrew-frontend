@@ -88,6 +88,10 @@ export class SigninComponent {
                 if (this.res.status == 'NOTEXIST') {
                   this.router.navigate([clientName + '/pre-inscription']);
                 }
+                else if (this.res.status == 'NOTVALIDATED') {
+                  this.router.navigate([clientName + '/informations/' + this.res._id]);
+
+                }
                 else if (this.res.status == 'VALIDATED') {
 
 

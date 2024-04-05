@@ -535,13 +535,9 @@ svg {
 }
 
 .transaction-header {
-  background: #f7f5ef;
-  padding: 10px;
-  font-size: 18px;
-  color: #5b5b5b;
+  float: right;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+
 }
 
 .transaction-header>select {
@@ -556,17 +552,9 @@ td {
   padding: 12px;
 }
 
-table {
-  background: #f7f5ef;
-}
 
-th {
-  /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
-  background: #f7f5ef;
-  padding: 12px 15px;
-  color: #333333;
-  font-weight: normal;
-}
+
+
 
 select {
   padding: 5px;

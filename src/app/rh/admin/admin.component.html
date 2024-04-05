@@ -105,7 +105,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let rh of getDisplayeddocs() ; let i =index">
-                  <td class="Tableau">
+                  <td class="Tableau" style="min-width:200px">
                     <div>
                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
                         style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
@@ -120,7 +120,7 @@
 
                     </div>
                   </td>
-                  <td>
+                  <td style="min-width:200px">
                     {{ rh.email }}
                   </td>
                   <td>
@@ -225,7 +225,7 @@
               </div>
 
 
-              <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+              <span style="margin-top: 10px;"> {{ currentPage }} sur {{ totalPages }}</span>
               <div (click)="nextPage()" style="cursor: pointer;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-chevron-double-right" viewBox="0 0 16 16">
@@ -267,7 +267,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let rh of getDisplayedconsultants();let i =index;">
-                  <td class="Tableau">
+                  <td class="Tableau" style="min-width:200px">
                     <div>
                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
                         style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
@@ -286,7 +286,7 @@
 
                     </div>
                   </td>
-                  <td>
+                  <td style="min-width:200px">
                     <div *ngIf="rh.personalInfo">
                       {{ rh.email }}
                     </div>
@@ -420,7 +420,7 @@
               </div>
 
 
-              <span style="margin-top: 10px;"> {{ currentPageconsultant }} of {{ totalPages }}</span>
+              <span style="margin-top: 10px;"> {{ currentPageconsultant }} sur {{ totalPages }}</span>
               <div (click)="nextPageconsultant()" style="cursor: pointer;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-chevron-double-right" viewBox="0 0 16 16">

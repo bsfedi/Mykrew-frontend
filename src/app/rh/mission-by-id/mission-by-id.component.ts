@@ -166,15 +166,48 @@ export class MissionByIdComponent {
             this.personalInfo = res.personalInfo;
             this.clientInfo = res.clientInfo;
             this.missionInfo = res.missionInfo
+            this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated
+
+            console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+
+
+
+
+            this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
+              next: (res) => {
+                this.pdfData = res;
+                this.isLoading = false;
+                if (this.pdfData) {
+                  this.handleRenderPdf(this.pdfData);
+                }
+              },
+            });
           }
           else {
             this.consultantservice.getMissionById(this.mission_id, this.headers).subscribe({
               next: (res2) => {
                 this.getMissionuserb = res2.newMissionStatus
+                console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 // Handle the response from the server
                 this.personalInfo = res2.personalInfo;
                 this.clientInfo = res2.clientInfo;
                 this.missionInfo = res2.missionInfo
+                this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated
+
+                console.log(this.missionInfo.isSimulationValidated);
+
+
+
+
+                this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
+                  next: (res) => {
+                    this.pdfData = res;
+                    this.isLoading = false;
+                    if (this.pdfData) {
+                      this.handleRenderPdf(this.pdfData);
+                    }
+                  },
+                });
               },
               error: (e) => {
                 // Handle errors
@@ -187,27 +220,11 @@ export class MissionByIdComponent {
           }
 
 
-          console.log(res);
 
 
 
-          this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated
-
-          console.log(this.missionInfo.isSimulationValidated);
-
-          this.loading = false;
-          this.isLoading = true;
 
 
-          this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
-            next: (res) => {
-              this.pdfData = res;
-              this.isLoading = false;
-              if (this.pdfData) {
-                this.handleRenderPdf(this.pdfData);
-              }
-            },
-          });
         },
         error: (e) => {
           // Handle errors
@@ -346,7 +363,7 @@ export class MissionByIdComponent {
           next: (res) => {
             Swal.fire({
               background: '#fefcf1',
-              icon: "success",
+
               title: 'Mission mise à jour avec succès !',
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
@@ -390,20 +407,6 @@ export class MissionByIdComponent {
 
 
   }
-  update_register1() {
-    Swal.fire({
-      title: 'Custom Button Color',
-      text: 'This is a SweetAlert with custom button color!',
 
-      showCancelButton: true,
-      confirmButtonText: 'Custom Confirm Button',
-      cancelButtonText: 'Custom Cancel Button',
-      customClass: {
-        confirmButton: 'custom-confirm-class',
-        cancelButton: 'custom-cancel-class'
-      },
-      buttonsStyling: false,
-    });
-  }
 
 }

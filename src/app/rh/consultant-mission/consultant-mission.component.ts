@@ -317,7 +317,8 @@ export class ConsultantMissionComponent {
               background: '#fefcf1',
               title: 'Email envoyé',
               text: 'L\'email a été envoyé avec succès !',
-              icon: 'success'
+              confirmButtonColor: "#91c593",
+
             });
             this.showPopup3 = false;
           },
@@ -328,15 +329,16 @@ export class ConsultantMissionComponent {
               background: '#fefcf1',
               title: 'Erreur d\'envoi',
               text: "L'envoi de l'email a échoué. Veuillez réessayer.",
-              icon: 'error'
+              confirmButtonColor: "#91c593",
             });
           }
         });
       } else {
         Swal.fire({
-          background: '#fefcf1',
+
           title: 'Envoi annulé',
           text: 'Aucun email n\'a été envoyé.',
+          background: '#fefcf1',
           confirmButtonColor: "#91c593",
           confirmButtonText: 'Ok',
 
@@ -646,9 +648,10 @@ export class ConsultantMissionComponent {
           (error) => {
             Swal.fire({
               background: '#fefcf1',
+              confirmButtonColor: "#91c593",
               title: 'Erreur de virement',
               text: "Le virement n'a pas pu être effectué. Veuillez réessayer.",
-              icon: 'error'
+
             });
           }
         );

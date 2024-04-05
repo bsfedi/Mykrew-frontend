@@ -466,7 +466,7 @@ export class MissionsComponent {
           let closestDiff: number = Infinity;
 
           this.validated_mission.forEach((mission: any) => {
-            this.datamissions.push(mission.missionInfo.dailyRate * 20);
+
 
             // Calculate the total daily rate
             totalDailyRate += mission.missionInfo.dailyRate;
@@ -771,9 +771,10 @@ export class MissionsComponent {
       this.consultantservice.createTjmRequest(this.formData)
         .subscribe({
           next: (res) => {
-            Swal.fire('Success', "TJM ajouté avec succès!", 'success');
+
             Swal.fire({
-              position: "top-end",
+              background: '#fefcf1',
+              confirmButtonColor: "#91c593",
               icon: "success",
               title: 'TJM ajouté avec succès!',
               showConfirmButton: false,

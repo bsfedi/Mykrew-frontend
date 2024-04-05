@@ -227,16 +227,17 @@ export class DetailsMissionComponent {
 
     Swal.fire({
       title: 'Confirmez les modifications',
+      background: '#fefcf1',
       html: `
         <div>
-          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir modifer les informations ?'</div> 
+          <div style="font-size:1.2rem;">Êtes-vous sûr de vouloir modifer les informations ?</div> 
         </div>
       `,
-      iconColor: '#1E1E1E',
+
       showCancelButton: true,
-      confirmButtonText: 'Oui',
+      confirmButtonText: 'Confirmer',
       confirmButtonColor: "#91c593",
-      cancelButtonText: 'Non',
+      cancelButtonText: 'Annuler',
       cancelButtonColor: "black",
       customClass: {
         confirmButton: 'custom-confirm-button-class',
@@ -252,8 +253,8 @@ export class DetailsMissionComponent {
           next: (res) => {
             Swal.fire({
               title: 'Mission modifié',
-              text: 'Mission a été modifié avec succès !',
-              icon: 'success'
+              confirmButtonColor: '#91c593',
+              background: '#fefcf1',
             });
             // Handle success
             console.log(res);
@@ -263,9 +264,9 @@ export class DetailsMissionComponent {
             // Handle errors
             console.error(e);
             Swal.fire({
+              background: '#fefcf1',
+              confirmButtonColor: '#91c593',
               title: 'Erreur de modification',
-              text: "La modification du mission a échoué. Veuillez réessayer.",
-              icon: 'error'
             });
             // Set loading to false in case of an error
 
@@ -273,11 +274,10 @@ export class DetailsMissionComponent {
         });
       } else {
         Swal.fire({
+          background: '#fefcf1',
           title: 'modification annulé',
-
-          icon: 'info',
           confirmButtonText: 'Ok',
-          confirmButtonColor: '#1E1E1E',
+          confirmButtonColor: '#91c593',
         });
       }
     });

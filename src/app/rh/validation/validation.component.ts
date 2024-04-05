@@ -338,7 +338,7 @@ export class ValidationComponent implements OnInit {
             // Handle success
             Swal.fire({
               background: '#fefcf1',
-              icon: "success",
+
               title: 'Pré-inscription mise à jour avec succès !',
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
@@ -408,21 +408,7 @@ export class ValidationComponent implements OnInit {
 
 
   }
-  update_register1() {
-    Swal.fire({
-      title: 'Custom Button Color',
-      text: 'This is a SweetAlert with custom button color!',
 
-      showCancelButton: true,
-      confirmButtonText: 'Custom Confirm Button',
-      cancelButtonText: 'Custom Cancel Button',
-      customClass: {
-        confirmButton: 'custom-confirm-class',
-        cancelButton: 'custom-cancel-class'
-      },
-      buttonsStyling: false,
-    });
-  }
 
 
 }

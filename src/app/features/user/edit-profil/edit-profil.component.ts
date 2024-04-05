@@ -81,7 +81,7 @@ export class EditProfilComponent {
         </div>
       `,
 
-      iconColor: '#1E1E1E',
+      background: '#fefcf1',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
       confirmButtonColor: "#91c593",
@@ -109,7 +109,7 @@ export class EditProfilComponent {
             Swal.fire({
               title: 'Succès',
               text: 'Profil mise à jour avec succès !',
-              icon: 'success',
+              background: '#fefcf1',
               confirmButtonColor: "#91c593",
             });
           },
@@ -119,7 +119,7 @@ export class EditProfilComponent {
             Swal.fire({
               title: 'Erreur',
               text: "Aucune modification n'a été apportée.",
-              icon: 'error',
+              background: '#fefcf1',
               confirmButtonColor: "#91c593",
             });
           }
@@ -129,7 +129,7 @@ export class EditProfilComponent {
         Swal.fire({
           title: 'Annulé',
           text: "Aucune modification n'a été apportée.",
-          icon: 'info',
+          background: '#fefcf1',
           confirmButtonColor: "#91c593",
         });
       }
@@ -146,7 +146,7 @@ export class EditProfilComponent {
         </div>
       `,
 
-      iconColor: '#1E1E1E',
+      background: '#fefcf1',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
       confirmButtonColor: "#91c593",
@@ -161,38 +161,47 @@ export class EditProfilComponent {
       if (result.isConfirmed) {
         if (this.newPassword !== this.confirmPassword) {
           // Display an error message or handle the mismatch scenario
-          console.error('New password and confirm password do not match');
-          return;
+          console.error('Le nouveau mot de passe et la confirmation du mot de passe ne correspondent pas');
+          Swal.fire({
+            title: 'Erreur',
+            text: "Le nouveau mot de passe et la confirmation du mot de passe ne correspondent pas",
+            confirmButtonColor: "#91c593",
+            background: '#fefcf1',
+          });
+        }
+        else {
+          const passwordData = {
+            password: this.currentPassword,
+            new_password: this.newPassword
+          };
+
+          // Call the service to update password
+          this.userservice.updatepassword(this.user_id, passwordData).subscribe({
+            next: (res) => {
+              // Handle success
+              Swal.fire({
+
+                title: 'Succès',
+                text: 'Mot de passe mise à jour avec succès !',
+                background: '#fefcf1',
+                confirmButtonColor: "#91c593",
+              });
+            },
+            error: (e) => {
+              // Handle errors
+              console.error(e);
+              Swal.fire({
+                title: 'Erreur',
+                text: "Aucune modification n'a été apportée " + e.error.error
+                ,
+
+                background: '#fefcf1',
+                confirmButtonColor: "#91c593",
+              });
+            }
+          });
         }
 
-        const passwordData = {
-          password: this.currentPassword,
-          new_password: this.newPassword
-        };
-
-        // Call the service to update password
-        this.userservice.updatepassword(this.user_id, passwordData).subscribe({
-          next: (res) => {
-            // Handle success
-            Swal.fire({
-              title: 'Succès',
-              text: 'Mot de passe mise à jour avec succès !',
-              icon: 'success',
-              confirmButtonColor: "#91c593",
-            });
-          },
-          error: (e) => {
-            // Handle errors
-            console.error(e);
-            Swal.fire({
-              title: 'Erreur',
-              text: "Aucune modification n'a été apportée." + e.error.error
-              ,
-              icon: 'error',
-              confirmButtonColor: "#91c593",
-            });
-          }
-        });
       } else {
         // User clicked 'Cancel' or closed the popup
         Swal.fire({
@@ -203,24 +212,8 @@ export class EditProfilComponent {
         });
       }
     });
-    if (this.newPassword !== this.confirmPassword) {
-      // Display an error message or handle the mismatch scenario
-      console.error('New password and confirm password do not match');
-      return;
-    }
 
-    const passwordData = {
-      password: this.currentPassword,
-      new_password: this.newPassword
-    };
 
-    // Call the service to update password
-    this.userservice.updatepassword(this.user_id, passwordData).subscribe((response: any) => {
-      console.log('Password updated successfully:', response);
-      // Optionally, handle success message or any UI updates
-    }, error => {
-      console.error('Error updating password:', error);
-      // Optionally, handle error message or any UI updates
-    });
+
   }
 }

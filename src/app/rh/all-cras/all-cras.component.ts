@@ -72,7 +72,7 @@ export class AllCrasComponent {
     this.shownotiff = !this.shownotiff
   }
 
-  pageSize = 10; // Number of items per page
+  pageSize = 20; // Number of items per page
   currentPage = 1; // Current page
   totalPages: any;
 
@@ -137,7 +137,7 @@ export class AllCrasComponent {
     this.consultantservice.get_all_cra().subscribe({
       next: (res) => {
         this.all_cras = res
-        console.log(this.all_cras.length);
+
 
         for (let item of this.all_cras) {
           for (let crapdf of item.craInformation.craPDF) {

@@ -149,7 +149,7 @@
         </div>
 
 
-        <span style="margin-top: 10px;"> {{ currentPagepending }} of {{ totalPagespending }}</span>
+        <span style="margin-top: 10px;"> {{ currentPagepending }} sur {{ totalPagespending }}</span>
         <div (click)="nextPagepending()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-right" viewBox="0 0 16 16">
@@ -493,7 +493,7 @@
         </div>
 
 
-        <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+        <span style="margin-top: 10px;"> {{ currentPage }} sur {{ totalPages }}</span>
         <div (click)="nextPage()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-right" viewBox="0 0 16 16">
@@ -723,7 +723,7 @@
         </div>
 
 
-        <span [hidden]="!hideMissions" style="margin-top: 10px;"> {{ currentPagenv }} of {{ totalPagesnv }}</span>
+        <span [hidden]="!hideMissions" style="margin-top: 10px;"> {{ currentPagenv }} sur {{ totalPagesnv }}</span>
         <div (click)="nextPagenv()" style="cursor: pointer;" [hidden]="!hideMissions">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-right" viewBox="0 0 16 16">

@@ -273,7 +273,7 @@
         </div>
 
 
-        <span style="margin-top: 10px;"> {{ currentPage }} of {{ totalPages }}</span>
+        <span style="margin-top: 10px;"> {{ currentPage }} sur {{ totalPages }}</span>
         <div (click)="nextPage()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-chevron-double-right" viewBox="0 0 16 16">
@@ -301,7 +301,7 @@
                   d="M18.0799 22.1699C18.0799 23.8799 16.6999 25.2499 14.9999 25.2499C13.2999 25.2499 11.9199 23.8699 11.9199 22.1699H18.0799Z"
                   stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 <circle cx="21.5" cy="7.5" r="4.5" fill="#F33A2A"
-                  *ngIf="notification.length > 0 || new_notif === 'true' " />
+                  *ngIf="nblastnotifications > 0 || new_notif === true " />
               </svg>
             </div>
             <div>
