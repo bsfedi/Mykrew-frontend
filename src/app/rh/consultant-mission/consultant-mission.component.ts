@@ -53,6 +53,11 @@ export class ConsultantMissionComponent {
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,
     private datePipe: DatePipe,
     private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // Month is zero-based, so add 1
+    const day = today.getDate();
+    this.selectedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
     this.foremData = this.fb.group({
       userId: [''],
@@ -370,6 +375,7 @@ export class ConsultantMissionComponent {
   openPopup3(): void {
     this.showPopup3 = true;
   }
+  selectedDate: any;
   applyFiltercra() {
     // Check if search term is empty
     if (this.searchTerm.trim() === '') {
@@ -404,6 +410,18 @@ export class ConsultantMissionComponent {
       return this.allcra.slice(startIndex, endIndex);
     }
 
+  }
+  filterByUploadDate(uploadDate: Date): boolean {
+    if (!this.selectedDate) {
+      return true; // No filter applied
+    }
+
+    // Format the uploadDate to match selectedDate format
+    const formattedUploadMonth = this.datePipe.transform(uploadDate, 'yyyy-MM');
+    const formattedSelectedMonth = this.datePipe.transform(this.selectedDate, 'yyyy-MM');
+
+    // Check if the formatted months match
+    return formattedUploadMonth === formattedSelectedMonth;
   }
   applyFilter() {
     // Check if search term is empty
@@ -667,6 +685,7 @@ export class ConsultantMissionComponent {
       }
     });
   }
+
   // Dans votre composant TypeScript
   downloadDocument(documentUrl: string, documentName: string): void {
     console.log(documentName, documentUrl);

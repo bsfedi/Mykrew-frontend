@@ -21,10 +21,11 @@ export class AllCrasComponent {
   res: any
   selectedDate: any;
 
-
+  filterditems: any;
   new_notif: any
   nblastnotifications: any
   lastnotifications: any
+  searchTerm: any
   notification: string[] = [];
   shownotiff: boolean = false
   constructor(private inscriptionservice: InscriptionService, private router: Router, private datePipe: DatePipe, private http: HttpClient, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
@@ -40,6 +41,24 @@ export class AllCrasComponent {
 
   gotomyprofile() {
     this.router.navigate([clientName + '/edit-profil'])
+  }
+  applyFilter() {
+    // Check if search term is empty
+
+    // Check if search term is empty
+    if (this.searchTerm.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.filterditems = this.all_cras;
+    } else {
+      // Apply filter based on search term
+      console.log(this.all_cras);
+      this.filterditems = this.all_cras.filter((item: any) =>
+
+
+        item.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        item.lastName.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
   downloadFile(urlpdf: any, filename: any) {
 
@@ -138,7 +157,7 @@ export class AllCrasComponent {
       next: (res) => {
         this.all_cras = res
 
-
+        this.filterditems = this.all_cras
         for (let item of this.all_cras) {
           for (let crapdf of item.craInformation.craPDF) {
             crapdf.filename = baseUrl + "uploads/" + crapdf.filename
@@ -165,12 +184,12 @@ export class AllCrasComponent {
   getDisplayeddocs(): any[] {
 
 
-    this.totalPages = Math.ceil(this.all_cras.length / this.pageSize);
+    this.totalPages = Math.ceil(this.filterditems.length / this.pageSize);
     const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = Math.min(startIndex + this.pageSize, this.all_cras.length);
+    const endIndex = Math.min(startIndex + this.pageSize, this.filterditems.length);
 
 
-    return this.all_cras.slice(startIndex, endIndex);
+    return this.filterditems.slice(startIndex, endIndex);
 
 
 
