@@ -554,7 +554,13 @@ td {
 
 
 
-
+.pagination {
+  margin-top: 20px;
+  /* Adjust the spacing between the table and pagination */
+  display: flex;
+  float: right;
+  text-align: right;
+}
 
 select {
   padding: 5px;

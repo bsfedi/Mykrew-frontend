@@ -50,6 +50,7 @@ export class ConsultantMissionComponent {
   filteredItems: any[] = [];
   showPopup3: any
   searchTerm: any
+  searchTerm1: any
   constructor(private consultantservice: ConsultantService, private inscriptionservice: InscriptionService,
     private datePipe: DatePipe,
     private userservice: UserService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -126,6 +127,7 @@ export class ConsultantMissionComponent {
         console.log("allcra", this.allcra);
 
         for (let item of this.allcra) {
+
           console.log("item", item);
 
           console.log("filename", item.filename);
@@ -438,6 +440,23 @@ export class ConsultantMissionComponent {
         item.documentName.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
       console.log(this.filteredItems);
+    }
+  }
+  applyFilter1() {
+    // Check if search term is empty
+
+
+    if (this.searchTerm1.trim() === '') {
+      // If search term is empty, reset the filtered items to the original items
+      this.allcra = this.allcra.craPdfs
+    } else {
+
+
+      // Apply filter based on search term
+      this.allcra = this.allcra.filter((item: any) =>
+        item.client.toLowerCase().includes(this.searchTerm1.toLowerCase())
+      );
+
     }
   }
   closePopup(): void {

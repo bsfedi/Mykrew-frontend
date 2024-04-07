@@ -193,6 +193,9 @@ export class VirementsComponent {
   pdfcontainer1: any
   notification: string[] = [];
   res1: any
+  pageSize = 8; // Number of items per page
+  currentPage = 1; // Current page
+  totalPages: any;
   res2: any
   shownotiff: boolean = false
   gotomyprofile() {
@@ -278,8 +281,27 @@ export class VirementsComponent {
 
 
   }
+  getDisplayeddocs(): any[] {
 
 
+    this.totalPages = Math.ceil(this.res.length / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.res.length);
+
+
+    return this.res.slice(startIndex, endIndex);
+  }
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
   getmyvir() {
 
     this.userservice.getMyvirements(this.user_id).subscribe({

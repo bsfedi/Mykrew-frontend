@@ -131,9 +131,11 @@ export class MissionsComponent {
     return comparisonDate < currentDate;
 
   }
-  deposercra(id: any) {
+  client: any
+  deposercra(id: any, client: any) {
     this.deposer = true
     this.mission_id = id
+    this.client = client
   }
   isDateToday(dateToCompare: any): boolean {
     const currentDate = new Date();
@@ -725,6 +727,7 @@ export class MissionsComponent {
   }
 
   submitcra() {
+    this.formData.append("client", this.client)
     this.consultantservice.addCraPdfToUser(this.mission_id, this.formData)
       .subscribe({
         next: (res) => {
@@ -762,6 +765,7 @@ export class MissionsComponent {
       this.formData.append('datecompte', this.myForm.value.datecompte);
       this.formData.append('userId', this.user_id)
       this.formData.append('missionId', this.mission_id)
+
 
 
 
