@@ -188,14 +188,20 @@
                     </div>
                     <div class="grid-item">
 
-                        <input formControlName="phoneNumber" pattern="[0-9]*" type="number" id="phoneNumber"
+                        <input formControlName="phoneNumber" pattern="[0-9]*" type="tel" id="phoneNumber"
                             name="phoneNumber" placeholder="Téléphone" required />
 
                         <div class="error" *ngIf="
                       myForm.get('phoneNumber')?.invalid &&
                       myForm.get('phoneNumber')?.touched
                     ">
-                            Téléphone est obligatoire.
+                            <div class="error" *ngIf="myForm.get('phoneNumber')?.touched">
+                                Téléphone est obligatoire.
+                            </div>
+
+                            <div class="error" *ngIf="myForm.get('phoneNumber')?.invalid">
+                                Téléphone format incorrect
+                            </div>
                         </div>
                     </div>
 

@@ -35,6 +35,7 @@ export class ValidationMissionComponent {
   stats: any;
   res: any
   demandeur: any
+  user_id: any
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     // Ensure that the items array is correctly populated here if needed.
   }

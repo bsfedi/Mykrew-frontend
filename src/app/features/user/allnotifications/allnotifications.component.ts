@@ -56,6 +56,7 @@ export class AllnotificationsComponent {
 
         },
         error: (e) => {
+
           // Handle errors
           console.error(e);
           // Set loading to false in case of an error
