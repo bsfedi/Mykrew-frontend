@@ -64,11 +64,6 @@
 
 
 
-@media screen and (max-width: 1600px) and (min-height: 700px) {
-  .faq-sedeconnecter {
-    margin-top: 450px;
-  }
-}
 
 @media (max-width: 768px) {
 
@@ -133,6 +128,10 @@ svg {
 }
 
 .faq-sedeconnecter {
+  margin-top: 355px;
+}
+
+.faq-sedeconnecter1 {
   margin-top: 255px;
 }
 
@@ -149,6 +148,10 @@ svg {
 }
 
 @media screen and (min-width: 375px) and (max-width: 700px) {
+  .faq-sedeconnecter {
+    margin-top: 310px;
+  }
+
   .menu-toggle {
     position: fixed;
     top: 20px;

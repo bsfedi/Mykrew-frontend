@@ -10,7 +10,7 @@ import { PendingPreinscriptionComponent } from './pending-preinscription/pending
 
 import { NgApexchartsModule } from "ng-apexcharts";
 import { NewMissionComponent } from './new-mission/new-mission.component';
-import { ProfilComponent } from './profil/profil.component';
+
 import { MissionsComponent } from './missions/missions.component';
 import { DetailsMissionComponent } from './details-mission/details-mission.component';
 import { VirementsComponent } from './virements/virements.component';
@@ -35,11 +35,7 @@ export const routes: Routes = [
     component: NewMissionComponent,
 
   },
-  {
-    path: 'consultant/profil',
-    component: ProfilComponent,
 
-  },
 
   {
     path: 'consultant/missions',
@@ -91,7 +87,6 @@ export const routes: Routes = [
 
     PendingPreinscriptionComponent,
     NewMissionComponent,
-    ProfilComponent,
     MissionsComponent,
     DetailsMissionComponent,
     VirementsComponent,

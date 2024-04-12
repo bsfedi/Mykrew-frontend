@@ -151,6 +151,10 @@ input[type='search']:focus {
     box-shadow: 4px 4px 39.1px 0px rgba(255, 255, 255, 0.25) inset;
 }
 
+.flex-form {
+    display: flex;
+}
+
 .title {
 
     margin-top: 7px;
@@ -531,6 +535,28 @@ input[type="search"] {
     .container {
         margin-left: 1%;
         font-family: 'Poppins', sans-serif !important;
+    }
+
+    .flex-form {
+        display: grid;
+    }
+
+    select,
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="number"] {
+        width: 20.04313rem;
+
+    }
+
+    .custom-file-input {
+
+
+        width: 20.04313rem;
+
     }
 
     .title {
