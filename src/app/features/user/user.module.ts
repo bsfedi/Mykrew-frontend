@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PendingPreinscriptionComponent } from './pending-preinscription/pending-preinscription.component';
-import { DashboardConsultantComponent } from './dashboard-consultant/dashboard-consultant.component';
-import { HomeUserComponent } from './home-user/home-user.component';
+
+
 import { NgApexchartsModule } from "ng-apexcharts";
 import { NewMissionComponent } from './new-mission/new-mission.component';
 import { ProfilComponent } from './profil/profil.component';
@@ -29,16 +29,7 @@ export const routes: Routes = [
     path: 'pending',
     component: PendingPreinscriptionComponent,
   },
-  {
-    path: 'consultant/dashboard',
-    component: DashboardConsultantComponent,
 
-  },
-  {
-    path: 'consultant/home',
-    component: HomeUserComponent,
-
-  },
   {
     path: 'consultant/new-mission',
     component: NewMissionComponent,
@@ -99,8 +90,6 @@ export const routes: Routes = [
   declarations: [
 
     PendingPreinscriptionComponent,
-    DashboardConsultantComponent,
-    HomeUserComponent,
     NewMissionComponent,
     ProfilComponent,
     MissionsComponent,

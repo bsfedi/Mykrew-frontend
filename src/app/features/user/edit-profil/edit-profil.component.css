@@ -123,6 +123,11 @@ button {
 
 }
 
+
+.tableau {
+    display: flex;
+}
+
 select,
 input[type="text"],
 input[type="date"],
@@ -142,4 +147,56 @@ input[type="password"] {
     background: #fff;
     border-radius: 6px;
     box-sizing: border-box;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+    .second-container {
+        margin-left: 0px;
+    }
+
+    .right-item {
+        display: none;
+    }
+
+    .tableau {
+        display: grid;
+    }
+
+    select,
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        width: 20.04313rem;
+        height: 2.61006rem;
+        flex-shrink: 0;
+        margin-left: 20px;
+        padding: 8px;
+        margin-top: 15px;
+        margin: 8px 8px 8px 12px;
+        border-radius: 0.5rem;
+        border: 2px solid #eae3d5;
+
+        background: #fff;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    button {
+        color: white;
+        display: flex;
+        width: 30%;
+        padding: 0.5rem;
+        margin-left: 12px;
+        margin-top: 15px;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        border-radius: 0.625rem;
+        background: black;
+
+
+
+    }
 }

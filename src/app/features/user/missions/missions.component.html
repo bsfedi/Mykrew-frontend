@@ -5,20 +5,6 @@
     </div>
 
     <div class="second-container">
-      <!-- <div class="search-bar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-            fill="#1E1E1E" />
-        </svg>
-        <div class="Search-text">
-          <input type="search" placeholder="Search Anything Here..." />
-        </div>
-        <div>
-          <button class="button">Rechercher</button>
-        </div>
-      </div> -->
-
       <div style="display: flex">
 
         <div class="title">Mes Missions</div>
@@ -42,9 +28,9 @@
             <div class="nb_money" style="font-size: 1.5rem;" *ngIf="!clientofcurrentmission">
               <b> Aucune mission en cours</b>
             </div>
-            <div class="Tableau" style="margin-left: 15px; margin-top: 15px; color: #cdc7b9">
-              <div *ngIf="clientofcurrentmission">chez : {{ clientofcurrentmission }}</div>
-              <div *ngIf="tjmofcurrentmission" style="margin-left: 8px">
+            <div class="Tableau chez">
+              <div *ngIf="clientofcurrentmission" class="chezqui">chez : {{ clientofcurrentmission }}</div>
+              <div *ngIf="tjmofcurrentmission" class="TJMcuurent">
                 TJM : {{ tjmofcurrentmission }}€
               </div>
 
@@ -89,54 +75,57 @@
         En attente ({{ pending_missions.length }})
       </div>
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
-            <th>Métier</th>
-            <th>Client</th>
-            <th>Secteur</th>
-            <th>TJM</th>
-            <th>Début</th>
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Fin</th>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
+              <th>Métier</th>
+              <th>Client</th>
+              <th>Secteur</th>
+              <th>TJM</th>
+              <th>Début</th>
+              <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Fin</th>
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of getDisplayeddocspending(); let j = index" (click)="gotovalidation(item._id)"
-            style="cursor: pointer;">
-            <td>
-              <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="ancienne">
-                En attente
-              </div>
-              <div *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'" class="pending">
-                Nouvelle
-              </div>
-            </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of getDisplayeddocspending(); let j = index" (click)="gotovalidation(item._id)"
+              style="cursor: pointer;">
+              <td>
+                <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="ancienne">
+                  En attente
+                </div>
+                <div *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'" class="pending">
+                  Nouvelle
+                </div>
+              </td>
 
-            <td>
-              {{ item.missionInfo.profession.value }}
-            </td>
-            <td>
-              {{ item.clientInfo.company.value }}
-            </td>
-            <td>
-              {{ item.missionInfo.industrySector.value }}
-            </td>
-            <td>
-              {{ item.missionInfo.dailyRate.value }}
-            </td>
-            <td>
-              {{ formatDate(item.missionInfo.startDate.value.split("T")[0]) }}
+              <td>
+                {{ item.missionInfo.profession.value }}
+              </td>
+              <td>
+                {{ item.clientInfo.company.value }}
+              </td>
+              <td>
+                {{ item.missionInfo.industrySector.value }}
+              </td>
+              <td>
+                {{ item.missionInfo.dailyRate.value }}
+              </td>
+              <td>
+                {{ formatDate(item.missionInfo.startDate.value.split("T")[0]) }}
 
-            </td>
-            <td>
-              {{ formatDate(item.missionInfo.endDate.value.split("T")[0]) }}
+              </td>
+              <td>
+                {{ formatDate(item.missionInfo.endDate.value.split("T")[0]) }}
 
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="pagination">
         <div (click)="previousPagepending()" style="cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -166,320 +155,213 @@
         En cours ({{ validated_mission.length }})
       </div>
       <br />
-      <!-- <table>
-        <thead>
-          <tr>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
-
-            <th>Métier</th>
-            <th>Client</th>
-            <th>Secteur</th>
-            <th>TJM</th>
-            <th>Début</th>
-            <th>Fin</th>
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of getDisplayeddocs(); let j = index">
-            <td>
-              <div *ngIf="isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
-                <div class="encours">en cours</div>
-              </div>
-              <div *ngIf="isDateToday(item.missionInfo.endDate.split('T')[0])">
-                <div class="done">Terminé</div>
-              </div>
-              <div *ngIf="
-                  isDateBeforeToday(item.missionInfo.endDate.split('T')[0])
-                ">
-                <div class="done">Terminé</div>
-              </div>
-            </td>
-            <td>
-              {{ item.missionInfo.profession }}
-            </td>
-            <td>
-              {{ item.clientInfo.company }}
-            </td>
-            <td>
-              {{ item.missionInfo.industrySector }}
-            </td>
-            <td>
-              {{ item.missionInfo.dailyRate }}
-            </td>
-            <td>
-              {{ formatDate( item.missionInfo.startDate.split("T")[0] ) }}
-            </td>
-            <td>
-              {{ formatDate( item.missionInfo.endDate.split("T")[0] ) }}
-            </td>
-            <td style="cursor: pointer" class="dropdown">
-              <div>
-                <div>
-                  <div style="margin-left: 8px">
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                          d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                          fill="black" />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="dropdown-content">
-                <div class="dropdown-menu">
-                  <div style="display: flex; cursor: pointer">
-                    <img src="/assets/Checkmark.svg" width="12%" />
-                    <div (click)="gotovalidation(item._id)" style="
-                        margin-top: 7px;
-                        margin-bottom: 10px;
-                        margin-left: 5px;
-                      ">
-                      Voir details
-
-                    </div>
-                  </div>
-                  <div style="display: flex; cursor: pointer">
-                    <img src="/assets/Checkmark.svg" width="12%" />
-                    <div (click)="openPopup(item._id)" style="
-                        margin-top: 7px;
-                        margin-bottom: 10px;
-                        margin-left: 5px;
-                      ">
-                      Modifier TJM
-                    </div>
-                  </div>
-                  <div style="display: flex; cursor: pointer">
-                    <img src="/assets/Checkmark.svg" width="12%" />
-                    <div (click)="gotocra(item._id)" style="
-                        margin-top: 7px;
-                        margin-bottom: 10px;
-                        margin-left: 5px;
-                      ">
-                      CRA
-                    </div>
-                  </div>
-                  <div style="display: flex; cursor: pointer">
-                    <img src="/assets/Checkmark.svg" width="12%" />
-                    <div  style="
-                        margin-top: 7px;
-                        margin-bottom: 10px;
-                        margin-left: 5px;
-                      ">
-                      Déposer fichier CRA
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </td>
-
-          </tr>
-        </tbody>
-      </table> -->
-      <table>
-        <thead>
-          <tr>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
-            <th>Métier</th>
-            <th>Client</th>
-            <th>Secteur</th>
-            <th>TJM</th>
-            <th>Début</th>
-            <th>Fin</th>
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Afficher d'abord les éléments avec le statut "en cours" -->
-          <ng-container *ngFor="let item of getDisplayeddocs()">
-            <tr *ngIf="isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
-              <td>
-                <div class="encours">En cours</div>
-              </td>
-              <td>
-                {{ item.missionInfo.profession }}
-              </td>
-              <td>
-                {{ item.clientInfo.company }}
-              </td>
-              <td>
-                {{ item.missionInfo.industrySector }}
-              </td>
-              <td>
-                {{ item.missionInfo.dailyRate }}
-              </td>
-              <td>
-                {{ formatDate(item.missionInfo.startDate.split('T')[0]) }}
-              </td>
-              <td>
-                {{ formatDate(item.missionInfo.endDate.split('T')[0]) }}
-              </td>
-              <td style="cursor: pointer" class="dropdown">
-
-                <div>
-                  <div>
-                    <div style="margin-left: 8px">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                            fill="black" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-content">
-                  <div class="dropdown-menu">
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotovalidation(item._id)" style="
-                              margin-top: 7px;
-                              margin-bottom: 10px;
-                              margin-left: 5px;
-                            ">
-                        Voir details
-
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="openPopup(item._id)" style="
-                              margin-top: 7px;
-                              margin-bottom: 10px;
-                              margin-left: 5px;
-                            ">
-                        Modifier TJM
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotocra(item._id)" style="
-                              margin-top: 7px;
-                              margin-bottom: 10px;
-                              margin-left: 5px;
-                            ">
-                        CRA
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="deposercra(item._id,item.clientInfo.company)" style="
-                              margin-top: 7px;
-                              margin-bottom: 10px;
-                              margin-left: 5px;
-                            ">
-                        Déposer fichier CRA
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-              </td>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
+              <th>Métier</th>
+              <th>Client</th>
+              <th>Secteur</th>
+              <th>TJM</th>
+              <th>Début</th>
+              <th>Fin</th>
+              <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
             </tr>
-          </ng-container>
-          <!-- Afficher ensuite les éléments avec d'autres statuts -->
-          <ng-container *ngFor="let item of getDisplayeddocs()">
-            <tr *ngIf="!isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
+          </thead>
+          <tbody>
+            <!-- Afficher d'abord les éléments avec le statut "en cours" -->
+            <ng-container *ngFor="let item of getDisplayeddocs()">
+              <tr *ngIf="isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
+                <td>
+                  <div class="encours">En cours</div>
+                </td>
+                <td>
+                  {{ item.missionInfo.profession }}
+                </td>
+                <td>
+                  {{ item.clientInfo.company }}
+                </td>
+                <td>
+                  {{ item.missionInfo.industrySector }}
+                </td>
+                <td>
+                  {{ item.missionInfo.dailyRate }}
+                </td>
+                <td>
+                  {{ formatDate(item.missionInfo.startDate.split('T')[0]) }}
+                </td>
+                <td>
+                  {{ formatDate(item.missionInfo.endDate.split('T')[0]) }}
+                </td>
+                <td style="cursor: pointer" class="dropdown">
 
-              <td>
-                <div *ngIf="isDateToday(item.missionInfo.endDate.split('T')[0])">
-                  <div class="done">Terminé</div>
-                </div>
-                <div *ngIf="
-                      isDateBeforeToday(item.missionInfo.endDate.split('T')[0])
-                    ">
-                  <div class="done">Terminé</div>
-                </div>
-              </td>
-              <td>
-                {{ item.missionInfo.profession }}
-              </td>
-              <td>
-                {{ item.clientInfo.company }}
-              </td>
-              <td>
-                {{ item.missionInfo.industrySector }}
-              </td>
-              <td>
-                {{ item.missionInfo.dailyRate }}
-              </td>
-              <td>
-                {{ formatDate( item.missionInfo.startDate.split("T")[0] ) }}
-              </td>
-              <td>
-                {{ formatDate( item.missionInfo.endDate.split("T")[0] ) }}
-              </td>
-              <td style="cursor: pointer" class="dropdown">
-                <div>
                   <div>
-                    <div style="margin-left: 8px">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                            fill="black" />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-content">
-                  <div class="dropdown-menu">
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotovalidation(item._id)" style="
-                            margin-top: 7px;
-                            margin-bottom: 10px;
-                            margin-left: 5px;
-                          ">
-                        Voir details
-
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="openPopup(item._id)" style="
-                            margin-top: 7px;
-                            margin-bottom: 10px;
-                            margin-left: 5px;
-                          ">
-                        Modifier TJM
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="gotocra(item._id)" style="
-                            margin-top: 7px;
-                            margin-bottom: 10px;
-                            margin-left: 5px;
-                          ">
-                        CRA
-                      </div>
-                    </div>
-                    <div style="display: flex; cursor: pointer">
-                      <img src="/assets/Checkmark.svg" width="12%" />
-                      <div (click)="deposercra(item._id,item.clientInfo.company)" style="
-                            margin-top: 7px;
-                            margin-bottom: 10px;
-                            margin-left: 5px;
-                          ">
-                        Déposer fichier CRA
+                    <div>
+                      <div style="margin-left: 8px">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <path
+                              d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                              fill="black" />
+                          </svg>
+                        </span>
                       </div>
                     </div>
                   </div>
+                  <div class="dropdown-content">
+                    <div class="dropdown-menu">
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotovalidation(item._id)" style="
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                margin-left: 5px;
+                              ">
+                          Voir details
 
-                </div>
-              </td>
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="openPopup(item._id)" style="
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                margin-left: 5px;
+                              ">
+                          Modifier TJM
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotocra(item._id)" style="
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                margin-left: 5px;
+                              ">
+                          CRA
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="deposercra(item._id,item.clientInfo.company)" style="
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                margin-left: 5px;
+                              ">
+                          Déposer fichier CRA
+                        </div>
+                      </div>
+                    </div>
 
-            </tr>
+                  </div>
 
-          </ng-container>
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            </ng-container>
+            <!-- Afficher ensuite les éléments avec d'autres statuts -->
+            <ng-container *ngFor="let item of getDisplayeddocs()">
+              <tr *ngIf="!isDateAfterToday(item.missionInfo.endDate.split('T')[0])">
+
+                <td>
+                  <div *ngIf="isDateToday(item.missionInfo.endDate.split('T')[0])">
+                    <div class="done">Terminé</div>
+                  </div>
+                  <div *ngIf="
+                        isDateBeforeToday(item.missionInfo.endDate.split('T')[0])
+                      ">
+                    <div class="done">Terminé</div>
+                  </div>
+                </td>
+                <td>
+                  {{ item.missionInfo.profession }}
+                </td>
+                <td>
+                  {{ item.clientInfo.company }}
+                </td>
+                <td>
+                  {{ item.missionInfo.industrySector }}
+                </td>
+                <td>
+                  {{ item.missionInfo.dailyRate }}
+                </td>
+                <td>
+                  {{ formatDate( item.missionInfo.startDate.split("T")[0] ) }}
+                </td>
+                <td>
+                  {{ formatDate( item.missionInfo.endDate.split("T")[0] ) }}
+                </td>
+                <td style="cursor: pointer" class="dropdown">
+                  <div>
+                    <div>
+                      <div style="margin-left: 8px">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <path
+                              d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                              fill="black" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown-content">
+                    <div class="dropdown-menu">
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotovalidation(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                          Voir details
+
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="openPopup(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                          Modifier TJM
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="gotocra(item._id)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                          CRA
+                        </div>
+                      </div>
+                      <div style="display: flex; cursor: pointer">
+                        <img src="/assets/Checkmark.svg" width="12%" />
+                        <div (click)="deposercra(item._id,item.clientInfo.company)" style="
+                              margin-top: 7px;
+                              margin-bottom: 10px;
+                              margin-left: 5px;
+                            ">
+                          Déposer fichier CRA
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </td>
+
+              </tr>
+
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
 
       <div class="pagination">
         <div (click)="previousPage()" style="cursor: pointer;">
@@ -507,7 +389,7 @@
       </div>
       <div class="popup" *ngIf="deposer">
         <div class="popup-content" style="  height: 12.4375rem;">
-          <div style="float: right" (click)="closePopup()">
+          <div style="float: right" (click)="closePopup1()">
             <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
           </div>
           <div>
@@ -667,50 +549,52 @@
 
       <br />
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Statut</th>
 
-            <th>Métier</th>
-            <th>Client</th>
-            <th>Secteur</th>
-            <th>TJM</th>
-            <th>Début</th>
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Fin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of getDisplayeddocsnv(); let k = index" (click)="gotovalidation(item._id)">
-            <td>
-              <div>
-                <div class="nonvalidée">Non validée</div>
-              </div>
-            </td>
+              <th>Métier</th>
+              <th>Client</th>
+              <th>Secteur</th>
+              <th>TJM</th>
+              <th>Début</th>
+              <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Fin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of getDisplayeddocsnv(); let k = index" (click)="gotovalidation(item._id)">
+              <td>
+                <div>
+                  <div class="nonvalidée">Non validée</div>
+                </div>
+              </td>
 
 
-            <td>
-              {{ item.missionInfo.profession.value }}
-            </td>
-            <td>
-              {{ item.clientInfo.company.value }}
-            </td>
-            <td>
-              {{ item.missionInfo.industrySector.value }}
-            </td>
-            <td>
-              {{ item.missionInfo.dailyRate.value }}
-            </td>
-            <td>
-              {{ formatDate( item.missionInfo.startDate.value.split("T")[0]) }}
+              <td>
+                {{ item.missionInfo.profession.value }}
+              </td>
+              <td>
+                {{ item.clientInfo.company.value }}
+              </td>
+              <td>
+                {{ item.missionInfo.industrySector.value }}
+              </td>
+              <td>
+                {{ item.missionInfo.dailyRate.value }}
+              </td>
+              <td>
+                {{ formatDate( item.missionInfo.startDate.value.split("T")[0]) }}
 
-            </td>
-            <td>
-              {{ formatDate( item.missionInfo.endDate.value.split("T")[0]) }}
+              </td>
+              <td>
+                {{ formatDate( item.missionInfo.endDate.value.split("T")[0]) }}
 
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="pagination" [hidden]="!hideMissions">
         <div (click)="previousPagenv()" style="cursor: pointer;" [hidden]="!hideMissions">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

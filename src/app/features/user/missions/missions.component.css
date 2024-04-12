@@ -228,11 +228,7 @@ body {
   font-size: 14px;
 }
 
-table {
-  width: 100%;
-  text-align: center;
-  border-bottom: #000 3px;
-}
+
 
 th {
   color: #323842;
@@ -349,10 +345,7 @@ tr {
   background: #eae3d5;
 }
 
-table {
-  width: 100%;
-  text-align: center;
-}
+
 
 th {
   color: #323842;
@@ -482,6 +475,12 @@ input[type="number"] {
   float: right;
 }
 
+.right-item {
+  float: right;
+  display: row;
+  position: relative;
+}
+
 .profil {
   width: auto;
   height: 3.125rem;
@@ -493,7 +492,7 @@ input[type="number"] {
   background: #fef9f1;
   display: flex;
   float: right;
-  margin-right: 12px;
+
 }
 
 .profil1 svg {
@@ -504,7 +503,7 @@ input[type="number"] {
 .profil1 {
   width: 13rem;
   height: 3.125rem;
-  margin-left: -20px;
+  margin-left: 10px;
   border: 1px solid rgb(247, 227, 227);
   border-radius: 15px;
   background: #fef9f1;
@@ -555,6 +554,18 @@ svg {
   line-height: normal;
   letter-spacing: 0.0225rem;
 }
+
+.chez {
+  margin-left: 15px;
+  margin-top: 15px;
+  color: #cdc7b9
+}
+
+.TJMcuurent {
+  margin-left: 8px;
+}
+
+.chezqui {}
 
 @media (max-width: 768px) {
   .container {
@@ -631,14 +642,17 @@ svg {
     margin-right: 10px;
   }
 
-  .container {
-    display: table-row;
-    font-family: "Poppins", sans-serif !important;
+
+
+
+  @media (max-width: 750px) {
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
   }
-
-
-
-
 
   .second-container {
     margin-left: 0px;
@@ -657,3 +671,92 @@ svg {
     margin-top: 8px;
   }
 }
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+
+  select,
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"] {
+    width: 20.04313rem;
+
+  }
+
+  .custom-file-input {
+
+
+    width: 20.04313rem;
+
+  }
+
+  #chart {
+
+    width: 350px;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chiffre_affaire {
+    margin-left: 55px;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+  .tjm_moyen {
+    margin-left: 55px;
+  }
+
+  .right-item {
+    display: none;
+  }
+
+  .container {}
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  .button {
+    float: none;
+  }
+
+  .dropdown-content {
+    margin-left: -550px;
+  }
+
+}
+
+/* table {
+  width: 100%;
+
+} */
+
+
+/* Adjust styles for smaller screens */
+@media screen and (min-width: 375px) and (max-width: 700px) {}

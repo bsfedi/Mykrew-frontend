@@ -679,7 +679,7 @@ export class MissionsComponent {
 
   }
   closePopup1(): void {
-    this.showPopup1 = false;
+    this.deposer = false;
 
   }
   idpdf: any

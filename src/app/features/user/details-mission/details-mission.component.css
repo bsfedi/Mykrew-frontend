@@ -20,15 +20,16 @@ hr {
   border: 1px solid #EAE3D5;
 }
 
-.title {
-  color: #000;
 
-  font-size: 1.25rem;
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
-  margin-bottom: 30px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
 }
@@ -47,6 +48,10 @@ hr {
 }
 
 .Tableau {
+  display: flex;
+}
+
+.flex-item {
   display: flex;
 }
 
@@ -93,7 +98,7 @@ svg {
 }
 
 .second-container {
-  margin-left: 270px;
+  margin-left: 240px;
 
   flex-shrink: 0;
 }
@@ -661,8 +666,41 @@ input[type="password"] {
   outline: none;
 }
 
-@media (max-width: 768px) {
+.second-item-info {
+  margin-left: 80px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
   .container {
     flex-direction: column;
   }
+
+  .flex-item {
+    display: grid;
+  }
+
+  .right-item {
+    margin-left: -10px;
+    float: left;
+    display: row;
+  }
+
+  .second-item-info {
+    margin-left: 0px;
+    margin-top: 25px;
+  }
+
+  .second-container {
+    margin-left: 10px;
+
+    flex-shrink: 0;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* By default, show one column for mobile */
+    font-family: "Poppins", sans-serif !important;
+  }
+
 }

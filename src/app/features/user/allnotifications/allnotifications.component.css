@@ -275,3 +275,90 @@ p {
 .whatsapp {
   margin-left: 30px;
 }
+
+.second-container {
+  margin-left: 250px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+
+  select,
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"] {
+    width: 20.04313rem;
+
+  }
+
+  .custom-file-input {
+
+
+    width: 20.04313rem;
+
+  }
+
+  #chart {
+
+    width: 350px;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chiffre_affaire {
+    margin-left: 55px;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+  .tjm_moyen {
+    margin-left: 55px;
+  }
+
+
+  .right-item {
+    display: none;
+  }
+
+  .second-container {
+    margin-left: 0px;
+  }
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  .button {
+    float: none;
+  }
+
+  .dropdown-content {
+    margin-left: -550px;
+  }
+
+}

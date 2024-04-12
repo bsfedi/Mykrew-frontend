@@ -114,10 +114,6 @@
     border-color: rgba(118, 115, 110, 0.55);
 }
 
-.buttons {
-    display: flex;
-    float: right;
-}
 
 .inscrire {
     color: #FFF;
@@ -229,6 +225,114 @@ input[type="search"] {
 
 .file-input {
     display: none;
+}
+
+@media (min-width: 950px) {
+    .buttons {
+        display: flex;
+        float: right;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+    .left-panel {
+
+        width: 100%;
+
+    }
+
+    .custom-file-input {
+
+
+        width: 21.04313rem;
+
+    }
+
+    .mdp {
+        color: #000;
+        cursor: pointer;
+        margin-left: 180px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .buttons {
+        display: flex;
+        margin-left: 80px;
+    }
+
+    .under-connect {
+        width: 345px;
+    }
+
+    select,
+    input[type="email"],
+    input[type="date"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="file"],
+    input[type="search"] {
+        width: 21.04313rem;
+
+    }
+
+    .Inscrivez-vous {
+        margin-left: 35px;
+
+    }
+
+    button {
+        margin-top: 35px;
+        width: 21.04313rem;
+        height: 3.61006rem;
+        flex-shrink: 0;
+        border-radius: 1rem;
+        background: black;
+    }
+
+    .form-panel {
+
+        padding-top: 50px;
+        padding-left: -1020px;
+        display: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .form-container {
+
+        padding-left: 20px;
+    }
+
+    .text-overlay {
+        top: 70%;
+        left: 32%;
+        width: 20rem;
+
+    }
+
+    .container {
+        display: grid;
+        overflow: hidden;
+        font-family: "Poppins", sans-serif !important;
+    }
+
+    .left-image {
+        border-radius: 1.875rem;
+        height: 100%;
+        width: 100%;
+    }
+
+    .image {
+        margin-top: -43px;
+        z-index: 1;
+        margin-left: -45px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 }
 
 /* @media (max-width: 768px) {

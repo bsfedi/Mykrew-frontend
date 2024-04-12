@@ -104,11 +104,6 @@
   background: rgba(188, 0, 0, 0.2);
 }
 
-.etape {
-  margin-top: 20px;
-  margin-left: 25px;
-}
-
 .sucess-etape {
   display: flex;
   width: 24.12494rem;
@@ -117,6 +112,13 @@
   border: 1px solid #1e1e1e;
   background: rgba(18, 130, 0, 0.23);
 }
+
+.etape {
+  margin-top: 20px;
+  margin-left: 25px;
+}
+
+
 
 .pending-circle {
   background-color: #353535;
@@ -301,11 +303,34 @@ input[type="search"] {
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .pending-etape {
+
+    width: 22.32494rem;
+
+  }
+
+  .error-etape {
+    width: 22.32494rem;
+  }
+
+  .sucess-etape {
+    width: 22.32494rem;
+  }
+
+  .form-panel1 {
+    flex: 0.7;
+    padding-top: 50px;
+    padding-left: 10px;
+    display: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   .form-panel {
     flex: 0.7;
     padding-top: 30px;
-    padding-left: 0px;
+    padding-left: 10px;
     display: row;
     justify-content: center;
     align-items: center;
@@ -313,7 +338,7 @@ input[type="search"] {
 
   .text-overlay {
     position: absolute;
-    top: 80%;
+    top: 60%;
     left: 40%;
     transform: translate(-40%, -50%);
     color: white;
@@ -334,6 +359,6 @@ input[type="search"] {
     height: 3.61006rem;
     flex-shrink: 0;
     border-radius: 1rem;
-    background: black;
+
   }
 }

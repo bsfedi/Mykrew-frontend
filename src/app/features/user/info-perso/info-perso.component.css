@@ -695,3 +695,124 @@ input[type="password"] {
   height: 18px;
   margin-left: 5px;
 }
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+
+  select,
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"] {
+    width: 20.04313rem;
+
+  }
+
+  .custom-file-input {
+
+
+    width: 20.04313rem;
+
+  }
+
+  #chart {
+
+    width: 350px;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chiffre_affaire {
+    margin-left: 55px;
+  }
+
+  .second-container {
+    margin-left: 0px;
+
+  }
+
+  .Grille {
+    width: 60%;
+    margin-left: 80%;
+  }
+
+  .Grille1 {
+    width: 40%;
+    margin-left: 112%;
+  }
+
+  .docs1 {
+    display: grid;
+    width: auto;
+    margin-left: 25px;
+  }
+
+  .docs {
+    display: grid;
+    min-width: 100px;
+    margin-left: 25px;
+  }
+
+  .Tableau {
+    display: grid;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+  .tjm_moyen {
+    margin-left: 55px;
+  }
+
+  .right-item {
+    display: none;
+  }
+
+  .container {}
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  button {
+    color: white;
+    display: flex;
+    width: 400%;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.625rem;
+    background: black;
+    margin-top: 2px;
+    margin: 10px;
+  }
+
+  .dropdown-content {
+    margin-left: -550px;
+  }
+
+}

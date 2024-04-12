@@ -16,7 +16,7 @@
     margin-top: 5px;
     margin-right: 10px;
     color: #000;
-    
+
     font-size: 0.6875rem;
     font-style: normal;
     font-weight: 400;
@@ -58,7 +58,7 @@
 
 .bord-text {
     color: #FEFCF1;
-    
+
 
     font-style: normal;
 
@@ -151,14 +151,27 @@ input[type='search']:focus {
     box-shadow: 4px 4px 39.1px 0px rgba(255, 255, 255, 0.25) inset;
 }
 
-.container{
-    margin-left:7%;
+.title {
+
+    margin-top: 7px;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    /* 2.25rem */
+}
+
+.container {
+    margin-left: 7%;
     font-family: 'Poppins', sans-serif !important;
 }
 
 .container-items {
     display: flex;
-    margin-left:5%;
+    margin-left: 5%;
 }
 
 .first-part {
@@ -282,7 +295,7 @@ input[type='search']:focus {
     margin-top: 15px;
     margin-left: 8px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -315,7 +328,7 @@ svg {
 
 .historique .text {
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
@@ -327,7 +340,7 @@ svg {
 
 .historique-consultants .plus {
     color: #FFD200;
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -337,7 +350,7 @@ svg {
 
 .plus {
     color: #FFD200;
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -357,7 +370,7 @@ svg {
 .historique-name {
     margin: 10px 30px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -368,7 +381,7 @@ svg {
 .historiqueconsultantdetails {
     margin: 0px 50px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -379,7 +392,7 @@ svg {
 .historique-consultant {
     margin: 4px 10px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 00;
@@ -390,7 +403,7 @@ svg {
 .historique-time {
     margin: 10px 150px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -400,7 +413,7 @@ svg {
 
 .approved {
     color: rgba(0, 0, 0, 0.75);
-    
+
     font-size: 0.9375rem;
     font-style: normal;
     font-weight: 400;
@@ -410,7 +423,7 @@ svg {
 
 .name-of-approved {
     color: rgba(0, 0, 0, 0.35);
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -512,4 +525,24 @@ input[type="search"] {
     border-radius: 6px;
     box-sizing: border-box;
 
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+    .container {
+        margin-left: 1%;
+        font-family: 'Poppins', sans-serif !important;
+    }
+
+    .title {
+
+        margin-top: 10px;
+        font-size: 1.35rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.0225rem;
+        margin-bottom: 20px;
+        flex-shrink: 0;
+        /* 2.25rem */
+    }
 }

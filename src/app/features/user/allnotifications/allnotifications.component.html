@@ -4,7 +4,7 @@
       <app-left-bar></app-left-bar>
     </div>
     <div>
-      <div style="margin-left: 250px ;" *ngIf="role != 'CONSULTANT'">
+      <div class="second-container" *ngIf="role != 'CONSULTANT'">
 
         <div class="title">
           Notifications <div class="right-item" style="cursor: pointer;">
@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <div style=" margin-left: 250px;" *ngIf="role === 'CONSULTANT'">
+    <div class="second-container" *ngIf="role === 'CONSULTANT'">
       <div class="title">
         Notifications <div class="right-item" style="cursor: pointer;">
           <div style="display: flex">
@@ -109,57 +109,62 @@
         </div>
       </div><br>
       <div class="loader" *ngIf="!show"></div>
-      <table style="width: 100%;" *ngIf="show">
-        <thead>
-          <tr>
-            <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;">
-              Type
-            </th>
-            <th> Note</th>
+      <div class="table-wrapper">
+        <table style="width: 100%;" *ngIf="show">
+          <thead>
+            <tr>
+              <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;">
+                Type
+              </th>
+              <th> Note</th>
 
 
-            <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
-          </tr>
-        </thead>
+              <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr *ngFor="let item of getDisplayedNotifications(); let i = index"
-            style="height: auto; text-align: left; cursor: pointer;" [ngClass]="{ 'seen-background': item.isSeen }">
+          <tbody>
+            <tr *ngFor="let item of getDisplayedNotifications(); let i = index"
+              style="height: auto; text-align: left; cursor: pointer;" [ngClass]="{ 'seen-background': item.isSeen }">
 
-            <td class="Tableau" style="height: auto; text-align: left;width: 300px;">
-              <!-- *ngIf="item.isAvtivated"-->
-              <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'" (click)="detailsmission(item._id,item.missionId)">
-                Mission Annulée
-              </div>
-              <div *ngIf="item.typeOfNotification == 'MISSIONVALID'" (click)="detailsmission(item._id,item.missionId)">
-                Mission Validée
-              </div>
-              <div *ngIf="item.typeOfNotification == 'MISSIONNOTVALID'"
-                (click)="detailsmission(item._id,item.missionId)">
-                Mission Non Validée <br>
-              </div>
-              <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'">
-                Nouveau TJM Validée
-              </div>
-              <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSENOTVALIDATED'">
-                TJM non Validée
-              </div>
-              <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSE'">Nouveau TJM Validé</div>
+              <td class="Tableau" style="height: auto; text-align: left;width: 300px;">
+                <!-- *ngIf="item.isAvtivated"-->
+                <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'"
+                  (click)="detailsmission(item._id,item.missionId)">
+                  Mission Annulée
+                </div>
+                <div *ngIf="item.typeOfNotification == 'MISSIONVALID'"
+                  (click)="detailsmission(item._id,item.missionId)">
+                  Mission Validée
+                </div>
+                <div *ngIf="item.typeOfNotification == 'MISSIONNOTVALID'"
+                  (click)="detailsmission(item._id,item.missionId)">
+                  Mission Non Validée <br>
+                </div>
+                <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'">
+                  Nouveau TJM Validée
+                </div>
+                <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSENOTVALIDATED'">
+                  TJM non Validée
+                </div>
+                <div *ngIf="item.typeOfNotification == 'TJMREQUESTRESPONSE'">Nouveau TJM Validé</div>
 
-              <div *ngIf="item.typeOfNotification == 'VIREMENT'"> Virement</div>
-            </td>
-            <td style="min-width: 450px;">
-              {{item.note}}
-            </td>
-            <td>
-              {{ formatDate(item.createdAt.split(["T"])[0]) }}
-            </td>
+                <div *ngIf="item.typeOfNotification == 'VIREMENT'"> Virement</div>
+              </td>
+              <td style="min-width: 450px;">
+                {{item.note}}
+              </td>
+              <td>
+                {{ formatDate(item.createdAt.split(["T"])[0]) }}
+              </td>
 
 
-          </tr>
+            </tr>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+
       <div class="pagination" style="cursor: pointer;">
         <div (click)="previousPage()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

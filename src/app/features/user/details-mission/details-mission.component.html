@@ -17,15 +17,13 @@
                 <button class="button"> Rechercher </button>
             </div>
         </div> -->
-
+        <div class="title">Details du mission</div>
         <br> <br>
-        <div style="display: flex;margin-left: 10px;">
 
-        </div>
         <form [formGroup]="myForm" *ngIf="status != 'VALIDATED'">
 
             <div class="Information"> <b> Information du client </b> </div>
-            <div class="personal-info" style="display: flex;">
+            <div class="personal-info flex-item">
                 <div>
                     <div class="label"> Prénom :</div>
                     <div class="Tableau">
@@ -141,7 +139,7 @@
 
                 </div>
 
-                <div style="margin-left: 80px;">
+                <div class="second-item-info">
                     <div class="Information" style="margin-top: -18px;"> <b> Information de la mission </b> </div>
                     <div class="label"> Métier :</div>
                     <div class="Tableau">
@@ -267,7 +265,7 @@
         <form [formGroup]="myForm" *ngIf="status === 'VALIDATED'">
 
             <div class="Information"> <b> Information du client </b> </div>
-            <div class="personal-info" style="display: flex;">
+            <div class="personal-info flex-item">
                 <div>
                     <div class="label"> Prénom :</div>
                     <div class="Tableau">
@@ -315,7 +313,7 @@
 
                 </div>
 
-                <div style="margin-left: 80px;">
+                <div class="second-item-info">
                     <div class="Information" style="margin-top: -18px;"> <b> Information de la mission </b> </div>
                     <div class="label"> Métier :</div>
                     <div class="Tableau">

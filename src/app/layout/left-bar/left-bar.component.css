@@ -47,13 +47,7 @@
   /* Add transition for smoother animation */
 }
 
-.menu-toggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 1;
-}
+
 
 /* Default styles for larger screens */
 .first-item {
@@ -68,13 +62,7 @@
   /* Add transition for smoother animation */
 }
 
-.menu-toggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  z-index: 1;
-}
+
 
 @media screen and (max-width: 1600px) and (min-height: 700px) {
   .faq-sedeconnecter {
@@ -100,10 +88,7 @@
     /* Adjust the content container when the navigation bar is collapsed */
   }
 
-  .menu-toggle {
-    display: block;
-    /* Show the menu toggle icon */
-  }
+
 
   /* Adjust other styles for smaller screens if needed */
 }
@@ -156,4 +141,22 @@ svg {
   flex-wrap: 1;
   flex-grow: 1;
   flex-shrink: 0;
+}
+
+.menu-toggle {
+  display: none;
+  margin-left: -100px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: 320px;
+    display: grid
+      /* Show the menu toggle icon */
+  }
 }

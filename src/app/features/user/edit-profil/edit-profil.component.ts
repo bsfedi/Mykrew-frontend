@@ -27,12 +27,14 @@ export class EditProfilComponent {
   currentPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
+  role: any;
   constructor(private inscriptionservice: InscriptionService, private userservice: UserService, private router: Router) {
 
   }
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     this.user_id = localStorage.getItem('user_id')
+    this.role = localStorage.getItem('role')
 
 
     // Check if token is available

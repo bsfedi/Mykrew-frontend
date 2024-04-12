@@ -12,13 +12,29 @@
   border-radius: 0.9375rem;
   border: 1px solid rgba(30, 30, 30, 0.92);
 }
+
 .wrapper {
   font-family: "Poppins", sans-serif !important;
 }
+
 .month-label {
   text-align: center;
   padding: 20px;
   font-size: 24px;
+}
+
+
+.title {
+  margin-top: 7px;
+
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
 }
 
 .week-labels {
@@ -58,7 +74,9 @@
 .day.today {
   background-color: #def;
 }
+
 f
+
 /* Clear day borders on the right for the last column */
 .day:nth-child(7n) {
   border-right: none;
@@ -71,7 +89,8 @@ f
 
 .day.selected {
   background: #c9e2c4;
-  color: white; /* Optional: Change text color for better visibility */
+  color: white;
+  /* Optional: Change text color for better visibility */
   cursor: pointer;
 }
 
@@ -82,6 +101,7 @@ f
 .button1 {
   margin-top: 55px;
 }
+
 button {
   color: white;
   display: flex;
@@ -101,10 +121,14 @@ button {
   color: #bebcbc;
   padding-top: 11px;
 }
+
 .selected-day {
-  background-color: #00ff00; /* Green background color */
-  color: #ffffff; /* White text color on selected days */
+  background-color: #00ff00;
+  /* Green background color */
+  color: #ffffff;
+  /* White text color on selected days */
 }
+
 input[type="search"] {
   border: none;
   width: 100%;
@@ -149,6 +173,10 @@ svg {
   display: flex;
 }
 
+.flex-container1 {
+  display: flex;
+}
+
 .compterendu {
   margin-top: 8px;
   height: 1.6875rem;
@@ -161,8 +189,9 @@ svg {
 }
 
 hr {
-  width: 150px;
+  width: 550px;
 }
+
 .signature {
   width: 28.0625rem;
   height: 8.5rem;
@@ -208,12 +237,14 @@ input[type="text"] {
   height: 2.5625rem;
   flex-shrink: 0;
 }
+
 .time {
   width: 2.4625rem;
   border-radius: 0.5rem;
   border: 1px solid #1e1e1e;
   height: 2.375rem;
 }
+
 .days-mission {
   margin: 10px;
 }
@@ -267,4 +298,153 @@ select {
   width: 6.70075rem;
   height: 2.3125rem;
   flex-shrink: 0;
+}
+
+.cracra {
+  margin-left: 8%;
+  margin-top: 70px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  select {
+    margin-left: 120px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: -2px;
+    width: 3.70075rem;
+    height: 2.3125rem;
+    flex-shrink: 0;
+  }
+
+  hr {
+    width: 350px;
+  }
+
+  input[type="text"] {
+    width: 20.025rem;
+    border-radius: 0.5rem;
+    border: 1px solid #1e1e1e;
+    height: 7.375rem;
+  }
+
+  .note {
+
+    width: 7.625rem;
+
+  }
+
+  .custom-file-input {
+
+
+    width: 20.04313rem;
+
+  }
+
+  #chart {
+
+    width: 350px;
+  }
+
+  .month-label {
+    text-align: center;
+    padding: 5px;
+    font-size: 24px;
+  }
+
+  .cracra {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  .flex-container1 {
+    display: grid;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chiffre_affaire {
+    margin-left: 55px;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+  .tjm_moyen {
+    margin-left: 55px;
+  }
+
+  .day {
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    min-height: 10px;
+  }
+
+  .signature {
+    width: 20.0625rem;
+    height: 8.5rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    border: 1px dashed #1e1e1e;
+  }
+
+  .right-item {
+    display: none;
+  }
+
+  .week-labels span {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    border-right: 1px solid #ddd;
+  }
+
+  .second-container {
+    margin-left: 0px;
+  }
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  .button {
+    float: none;
+  }
+
+  .dropdown-content {
+    margin-left: -550px;
+  }
+
+  .calendar-container {
+    margin-left: 0px;
+
+    width: 300px;
+
+
+  }
 }
