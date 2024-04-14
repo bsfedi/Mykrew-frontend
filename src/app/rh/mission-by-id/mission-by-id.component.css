@@ -311,6 +311,10 @@ input[type="checkbox"] {
   padding-top: 10px;
 }
 
+.Tableau1 {
+  display: flex;
+}
+
 .member {
   margin-left: 400px;
   margin-right: 25px;
@@ -353,6 +357,10 @@ input[type="checkbox"] {
   height: 1.875rem;
   margin-left: 15px;
   margin-top: 8px;
+}
+
+.mobile {
+  display: none;
 }
 
 .historique {
@@ -674,4 +682,84 @@ input[type="text"]:focus {
 .custom-text-color-class {
   color: #000000;
   /* Black text color */
+}
+
+.left-item {
+  margin-left: 120px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .flex-item {
+    display: grid;
+  }
+
+  .left-item {
+    margin-left: 0px;
+  }
+
+  .Tableau1 {
+    display: grid;
+  }
+
+  .right-item {
+    margin-left: -10px;
+    float: left;
+    display: row;
+  }
+
+  .second-item-info {
+    margin-left: 0px;
+    margin-top: 25px;
+  }
+
+  .second-container {
+    margin-left: 10px;
+
+    flex-shrink: 0;
+  }
+
+  .right-item {
+    display: none;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* By default, show one column for mobile */
+    font-family: "Poppins", sans-serif !important;
+  }
+
+  .mobile {
+    display: grid;
+  }
+
+  .Information {
+    margin-top: 7px;
+    width: 300px;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
+  }
+
+  button {
+    float: left;
+    color: white;
+    display: flex;
+    width: 7.5rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.625rem;
+    background: #1e1e1e;
+    margin-top: 2px;
+    margin: 10px;
+  }
+
 }

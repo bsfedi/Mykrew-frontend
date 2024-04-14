@@ -5,10 +5,10 @@
       <div class="title">Valider la mission</div>
 
 
-      <div style="display: flex">
+      <div class="Tableau1">
         <div style="
             width: 22.02281rem;
-            height: 50rem;
+            height: auto;
             flex-shrink: 0;
             background: #fefcf1;
           ">
@@ -158,7 +158,7 @@
             </div>
           </div>
         </div>
-        <div style="margin-left: 30px">
+        <div class="first-left">
           <div style="
               color: #171a1f;
 
@@ -190,7 +190,7 @@
               <div style="margin: 7px"></div>
             </div>
           </div>
-          <div style="display: flex; margin-top: 20px">
+          <div class="Tableau1" style="  margin-top: 20px">
             <div style="width: 100px; margin-top: 10px">Etape 1</div>
             <div [ngClass]="{
                 pending1: contactClient == 'false',
@@ -213,7 +213,7 @@
               </select>
             </div>
           </div>
-          <div style="display: flex; margin-top: 20px">
+          <div class="Tableau1" style=" margin-top: 20px">
             <div style="width: 100px; margin-top: 10px">Etape 2</div>
             <div [ngClass]="{
                 pending1: clientValidation == 'false',
@@ -240,7 +240,7 @@
             </div>
           </div>
 
-          <div style="display: flex; margin-top: 20px">
+          <div class="Tableau1" style=" margin-top: 20px">
             <div style="width: 100px; margin-top: 10px">Etape 3</div>
             <div [ngClass]="{
                 pending1: jobCotractEdition == 'false',
@@ -266,7 +266,7 @@
               </select>
             </div>
           </div>
-          <div style="display: flex; margin-top: 20px">
+          <div class="Tableau1" style="  margin-top: 20px">
             <div style="width: 100px; margin-top: 10px">Etape 4</div>
             <div [ngClass]="{
                 pending1: contractValidation == 'false',
@@ -303,7 +303,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="noteshow" style="width: 39.875rem; height: 7.0625rem; flex-shrink: 0">
+          <div *ngIf="noteshow" style="width: auto; height: 7.0625rem; flex-shrink: 0">
             <div style="display: flex">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">

@@ -67,7 +67,11 @@ div {
   text-align: center;
 }
 
-
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
 
 table {
   overflow-x: auto;

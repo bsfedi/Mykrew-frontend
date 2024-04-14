@@ -5,23 +5,9 @@
     </div>
     <div class="second-container">
       <div class="title">Consultant - profil</div>
-      <!-- <div class="search-bar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M21.7555 20.6065L18.3182 17.2458L18.2376 17.1233C18.0878 16.9742 17.883 16.8902 17.6692 16.8902C17.4554 16.8902 17.2505 16.9742 17.1007 17.1233C14.1795 19.8033 9.67815 19.949 6.58201 17.4637C3.48586 14.9784 2.75567 10.6334 4.87568 7.31017C6.9957 3.98697 11.3081 2.71685 14.9528 4.34214C18.5976 5.96743 20.4438 9.98379 19.267 13.7276C19.1823 13.9981 19.2515 14.2922 19.4487 14.4992C19.6459 14.7062 19.9411 14.7946 20.223 14.7311C20.505 14.6676 20.7309 14.4619 20.8156 14.1914C22.2224 9.74864 20.0977 4.96755 15.8161 2.94106C11.5345 0.914562 6.38084 2.25082 3.68905 6.08542C0.99727 9.92001 1.57518 15.1021 5.04893 18.2795C8.52268 21.4569 13.8498 21.6759 17.5841 18.7949L20.6277 21.7705C20.942 22.0765 21.4502 22.0765 21.7645 21.7705C22.0785 21.4602 22.0785 20.9606 21.7645 20.6503L21.7555 20.6065Z"
-            fill="#1E1E1E" />
-        </svg>
-        <div class="Search-text">
-          <input type="search" placeholder="Search Anything Here..." />
-        </div>
-        <div>
-          <button class="button">Rechercher</button>
-        </div>
-      </div> -->
-
       <br />
-      <div style="display: flex">
-        <div style="height: 51.5rem; flex-shrink: 0">
+      <div class="Tableau1">
+        <div style="height: auto; flex-shrink: 0">
           <div style="display: flex">
             <img src="/assets/4035887-200.png"
               style="width: 40px; border-radius: 20%; height: 45px;margin-top: 20px;" />
@@ -324,20 +310,21 @@
             </div>
           </div>
           <div *ngIf="show_mission">
-            <table style="width: 140%;">
-              <thead>
-                <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
-                <th>Client</th>
-                <th>Métier</th>
-                <th>Secteur</th>
-                <!-- <th>Validée par</th> -->
-                <th>Date</th>
-                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of getDisplayeddocs(); let i = index">
-                  <td style=" width: 5.9375rem;">
-                    <div style="
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <th style="border-radius: 0.6875rem 0rem 0rem 0rem"></th>
+                  <th>Client</th>
+                  <th>Métier</th>
+                  <th>Secteur</th>
+                  <!-- <th>Validée par</th> -->
+                  <th>Date</th>
+                  <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getDisplayeddocs(); let i = index">
+                    <td style=" width: 5.9375rem;">
+                      <div style="
                         display: flex;
                         width: 4.9375rem;
                         height: 1.5rem;
@@ -350,65 +337,65 @@
                         margin: 5px;
                         color: #187111;
                       " *ngIf="item.newMissionStatus == 'VALIDATED'">
-                      Terminée
-                    </div>
-                    <div class="new" *ngIf="item.newMissionStatus == 'PENDING'">
-                      Nouvelle
-                    </div>
-                    <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="waiting">
-                      Attente de contrat
-                    </div>
-                    <div *ngIf="item.newMissionStatus == 'NOTVALIDATED'" class="nonvalidée">
-                      Non validée
-                    </div>
-                  </td>
+                        Terminée
+                      </div>
+                      <div class="new" *ngIf="item.newMissionStatus == 'PENDING'">
+                        Nouvelle
+                      </div>
+                      <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="waiting">
+                        Attente de contrat
+                      </div>
+                      <div *ngIf="item.newMissionStatus == 'NOTVALIDATED'" class="nonvalidée">
+                        Non validée
+                      </div>
+                    </td>
 
-                  <td style="min-width: 120px; max-width: 120px; ">
-                    <div
-                      *ngIf="item.newMissionStatus == 'WAITINGCONTRACT' ||  item.newMissionStatus == 'NOTVALIDATED' || item.newMissionStatus == 'PENDING' ">
-                      {{ item.clientInfo.company.value }}
-                    </div>
-                    <div *ngIf="item.newMissionStatus == 'VALIDATED'">
-                      {{ item.clientInfo.company }}
-                    </div>
+                    <td style="min-width: 120px; max-width: 120px; ">
+                      <div
+                        *ngIf="item.newMissionStatus == 'WAITINGCONTRACT' ||  item.newMissionStatus == 'NOTVALIDATED' || item.newMissionStatus == 'PENDING' ">
+                        {{ item.clientInfo.company.value }}
+                      </div>
+                      <div *ngIf="item.newMissionStatus == 'VALIDATED'">
+                        {{ item.clientInfo.company }}
+                      </div>
 
-                  </td>
-                  <td style="min-width: 80px; max-width: 80px;">
-                    {{ item.missionInfo.profession }}
-                  </td>
-                  <td style="min-width: 80px; max-width: 80px;">
-                    {{ item.missionInfo.industrySector }}
-                  </td>
+                    </td>
+                    <td style="min-width: 80px; max-width: 80px;">
+                      {{ item.missionInfo.profession }}
+                    </td>
+                    <td style="min-width: 80px; max-width: 80px;">
+                      {{ item.missionInfo.industrySector }}
+                    </td>
 
-                  <!-- <td style="min-width: 80px; max-width: 80px;">
+                    <!-- <td style="min-width: 80px; max-width: 80px;">
 
                     {{item.validated_by}}
                   </td> -->
-                  <td>
-                    {{ formatDate(item.missionInfo.startDate.split("T")[0]) }}
+                    <td>
+                      {{ formatDate(item.missionInfo.startDate.split("T")[0]) }}
 
-                  </td>
-                  <td (click)="toggleMenu(i)" style="cursor: pointer" class="dropdown">
-                    <span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                          d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
-                          fill="black" />
-                      </svg>
-                    </span>
-                    <div class="dropdown-content">
-                      <!-- Menu items go here -->
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotovalidation(item._id)" style="
+                    </td>
+                    <td (click)="toggleMenu(i)" style="cursor: pointer" class="dropdown">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M12 7C12.3956 7 12.7822 6.8827 13.1111 6.66294C13.44 6.44318 13.6964 6.13082 13.8478 5.76537C13.9991 5.39992 14.0387 4.99778 13.9616 4.60982C13.8844 4.22186 13.6939 3.86549 13.4142 3.58579C13.1345 3.30608 12.7781 3.1156 12.3902 3.03843C12.0022 2.96126 11.6001 3.00087 11.2346 3.15224C10.8692 3.30362 10.5568 3.55996 10.3371 3.88886C10.1173 4.21776 10 4.60444 10 5C10 5.53043 10.2107 6.03914 10.5858 6.41421C10.9609 6.78929 11.4696 7 12 7ZM12 17C11.6044 17 11.2178 17.1173 10.8889 17.3371C10.56 17.5568 10.3036 17.8692 10.1522 18.2346C10.0009 18.6001 9.96126 19.0022 10.0384 19.3902C10.1156 19.7781 10.3061 20.1345 10.5858 20.4142C10.8655 20.6939 11.2219 20.8844 11.6098 20.9616C11.9978 21.0387 12.3999 20.9991 12.7654 20.8478C13.1308 20.6964 13.4432 20.44 13.6629 20.1111C13.8827 19.7822 14 19.3956 14 19C14 18.4696 13.7893 17.9609 13.4142 17.5858C13.0391 17.2107 12.5304 17 12 17ZM12 10C11.6044 10 11.2178 10.1173 10.8889 10.3371C10.56 10.5568 10.3036 10.8692 10.1522 11.2346C10.0009 11.6001 9.96126 12.0022 10.0384 12.3902C10.1156 12.7781 10.3061 13.1345 10.5858 13.4142C10.8655 13.6939 11.2219 13.8844 11.6098 13.9616C11.9978 14.0387 12.3999 13.9991 12.7654 13.8478C13.1308 13.6964 13.4432 13.44 13.6629 13.1111C13.8827 12.7822 14 12.3956 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10Z"
+                            fill="black" />
+                        </svg>
+                      </span>
+                      <div class="dropdown-content">
+                        <!-- Menu items go here -->
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="gotovalidation(item._id)" style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                          Voir details
+                            Voir details
+                          </div>
                         </div>
-                      </div>
-                      <!-- <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'">
+                        <!-- <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'">
                         <img src="/assets/Checkmark.svg" width="12%" />
                         <div (click)="gotocra(item._id)" style="
                             margin-top: 7px;
@@ -418,29 +405,30 @@
                           CRA
                         </div>
                       </div> -->
-                      <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
-                          style="margin-left: -13px" fill="none">
-                          <path
-                            d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
-                            stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <div (click)="
+                        <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
+                            style="margin-left: -13px" fill="none">
+                            <path
+                              d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <div (click)="
                             gotovalidemission(item._id, item.contractProcess)
                           " style="
                             margin-top: 12px;
                             cursor: pointer;
                             margin-left: -5px;
                           ">
-                          Process de validation
+                            Process de validation
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="pagination" style="margin-right: -210px;">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination first-right-item">
               <div (click)="previousPage()" style="cursor: pointer;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-chevron-double-left" viewBox="0 0 16 16">
@@ -631,10 +619,13 @@
                 Ajouter document
               </div>
             </div>
-            <br /><br />
-            <br />
-            <br />
-            <div style="display: flex;width: 700px;">
+            <div>
+              <br /><br />
+              <br />
+              <br />
+            </div>
+
+            <div class="Tableau1" style="width: 700px;">
               <div class="first">
                 <svg style="margin-top: -5px;margin-left: -10px;" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" viewBox="0 0 24 24" fill="none">
@@ -646,37 +637,39 @@
                   (input)="applyFilter()">
 
               </div>
-              <input type="month" style="  margin-left: 290px;" id="monthYearInput" name="monthYearInput"
-                [(ngModel)]="selectedDate">
+              <input type="month" id="monthYearInput" name="monthYearInput" [(ngModel)]="selectedDate">
             </div>
 
 
             <br>
-            <table style="width: 120%;">
-              <thead>
+            <div class="table-wrapper">
 
 
-                <th style="text-align: left;border-radius: 0.6875rem 0rem 0rem 0rem">Document</th>
-                <th>Date de dépôt</th>
-
-                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-              </thead>
-              <tbody>
+              <table style="width: 120%;">
+                <thead>
 
 
-                <tr *ngFor="let doc of getDisplayeddocs(); let i = index">
+                  <th style="text-align: left;border-radius: 0.6875rem 0rem 0rem 0rem">Document</th>
+                  <th>Date de dépôt</th>
 
-                  <ng-container *ngIf="filterByUploadDate(doc.createdAt.split(['T'])[0])">
-                    <!-- Display table row only if the condition matches -->
+                  <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                </thead>
+                <tbody>
 
-                    <!-- Table cells -->
 
-                    <td style="text-align: left;">
-                      <div style="margin-left: 7px;"> {{ doc.documentName }} </div>
-                    </td>
-                    <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
-                    <td>
-                      <div (click)="downloadFile(doc.document, doc.documentName)" style="
+                  <tr *ngFor="let doc of getDisplayeddocs(); let i = index">
+
+                    <ng-container *ngIf="filterByUploadDate(doc.createdAt.split(['T'])[0])">
+                      <!-- Display table row only if the condition matches -->
+
+                      <!-- Table cells -->
+
+                      <td style="text-align: left;">
+                        <div style="margin-left: 7px;"> {{ doc.documentName }} </div>
+                      </td>
+                      <td>{{ formatDate(doc.createdAt.split(["T"])[0]) }}</td>
+                      <td>
+                        <div (click)="downloadFile(doc.document, doc.documentName)" style="
                           display: flex;
                           cursor: pointer;
                           height: 1.5rem;
@@ -690,16 +683,17 @@
                           background: #f1f8fd;
                           color: #379ae6;
                         ">
-                        Telecharger
-                      </div>
-                    </td>
+                          Telecharger
+                        </div>
+                      </td>
 
-                  </ng-container>
+                    </ng-container>
 
 
-                </tr>
-              </tbody>
-            </table>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="pagination" style="margin-right: -170px;">
               <div (click)="previousPage()" style="cursor: pointer;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -727,7 +721,7 @@
           </div>
 
           <div *ngIf="show_cra">
-            <div style="display: flex;width: 200px;">
+            <div class="Tableau1" style="width: 200px;">
               <div class="first">
                 <svg style="margin-top: -5px;margin-left: -10px;" xmlns="http://www.w3.org/2000/svg" width="24"
                   height="24" viewBox="0 0 24 24" fill="none">
@@ -739,34 +733,35 @@
                   (input)="applyFilter1()">
 
               </div>
-              <input type="month" style="  margin-left: 180px;" id="monthYearInput" name="monthYearInput"
-                [(ngModel)]="selectedDate">
+              <input type="month" id="monthYearInput" name="monthYearInput" [(ngModel)]="selectedDate">
             </div>
             <br />
-            <table style="width: 730px;">
-              <thead>
-                <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;"> Document</th>
-                <th>Date de dépôt </th>
-                <th>Client</th>
-                <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
-              </thead>
-              <tbody>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;"> Document</th>
+                  <th>Date de dépôt </th>
+                  <th>Client</th>
+                  <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
+                </thead>
+                <tbody>
 
-                <tr *ngFor="let doc of getDisplayeddocs() ; let i = index">
+                  <tr *ngFor="let doc of getDisplayeddocs() ; let i = index">
 
-                  <ng-container *ngIf="filterByUploadDate(doc.uploadDate.split(['T'])[0])">
-                    <!-- Display table row only if the condition matches -->
+                    <ng-container *ngIf="filterByUploadDate(doc.uploadDate.split(['T'])[0])">
+                      <!-- Display table row only if the condition matches -->
 
-                    <!-- Table cells -->
+                      <!-- Table cells -->
 
-                    <td style="text-align: left;">
-                      <div style="margin-left: 7px;"> {{ doc.filename.split('uploads/')[1] }} </div>
-                    </td>
-                    <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
+                      <td style="text-align: left;">
+                        <div style="margin-left: 7px;"> {{ doc.filename.split('uploads/')[1] }} </div>
+                      </td>
+                      <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
 
-                    <td>{{doc.client}}</td>
-                    <td>
-                      <div (click)="downloadFile(doc.filename, doc.filename.split('uploads/')[1].split('.')[0])" style="
+                      <td>{{doc.client}}</td>
+                      <td>
+                        <div (click)="downloadFile(doc.filename, doc.filename.split('uploads/')[1].split('.')[0])"
+                          style="
                       display: flex;
                     cursor: pointer;
                       height: 1.5rem;
@@ -780,11 +775,11 @@
                       background: #f1f8fd;
                       color: #379ae6;
                     ">
-                        Telecharger
-                      </div>
-                    </td>
-                  </ng-container>
-                  <!-- <td style="text-align: left">
+                          Telecharger
+                        </div>
+                      </td>
+                    </ng-container>
+                    <!-- <td style="text-align: left">
                     <div style="margin-left: 7px;"> {{ doc.filename.split('uploads/')[1] }} </div>
                   </td>
                   <td>{{ formatDate(doc.uploadDate.split(["T"])[0]) }}</td>
@@ -807,9 +802,10 @@
                     </div>
                   </td>
                   <td></td> -->
-                </tr>
-              </tbody>
-            </table>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div class="pagination">
               <div (click)="previousPage()" style="cursor: pointer;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -840,7 +836,7 @@
       </div>
     </div>
 
-    <div style="cursor: pointer; height: 5px;margin-left: -25px;">
+    <div class="right-item" style="cursor: pointer; height: 5px;margin-left: -25px;">
       <div class="profil" (click)="gotomyprofile()">
         <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>

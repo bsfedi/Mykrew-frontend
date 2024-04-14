@@ -860,3 +860,169 @@ input[type="password"] {
 .day:nth-last-child(-n + 7) {
   border-bottom: none;
 }
+
+
+
+.newflex {
+  display: flex;
+}
+
+.Tableau1 {
+  display: flex;
+
+}
+
+.left-first {
+  margin-left: 20px;
+  justify-content: center;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .newflex {
+    display: grid;
+  }
+
+  .left-first {
+    margin-left: 30px;
+    justify-content: left;
+  }
+
+  .export {
+    margin-left: 1.5%;
+  }
+
+  /* my-component.component.css */
+  .dropdown-menu {
+    width: 20rem;
+  }
+
+  .first1 {
+    display: flex;
+    width: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px;
+    padding: 3.25px 8px 3.25px 8px;
+  }
+
+  .first {
+    display: flex;
+    width: 4rem;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px;
+    padding: 3.25px 8px 3.25px 8px;
+  }
+
+  .exportlist {
+    width: 8rem;
+    justify-content: none;
+    align-items: none;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px 3.25px 3.25px -175px;
+    padding: 8px 8px 8px 8px;
+  }
+
+  .rechercher {
+    width: 17rem;
+  }
+
+  select,
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"] {
+    width: 20.04313rem;
+
+  }
+
+  .Tableau1 {
+    display: grid;
+  }
+
+  .custom-file-input {
+
+
+    width: 20.04313rem;
+
+  }
+
+  #chart {
+    margin-left: 0px;
+    width: 350px;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+
+
+  .tjm_moyen {
+    margin-left: 5px;
+    width: 15.25rem;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+
+  .wrapper {
+    display: initial;
+    grid-template-columns: initial;
+  }
+
+
+  .right-item {
+    display: none;
+  }
+
+  .second-container {
+    margin-left: 5px;
+  }
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  .button {
+    float: none;
+  }
+
+  .dropdown-content {
+    margin-left: -380px;
+  }
+
+}
