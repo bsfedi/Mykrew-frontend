@@ -14,24 +14,13 @@ const clientName = `${environment.default}`;
 export class LeftBarComponent {
   constructor(private router: Router, private route: ActivatedRoute) {
     document.addEventListener("DOMContentLoaded", function () {
+
+
       const menuToggle = document.querySelector(".menu-toggle") as HTMLElement;
       const firstItem = document.querySelector(".first-item") as HTMLElement;
+      console.log('ezaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
 
-      if (menuToggle && firstItem) {
-        menuToggle.addEventListener("click", function () {
-          // Toggle the class to show/hide the navigation bar
-          firstItem.classList.toggle("collapsed");
 
-          // Adjust the margin-left of the first item
-          if (firstItem.classList.contains("collapsed")) {
-            firstItem.style.marginLeft = "-30px";
-
-          } else {
-            firstItem.style.marginLeft = "-270px";
-
-          }
-        });
-      }
     });
 
 
@@ -41,6 +30,28 @@ export class LeftBarComponent {
     return this.route.snapshot.url.join('/') === route;
   }
 
+  azeaze() {
+    console.log('ezaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+    const menuToggle = document.querySelector(".menu-toggle") as HTMLElement;
+    const firstItem = document.querySelector(".first-item") as HTMLElement;
+
+    console.log(menuToggle);
+    if (menuToggle) {
+
+      // Toggle the class to show/hide the navigation bar
+      firstItem.classList.toggle("collapsed");
+
+      // Adjust the margin-left of the first item
+      if (firstItem.classList.contains("collapsed")) {
+        firstItem.style.marginLeft = "-30px";
+
+      } else {
+        firstItem.style.marginLeft = "-270px";
+
+      }
+
+    }
+  }
 
   gottodashboard() {
     this.router.navigate([clientName + '/dashboard'])
