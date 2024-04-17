@@ -31,7 +31,6 @@ export class LeftBarComponent {
   }
 
   azeaze() {
-    console.log('ezaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
     const menuToggle = document.querySelector(".menu-toggle") as HTMLElement;
     const firstItem = document.querySelector(".first-item") as HTMLElement;
 

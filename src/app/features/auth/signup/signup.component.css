@@ -209,9 +209,11 @@ input[type="search"] {
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 700px) {
-  .left-panel {
 
+
+@media screen and (min-width: 375px) and (max-width: 775px) {
+  .left-panel {
+    height: 50%;
     width: 100%;
 
   }
@@ -247,7 +249,7 @@ input[type="search"] {
 
   .form-panel {
 
-    padding-top: 50px;
+    margin-top: -400px;
     padding-left: 100px;
     display: row;
     justify-content: center;
@@ -256,9 +258,11 @@ input[type="search"] {
   }
 
   .text-overlay {
-    left: 40%;
+    left: 39%;
     width: 20rem;
-
+    top: 70%;
+    font-size: 1.5rem;
+    transform: translate(-40%, -50%);
   }
 
   .container {
@@ -270,7 +274,7 @@ input[type="search"] {
   .left-image {
     border-radius: 1.875rem;
     height: 100%;
-    width: 135%;
+    width: 100%;
   }
 
   .image {

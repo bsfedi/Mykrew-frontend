@@ -28,7 +28,10 @@ export class ConsultantMissionComponent {
   contactClient: any
   pageSize = 8; // Number of items per page
   currentPage = 1; // Current page
+  currentPage14 = 1
+  pageSize14 = 8
   totalPages: any;
+  totalPages14: any
   nbdemande: any
   contractValidation: any
   jobCotractEdition: any
@@ -46,7 +49,9 @@ export class ConsultantMissionComponent {
   formData1: FormGroup;
   show_mission: boolean = true
   show_doc: boolean = false
+  show_historique: boolean = false
   res: any
+  res14: any
   filteredItems: any[] = [];
   showPopup3: any
   searchTerm: any
@@ -90,7 +95,6 @@ export class ConsultantMissionComponent {
 
 
 
-
     this.userservice.getpersonalinfobyid(user_id).subscribe({
 
 
@@ -116,6 +120,24 @@ export class ConsultantMissionComponent {
     this.route.params.subscribe((params) => {
       this.user_id = params['id'];
     });
+
+    this.userservice.getMyvirements(this.user_id).subscribe({
+      next: (res) => {
+        // Sort the response array by createdAt in ascending order
+        this.res14 = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+
+
+        this.res14 = this.res14.map((item: any) => ({
+          ...item,
+          createdAt: this.formatDate(item.createdAt),
+        }));
+      },
+      error: (e) => {
+        console.error(e);
+        // Set loading to false in case of an error
+      }
+    });
+
     this.consultantservice.get_all_cra_by_userid(this.user_id).subscribe({
 
 
@@ -284,6 +306,18 @@ export class ConsultantMissionComponent {
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
+    }
+  }
+
+  nextPage14() {
+    if (this.currentPage14 < this.totalPages14) {
+      this.currentPage14++;
+    }
+  }
+
+  previousPage14() {
+    if (this.currentPage14 > 1) {
+      this.currentPage14--;
     }
   }
   formatDate(date: string): string {
@@ -476,19 +510,28 @@ export class ConsultantMissionComponent {
     this.show_doc = true
     this.show_mission = false
     this.show_cra = false
+    this.show_historique = false
   }
 
+  showhistorique() {
+    this.show_historique = true
+    this.show_doc = false
+    this.show_mission = false
+    this.show_cra = false
+  }
 
   showcras() {
     this.show_doc = false
     this.show_mission = false
     this.show_cra = true
+    this.show_historique = false
   }
 
   showmidssions() {
     this.show_doc = false
     this.show_mission = true
     this.show_cra = false
+    this.show_historique = false
   }
   gotocra(_id: string) {
     this.router.navigate([clientName + '/cra-mission/' + _id])
@@ -722,4 +765,14 @@ export class ConsultantMissionComponent {
     document.body.removeChild(link);
   }
 
+  getDisplayeddocs14(): any[] {
+
+
+    this.totalPages14 = Math.ceil(this.res14.length / this.pageSize14);
+    const startIndex = (this.currentPage14 - 1) * this.pageSize14;
+    const endIndex = Math.min(startIndex + this.pageSize14, this.res14.length);
+
+
+    return this.res14.slice(startIndex, endIndex);
+  }
 }

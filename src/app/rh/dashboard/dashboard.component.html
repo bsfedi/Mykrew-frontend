@@ -187,7 +187,8 @@
                         </span>
                         <div class="dropdown-content">
                           <!-- Menu items go here -->
-                          <div style="display: flex; cursor: pointer" *ngIf="item.status === 'PENDING'">
+                          <div style="display: flex; cursor: pointer"
+                            *ngIf="item.status === 'PENDING' ||  item.status === 'NOTVALIDATED'">
                             <img src="/assets/Checkmark.svg" width="12%" />
                             <div (click)="gotovalidation(item._id)" style="
                                 margin-top: 7px;
@@ -197,7 +198,7 @@
                               Valider l’inscription
                             </div>
                           </div>
-                          <div style="display: flex; cursor: pointer" *ngIf="item.status != 'PENDING'">
+                          <div style="display: flex; cursor: pointer" *ngIf="item.status === 'WAITINGCONTRACT'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
                               style="margin-left: -13px" fill="none">
                               <path

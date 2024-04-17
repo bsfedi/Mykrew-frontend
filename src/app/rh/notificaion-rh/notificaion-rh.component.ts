@@ -96,6 +96,10 @@ export class NotificaionRhComponent {
       next: (res1) => {
         this.nblastnotifications = res1.length
         this.lastnotifications = res1
+        console.log(
+          this.lastnotifications
+        );
+
 
       },
       error: (e) => {

@@ -155,7 +155,7 @@ input[type="search"] {
 
 @media screen and (min-width: 375px) and (max-width: 700px) {
   .left-panel {
-
+    height: 50%;
     width: 100%;
 
   }
@@ -205,8 +205,8 @@ input[type="search"] {
 
   .form-panel {
 
-    padding-top: 50px;
-    padding-left: 10px;
+    margin-top: -270px;
+    padding-left: 20px;
     display: row;
     justify-content: center;
     align-items: center;
@@ -214,9 +214,11 @@ input[type="search"] {
   }
 
   .text-overlay {
-    left: 38%;
+    left: 39%;
     width: 20rem;
-
+    top: 70%;
+    font-size: 1.5rem;
+    transform: translate(-40%, -50%);
   }
 
   .container {

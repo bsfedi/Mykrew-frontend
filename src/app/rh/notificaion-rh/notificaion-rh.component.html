@@ -31,6 +31,7 @@
       <div class="plus" (click)="gotoallnotification()">Voir tout</div>
     </div>
     <div *ngFor="let item of lastnotifications">
+
       <div *ngIf="item.typeOfNotification == 'NEWMISSION'" (click)="gotovalidationmission(item._id,item.missionId)">
         <div style="display: flex;">
 
@@ -58,29 +59,42 @@
             <div class="date"> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
           </div>
         </div>
+      </div>
+      <div *ngIf="item.typeOfNotification === 'NEWPREREGISTER'"
+        (click)="gotovalidationpreregister(item._id,item.preregisterId)">
+        <div style="display: flex;">
 
 
-
-
-
-        <div *ngIf="item.typeOfNotification == 'NEWPREREGISTER'"
-          (click)="gotovalidationpreregister(item._id,item.preregisterId)">
-          <div style="display: flex;">
-
-
-            <div>
-            </div>
-            <div style="margin-bottom: 5px;">
-              Nouvelle pré-inscription - <b> {{item.userId}} </b>
-
-              <div class="date"> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
-            </div>
+          <div>
           </div>
+          <div style="margin: 15px 0px 5px 25px;">
+            Nouvelle pré-inscription
 
-
-
-
+            <div class="date"> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
+          </div>
         </div>
+
+
+
+
+      </div>
+      <div *ngIf="item.typeOfNotification === 'UPDATEREREGISTER'"
+        (click)="gotovalidationpreregister(item._id,item.preregisterId)">
+        <div style="display: flex;">
+
+
+          <div>
+          </div>
+          <div style="margin: 15px 0px 5px 25px;">
+            Modification de pré-inscription
+
+            <div class="date"> {{ formatDate(item.createdAt.split(["T"])[0]) }} </div>
+          </div>
+        </div>
+
+
+
+
       </div>
     </div>
   </div>

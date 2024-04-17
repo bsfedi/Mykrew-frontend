@@ -53,6 +53,9 @@
                   (click)="gotovalidationpreregister(item._id,item.preregisterId)">
                   Nouvelle pre inscription <br>
                 </div>
+                <div *ngIf="item.typeOfNotification == 'UPDATEREREGISTER'">
+                  UPDATEREREGISTER
+                </div>
               </td>
               <td style="min-width: 350px;">
                 {{item.userId}}

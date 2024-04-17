@@ -279,6 +279,7 @@
             font-size: 0.875rem;
             font-style: normal;
             font-weight: 400;
+            margin-right: 30px;
             line-height: 1.375rem; /* 157.143% */
           " (click)="showcras()">
 
@@ -305,6 +306,41 @@
               </div>
 
               <b *ngIf="show_cra">
+                <hr />
+              </b>
+            </div>
+            <div style="
+            color: #6e7787;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.375rem; /* 157.143% */
+          " (click)="showhistorique()">
+
+              <div style="color: #6e7787;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+           
+            line-height: 1.375rem; /* 157.143% */" *ngIf="!show_historique">
+                Historique Virements
+              </div>
+              <div style="
+            color: #171a1f;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.375rem; /* 157.143% */
+            margin-bottom: 0px;
+            
+          " *ngIf="show_historique">
+                Historique Virements
+              </div>
+
+              <b *ngIf="show_historique">
                 <hr />
               </b>
             </div>
@@ -719,7 +755,6 @@
 
             </div>
           </div>
-
           <div *ngIf="show_cra">
             <div class="Tableau1" style="width: 200px;">
               <div class="first">
@@ -831,6 +866,58 @@
 
             </div>
           </div>
+
+          <div *ngIf="show_historique">
+
+            <br />
+            <div class="table-wrapper">
+              <table>
+                <thead>
+
+                  <th style="border-radius: 0.6875rem 0rem 0rem 0rem">Date</th>
+                  <th>Type</th>
+                  <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Montant</th>
+
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getDisplayeddocs14()">
+                    <td>{{ item.createdAt.split("T")[0] }}</td>
+                    <td>{{ item.typeVirement }}</td>
+                    <td>{{ item.montant }}€</td>
+                  </tr>
+
+                  <!-- Repeat this row for other transactions -->
+                  <!-- ... other transactions ... -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination" style="margin-right: -170px;">
+              <div (click)="previousPage14()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                  <path fill-rule="evenodd"
+                    d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                </svg>
+              </div>
+
+
+              <span style="margin-top: 10px;"> {{ currentPage14 }} sur {{ totalPages14 }}</span>
+              <div (click)="nextPage14()" style="cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                  <path fill-rule="evenodd"
+                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
 
         </div>
       </div>
