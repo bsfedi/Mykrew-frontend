@@ -20,6 +20,7 @@ const clientName = `${environment.default}`;
 })
 export class ConsultantMissionComponent {
   items: any;
+  showfilter: boolean = false
   showPopup: boolean = false;
   showPopup1: boolean = false;
   isMenuOpen: boolean[] = [];
@@ -30,8 +31,11 @@ export class ConsultantMissionComponent {
   currentPage = 1; // Current page
   currentPage14 = 1
   pageSize14 = 8
+  currentPage15 = 1
+  pageSize15 = 8
   totalPages: any;
   totalPages14: any
+  totalPages15: any
   nbdemande: any
   contractValidation: any
   jobCotractEdition: any
@@ -63,7 +67,7 @@ export class ConsultantMissionComponent {
     const year = today.getFullYear();
     const month = today.getMonth() + 1; // Month is zero-based, so add 1
     const day = today.getDate();
-    this.selectedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    // this.selectedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
     this.foremData = this.fb.group({
       userId: [''],
@@ -218,14 +222,16 @@ export class ConsultantMissionComponent {
         next: (res) => {
           this.user_info = res
 
-          this.user_info.carInfo.drivingLicense = baseUrl + "uploads/" + this.user_info.carInfo.drivingLicense
-          this.user_info.identificationDocument = baseUrl + "uploads/" + this.user_info.identificationDocument
-          this.user_info.ribDocument = baseUrl + "uploads/" + this.user_info.ribDocument
-          this.docs.push({
-            "createdAt": this.user_info.addedDate || '',
-            "document": this.user_info.carInfo.drivingLicense,
-            "documentName": "permis" + '.'
-          },
+          this.user_info.carInfo.drivingLicense = baseUrl + "uploads/" + this.user_info.carInfo.drivingLicense;
+          this.user_info.identificationDocument = baseUrl + "uploads/" + this.user_info.identificationDocument;
+          this.user_info.ribDocument = baseUrl + "uploads/" + this.user_info.ribDocument;
+
+          this.docs.push(
+            {
+              "createdAt": this.user_info.addedDate || '',
+              "document": this.user_info.carInfo.drivingLicense,
+              "documentName": "permis"
+            },
             {
               "createdAt": this.user_info.addedDate || '',
               "document": this.user_info.identificationDocument,
@@ -235,8 +241,8 @@ export class ConsultantMissionComponent {
               "createdAt": this.user_info.addedDate || '',
               "document": this.user_info.ribDocument,
               "documentName": "rib"
-            },
-          )
+            }
+          );
         },
         error: (e) => {
           // Handle errors
@@ -318,6 +324,17 @@ export class ConsultantMissionComponent {
   previousPage14() {
     if (this.currentPage14 > 1) {
       this.currentPage14--;
+    }
+  }
+  nextPage15() {
+    if (this.currentPage15 < this.totalPages15) {
+      this.currentPage15++;
+    }
+  }
+
+  previousPage15() {
+    if (this.currentPage15 > 1) {
+      this.currentPage15--;
     }
   }
   formatDate(date: string): string {
@@ -414,22 +431,25 @@ export class ConsultantMissionComponent {
   selectedDate: any;
   applyFiltercra() {
     // Check if search term is empty
-    if (this.searchTerm.trim() === '') {
+    if (this.searchTerm.trim() === ' ') {
       // If search term is empty, reset the filtered items to the original items
       this.docs = this.docs;
+      console.log("docsssss" + this.docs);
+
     } else {
       // Apply filter based on search term
       this.docs = this.docs.filter((item: any) =>
         item.filename.split('uploads/')[1].toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+      console.log("docseeeessss" + this.docs);
     }
   }
   getDisplayeddocs(): any[] {
     if (this.show_doc) {
 
-      this.totalPages = Math.ceil(this.filteredItems.length / this.pageSize);
-      const startIndex = (this.currentPage - 1) * this.pageSize;
-      const endIndex = Math.min(startIndex + this.pageSize, this.filteredItems.length);
+      this.totalPages15 = Math.ceil(this.filteredItems.length / this.pageSize15);
+      const startIndex = (this.currentPage15 - 1) * this.pageSize15;
+      const endIndex = Math.min(startIndex + this.pageSize15, this.filteredItems.length);
 
 
       return this.filteredItems.slice(startIndex, endIndex);
@@ -449,15 +469,19 @@ export class ConsultantMissionComponent {
   }
   filterByUploadDate(uploadDate: Date): boolean {
     if (!this.selectedDate) {
+      this.showfilter = true
       return true; // No filter applied
     }
+    else {
+      this.showfilter = false
+      // Format the uploadDate to match selectedDate format
+      const formattedUploadMonth = this.datePipe.transform(uploadDate || '', 'yyyy-MM');
+      const formattedSelectedMonth = this.datePipe.transform(this.selectedDate || '', 'yyyy-MM');
 
-    // Format the uploadDate to match selectedDate format
-    const formattedUploadMonth = this.datePipe.transform(uploadDate, 'yyyy-MM');
-    const formattedSelectedMonth = this.datePipe.transform(this.selectedDate, 'yyyy-MM');
+      // Check if the formatted months match
+      return formattedUploadMonth === formattedSelectedMonth;
+    }
 
-    // Check if the formatted months match
-    return formattedUploadMonth === formattedSelectedMonth;
   }
   applyFilter() {
     // Check if search term is empty
@@ -661,6 +685,7 @@ export class ConsultantMissionComponent {
             Swal.fire({
 
               background: '#fefcf1',
+              confirmButtonText: 'Ok',
 
               confirmButtonColor: "#91c593",
               title: 'Document ajouté avec succès!',

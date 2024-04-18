@@ -34,7 +34,7 @@
                         </label>
                     </div>
                     <input *ngIf="!clientlastNameValue" type="text" placeholder="Commentaire"
-                        [(ngModel)]="commantaireclientlastName">
+                        [(ngModel)]="commantairetoggleValue1">
                     <div class="label"> Email :</div>
                     <div class="Tableau">
                         <input type="email" [value]="clientInfo?.clientContact.email">
@@ -160,11 +160,11 @@
                     </div>
                     <input *ngIf="!missionInfo?.isSimulationValidated" type="text" placeholder="Commentaire"
                         [(ngModel)]="commantaireendDateValue">
+                    <div style="margin-left:150px;margin-top: 20px;" *ngIf="getMissionuserb != 'VALIDATED'">
+                        <button (click)="update_register()">Valider</button>
+                    </div>
+                </div>
 
-                </div>
-                <div style="margin-right:20px;margin-top: 20px;" *ngIf="getMissionuserb != 'VALIDATED'">
-                    <button (click)="update_register()">Valider</button>
-                </div>
                 <div class="historique mobile">
                     <div class="historique-demandes">
                         <div class="text"><b>Historique TJM </b></div>

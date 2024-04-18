@@ -68,6 +68,9 @@
                     ">
                             Date de fin de mission est obligatoire.
                         </div>
+                        <div class="error" *ngIf="isEndDateBeforeStartDate()">
+                            La date de fin doit être postérieure à la date de début.
+                        </div>
                     </div>
                     <div class="grid-item">
 

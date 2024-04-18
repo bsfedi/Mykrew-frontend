@@ -36,6 +36,11 @@ export class MissionComponent {
   ngOnInit(): void {
 
   }
+  isEndDateBeforeStartDate(): boolean {
+    const endDate = this.myForm.value.endDate;
+    const startDate = this.myForm.value.startDate;
+    return endDate < startDate;
+  }
   // Add this method inside your PreInscriptionComponent class
   areAllFieldsFilled(): boolean {
     const formValues = this.myForm.value;

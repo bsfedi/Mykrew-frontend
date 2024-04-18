@@ -23,7 +23,7 @@
 
   <div class="message-container" *ngFor="let item of notification" (click)="gotoallnotification()">
     <div class="avatar-container">
-      <p class="avatar-text"><b>RH</b></p>
+      <p class="avatar-text"><b>RHe</b></p>
     </div>
     <div class="content-container">
       <div *ngIf="item.typeOfNotification == 'MISSIONKILLED'">
@@ -53,6 +53,7 @@
   </div>
 
   <div *ngFor="let notif of lastnotifications" (click)="gotoallnotification()">
+
     <div class="message-container" *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSENOTVALIDATED'">
       <div class="avatar-container">
         <p class="avatar-text"><b>RH</b></p>
@@ -74,6 +75,7 @@
         </div>
       </div>
     </div>
+
     <div class="message-container" *ngIf="notif.typeOfNotification == 'TJMREQUESTRESPONSEVALIDATED'">
       <div class="avatar-container">
         <p class="avatar-text"><b>RH</b></p>
@@ -88,6 +90,7 @@
         </div>
       </div>
     </div>
+
     <div class="message-container" *ngIf="notif.typeOfNotification == 'MISSIONKILLED'">
       <div class="avatar-container">
         <p class="avatar-text"><b>RH</b></p>

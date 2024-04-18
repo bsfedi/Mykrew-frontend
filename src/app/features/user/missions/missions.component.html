@@ -93,11 +93,16 @@
             <tr *ngFor="let item of getDisplayeddocspending(); let j = index" (click)="gotovalidation(item._id)"
               style="cursor: pointer;">
               <td>
-                <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="ancienne">
+                <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT' &&  item.missionKilled == false"
+                  class="ancienne">
                   En attente
                 </div>
-                <div *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'" class="pending">
+                <div *ngIf="item.newMissionStatus != 'WAITINGCONTRACT' &&  item.missionKilled == false" class="pending">
                   Nouvelle
+                </div>
+                <div *ngIf="item.missionKilled == true" class="pending"
+                  style="background-color: rgb(230, 102, 102);color:white">
+                  Annuler
                 </div>
               </td>
 

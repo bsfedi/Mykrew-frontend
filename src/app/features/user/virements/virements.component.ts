@@ -264,16 +264,24 @@ export class VirementsComponent {
     });
     this.userservice.getMyvirements(this.user_id).subscribe({
       next: (res) => {
-        // Sort the response array by createdAt in ascending order
-        this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
+        if (res.length > 0) {
+          // Sort the response array by createdAt in ascending order
+          this.res = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
 
-        this.res = this.res.map((item: any) => ({
-          ...item,
-          createdAt: this.formatDate(item.createdAt),
-        }));
+          this.res = this.res.map((item: any) => ({
+            ...item,
+            createdAt: this.formatDate(item.createdAt),
+          }));
+        }
+        else {
+          this.res = []
+        }
+
+
       },
       error: (e) => {
-        console.error(e);
+
+        console.error("eeeeeeeeeeeeeeeeeeee", e);
         // Set loading to false in case of an error
       }
     });

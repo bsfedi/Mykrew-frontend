@@ -731,14 +731,28 @@ export class MissionsComponent {
     this.consultantservice.addCraPdfToUser(this.mission_id, this.formData)
       .subscribe({
         next: (res) => {
-          Swal.fire('Success', "votre cra ajouté avec succès!", 'success');
           Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: 'cra ajouté avec succès!',
-            showConfirmButton: false,
-            timer: 1500
-          });
+
+            background: '#fefcf1',
+            html: `
+              <div>
+              <div style="font-size:1.2rem"> cra ajouté avec succès! </div> 
+                
+              </div>
+            `,
+
+
+            confirmButtonText: 'Ok',
+            confirmButtonColor: "#91c593",
+
+            customClass: {
+              confirmButton: 'custom-confirm-button-class',
+              cancelButton: 'custom-cancel-button-class'
+            },
+            reverseButtons: true // Reversing button order
+          })
+
+
           this.deposer = false
           // Handle the response from the server
           console.log(res);

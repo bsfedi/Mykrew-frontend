@@ -90,8 +90,6 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
         if (event.notification.typeOfNotification == 'VIREMENT') {
           this.lastnotificationsvir.push(event.notification)
-        } else {
-          this.lastnotifications.push(event.notification)
         }
 
       }

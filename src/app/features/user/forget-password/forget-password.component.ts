@@ -19,7 +19,32 @@ export class ForgetPasswordComponent {
     this.userService.forgot_password(data).subscribe(
       response => {
         console.log('Password reset email sent successfully');
-        Swal.fire('Success', 'Un email de réinitialisation de mot de passe a été envoyé!', 'success');
+        Swal.fire({
+          title: 'Confirmer les modifications',
+          html: `
+            <div>
+            <div style="font-size:1.2rem;">  Un email de réinitialisation de mot de passe a été envoyé ! </div> 
+            </div>
+          `,
+          iconColor: '#1E1E1E',
+          background: '#fefcf1',
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#91c593",
+          customClass: {
+            confirmButton: 'custom-confirm-button-class',
+            cancelButton: 'custom-cancel-button-class'
+          },
+          reverseButtons: true // Reversing button order
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+
+            this.router.navigate([clientName + '/sign-in'])
+            // User clicked 'Yes', call the endpoint
+
+          }
+        });
+
       },
       error => {
         console.error('Error sending password reset email:', error);

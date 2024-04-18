@@ -32,6 +32,11 @@ export class NewMissionComponent {
       // Add other form controls as needed
     });
   }
+  isEndDateBeforeStartDate(): boolean {
+    const endDate = this.myForm.value.endDate;
+    const startDate = this.myForm.value.startDate;
+    return endDate < startDate;
+  }
   submit(): void {
     const token = localStorage.getItem('token');
     const formData = new FormData();

@@ -54,7 +54,7 @@ export class MissionByIdComponent {
   finalClientValue: string = 'true';
   endDateValue: string = 'true';
   clientlastNameValue: string = 'true';
-  commantaireclientlastName: string = 'true'
+  commantaireclientlastName: string = ''
   commantairetoggleValue: string = '';
   commantairetoggleValue1: string = '';
   commantairedateOfBirthValue: string = '';
@@ -323,7 +323,7 @@ export class MissionByIdComponent {
       "clientphoneNumberValidation": this.clientContactphoneNumberValue,
       "clientphoneNumberCause": this.commantaireclientContactphoneNumberValue,
       "professionvalidation": this.professionValue,
-      "professionCause": this.commantairepositionValue,
+      "professionCause": this.commantaireprofessionValue,
       "industrySectorValidated": this.industrySectorValue,
       "industrySectorCause": this.commantaireindustrySectorValue,
       "finalClientValidation": this.finalClientValue,

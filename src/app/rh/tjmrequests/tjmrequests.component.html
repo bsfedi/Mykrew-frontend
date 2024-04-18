@@ -60,14 +60,20 @@
               <tr *ngFor="let item of getDisplayeddocs(); let i = index" (click)="toggleMenu(i)"
                 style="cursor: pointer">
                 <td style="width: 100px;">
-                  <div class="new" *ngIf="item.newMissionStatus == 'PENDING'">
+                  <div class="new" *ngIf="item.newMissionStatus == 'PENDING' && item.missionKilled == false">
                     Nouvelle
                   </div>
-                  <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'" class="waiting">
+                  <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT' && item.missionKilled == false"
+                    class="waiting">
                     attente de contrat
                   </div>
-                  <div *ngIf="item.newMissionStatus == 'NOTVALIDATED'" class="nonvalidée">
+                  <div *ngIf="item.newMissionStatus == 'NOTVALIDATED' && item.missionKilled == false "
+                    class="nonvalidée">
                     Non validée
+                  </div>
+                  <div *ngIf="item.missionKilled == true" class="waiting"
+                    style="background-color: rgb(230, 102, 102);color:white">
+                    Annuler
                   </div>
                 </td>
 

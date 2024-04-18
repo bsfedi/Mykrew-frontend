@@ -23,7 +23,32 @@ export class UpdatePasswordComponent {
     this.userService.updatePassword(this.user_id, data).subscribe(
       response => {
         console.log('Password updated successfully');
-        Swal.fire('Success', 'Password updated successfully!', 'success');
+        Swal.fire({
+
+          html: `
+            <div>
+            <div style="font-size:1.2rem;"> Mot de passe modifié avec succès ! </div> 
+            </div>
+          `,
+          iconColor: '#1E1E1E',
+          background: '#fefcf1',
+          confirmButtonText: 'OK',
+          confirmButtonColor: "#91c593",
+          customClass: {
+            confirmButton: 'custom-confirm-button-class',
+            cancelButton: 'custom-cancel-button-class'
+          },
+          reverseButtons: true // Reversing button order
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+
+            this.router.navigate([clientName + '/sign-in'])
+            // User clicked 'Yes', call the endpoint
+
+          }
+        });
+
       },
       error => {
         console.error('Error updating password:', error);
