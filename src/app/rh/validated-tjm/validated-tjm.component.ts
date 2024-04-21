@@ -169,8 +169,9 @@ export class ValidatedTjmComponent {
 
               this.clientInfo = res.clientInfo;
               this.missionInfo = res.missionInfo
+              this.missionInfo.isSimulationValidated = baseUrl + "uploads/" + this.missionInfo.isSimulationValidated
               if (this.missionInfo.isSimulationValidated.endsWith('.pdf')) {
-                this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.missionInfo.isSimulationValidated).subscribe({
+                this.inscriptionservice.getPdf(this.missionInfo.isSimulationValidated).subscribe({
                   next: (res) => {
                     this.showpdf = true
                     this.pdfData = res;
@@ -198,14 +199,16 @@ export class ValidatedTjmComponent {
           });
 
 
-
+          this.new_tjm.simulationValidated = baseUrl + "uploads/" + this.new_tjm.simulationValidated
           if (this.new_tjm.simulationValidated.endsWith('.pdf')) {
-            this.inscriptionservice.getPdf(baseUrl + "uploads/" + this.new_tjm.simulationValidated).subscribe({
+            this.inscriptionservice.getPdf(this.new_tjm.simulationValidated).subscribe({
               next: (res) => {
                 this.showpdf1 = true
                 this.pdfData1 = res;
 
                 if (this.pdfData1) {
+                  console.log(this.pdfData1);
+
                   this.handleRenderPdf1(this.pdfData1);
                 }
               },

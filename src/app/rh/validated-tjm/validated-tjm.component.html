@@ -61,7 +61,7 @@
               <input type="text" formControlName="clientphoneNumber" [ngModel]="clientInfo?.clientContact.phoneNumber"
                 [readonly]="true" />
             </div>
-            <div class="label" style="color: rgb(255, 0, 0)"> Ancienne simulation :</div>
+            <div class="label" style="color: rgb(24, 117, 24)"> Ancienne simulation :</div>
             <div class="Tableau">
               <div id="pdfContainer" style="width: 300px; "></div>
             </div>
@@ -120,10 +120,11 @@
               <input formControlName="finalClient" [ngModel]="missionInfo?.finalClient" [readonly]="true" type="text"
                 id="phoneNumber" name="phoneNumber" placeholder="téléphone" required />
             </div>
-            <div class="label" style="color: rgb(24, 117, 24)">Nouvelle Simulation :</div>
+            <div class="label" style=" color: rgb(255, 0, 0)">Nouvelle Simulation :</div>
 
             <div class="Tableau">
-              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; "></div>
+              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 400px; height: 400px;">
+                {{new_tjm.simulationValidated}}</div>
             </div>
             <div class="Tableau" *ngIf="!showpdf1">
               <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
