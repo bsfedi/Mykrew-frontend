@@ -146,6 +146,11 @@ input[type="search"] {
   outline: none;
 }
 
+button:hover {
+  background-color: white;
+  color: black;
+}
+
 input[type="search"]:focus {
   border: none none;
   color: none;

@@ -32,6 +32,11 @@
     /* 1rem */
 }
 
+button:hover {
+    background-color: white;
+    color: black;
+}
+
 .profil {
     width: auto;
     height: 3.125rem;

@@ -877,6 +877,38 @@ input[type="password"] {
   justify-content: center;
 }
 
+div.first1:hover {
+  background-color: #abaaa5;
+}
+
+div.tjm_moyen:hover {
+  background: black;
+  color: #fefcf1;
+}
+
+div.chiffre_affaire:hover {
+  background: #fefcf1;
+  color: black;
+}
+
+div.exporter:hover {
+  color: white;
+  background-color: black;
+}
+
+.first1 {
+  display: flex;
+  width: auto;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid #eae3d5;
+  background: #fff;
+  margin: 3.25px;
+  padding: 3.25px 8px 3.25px 8px;
+}
+
 @media screen and (min-width: 375px) and (max-width: 700px) {
   .newflex {
     display: grid;

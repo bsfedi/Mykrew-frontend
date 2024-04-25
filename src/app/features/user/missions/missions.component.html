@@ -92,7 +92,7 @@
           <tbody>
             <tr *ngFor="let item of getDisplayeddocspending(); let j = index" (click)="gotovalidation(item._id)"
               style="cursor: pointer;">
-              <td>
+              <td style="justify-content: center;text-align: center;">
                 <div *ngIf="item.newMissionStatus == 'WAITINGCONTRACT' &&  item.missionKilled == false"
                   class="ancienne">
                   En attente

@@ -147,7 +147,7 @@ body {
 
 .pending {
   display: flex;
-  width: 3.9375rem;
+  width: auto;
   height: 2rem;
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;
@@ -161,7 +161,7 @@ body {
 
 .ancienne {
   display: flex;
-  width: 3.9375rem;
+  width: auto;
   height: 2rem;
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;
@@ -175,7 +175,7 @@ body {
 
 .encours {
   display: flex;
-  width: 3.9375rem;
+  width: auto;
   height: 2rem;
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;
@@ -188,9 +188,24 @@ body {
   font-size: 14px;
 }
 
+div.tjm_moyen:hover {
+  background: black;
+  color: #fefcf1;
+}
+
+div.chiffre_affaire:hover {
+  background: #fefcf1;
+  color: black;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
 .done {
   display: flex;
-  width: 3.9375rem;
+  width: auto;
   height: 2rem;
   padding: 0.1875rem 0.5625rem 0.1875rem 0.5rem;
   justify-content: center;

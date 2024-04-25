@@ -22,6 +22,11 @@
   text-align: right;
 }
 
+button:hover {
+  background-color: white;
+  color: black;
+}
+
 .pagination button {
   padding: 5px 10px;
   margin: 0 2px;
@@ -254,7 +259,12 @@ button {
 }
 
 .write {
-  width: 350px;
+  width: 490px;
+}
+
+button.button1:hover {
+  background-color: #000;
+  color: white;
 }
 
 .table-wrapper {

@@ -27,6 +27,28 @@ body {
   text-align: right;
 }
 
+div.exporter:hover {
+  color: white;
+  background-color: black;
+}
+
+.first1 {
+  display: flex;
+  width: auto;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid #eae3d5;
+  background: #fff;
+  margin: 3.25px;
+  padding: 3.25px 8px 3.25px 8px;
+}
+
+div.first1:hover {
+  background-color: #abaaa5;
+}
+
 .pagination button {
   padding: 5px 10px;
   margin: 0 2px;
@@ -704,6 +726,16 @@ input[type="password"] {
   color: white;
 }
 
+div.chiffre_affaire:hover {
+  background: #fefcf1;
+  color: black;
+}
+
+div.tjm_moyen:hover {
+  background: black;
+  color: #fefcf1;
+}
+
 .tjm_moyen {
   margin: 5px;
   padding: 10px;
@@ -757,6 +789,8 @@ input[type="password"] {
   stroke-width: 3px;
   stroke: #fefcf1;
 }
+
+
 
 .first {
   display: flex;

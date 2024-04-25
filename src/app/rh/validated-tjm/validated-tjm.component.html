@@ -62,11 +62,13 @@
                 [readonly]="true" />
             </div>
             <div class="label" style="color: rgb(24, 117, 24)"> Ancienne simulation :</div>
-            <div class="Tableau">
+
+            <div class="Tableau" *ngIf="showpdf">
               <div id="pdfContainer" style="width: 300px; "></div>
             </div>
             <div class="Tableau" *ngIf="!showpdf">
-              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
+
+              <img [src]="missionInfo.isSimulationValidated" alt="Selected Image" width="300px" height="300px" />
             </div>
           </div>
 
@@ -123,7 +125,7 @@
             <div class="label" style=" color: rgb(255, 0, 0)">Nouvelle Simulation :</div>
 
             <div class="Tableau">
-              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 400px; height: 400px;">
+              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; height: 300px;">
                 {{new_tjm.simulationValidated}}</div>
             </div>
             <div class="Tableau" *ngIf="!showpdf1">
