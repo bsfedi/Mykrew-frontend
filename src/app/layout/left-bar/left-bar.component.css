@@ -5,6 +5,10 @@
   padding: 50px;
 }
 
+div.custom-item:hover {
+  background: rgba(242, 239, 224, 0.1);
+}
+
 .title {
   color: #000;
 
