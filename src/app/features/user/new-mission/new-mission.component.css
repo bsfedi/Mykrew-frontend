@@ -24,6 +24,11 @@
 
 }
 
+button:hover {
+    background-color: white;
+    color: black;
+}
+
 .icon-file {
     margin-top: 5px;
     flex-shrink: 0;

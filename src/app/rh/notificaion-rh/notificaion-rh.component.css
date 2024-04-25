@@ -19,6 +19,17 @@ body {
   padding: 50px;
 }
 
+div.hover:hover {
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  background-color: #f7f2da;
+  color: black;
+  padding: 5px;
+}
+
+div.historique-consultant:hover {
+  color: black;
+}
+
 .title {
   color: #000;
 
@@ -338,6 +349,14 @@ input[type="checkbox"] {
   width: 0.625rem;
   height: 0.625rem;
   flex-shrink: 0;
+}
+
+.newsvg {
+  background: #f3f4f6;
+}
+
+div.newsvg:hover {
+  background: none
 }
 
 .nom-prenom {

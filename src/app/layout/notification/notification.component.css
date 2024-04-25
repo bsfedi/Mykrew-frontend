@@ -79,6 +79,15 @@
   margin: 5px;
 }
 
+div.message-container:hover {
+
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  background-color: #f7f2da;
+  color: black;
+  padding-bottom: 10px;
+}
+
+
 .avatar-container {
   width: 2.25rem;
   height: 2.25rem;
