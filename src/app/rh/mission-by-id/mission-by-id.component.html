@@ -8,7 +8,8 @@
 <body>
     <div class="container">
         <app-left-bar> </app-left-bar>
-        <div class="second-container">
+        <div class="loader" *ngIf="!show"></div>
+        <div class="second-container" *ngIf="show">
 
 
             <div class="Information"> Information du client (pour la contractualisation) </div>
@@ -200,7 +201,7 @@
 
 
         </div>
-        <div class="right-item">
+        <div class="right-item" *ngIf="show">
             <div style="display: flex">
                 <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
                     <div>

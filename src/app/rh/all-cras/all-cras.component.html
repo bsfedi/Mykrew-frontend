@@ -4,14 +4,14 @@
         <div>
             <app-left-bar> </app-left-bar>
         </div>
-
-        <div class="second-container" [ngClass]="{
+        <div class="loader" *ngIf="!show"></div>
+        <div class="second-container" *ngIf="show" [ngClass]="{
             pending1: shownotiff == false,
       
           }">
             <div>
                 <div>
-                    <div class="title"> <b> CRAS</b>
+                    <div class="title"> <b> Comptes Rendus d’Activité </b>
 
 
                     </div>
@@ -137,7 +137,7 @@
             <br />
             <br />
         </div>
-        <div style=" height: 10px;">
+        <div style=" height: 10px;" *ngIf="show">
             <div class="right-item" style="cursor: pointer;">
                 <div style="display: flex">
                     <div class="profil1" (click)="shownotif()" style="cursor: pointer;">

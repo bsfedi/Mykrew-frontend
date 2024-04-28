@@ -42,6 +42,7 @@ export class DashboardComponent {
   showPopup: boolean = false;
   showPopup1: boolean = false;
   isMenuOpen: boolean[] = [];
+  show: any
   isMenuOpen1: boolean = false;
   headers: any
   clientValidation: any
@@ -72,7 +73,7 @@ export class DashboardComponent {
       next: (res) => {
         this.stats = res
         console.log(this.stats.series[0].data);
-
+        this.show = true
         this.chartOptions = {
           series: [
             {

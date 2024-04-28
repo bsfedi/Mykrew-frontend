@@ -3,8 +3,8 @@
     <div>
       <app-left-bar></app-left-bar>
     </div>
-
-    <div class="second-container">
+    <div class="loader" *ngIf="!show"></div>
+    <div class="second-container" *ngIf="show">
       <div style="display: flex">
 
         <div class="title"> <b> Mes Missions </b></div>
@@ -456,87 +456,7 @@
           </div>
         </div>
       </div>
-      <div class="popup" *ngIf="showPopup">
-        <div class="popup-content" style="  height: 22.4375rem;">
-          <div style="float: right" (click)="closePopup()">
-            <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
-          </div>
-          <div>
-            <h3>Ajouter un nouveau TJM</h3>
-            <form action="/submit_form" method="post" style="display: flex" [formGroup]="myForm">
-              <div class="form-section">
-                <div class="grid-container">
-                  <div class="grid-item">
-                    <input type="text" id="TJM" formControlName="TJM" placeholder="Nouveau TJM" name="Nouveau TJM"
-                      required />
-                  </div>
-                  <div>
-                    <input type="text" onfocus="(this.type='date')" formControlName="datecompte"
-                      placeholder="Date de prise en compte" required>
-                  </div>
 
-                  <div class="custom-file-input" (change)="setFileInput('document', $event)" style="cursor: pointer">
-                    <label class="file-label" for="fileInput" style="cursor: pointer">
-                      Simulation
-                    </label>
-
-                    <div class="vertical-line"></div>
-                    <input class="file-input" type="file" id="fileInput" name="fileInput"
-                      onclick="document.getElementById('fileInput').click()" />
-                    <div class="upload-icon" onclick="document.getElementById('fileInput').click()">
-                      <div class="chose-file" *ngIf="!document">
-                        choisir un fichier <br />
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                          class="icon-file" fill="none">
-                          <g clip-path="url(#clip0_972_185)">
-                            <path
-                              d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
-                              stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_972_185">
-                              <rect width="14" height="14" fill="white" />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </div>
-                      <div *ngIf="!idpdf">
-                        <div *ngIf="document" style="align-items: center; text-align: center">
-                          <img [src]="document" alt="Selected Image" style="
-                              max-width: 320%;
-                              max-height: 50px;
-                              margin: 5px;
-                              margin-top: 10px;
-                            " />
-                        </div>
-                      </div>
-
-                      <ng-container *ngIf="idpdf">
-                        <img src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image"
-                          style="
-                          max-width: 320%;
-                          max-height: 50px;
-                          margin: 5px;
-                          margin-top: 10px;
-                        " />
-                      </ng-container>
-                    </div>
-                  </div>
-                </div>
-
-                <br />
-                <div class="buttons" (click)="submit()">
-                  <button type="submit" class="button">
-                    <div class="inscrire">Ajouter</div>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
 
       <br /><br />
       <div style="display: flex">
@@ -628,7 +548,7 @@
 
 
 
-    <div class="right-item">
+    <div class="right-item" *ngIf="show">
       <div style="display: flex;margin-bottom: 0px;">
         <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
           <div>
@@ -675,5 +595,86 @@
     </div>
 
 
+  </div>
+  <div class="popup" *ngIf="showPopup">
+    <div class="popup-content" style="  height: 22.4375rem;">
+      <div style="float: right" (click)="closePopup()">
+        <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
+      </div>
+      <div>
+        <h3>Ajouter un nouveau TJM</h3>
+        <form action="/submit_form" method="post" style="display: flex" [formGroup]="myForm">
+          <div class="form-section">
+            <div class="grid-container">
+              <div class="grid-item">
+                <input type="text" id="TJM" formControlName="TJM" placeholder="Nouveau TJM" name="Nouveau TJM"
+                  required />
+              </div>
+              <div>
+                <input type="text" onfocus="(this.type='date')" formControlName="datecompte"
+                  placeholder="Date de prise en compte" required>
+              </div>
+
+              <div class="custom-file-input" (change)="setFileInput('document', $event)" style="cursor: pointer">
+                <label class="file-label" for="fileInput" style="cursor: pointer">
+                  Simulation
+                </label>
+
+                <div class="vertical-line"></div>
+                <input class="file-input" type="file" id="fileInput" name="fileInput"
+                  onclick="document.getElementById('fileInput').click()" />
+                <div class="upload-icon" onclick="document.getElementById('fileInput').click()">
+                  <div class="chose-file" *ngIf="!document">
+                    choisir un fichier <br />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" class="icon-file"
+                      fill="none">
+                      <g clip-path="url(#clip0_972_185)">
+                        <path
+                          d="M0.5 10.5V11.5C0.5 12.0304 0.710714 12.5391 1.08579 12.9142C1.46086 13.2893 1.96957 13.5 2.5 13.5H11.5C12.0304 13.5 12.5391 13.2893 12.9142 12.9142C13.2893 12.5391 13.5 12.0304 13.5 11.5V10.5"
+                          stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M4 4L7 0.5L10 4" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7 0.5V9.5" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_972_185">
+                          <rect width="14" height="14" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div *ngIf="!idpdf">
+                    <div *ngIf="document" style="align-items: center; text-align: center">
+                      <img [src]="document" alt="Selected Image" style="
+                          max-width: 320%;
+                          max-height: 50px;
+                          margin: 5px;
+                          margin-top: 10px;
+                        " />
+                    </div>
+                  </div>
+
+                  <ng-container *ngIf="idpdf">
+                    <img src="/assets/1000_F_224760148_gLe2B5UsoB1ecTmczTBhqBnwxfSxPoNw.jpg" alt="Selected Image" style="
+                      max-width: 320%;
+                      max-height: 50px;
+                      margin: 5px;
+                      margin-top: 10px;
+                    " />
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+            <div style="color: red;margin: 5px;"> {{messagefile}} </div>
+            <br />
+            <div class="buttons" (click)="submit()">
+              <button type="submit" class="button">
+                <div class="inscrire">Ajouter</div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </body>

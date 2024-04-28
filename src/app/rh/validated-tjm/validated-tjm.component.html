@@ -2,7 +2,8 @@
   <div>
     <app-left-bar></app-left-bar>
   </div>
-  <div class="second-container">
+  <div class="loader" *ngIf="!show"></div>
+  <div class="second-container" *ngIf="show">
     <div style="font-size: 2rem;">
       <b> TJM Demande</b>
     </div>
@@ -136,7 +137,7 @@
         </div>
       </form>
     </div>
-    <div style="display: flex; margin-left: 480px; margin-top: 20px;">
+    <div *ngIf="show" style="display: flex; margin-left: 480px; margin-top: 20px;">
       <div style="margin-top: 20px">
         <button (click)="invalid()" style="
             background-color: rgb(244, 233, 233);
@@ -152,7 +153,7 @@
       </div>
     </div>
   </div>
-  <div class="right-item" style="cursor: pointer;">
+  <div class="right-item" style="cursor: pointer;" *ngIf="show">
     <div style="display: flex">
       <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
         <div>

@@ -27,6 +27,7 @@ export class AllCrasComponent {
   lastnotifications: any
   searchTerm: any
   notification: string[] = [];
+  show: any
   shownotiff: boolean = false
   constructor(private inscriptionservice: InscriptionService, private router: Router, private datePipe: DatePipe, private http: HttpClient, private consultantservice: ConsultantService, private userservice: UserService, private socketService: WebSocketService) {
     // Set the initial value of selectedDate to today's date
@@ -156,7 +157,7 @@ export class AllCrasComponent {
     this.consultantservice.get_all_cra().subscribe({
       next: (res) => {
         this.all_cras = res
-
+        this.show = true
         this.filterditems = this.all_cras
         for (let item of this.all_cras) {
           for (let crapdf of item.craInformation.craPDF) {

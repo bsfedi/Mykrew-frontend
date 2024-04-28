@@ -55,6 +55,8 @@ export class AllConsultantsComponent {
   contactClient: any
   nbdemande: any
   contractValidation: any
+
+  show: any
   jobCotractEdition: any
   idcontractByPreregister: any
   getContaractByPrerigister: any
@@ -199,9 +201,10 @@ export class AllConsultantsComponent {
       this.getpreregister()
       this.getarichivedPreregisters()
       this.consultantservice.getConsultantStats().subscribe({
+
         next: (res) => {
           // Handle the response from the server
-
+          this.show = true
           this.cardstats = res
 
 

@@ -78,6 +78,7 @@ export class MissionsComponent {
   cra: string | null = null;
   deposer: any;
   show_chart: boolean = false
+  show: any
   constructor(private consultantservice: ConsultantService, private fb: FormBuilder, private userservice: UserService, private socketService: WebSocketService, private router: Router, private datePipe: DatePipe) {
     // Ensure that the items array is correctly populated here if needed.
 
@@ -167,6 +168,7 @@ export class MissionsComponent {
     this.consultantservice.virementstatusbar(this.user_id).subscribe({
 
       next: (res) => {
+        this.show = true
         this.stats = res
         const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
 
@@ -766,6 +768,7 @@ export class MissionsComponent {
       });
 
   }
+  messagefile: any
   submit(): void {
     const token = localStorage.getItem('token');
 
@@ -793,9 +796,9 @@ export class MissionsComponent {
             Swal.fire({
               background: '#fefcf1',
               confirmButtonColor: "#91c593",
-              icon: "success",
+
               title: 'TJM ajouté avec succès!',
-              showConfirmButton: false,
+              showConfirmButton: true,
               timer: 1500
             });
             this.showPopup = false
@@ -809,6 +812,9 @@ export class MissionsComponent {
             Swal.fire('Error', e.error.message);
           }
         });
+    }
+    else {
+      this.messagefile = "ajouter le fichier de simulation"
     }
   }
 }

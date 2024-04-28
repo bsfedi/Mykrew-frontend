@@ -3,7 +3,8 @@
     <div>
       <app-left-bar> </app-left-bar>
     </div>
-    <div class="second-container">
+    <div class="loader" *ngIf="!show"></div>
+    <div class="second-container" *ngIf="show">
       <div class="title"> <b> Consultant - profil </b></div>
       <br />
       <div class="Tableau1">
@@ -218,7 +219,7 @@
 
         <div style="height: auto; margin-left: 20px">
           <h3>
-            Mission de {{ user_info.firstName }}
+            Dossier de {{ user_info.firstName }}
             {{ user_info.lastName }}
           </h3>
           <div style="display: flex">
@@ -390,7 +391,7 @@
                       </div>
                       <div *ngIf="item.missionKilled == true" class="waiting"
                         style="background-color: rgb(230, 102, 102);color:white">
-                        Annuler
+                        Annulée
                       </div>
                     </td>
 
@@ -959,7 +960,7 @@
       </div>
     </div>
 
-    <div class="right-item" style="cursor: pointer; height: 5px;margin-left: -25px;">
+    <div *ngIf="show" class="right-item" style="cursor: pointer; height: 5px;margin-left: -25px;">
       <div class="profil" (click)="gotomyprofile()">
         <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>

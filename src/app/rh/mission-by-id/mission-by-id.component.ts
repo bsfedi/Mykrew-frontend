@@ -85,6 +85,7 @@ export class MissionByIdComponent {
   token: any;
   headers: any
   pdfData: any;
+  show: any
   res: any
   lastnotifications: any
   notification: string[] = [];
@@ -159,7 +160,7 @@ export class MissionByIdComponent {
 
       this.consultantservice.getMissionById(this.mission_id, this.headers).subscribe({
         next: (res) => {
-
+          this.show = true
           if (res.newMissionStatus == "VALIDATED") {
             this.getMissionuserb = res.newMissionStatus
             // Handle the response from the server
@@ -363,8 +364,14 @@ export class MissionByIdComponent {
           next: (res) => {
             Swal.fire({
               background: '#fefcf1',
+              html: `
+              <div>
+              <div style="font-size:1.2rem"> Nouvelle mission acceptée – processus de validation en cours  ! </div> 
+                
+              </div>
+            `,
 
-              title: 'Mission mise à jour avec succès !',
+
               confirmButtonText: 'OK',
               confirmButtonColor: "#91c593",
             });

@@ -77,14 +77,24 @@
 .second-container {
   margin-left: 245px;
 
-  flex-wrap: 1;
-  flex-grow: 1;
+  width: 1200px;
   flex-shrink: 0;
+}
+
+.Grille1 {
+  margin-left: 245px;
+  width: 850px;
+}
+
+#chart {
+  width: 850px;
 }
 
 .button {
   float: right;
 }
+
+
 
 button {
   color: white;
@@ -257,6 +267,20 @@ svg {
   background: #fef9f1;
   display: flex;
   float: right;
+}
+
+.eeee {
+  display: flex;
+  margin-bottom: 0px;
+  height: 10px;
+  margin-left: -350px
+}
+
+.eee1 {
+
+  display: flex;
+  margin-bottom: 40px;
+  margin-left: 0px
 }
 
 .profil1 img {

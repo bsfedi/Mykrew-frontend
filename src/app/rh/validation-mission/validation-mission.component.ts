@@ -34,6 +34,7 @@ export class ValidationMissionComponent {
   noteshow: any;
   stats: any;
   res: any
+  show: any
   demandeur: any
   user_id: any
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private userservice: UserService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
@@ -73,7 +74,7 @@ export class ValidationMissionComponent {
 
       this.consultantservice.getContaractById(this.contract_id, this.headers).subscribe({
         next: (res) => {
-
+          this.show = true
           this.getContaractByPrerigister = res
           console.log(res);
           this.contactClient = res.contactClient
@@ -161,6 +162,11 @@ export class ValidationMissionComponent {
   }
   gotomyprofile() {
     this.router.navigate([clientName + '/edit-profil'])
+  }
+
+  gototjm() {
+    this.router.navigate([clientName + '/tjmrequests'])
+
   }
   killmission(message: any) {
     const data = {

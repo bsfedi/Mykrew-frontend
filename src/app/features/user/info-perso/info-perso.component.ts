@@ -57,6 +57,7 @@ export class InfoPersoComponent {
   list_view() {
     this.card = false
   }
+  show: any
   new_notif: any
   nblastnotifications: any
   lastnotifications: any
@@ -105,6 +106,7 @@ export class InfoPersoComponent {
 
 
         next: (res) => {
+          this.show = true
           // Handle the response from the server
           this.res = res
           console.log(this.res);

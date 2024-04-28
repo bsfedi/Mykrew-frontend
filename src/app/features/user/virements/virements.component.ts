@@ -54,6 +54,7 @@ export class VirementsComponent {
   isMenuOpen: boolean[] = [];
   headers: any
   clientValidation: any
+  show: any
   contactClient: any
   nbdemande: any
   contractValidation: any
@@ -77,6 +78,7 @@ export class VirementsComponent {
         this.stats = res
         if (this.stats.series[0].name) {
           this.show_chart = true
+          this.show = true
           const customColors: string[] = ['#FCE9A4', '#C8E1C3',] // Replace with your desired colors
 
           this.chartOptions = {

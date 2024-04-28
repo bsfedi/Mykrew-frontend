@@ -1,7 +1,8 @@
 <body>
   <div class="container">
     <app-left-bar> </app-left-bar>
-    <div class="second-container">
+    <div class="loader" *ngIf="!show"></div>
+    <div class="second-container" *ngIf="show">
       <div class="title"> <b> Valider la mission </b></div>
 
 
@@ -42,7 +43,7 @@
             </div>
           </div>
           <div style="margin-left: 10px; margin-top: 10px">
-            <div style="display: flex; border-radius: 0.25rem; background: #f9e6cb">
+            <div style="display: flex;cursor: pointer;" (click)="gototjm()">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M4.28564 20.5716L18.8571 20.5716L21.4285 9.42871L6.85707 9.42871L4.28564 20.5716Z"
@@ -55,7 +56,7 @@
                 Demande modification TJM
               </div>
               <div style="margin-top: 10px; margin-left: 55px">
-                {{ stats.pendingTjmCount }}
+                <b> {{ stats.pendingTjmCount }} </b>
               </div>
             </div>
             <div style="display: flex">
@@ -79,10 +80,10 @@
                 Toutes les demandes
               </div>
               <div style="margin-top: 10px; margin-left: 55px">
-                {{ stats.allPreregisters }}
+                <b> {{ stats.allPreregisters }} </b>
               </div>
             </div>
-            <div style="display: flex">
+            <div style="display: flex ;cursor: pointer;" (click)="gototjm()">
               <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                   <path
@@ -96,7 +97,7 @@
                 Nouvelles missions
               </div>
               <div style="margin-top: 9px;margin-left: 55px">
-                {{ stats.newMissions }}
+                <b> {{ stats.newMissions }} </b>
               </div>
             </div>
             <div style="display: flex">
@@ -114,7 +115,9 @@
                 Demandes non traitées
               </div>
               <div style="margin-top: 9px; margin-left: 55px">
-                {{ stats.preregistersNonTraites }}
+
+                <b> {{ stats.preregistersNonTraites }} </b>
+
               </div>
             </div>
             <div style="display: flex">
@@ -130,7 +133,8 @@
                 Demandes Traitées
               </div>
               <div style="margin-top: 9px; margin-left: 55px">
-                {{ stats.preregistersTraites }}
+                <b> {{ stats.preregistersTraites }} </b>
+
               </div>
             </div>
             <div style="display: flex">
@@ -295,10 +299,16 @@
           <div style="display: flex; margin-top: 20px">
 
             <div style="display: flex; margin-top: -8px">
-              <div>
-                <input type="checkbox" (change)="shownote()" />
-              </div>
-              <div style="margin-top: 12px; color: red">
+
+              <div (click)="shownote()" style="margin-top: 12px; color: rgb(255, 255, 255);  width: auto;
+              height: 1.5875rem;
+              flex-shrink: 0;
+              border-radius: 0.25rem;
+              border: 1px solid #fce9a4;
+              background: #ec6464;
+              padding-top: 10px;
+              padding-right: 8px;
+              padding-left: 8px;">
                 Refuser la mission
               </div>
             </div>
@@ -323,16 +333,7 @@
                 ">
                 Note au consultant
               </div>
-              <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                  <path d="M15 3L17.5 5.5L9.5 13.5L6 14.5L7 11L15 3Z" stroke="#565E6C" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                  <path d="M13 5L15.5 7.5" stroke="#565E6C" stroke-linecap="round" stroke-linejoin="round" />
-                  <path
-                    d="M15.5 12L15.5 16.5C15.5 17.328 14.828 18 14 18L4 18C3.172 18 2.5 17.328 2.5 16.5L2.5 6.5C2.5 5.672 3.172 5 4 5L8.5 5"
-                    stroke="#565E6C" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </div>
+
 
             </div>
 
@@ -362,7 +363,7 @@
         </div>
       </div>
     </div>
-    <div class="right-item">
+    <div class="right-item" *ngIf="show">
       <div class="profil" style="cursor: pointer;" (click)="gotomyprofile()">
         <img src="/assets/avatar-user.png" width="15%" height="10%" />
         <div style="" class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>

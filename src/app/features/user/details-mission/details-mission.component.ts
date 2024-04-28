@@ -21,6 +21,7 @@ const baseUrl = `${environment.baseUrl}`;
   styleUrls: ['./details-mission.component.css']
 })
 export class DetailsMissionComponent {
+  show: any
   item: any;
   showPopup: boolean = false;
   showPopup1: boolean = false;
@@ -81,6 +82,7 @@ export class DetailsMissionComponent {
 
     this.consultantservice.getallTjmRequestsByMissionId(this.mission_id).subscribe({
       next: (res) => {
+        this.show = true
         this.TjmRequestsByMissionId = res
         console.log("tjmmission", res);
       },

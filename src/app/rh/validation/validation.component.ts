@@ -90,6 +90,7 @@ export class ValidationComponent implements OnInit {
   hasCar: any;
   preinscription_id: any
   token: any;
+  show: any
   headers: any
   pdfData: any;
   ispdfdocrib: any
@@ -206,6 +207,7 @@ export class ValidationComponent implements OnInit {
 
       this.inscriptionservice.getPreinscriptionById(this.preinscription_id, this.headers).subscribe({
         next: (res) => {
+          this.show = true
           // Handle the response from the server
           this.consultant_id = res.userId
           this.personalInfo = res.personalInfo;

@@ -71,6 +71,7 @@ export class ValidatedTjmComponent {
 
     this.shownotiff = !this.shownotiff
   }
+  show: any
   ngOnInit(): void {
     this.consultantservice.getRhNotificationsnotseen().subscribe({
       next: (res1) => {
@@ -159,11 +160,13 @@ export class ValidatedTjmComponent {
       this.consultantservice.getTjmRequestsByMissionId(this.tjmid).subscribe({
         next: (res) => {
           // Handle the response from the server
+
           this.new_tjm = res
           this.mission_id = this.new_tjm.missionId
           this.consultantservice.getUserMissionById(this.mission_id, this.headers).subscribe({
             next: (res) => {
               // Handle the response from the server
+              this.show = true
               this.status = res.newMissionStatus
 
 
@@ -285,7 +288,7 @@ export class ValidatedTjmComponent {
         Swal.fire({
           background: '#fefcf1',
           title: 'TJM réfusé',
-          text: "La demande de TJM a été refusé.",
+          text: "La demande de modification de TJM a été refusée.",
           confirmButtonText: 'OK',
           confirmButtonColor: "#91c593",
 

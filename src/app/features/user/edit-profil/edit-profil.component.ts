@@ -17,6 +17,7 @@ const baseUrl = `${environment.baseUrl}`;
 export class EditProfilComponent {
   res: any
   headers: any
+  show: any
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -42,6 +43,7 @@ export class EditProfilComponent {
       // Include the token in the headers
       this.headers = new HttpHeaders().set('Authorization', `${token}`);
       this.userservice.getpersonalinfobyid(this.user_id).subscribe((user: any) => {
+
         this.firstName = user.firstName ?? '';
         this.lastName = user.lastName ?? '';
         this.email = user.email ?? '';
@@ -53,7 +55,7 @@ export class EditProfilComponent {
         next: (res) => {
           // Handle the response from the server
           this.res = res;
-
+          this.show = true
           // Check each property for undefined and replace it with an empty string if necessary
           for (let prop in this.res) {
             if (this.res.hasOwnProperty(prop) && this.res[prop] === undefined) {

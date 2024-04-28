@@ -34,6 +34,7 @@ export class ConsultantMissionComponent {
   currentPage15 = 1
   pageSize15 = 8
   totalPages: any;
+  show: any
   totalPages14: any
   totalPages15: any
   nbdemande: any
@@ -146,6 +147,7 @@ export class ConsultantMissionComponent {
 
 
       next: (res) => {
+
         this.allcra = res
         this.allcra = this.allcra.craPdfs
 
@@ -257,7 +259,7 @@ export class ConsultantMissionComponent {
 
           this.items = res
 
-
+          this.show = true
           for (let mission of this.items) {
             if (mission.validated_by) {
               console.log(this.getvalidateby(mission.validated_by));
@@ -689,7 +691,7 @@ export class ConsultantMissionComponent {
 
               confirmButtonColor: "#91c593",
               title: 'Document ajouté avec succès!',
-              showConfirmButton: false,
+              showConfirmButton: true,
               timer: 3000 // Adjusted timer to 3000 milliseconds (3 seconds)
             });
             // Hide the popup after 3 seconds

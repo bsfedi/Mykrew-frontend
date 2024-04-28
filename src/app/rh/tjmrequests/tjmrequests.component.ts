@@ -83,6 +83,7 @@ export class TjmrequestsComponent {
   gotomyprofile() {
     this.router.navigate([clientName + '/edit-profil'])
   }
+  show: any
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     const user_id = localStorage.getItem('user_id')
@@ -110,7 +111,7 @@ export class TjmrequestsComponent {
 
         next: (res) => {
 
-
+          this.show = true
           const latestStartDate = new Date(
             Math.max(
               ...res.map((mission: any) =>

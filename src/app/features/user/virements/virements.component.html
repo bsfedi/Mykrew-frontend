@@ -1,6 +1,10 @@
 <div class="container">
   <app-left-bar></app-left-bar>
-  <div class="second-container">
+  <div class="loader" *ngIf="!show"></div>
+  <div class="second-container" [ngClass]="{
+    Grille1: shownotiff == true,
+
+  }" *ngIf="show">
 
 
     <div style="display: flex">
@@ -12,7 +16,7 @@
     <br />
 
     <div id="chart" *ngIf="show_chart ">
-      <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+      <apx-chart class="chart" [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
         [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
         [colors]="chartOptions.colors" [title]="chartOptions.title" [yaxis]="chartOptions.yaxis"
         [fill]="chartOptions.fill"></apx-chart>
@@ -88,8 +92,11 @@
 
   </div>
 
-  <div class="right-item">
-    <div style="display: flex;margin-bottom: 0px;">
+  <div class="right-item" *ngIf="show">
+    <div class="eeee" [ngClass]="{
+      eee1: shownotiff == true,
+  
+    }">
       <div class="profil1" (click)="shownotif()" style="cursor: pointer;">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="31" viewBox="0 0 32 31" fill="none">

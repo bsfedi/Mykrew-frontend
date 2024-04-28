@@ -22,6 +22,7 @@ export class AdminComponent {
   isMenuOpen: boolean[] = [];
   isMenuOpen1: boolean[] = [];
   res: any
+  show: any
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private router: Router, private userservice: UserService, private socketService: WebSocketService, private fb: FormBuilder) {
     this.myForm = this.fb.group({
 
@@ -60,6 +61,7 @@ export class AdminComponent {
     });
     this.consultantservice.getConsultantusers().subscribe({
       next: (res) => {
+        this.show = true
         this.all_users = res
 
       }, error(e) {

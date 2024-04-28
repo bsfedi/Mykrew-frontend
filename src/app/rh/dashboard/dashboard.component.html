@@ -3,8 +3,8 @@
     <div>
       <app-left-bar> </app-left-bar>
     </div>
-
-    <div class="second-container">
+    <div class="loader" *ngIf="!show"></div>
+    <div class="second-container" *ngIf="show">
       <div class="title"> <b> Tableau de bord - RH</b></div>
       <div id="chart">
         <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
@@ -44,7 +44,7 @@
         </div>
       </div>
       <br />
-      <h2> Nouvelles pré-inscription </h2>
+      <h2> Nouvelles pré-inscriptions </h2>
       <div class="newflex">
         <div class="first" (click)="toggleMenu1()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -247,7 +247,7 @@
 
       </div>
     </div>
-    <div>
+    <div *ngIf="show">
       <div class="right-item" style="cursor: pointer;">
         <div style="display: flex">
           <div class="profil1" (click)="gotoallnotification()" style="cursor: pointer;">
