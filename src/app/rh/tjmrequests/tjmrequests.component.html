@@ -4,7 +4,8 @@
       <app-left-bar> </app-left-bar>
     </div>
     <div>
-      <div class="loader" *ngIf="!show"></div>
+      <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg"
+          style="background-color: black;border-radius: 50%;" /></div>
       <div class="second-container" *ngIf="show" [ngClass]="{
         pending1: shownotiff == false,
   
@@ -31,7 +32,7 @@
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;"> Consultant</th>
 
 
-
+              <th>Client final</th>
               <th>TJM</th>
 
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
@@ -42,7 +43,7 @@
 
                 <td style="text-align: left;padding: 15px 15px ;">{{ tjm.username }} </td>
 
-
+                <td> {{tjm.missionId}}</td>
                 <td>{{ tjm.valueOfNewTjm }}</td>
                 <td style="width: 20%;">{{ formatDate(tjm.createdAt.split("T")[0]) }}</td>
 

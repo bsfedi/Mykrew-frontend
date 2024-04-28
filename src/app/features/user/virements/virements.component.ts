@@ -127,7 +127,7 @@ export class VirementsComponent {
             },
             colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
             stroke: {
-              width: 2,
+
               curve: "smooth",
             },
             dataLabels: {

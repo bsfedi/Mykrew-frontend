@@ -86,9 +86,12 @@
   width: 850px;
 }
 
-#chart {
-  width: 850px;
+.Grille1 {
+  width: 800px;
+  /* Set the desired width when shownotiff is true */
 }
+
+
 
 .button {
   float: right;
@@ -255,7 +258,7 @@ svg {
 }
 
 .right-item {
-  width: 28%;
+  width: 30%;
 }
 
 .profil1 {
@@ -273,14 +276,14 @@ svg {
   display: flex;
   margin-bottom: 0px;
   height: 10px;
-  margin-left: -350px
+  margin-left: -370px
 }
 
 .eee1 {
 
   display: flex;
   margin-bottom: 40px;
-  margin-left: 0px
+  margin-left: 30px
 }
 
 .profil1 img {
@@ -579,6 +582,19 @@ td {
 .mobile {
   display: none;
 }
+
+.chart {
+  max-width: 1200px !important;
+
+}
+
+.chart1 {
+  max-width: 1750px !important;
+
+
+}
+
+
 
 .pagination {
   margin-top: 20px;

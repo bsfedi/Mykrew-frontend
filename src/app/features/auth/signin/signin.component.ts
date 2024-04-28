@@ -130,7 +130,7 @@ export class SigninComponent {
                   if (this.res.missionInfo.missionKilled === true) {
 
 
-                    this.router.navigate([clientName + '/mission']);
+                    this.router.navigate([clientName + '/pending']);
                   } else {
                     this.router.navigate([clientName + '/pending']);
                   }

@@ -727,32 +727,30 @@ export class MissionsComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
-
+  timerInterval: any
   submitcra() {
     this.formData.append("client", this.client)
     this.consultantservice.addCraPdfToUser(this.mission_id, this.formData)
       .subscribe({
         next: (res) => {
           Swal.fire({
+            title: 'cra ajouté avec succès!',
 
-            background: '#fefcf1',
-            html: `
-              <div>
-              <div style="font-size:1.2rem"> cra ajouté avec succès! </div> 
-                
-              </div>
-            `,
+            position: 'top-end',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
 
+              this.timerInterval = setInterval(() => {
 
-            confirmButtonText: 'Ok',
-            confirmButtonColor: "#91c593",
-
-            customClass: {
-              confirmButton: 'custom-confirm-button-class',
-              cancelButton: 'custom-cancel-button-class'
+              }, 100);
             },
-            reverseButtons: true // Reversing button order
-          })
+            willClose: () => {
+              clearInterval(this.timerInterval);
+            }
+          });
+
 
 
           this.deposer = false

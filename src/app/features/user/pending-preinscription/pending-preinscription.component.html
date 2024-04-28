@@ -71,7 +71,7 @@
 
     </div>
 </div>
-<div class="container" *ngIf="res.status=='WAITINGCONTRACT' ">
+<div class="container" *ngIf="res.status=='WAITINGCONTRACT' && res.missionInfo.missionKilled == false ">
     <div class=" left-panel">
         <img src="/assets/tls-like.png" width="100%" height="100%" style="border-radius: 1.875rem;">
         <div class="text-overlay">
@@ -155,6 +155,44 @@
 
             </div>
 
+
+
+        </div>
+
+    </div>
+</div>
+<div class="container" *ngIf="res.missionInfo.missionKilled == true">
+    <div class="left-panel">
+        <img src="/assets/notvalitedregister.png" width="100%" height="100%" style="border-radius: 1.875rem;">
+        <div class="text-overlay">
+            <h5> Votre demande n'a pas été validée. Vérifiez vos informations ou contactez notre support pour
+                assistance. Nous sommes là pour vous aider !</h5>
+        </div>
+        <div class="logo-overlay">
+            <div class="image">
+                <img src="/assets/Calque 4.png">
+            </div>
+        </div>
+    </div>
+    <div class="form-panel ">
+        <div class="form-container ">
+            <div>
+                <img src="/assets/mk 3.svg" width="30%" height="30%">
+            </div>
+            <div class="status-demande">
+                <b> Votre demande
+                    n’a pas été acceptée</b>
+            </div>
+            <div
+                style="background-color: rgb(233, 106, 106); width: 350px;border-radius: 1rem;margin: 10px 10px 10px 0px;padding:  5px;color:white">
+                Votre Mission a malheureusement était refusée.
+                Vous pouvez déclarer une nouvelle mission en cliquant sur « Nouvelle préinscription » .
+            </div>
+            <div>
+                <button type="submit" style="width: 320px;">
+                    <div class="inscrire" (click)="navigatetomission()"> Nouvelle préinscription </div>
+                </button>
+            </div>
 
 
         </div>

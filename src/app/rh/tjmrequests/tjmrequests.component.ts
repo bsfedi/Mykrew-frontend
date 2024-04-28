@@ -6,6 +6,7 @@ import { ConsultantService } from 'src/app/services/consultant.service';
 import { UserService } from 'src/app/services/user.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { environment } from 'src/environments/environment';
+import { forkJoin } from 'rxjs';
 const clientName = `${environment.default}`;
 @Component({
   selector: 'app-tjmrequests',
@@ -111,7 +112,7 @@ export class TjmrequestsComponent {
 
         next: (res) => {
 
-          this.show = true
+
           const latestStartDate = new Date(
             Math.max(
               ...res.map((mission: any) =>
@@ -187,13 +188,21 @@ export class TjmrequestsComponent {
 
     this.consultantservice.getAllTjmRequest().subscribe(
       (response) => {
-        this.tjmrequests = response
-        console.log(this.tjmrequests);
+        this.tjmrequests = response;
+        const requests = this.tjmrequests.map((tjm: any) => this.consultantservice.getUserMissionById(tjm.missionId, this.headers));
 
-        // Add any additional handling or notifications if needed
+        forkJoin(requests).subscribe((responses: any) => {
+          responses.forEach((res: any, index: any) => {
+            console.log(res);
+            this.show = true
+            this.tjmrequests[index].missionId = res.clientInfo.clientContact.firstName + " " + res.clientInfo.clientContact.firstName;
+          });
+          // Additional handling or notifications if needed
+        });
+
       },
       (error) => {
-        this.tjmrequests = []
+        this.tjmrequests = [];
         console.error('Error getting virement:', error);
         // Handle the error or display an error message
       }

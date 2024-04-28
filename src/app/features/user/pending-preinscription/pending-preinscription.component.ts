@@ -38,6 +38,7 @@ export class PendingPreinscriptionComponent {
         next: (res) => {
           // Handle the response from the server
           this.res = res
+          console.log(this.res.missionInfo.missionKilled);
 
           // this.res.status = 'NOTVALIDATED'
 
@@ -78,7 +79,9 @@ export class PendingPreinscriptionComponent {
 
     }
   }
-
+  navigatetomission() {
+    this.router.navigate([clientName + '/mission'])
+  }
   navigatetoinfomations() {
     this.router.navigate([clientName + '/informations/' + this.res._id])
 

@@ -205,20 +205,23 @@ export class ValidationMissionComponent {
               // Handle success
               Swal.fire({
                 background: '#fefcf1',
-                title: 'Mission terminé',
-                text: "La mission est terminé avec succès",
+                title: 'Mission terminée',
+                text: "La mission est maintenant refusée et marquée terminée",
                 confirmButtonText: 'OK',
                 confirmButtonColor: "#91c593",
 
               });
+              this.router.navigate([clientName + '/dashboard'])
               // this.router.navigate([clientName +'/dashboard'])
             }
+
 
             else {
               Swal.fire('Error', 'Tu peux pas terminer une mission validé', 'error');
             }
 
           }
+
         });
 
         // User clicked 'Yes', call the endpoint

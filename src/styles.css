@@ -108,27 +108,42 @@ table {
   display: block;
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
-  margin: 255px 255px 255px 775px;
-  width: 50px;
-  padding: 8px;
-  aspect-ratio: 1;
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid black;
+  /* Dark Green */
   border-radius: 50%;
-  background: #202121;
-  --_m:
-    conic-gradient(#0000 10%, #000),
-    linear-gradient(#000 0 0) content-box;
-  -webkit-mask: var(--_m);
-  mask: var(--_m);
-  -webkit-mask-composite: source-out;
-  mask-composite: subtract;
-  animation: l3 1s infinite linear;
+  width: 120px;
+  margin: 255px 255px 255px 775px;
+  height: 120px;
+  animation: spinloader 2s linear infinite;
 }
 
-@keyframes l3 {
-  to {
-    transform: rotate(1turn)
+.loader img {
+  height: 120px;
+
+  width: 120px;
+  animation: spinlogo 2s linear infinite;
+}
+
+@keyframes spinloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinlogo {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
 

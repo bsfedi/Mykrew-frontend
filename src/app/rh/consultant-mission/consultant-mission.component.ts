@@ -72,6 +72,7 @@ export class ConsultantMissionComponent {
 
     this.foremData = this.fb.group({
       userId: [''],
+      rhId: [''],
       typeVirement: ['Participation', Validators.required],
       montant: ['', Validators.required],
       // Add other form controls as needed
@@ -91,14 +92,14 @@ export class ConsultantMissionComponent {
     });
   }
   allcra: any
-
+  rh_id: any
   gotomyprofile() {
     this.router.navigate([clientName + '/edit-profil'])
   }
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
 
-
+    this.rh_id = user_id
 
     this.userservice.getpersonalinfobyid(user_id).subscribe({
 
@@ -128,6 +129,7 @@ export class ConsultantMissionComponent {
 
     this.userservice.getMyvirements(this.user_id).subscribe({
       next: (res) => {
+
         // Sort the response array by createdAt in ascending order
         this.res14 = res.sort((a: any, b: any) => (a.createdAt < b.createdAt) ? 1 : -1);
 
@@ -666,7 +668,7 @@ export class ConsultantMissionComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
-
+  timerInterval: any;
   submit(): void {
     const token = localStorage.getItem('token');
 
@@ -684,16 +686,26 @@ export class ConsultantMissionComponent {
         .subscribe({
           next: (res) => {
 
+
             Swal.fire({
-
-              background: '#fefcf1',
-              confirmButtonText: 'Ok',
-
-              confirmButtonColor: "#91c593",
               title: 'Document ajouté avec succès!',
-              showConfirmButton: true,
-              timer: 3000 // Adjusted timer to 3000 milliseconds (3 seconds)
+
+              position: 'top-end',
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+
+                this.timerInterval = setInterval(() => {
+
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(this.timerInterval);
+              }
             });
+
+
             // Hide the popup after 3 seconds
             setTimeout(() => {
               this.showPopup = false;
@@ -740,7 +752,7 @@ export class ConsultantMissionComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.foremData.controls['userId'].setValue(this.user_id);
-
+        this.foremData.value.rhId = this.rh_id
         this.consultantservice.createvirement(this.foremData.value).subscribe(
           (response) => {
             Swal.fire({
@@ -751,6 +763,7 @@ export class ConsultantMissionComponent {
 
             });
             this.showPopup1 = false
+            window.location.reload();
           },
           (error) => {
             Swal.fire({

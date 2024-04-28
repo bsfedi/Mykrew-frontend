@@ -1,6 +1,7 @@
 <div class="container">
   <app-left-bar></app-left-bar>
-  <div class="loader" *ngIf="!show"></div>
+  <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg" style="background-color: black;border-radius: 50%;" />
+  </div>
   <div class="second-container" [ngClass]="{
     Grille1: shownotiff == true,
 
@@ -15,12 +16,19 @@
     </div>
     <br />
 
-    <div id="chart" *ngIf="show_chart ">
-      <apx-chart class="chart" [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+    <div class="chart" *ngIf="shownotiff">
+      <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
         [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
         [colors]="chartOptions.colors" [title]="chartOptions.title" [yaxis]="chartOptions.yaxis"
         [fill]="chartOptions.fill"></apx-chart>
     </div>
+    <div class="chart1" *ngIf="!shownotiff">
+      <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
+        [colors]="chartOptions.colors" [title]="chartOptions.title" [yaxis]="chartOptions.yaxis"
+        [fill]="chartOptions.fill"></apx-chart>
+    </div>
+
 
 
 
