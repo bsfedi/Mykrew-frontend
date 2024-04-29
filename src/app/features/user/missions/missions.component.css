@@ -282,7 +282,10 @@ tr {
 
 .title {
   margin-top: 7px;
-
+  background: #fef9f1;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(247, 227, 227);
+  padding: 5px;
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 300;

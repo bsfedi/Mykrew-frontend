@@ -5,7 +5,7 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: 0.5fr 250fr 0.5fr;
+  grid-template-columns: 0.5fr 240fr 0.4fr;
 }
 
 body {
@@ -110,15 +110,9 @@ div.first1:hover {
 }
 
 .title {
-  margin-top: 7px;
 
-  font-size: 1.75rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.0225rem;
-  margin-bottom: 20px;
-  flex-shrink: 0;
+  width: 22rem;
+
   /* 2.25rem */
 }
 

@@ -5,8 +5,8 @@
   <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg" style="background-color: black;border-radius: 50%;" />
   </div>
   <div class="second-container" *ngIf="show">
-    <div style="font-size: 2rem;">
-      <b> Demande Modification TJM</b>
+    <div class="title">
+      DEMANDE MODIFICATION TJM
     </div>
     <!-- <div class="search-bar">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -90,8 +90,8 @@
                 id="companyName" placeholder="Société" name="companyName" required />
             </div>
 
-            <div class="label" style="color: rgb(255, 0, 0)">Nouveau TJM :</div>
-            <div class="Tableau">
+            <div class="label" style="color: rgb(255, 0, 0)" *ngIf="shownotiff">Nouveau TJM :</div>
+            <div class="Tableau" *ngIf="shownotiff">
               <input [value]="new_tjm.valueOfNewTjm" [ngModel]="new_tjm.valueOfNewTjm" [readonly]="true" type="text"
                 id="companyName" placeholder="47" name="companyName" required />
             </div>
@@ -124,9 +124,9 @@
               <input formControlName="finalClient" [ngModel]="missionInfo?.finalClient" [readonly]="true" type="text"
                 id="phoneNumber" name="phoneNumber" placeholder="téléphone" required />
             </div>
-            <div class="label" style=" color: rgb(255, 0, 0)">Nouvelle Simulation :</div>
+            <div class="label" style=" color: rgb(255, 0, 0)" *ngIf="shownotiff">Nouvelle Simulation :</div>
 
-            <div class="Tableau">
+            <div class="Tableau" *ngIf="shownotiff">
               <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; height: 300px;">
                 {{new_tjm.simulationValidated}}</div>
             </div>
@@ -134,6 +134,23 @@
               <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
             </div>
 
+          </div>
+          <div *ngIf="!shownotiff" style="margin-left: 70px;">
+
+            <div class="label" style=" color: rgb(255, 0, 0)">Nouvelle Simulation :</div>
+
+            <div class="Tableau" *>
+              <div formControlName="clientphoneNumber" id="pdfContainer1" style="width: 300px; height: 300px;">
+                {{new_tjm.simulationValidated}}</div>
+            </div>
+            <div class="Tableau" *ngIf="!showpdf1">
+              <img [src]="new_tjm.simulationValidated" alt="Selected Image" width="300px" height="300px" />
+            </div>
+            <div class="label" style="color: rgb(255, 0, 0)">Nouveau TJM :</div>
+            <div class="Tableau">
+              <input [value]="new_tjm.valueOfNewTjm" [ngModel]="new_tjm.valueOfNewTjm" [readonly]="true" type="text"
+                id="companyName" placeholder="47" name="companyName" required />
+            </div>
           </div>
         </div>
       </form>

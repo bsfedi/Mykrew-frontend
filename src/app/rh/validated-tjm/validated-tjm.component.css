@@ -21,15 +21,7 @@
 
 
 .title {
-  color: #000;
-
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 12px;
-  margin-bottom: 30px;
-  flex-shrink: 0;
+  width: 27rem;
   /* 2.25rem */
 }
 
@@ -333,6 +325,7 @@ input[type="checkbox"] {
 
 .right-item {
   float: right;
+  margin-left: -80px;
   display: row;
 
 }

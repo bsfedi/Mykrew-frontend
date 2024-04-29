@@ -4,28 +4,16 @@
       <app-left-bar></app-left-bar>
     </div>
     <div>
-      <div class="second-container" *ngIf="role != 'CONSULTANT'">
+      <div class="loader" *ngIf="!show">
+        <img src="/assets/Logo.svg" style="background-color: black;border-radius: 50%;" />
+      </div>
+      <div class="second-container" *ngIf="role != 'CONSULTANT' && show">
 
         <div class="title">
-          <b> Notifications</b>
-          <div class="right-item" style="cursor: pointer;">
-            <div style="display: flex">
+          NOTIFICATIONS
 
-              <div class="profil" style="cursor: pointer;">
-                <img src="/assets/avatar-user.png" width="15%" height="10%" />
-                <div class="nom-prenom">{{res.firstName}} {{res.lastName}} <br>
-
-                </div>
-
-              </div>
-            </div>
-
-
-          </div>
         </div><br>
-        <div class="loader" *ngIf="!show">
-          <img src="/assets/Logo.svg" style="background-color: black;border-radius: 50%;" />
-        </div>
+
 
         <table style="width: 100%;" *ngIf="show">
           <thead>
@@ -97,10 +85,10 @@
         </div>
       </div>
     </div>
-    <div class="second-container" *ngIf="role === 'CONSULTANT'">
+    <div class="second-container" *ngIf="role === 'CONSULTANT' && show">
       <div class="title">
-        Notifications <div class="right-item" style="cursor: pointer;">
-          <div style="display: flex">
+        NOTIFICATIONS <div class="right-item" style="cursor: pointer;">
+          <!-- <div style="display: flex">
 
             <div class="profil" style="cursor: pointer;">
               <img src="/assets/avatar-user.png" width="15%" height="10%" />
@@ -109,7 +97,7 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
 
 
         </div>

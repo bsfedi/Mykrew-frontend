@@ -14,7 +14,9 @@
 
 .title {
     color: #000;
-    
+    background: #fef9f1;
+    border: 1px solid rgb(247, 227, 227);
+    padding: 5px;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
@@ -68,7 +70,7 @@ svg {
 
 .bord-text {
     color: #FEFCF1;
-    
+
 
     font-style: normal;
 
@@ -131,7 +133,7 @@ button {
 
 .Information {
     color: #000;
-    
+
     font-size: 1.5625rem;
     font-style: normal;
     font-weight: 700;
@@ -360,7 +362,7 @@ input[type='checkbox'] {
     margin-top: 15px;
     margin-left: 8px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -370,7 +372,7 @@ input[type='checkbox'] {
 
 .historique .text {
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 300;
@@ -382,7 +384,7 @@ input[type='checkbox'] {
 
 .plus {
     color: #FFD200;
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -401,7 +403,7 @@ input[type='checkbox'] {
 .historique-name {
     margin: 10px 30px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -412,7 +414,7 @@ input[type='checkbox'] {
 .historiqueconsultantdetails {
     margin: 0px 125px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -423,7 +425,7 @@ input[type='checkbox'] {
 .historique-consultant {
     margin: 4px 10px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -434,7 +436,7 @@ input[type='checkbox'] {
 .historique-time {
     margin: 10px 150px;
     color: #000;
-    
+
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -444,7 +446,7 @@ input[type='checkbox'] {
 
 .approved {
     color: rgba(0, 0, 0, 0.75);
-    
+
     font-size: 0.9375rem;
     font-style: normal;
     font-weight: 400;
@@ -454,7 +456,7 @@ input[type='checkbox'] {
 
 .name-of-approved {
     color: rgba(0, 0, 0, 0.35);
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
@@ -473,7 +475,7 @@ input[type='checkbox'] {
 
 .historique-consultants .plus {
     color: #FFD200;
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
@@ -517,7 +519,7 @@ input[type='text']:focus {
     margin-top: 15px;
     margin-bottom: 8px;
     color: #000;
-    
+
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;

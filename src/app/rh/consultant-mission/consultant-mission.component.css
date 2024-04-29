@@ -36,15 +36,7 @@ input[type="month"] {
 }
 
 .title {
-  margin-top: 7px;
-
-  font-size: 1.75rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.0225rem;
-  margin-bottom: 15px;
-  flex-shrink: 0;
+  width: 20rem;
   /* 2.25rem */
 }
 

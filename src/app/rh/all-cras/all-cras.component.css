@@ -292,13 +292,7 @@ input[type="month"] {
 }
 
 .title {
-    margin-top: 7px;
-
-    font-size: 1.75rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.0225rem;
+    width: 29rem;
 }
 
 input[type="search"] {

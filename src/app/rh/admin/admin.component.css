@@ -144,16 +144,8 @@ svg {
 }
 
 .title {
+  width: 23rem;
 
-  margin-top: 7px;
-  font-size: 1.75rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.0225rem;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-  /* 2.25rem */
 }
 
 .Tableau {

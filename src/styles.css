@@ -67,6 +67,22 @@ div {
   text-align: center;
 }
 
+.title {
+  margin-top: 7px;
+  background: #fef9f1;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(247, 227, 227);
+  padding: 5px;
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.0225rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  /* 2.25rem */
+}
+
 .table th,
 .table td {
   padding: 8px;
