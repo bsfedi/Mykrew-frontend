@@ -191,8 +191,7 @@ body {
 
 div.chiffre_affaire:hover {
   background: #fefcf1;
-  width: 18.25rem;
-  height: 10.6875rem;
+
   color: black;
 
 }
@@ -200,8 +199,8 @@ div.chiffre_affaire:hover {
 div.tjm_moyen:hover {
   background: black;
   color: #fefcf1;
-  width: 18.25rem;
-  height: 10.6875rem;
+
+
 }
 
 div.chiffre_affaire~div.tjm_moyen1:hover {

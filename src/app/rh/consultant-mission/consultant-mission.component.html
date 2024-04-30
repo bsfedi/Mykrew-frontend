@@ -3,10 +3,9 @@
     <div>
       <app-left-bar> </app-left-bar>
     </div>
-    <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg"
-        style="background-color: black;border-radius: 50%;" /></div>
+    <div class="loader" *ngIf="!show"> </div>
     <div class="second-container" *ngIf="show">
-      <div class="title"> CONSULTANT - PROFIL </div>
+      <div class="title"> <b> CONSULTANT - PROFIL </b> </div>
       <br />
       <div class="Tableau1">
         <div style="height: auto; flex-shrink: 0">
@@ -431,14 +430,16 @@
                       </span>
                       <div class="dropdown-content">
                         <!-- Menu items go here -->
-                        <div style="display: flex; cursor: pointer">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div (click)="gotovalidation(item._id)" style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div (click)="gotovalidation(item._id)" style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                            Voir details
+                              Voir details
+                            </div>
                           </div>
                         </div>
                         <!-- <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus != 'WAITINGCONTRACT'">
@@ -451,21 +452,24 @@
                           CRA
                         </div>
                       </div> -->
-                        <div style="display: flex; cursor: pointer" *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
-                            style="margin-left: -13px" fill="none">
-                            <path
-                              d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
-                              stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                          </svg>
-                          <div (click)="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer"
+                            *ngIf="item.newMissionStatus == 'WAITINGCONTRACT'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
+                              style="margin-left: -13px" fill="none">
+                              <path
+                                d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                                stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <div (click)="
                             gotovalidemission(item._id, item.contractProcess)
                           " style="
                             margin-top: 12px;
                             cursor: pointer;
                             margin-left: -5px;
                           ">
-                            Process de validation
+                              Process de validation
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -69,9 +69,9 @@ div {
 
 .title {
   margin-top: 7px;
-  background: #fef9f1;
+
   border-radius: 0.5rem;
-  border: 1px solid rgb(247, 227, 227);
+  font-weight: bold;
   padding: 5px;
   font-size: 1.75rem;
   font-style: normal;
@@ -81,6 +81,10 @@ div {
   margin-bottom: 20px;
   flex-shrink: 0;
   /* 2.25rem */
+}
+
+div.dropmenu :hover {
+  background-color: #d5d3d3;
 }
 
 .table th,

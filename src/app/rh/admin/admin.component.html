@@ -3,14 +3,13 @@
     <div>
       <app-left-bar></app-left-bar>
     </div>
-    <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg"
-        style="background-color: black;border-radius: 50%;" /></div>
+    <div class="loader" *ngIf="!show"> </div>
     <div *ngIf="show">
       <div class="second-container">
         <div>
           <div>
             <div class="title">
-              MEMBRES DE L'EQUIPE
+              <b> MEMBRES DE L'EQUIPE</b>
             </div>
 
           </div>
@@ -163,37 +162,42 @@
                       </div>
                       <div class="dropdown-content">
                         <!-- Your dropdown content here -->
-                        <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                            Supprimer le compte
+                              Supprimer le compte
+                            </div>
                           </div>
                         </div>
-
-                        <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
-                          *ngIf="rh.isAvtivated == true">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
+                            *ngIf="rh.isAvtivated == true">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                               margin-top: 7px;
                               margin-bottom: 10px;
                               margin-left: 5px;
                             ">
-                            Désactiver le compte
+                              Désactiver le compte
+                            </div>
                           </div>
                         </div>
-                        <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
-                          *ngIf="rh.isAvtivated == false">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
+                            *ngIf="rh.isAvtivated == false">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                               margin-top: 7px;
                               margin-bottom: 10px;
                               margin-left: 5px;
                             ">
-                            activer le compte
+                              activer le compte
+                            </div>
                           </div>
                         </div>
 
@@ -326,47 +330,55 @@
                         </div>
                       </div>
                       <div class="dropdown-content">
-                        <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
-                         margin-top: 7px;
-                         margin-bottom: 10px;
-                         margin-left: 5px;
-                       ">
-                            Supprimer le compte
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="deleteconsultant(rh._id)">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
+                           margin-top: 7px;
+                           margin-bottom: 10px;
+                           margin-left: 5px;
+                         ">
+                              Supprimer le compte
+                            </div>
                           </div>
                         </div>
-                        <!-- Your dropdown content here -->
-                        <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
-                          *ngIf="rh.isAvtivated == true">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <!-- Your dropdown content here -->
+                          <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,false)"
+                            *ngIf="rh.isAvtivated == true">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                            Désactiver le compte
+                              Désactiver le compte
+                            </div>
                           </div>
                         </div>
-                        <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
-                          *ngIf="rh.isAvtivated == false">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="updateAccountVisibility(rh._id,true)"
+                            *ngIf="rh.isAvtivated == false">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                            activer le compte
+                              activer le compte
+                            </div>
                           </div>
                         </div>
-                        <div style="display: flex; cursor: pointer" (click)="gotomissions(rh._id)">
-                          <img src="/assets/Checkmark.svg" width="12%" />
-                          <div style="
+                        <div class="dropmenu">
+                          <div style="display: flex; cursor: pointer" (click)="gotomissions(rh._id)">
+                            <img src="/assets/Checkmark.svg" width="12%" />
+                            <div style="
                             margin-top: 7px;
                             margin-bottom: 10px;
                             margin-left: 5px;
                           ">
-                            Profil
+                              Profil
+                            </div>
                           </div>
                         </div>
                       </div>

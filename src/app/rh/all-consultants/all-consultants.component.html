@@ -3,14 +3,13 @@
     <div>
       <app-left-bar> </app-left-bar>
     </div>
-    <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg"
-        style="background-color: black;border-radius: 50%;" /></div>
+    <div class="loader" *ngIf="!show"> </div>
     <div class="second-container" *ngIf="show" [ngClass]="{
       pending1: shownotiff == false,
 
     }">
 
-      <div class="title" style="width: 17rem;"> CONSULTANTS </div>
+      <div class="title" style="width: 17rem;"> <b> CONSULTANTS </b> </div>
 
 
       <div class="Tableau1 left-first">
@@ -155,7 +154,7 @@
                     </svg>
                   </div>
 
-                  <div style="margin-top: 14px;margin-left: 1%; justify-content: center;">
+                  <div style="margin-top: 14px;margin-left: 1%; ">
                     {{ item.personalInfo?.firstName.value }}
                     {{ item.personalInfo?.lastName.value }}
 
@@ -184,29 +183,33 @@
                 </span>
                 <div class="dropdown-content" style=" min-width: 120px;">
                   <!-- Menu items go here -->
-                  <div style="display: flex; cursor: pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-archive" viewBox="0 0 16 16">
-                      <path
-                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                    <div (click)="updateAccountVisibility(item._id,true)" style="
+                  <div class="dropmenu">
+                    <div style="display: flex; cursor: pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-archive" viewBox="0 0 16 16">
+                        <path
+                          d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                      </svg>
+                      <div (click)="updateAccountVisibility(item._id,true)" style="
                       margin-top: 9px;
                       margin-bottom: 10px;
                       margin-left: 5px;
                     ">
-                      Archiver
+                        Archiver
+                      </div>
                     </div>
                   </div>
-                  <div style="display: flex; cursor: pointer">
+                  <div class="dropmenu">
+                    <div style="display: flex; cursor: pointer">
 
-                    <img src="/assets/Checkmark.svg" width="20%" style="margin-left: 6px;" />
-                    <div (click)="gotomissions(item.userId)" style="
+                      <img src="/assets/Checkmark.svg" width="20%" style="margin-left: 6px;" />
+                      <div (click)="gotomissions(item.userId)" style="
                       margin-top: 9px;
                       margin-bottom: 10px;
                       margin-left: 14px;
                     ">
-                      Profil
+                        Profil
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -311,29 +314,33 @@
                 </span>
                 <div class="dropdown-content" style=" min-width: 120px;">
                   <!-- Menu items go here -->
-                  <div style="display: flex; cursor: pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-archive" viewBox="0 0 16 16">
-                      <path
-                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                    <div (click)="updateAccountVisibility(item._id,false)" style="
+                  <div class="dropmenu">
+                    <div style="display: flex; cursor: pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-archive" viewBox="0 0 16 16">
+                        <path
+                          d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                      </svg>
+                      <div (click)="updateAccountVisibility(item._id,false)" style="
                       margin-top: 9px;
                       margin-bottom: 10px;
                       margin-left: 5px;
                     ">
-                      Désarchiver
+                        Désarchiver
+                      </div>
                     </div>
                   </div>
-                  <div style="display: flex; cursor: pointer">
+                  <div class="dropmenu">
+                    <div style="display: flex; cursor: pointer">
 
-                    <img src="/assets/Checkmark.svg" width="20%" style="margin-left: 6px;" />
-                    <div (click)="gotomissions(item.userId)" style="
+                      <img src="/assets/Checkmark.svg" width="20%" style="margin-left: 6px;" />
+                      <div (click)="gotomissions(item.userId)" style="
                       margin-top: 9px;
                       margin-bottom: 10px;
                       margin-left: 14px;
                     ">
-                      Profil
+                        Profil
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -3,12 +3,11 @@
     <div>
       <app-left-bar></app-left-bar>
     </div>
-    <div class="loader" *ngIf="!show"> <img src="/assets/Logo.svg"
-        style="background-color: black;border-radius: 50%;" /></div>
+    <div class="loader" *ngIf="!show"> </div>
     <div class="second-container" *ngIf="show">
       <div style="display: flex">
 
-        <div class="title">MES MISSSION </div>
+        <div class="title"> <b> MES MISSSION </b></div>
 
       </div>
       <div id="chart" *ngIf="show_chart">
@@ -218,47 +217,63 @@
                   </div>
                   <div class="dropdown-content">
                     <div class="dropdown-menu">
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotovalidation(item._id)" style="
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="gotovalidation(item._id)" style="
                                 margin-top: 7px;
                                 margin-bottom: 10px;
                                 margin-left: 5px;
                               ">
-                          Voir details
+                            Voir details
 
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="openPopup(item._id)" style="
+
+
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="openPopup(item._id)" style="
                                 margin-top: 7px;
                                 margin-bottom: 10px;
                                 margin-left: 5px;
                               ">
-                          Modifier TJM
+                            Modifier TJM
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotocra(item._id)" style="
+
+
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="gotocra(item._id)" style="
                                 margin-top: 7px;
                                 margin-bottom: 10px;
                                 margin-left: 5px;
                               ">
-                          CRA
+                            CRA
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="deposercra(item._id,item.clientInfo.company)" style="
+
+
+
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="deposercra(item._id,item.clientInfo.company)" style="
                                 margin-top: 7px;
                                 margin-bottom: 10px;
                                 margin-left: 5px;
                               ">
-                          Déposer fichier CRA
+                            Déposer fichier CRA
+                          </div>
                         </div>
                       </div>
+
                     </div>
 
                   </div>
@@ -314,48 +329,59 @@
                     </div>
                   </div>
                   <div class="dropdown-content">
-                    <div class="dropdown-menu">
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotovalidation(item._id)" style="
-                              margin-top: 7px;
-                              margin-bottom: 10px;
-                              margin-left: 5px;
-                            ">
-                          Voir details
 
+                    <div class="dropdown-menu">
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="gotovalidation(item._id)" style="
+                                margin-top: 7px;
+                                margin-bottom: 10px;
+                                margin-left: 5px;
+                              ">
+                            Voir details
+
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="openPopup(item._id)" style="
+                      <div class="dropmenu">
+
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="openPopup(item._id)" style="
                               margin-top: 7px;
                               margin-bottom: 10px;
                               margin-left: 5px;
                             ">
-                          Modifier TJM
+                            Modifier TJM
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="gotocra(item._id)" style="
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="gotocra(item._id)" style="
                               margin-top: 7px;
                               margin-bottom: 10px;
                               margin-left: 5px;
                             ">
-                          CRA
+                            CRA
+                          </div>
                         </div>
                       </div>
-                      <div style="display: flex; cursor: pointer">
-                        <img src="/assets/Checkmark.svg" width="12%" />
-                        <div (click)="deposercra(item._id,item.clientInfo.company)" style="
+                      <div class="dropmenu">
+                        <div style="display: flex; cursor: pointer">
+                          <img src="/assets/Checkmark.svg" width="12%" />
+                          <div (click)="deposercra(item._id,item.clientInfo.company)" style="
                               margin-top: 7px;
                               margin-bottom: 10px;
                               margin-left: 5px;
                             ">
-                          Déposer fichier CRA
+                            Déposer fichier CRA
+                          </div>
                         </div>
                       </div>
+
                     </div>
 
                   </div>

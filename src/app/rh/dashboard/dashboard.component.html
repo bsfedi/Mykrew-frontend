@@ -4,13 +4,13 @@
       <app-left-bar> </app-left-bar>
     </div>
     <div class="loader" *ngIf="!show">
-      <img src="/assets/Logo.svg" style="background-color: black;border-radius: 50%;" />
+
       <!-- Replace 'path_to_your_image.jpg' with the path to your image -->
 
     </div>
 
     <div class="second-container" *ngIf="show">
-      <div class="title"> TABLEAU DE BORD - RH </div>
+      <div class="title"> <b> TABLEAU DE BORD - RH </b> </div>
       <div id="chart">
         <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
           [dataLabels]="chartOptions.dataLabels" [yaxis]="chartOptions.yaxis" [colors]="chartOptions.colors"
@@ -191,28 +191,32 @@
                         </span>
                         <div class="dropdown-content">
                           <!-- Menu items go here -->
-                          <div style="display: flex; cursor: pointer"
-                            *ngIf="item.status === 'PENDING' ||  item.status === 'NOTVALIDATED'">
-                            <img src="/assets/Checkmark.svg" width="12%" />
-                            <div (click)="gotovalidation(item._id)" style="
+                          <div class="dropmenu">
+                            <div style="display: flex; cursor: pointer"
+                              *ngIf="item.status === 'PENDING' ||  item.status === 'NOTVALIDATED'">
+                              <img src="/assets/Checkmark.svg" width="12%" />
+                              <div (click)="gotovalidation(item._id)" style="
                                 margin-top: 7px;
                                 margin-bottom: 10px;
                                 margin-left: 5px;
                               ">
-                              Valider l’inscription
+                                Valider l’inscription
+                              </div>
                             </div>
                           </div>
-                          <div style="display: flex; cursor: pointer" *ngIf="item.status === 'WAITINGCONTRACT'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
-                              style="margin-left: -13px" fill="none">
-                              <path
-                                d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
-                                stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <div (click)="
+                          <div class="dropmenu">
+                            <div style="display: flex; cursor: pointer" *ngIf="item.status === 'WAITINGCONTRACT'">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 24 24"
+                                style="margin-left: -13px" fill="none">
+                                <path
+                                  d="M9 4H19V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H9M12 15L15 12M15 12L12 9M15 12H5"
+                                  stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                              <div (click)="
                                 gotovalidemission(item._id, item.contractProcess)
                               " style="margin-top: 8px; cursor: pointer">
-                              Process de validation
+                                Process de validation
+                              </div>
                             </div>
                           </div>
 
