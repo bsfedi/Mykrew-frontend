@@ -97,9 +97,9 @@ div.exporter:hover {
   padding: 3.25px 8px 3.25px 8px;
 }
 
-div.first1:hover {
+/* div.first1:hover {
   background-color: #abaaa5;
-}
+} */
 
 .pagination button {
   padding: 5px 10px;
@@ -761,30 +761,9 @@ input[type="password"] {
 }
 
 
-div.chiffre_affaire:hover {
-  background: #fefcf1;
-
-  color: black;
-
-}
-
-div.tjm_moyen:hover {
-  background: black;
-  color: #fefcf1;
-
-}
-
-div.chiffre_affaire~div.tjm_moyen1:hover {
-  background: #b09b27;
-  color: black;
-}
 
 
 
-div.chiffre_affaire:hover~div.tjm_moyen {
-  background: black;
-  color: #fefcf1;
-}
 
 
 

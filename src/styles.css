@@ -69,12 +69,9 @@ div {
 
 @media screen and (min-width: 375px) and (max-width: 700px) {
 
-  /* Hide all table rows except the first three */
-  table td:nth-child(n+4) {
-    display: none;
-  }
-
-  table th:nth-child(n+4) {
+  /* Hide all table cells except the first two and the last one */
+  table th:not(:nth-child(-n+2)):not(:last-child),
+  table td:not(:nth-child(-n+2)):not(:last-child) {
     display: none;
   }
 }

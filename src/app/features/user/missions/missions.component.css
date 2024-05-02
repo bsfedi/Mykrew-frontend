@@ -189,33 +189,6 @@ body {
 }
 
 
-div.chiffre_affaire:hover {
-  background: #fefcf1;
-
-  color: black;
-
-}
-
-div.tjm_moyen:hover {
-  background: black;
-  color: #fefcf1;
-
-
-}
-
-div.chiffre_affaire~div.tjm_moyen1:hover {
-  background: #b09b27;
-  color: black;
-}
-
-
-
-div.chiffre_affaire:hover~div.tjm_moyen {
-  background: black;
-  color: #fefcf1;
-}
-
-
 
 
 
@@ -281,9 +254,9 @@ tr {
 
 .title {
   margin-top: 7px;
-  background: #fef9f1;
+
   border-radius: 0.5rem;
-  border: 1px solid rgb(247, 227, 227);
+
   padding: 5px;
   font-size: 1.75rem;
   font-style: normal;
