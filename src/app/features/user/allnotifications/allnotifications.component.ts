@@ -21,10 +21,46 @@ export class AllnotificationsComponent {
   currentPage = 1; // Current page
   totalPages: any;
   res: any
+  deletebutton: any
   constructor(private socketService: WebSocketService, private consultantservice: ConsultantService, private userservice: UserService, private router: Router, private datePipe: DatePipe) { }
   formatDate(date: string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
+  selectedItems: any[] = [];
+
+  onCheckboxChange(event: any, item: any) {
+    if (event.target.checked) {
+      // If the item is checked, add it to the selectedItems array with an empty note
+      this.selectedItems.push(item);
+      console.log(this.selectedItems);
+
+      this.deletebutton = true
+    } else {
+      // Remove item if unchecked
+      const index = this.selectedItems.findIndex(selected => selected._id === item._id);
+      if (index !== -1) {
+        this.selectedItems.splice(index, 1);
+      }
+    }
+  }
+  deleteNotifications() {
+    this.consultantservice.deleteNotifications(this.selectedItems).subscribe({
+      next: (res1) => {
+        window.location.reload()
+
+
+      },
+      error: (e) => {
+        // Handle errors
+        console.error(e);
+        // Set loading to false in case of an error
+
+      }
+    });
+
+
+  }
+
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
     localStorage.setItem('new_notif', 'false')

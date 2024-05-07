@@ -76,6 +76,24 @@ body {
   margin-bottom: 15px;
 }
 
+button {
+  color: white;
+  display: flex;
+  width: 10%;
+  padding: 0.5rem;
+  float: center;
+  margin-left: 10px;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.625rem;
+  background: black;
+
+
+
+}
+
 .pagination button {
   padding: 5px 10px;
   margin: 0 2px;

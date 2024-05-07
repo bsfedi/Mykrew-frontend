@@ -673,8 +673,19 @@ select {
     display: none;
   }
 
+  .chart {
+    max-width: 100px !important;
+
+  }
+
+  .chart1 {
+    max-width: 400px !important;
+
+  }
+
   .second-container {
     margin-left: 0px;
+    width: 350px;
   }
 
   .newmissionbutton {

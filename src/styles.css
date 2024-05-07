@@ -109,7 +109,7 @@ table {
   border-collapse: collapse;
   background-color: #ffffff;
 
-  text-align: center;
+
 }
 
 .dropdown-content {
@@ -186,7 +186,7 @@ td {
   border-bottom: 1px solid #dddddd;
   text-align: left;
 
-  text-align: center;
+
 }
 
 td {
@@ -245,4 +245,10 @@ tr td:first-child:contains("Nouvelle") {
 .status-label.nouvelle {
   background-color: #28a745;
   /* Assuming green for 'Nouvelle' */
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .dropdown-content {
+    margin-left: -130px;
+  }
 }

@@ -125,12 +125,14 @@
           <input type="search" placeholder="Rechercher un consultant" [(ngModel)]="searchTerm" (input)="applyFilter()">
         </div>
 
-        <div class="newflex export" (click)="exportTable()">
 
-          <div class="first exportlist exporter">Exporter la liste</div>
-        </div>
       </div>
 
+
+      <div class="newflex export " (click)="exportTable()">
+
+        <div class="first exportlist exporter">Exporter la liste</div>
+      </div>
       <br />
       <div class="table-wrapper">
         <table style="width: 97%;border-radius: 0.6875rem 0.6875rem 0rem 0rem">

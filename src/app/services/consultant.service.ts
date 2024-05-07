@@ -202,6 +202,9 @@ export class ConsultantService {
   getallvirements() {
     return this.http.get(baseUrl + 'virement/virements');
   }
+  deleteNotifications(body: any) {
+    return this.http.post(baseUrl + 'notification/deleteNotifications', body);
+  }
 
   markNotificationAsSeen(notification_id: any) {
     return this.http.get(baseUrl + 'notification/markNotificationAsSeen/' + notification_id);

@@ -68,14 +68,11 @@
                     class="waiting">
                     Attente de contrat
                   </div>
-                  <div *ngIf="item.newMissionStatus == 'NOTVALIDATED' && item.missionKilled == false "
+                  <div *ngIf="item.newMissionStatus == 'NOTVALIDATED' || item.missionKilled == true "
                     class="nonvalidée">
                     Non validée
                   </div>
-                  <div *ngIf="item.missionKilled == true" class="waiting"
-                    style="background-color: rgb(230, 102, 102);color:white">
-                    Annulée
-                  </div>
+
                 </td>
 
                 <td style="min-width: 120px; max-width: 120px;">
