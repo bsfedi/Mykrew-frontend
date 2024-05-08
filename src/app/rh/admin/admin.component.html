@@ -78,7 +78,7 @@
               <table>
                 <thead>
                   <tr>
-                    <th style="border-radius: 0.6875rem 0rem 0rem 0rem ; text-align: left;">
+                    <th style="border-radius: 0.6875rem 0rem 0rem 0rem ; ">
                       <div style="margin-left: 42px;text-align: left;">
                         Utilisateur
                       </div>
@@ -93,26 +93,28 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let rh of getDisplayeddocs() ; let i =index">
-                    <td class="Tableau" style="min-width:200px">
-                      <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
-                          style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
-                          class="bi bi-person-fill" viewBox="0 0 16 16">
-                          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                        </svg>
+                    <td style="width:30%">
+                      <div class="Tableau">
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
+                            style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                          </svg>
+                        </div>
+
+                        <div style="margin-top: 0px; text-align: left;margin-left: 15px;margin-top: 12px;">
+                          {{ rh.personalInfo.firstName }}
+                          {{ rh.personalInfo.lastName }} <br />
+
+                        </div>
                       </div>
 
-                      <div
-                        style="margin-top: 0px; text-align: left;min-width: 100px;margin-left: 15px;margin-top: 12px;">
-                        {{ rh.personalInfo.firstName }}
-                        {{ rh.personalInfo.lastName }} <br />
-
-                      </div>
                     </td>
-                    <td style="width:250px">
+                    <td style="width:25%">
                       {{ rh.email }}
                     </td>
-                    <td style="width: 70px;">
+                    <td style="width: 20%;">
                       <div *ngIf="rh.isAvtivated == true" style="
                           display: flex;
                         width: 140px;
@@ -239,27 +241,30 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let rh of getDisplayedconsultants();let i =index;">
-                    <td class="Tableau" style="min-width:200px">
-                      <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
-                          style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
-                          class="bi bi-person-fill" viewBox="0 0 16 16">
-                          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                        </svg>
-                      </div>
-
-                      <div
-                        style="margin-top: 0px; text-align: left;min-width: 100px;margin-left: 15px;margin-top: 15px;">
-                        <div *ngIf="rh.personalInfo">
-                          {{ rh.personalInfo.firstName }}
-                          {{ rh.personalInfo.lastName }} <br>
-
+                    <td style="width:30%">
+                      <div class="Tableau">
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="black"
+                            style="width: 1rem;border-radius: 50%; background: #f3f4f6;margin: 2%;"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                          </svg>
                         </div>
 
+                        <div
+                          style="margin-top: 0px; text-align: left;min-width: 100px;margin-left: 15px;margin-top: 15px;">
+                          <div *ngIf="rh.personalInfo">
+                            {{ rh.personalInfo.firstName }}
+                            {{ rh.personalInfo.lastName }} <br>
 
+                          </div>
+
+
+                        </div>
                       </div>
+
                     </td>
-                    <td style="width:250px">
+                    <td style="width:25%">
                       <div *ngIf="rh.personalInfo">
                         {{ rh.email }}
                       </div>
@@ -267,7 +272,7 @@
                         {{ rh.email }}
                       </div>
                     </td>
-                    <td style="width: 70px;">
+                    <td style="width: 20%;">
                       <div *ngIf="rh.personalInfo && rh.isAvtivated == true " style="
                       display: flex;
                       width: 140px;

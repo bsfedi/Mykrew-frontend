@@ -84,6 +84,7 @@ div.exporter:hover {
 
 .exporter {
   margin: 6px;
+  float: right;
 }
 
 .first1 {
@@ -855,7 +856,7 @@ input[type="password"] {
 .exportlist {
   width: 8rem;
   height: 2.2rem;
-
+  float: right;
 
 }
 
@@ -866,6 +867,18 @@ input[type="password"] {
 
   border-radius: 0rem 0.625rem 0.625rem 0rem;
   background: #eae3d5;
+}
+
+th:first-child {
+  padding: 12px 0px 12px 12px;
+}
+
+th {
+  /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
+  background: #e0d7c2;
+  padding: 10px 0px 10px 8px;
+  color: #333333;
+  font-weight: normal;
 }
 
 #chart {

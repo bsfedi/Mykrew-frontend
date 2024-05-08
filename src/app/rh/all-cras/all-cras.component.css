@@ -265,14 +265,14 @@ input[type="number"] {
 }
 
 input[type="month"] {
-    margin-left: 350px;
+
     width: 15.04313rem;
     height: 3.61006rem;
     flex-shrink: 0;
     margin-top: 2px;
     font-family: "Poppins", sans-serif !important;
 
-    margin-right: -1500px;
+
     border-radius: 0.5rem;
     border: 1px solid #1e1e1e;
     background: #fff;

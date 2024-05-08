@@ -29,6 +29,18 @@
   cursor: pointer;
 }
 
+th:first-child {
+  padding: 12px 12px 12px 12px;
+}
+
+th {
+  /* border-radius: 0.6875rem 0.6875rem 0rem 0rem; */
+  background: #e0d7c2;
+  padding: 12px 12px 12px 6px;
+  color: #333333;
+  font-weight: normal;
+}
+
 .profil {
   width: 12rem;
   height: 3.125rem;
@@ -39,6 +51,8 @@
   display: flex;
   float: right;
 }
+
+th {}
 
 .profil img {
   border-radius: 100%;
