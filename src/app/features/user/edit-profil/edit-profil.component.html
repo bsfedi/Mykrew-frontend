@@ -6,7 +6,12 @@
         <div>
             <app-left-bar></app-left-bar>
         </div>
+        <div *ngIf="!show">
+            <br><br>
+        </div>
+
         <div class="loader" *ngIf="!show">
+
         </div>
         <div class="second-container" *ngIf="show">
 
