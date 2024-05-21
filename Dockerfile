@@ -10,21 +10,21 @@ COPY package*.json ./
 # Install any needed packages specified in package.json
 RUN npm install
 
-# # Set environment variable for client name
-# ARG CLIENT_NAME
-# ENV CLIENT_NAME ${CLIENT_NAME}
+# Set environment variable for client name
+ARG CLIENT_NAME
+ENV CLIENT_NAME ${CLIENT_NAME}
 
 
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# # Modify environment.ts with the dynamic URL
-# RUN sed -i "s|baseUrl: '.*'|baseUrl: 'https://new-base-url.com/'|g" src/environments/environment.ts && \
-#     echo "Updated base URL in environment.ts to: https://new-base-url.com/"
+# Modify environment.ts with the dynamic URL
+RUN sed -i "s|baseUrl: '.*'|baseUrl: 'http://152.228.135.170:3600/'|g" src/environments/environment.ts && \
+    echo "Updated base URL in environment.ts to: http://152.228.135.170:3600/"
 
 
-# RUN sed -i "s|default: '.*'|default: '${CLIENT_NAME}'|g" src/environments/environment.ts && \
-#     echo "Updated CLIENT_NAME in environment.ts to: ${CLIENT_NAME}"
+RUN sed -i "s|default: '.*'|default: '${CLIENT_NAME}'|g" src/environments/environment.ts && \
+    echo "Updated CLIENT_NAME in environment.ts to: ${CLIENT_NAME}"
 
 # Build the Angular app
 RUN npm run build --prod

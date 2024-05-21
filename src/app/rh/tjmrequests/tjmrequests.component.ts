@@ -167,6 +167,7 @@ export class TjmrequestsComponent {
       next: (res) => {
         // Handle the response from the server
         this.res = res
+        this.show = true
         console.log('inffffffffoooooo', this.res);
 
 
@@ -194,7 +195,7 @@ export class TjmrequestsComponent {
         forkJoin(requests).subscribe((responses: any) => {
           responses.forEach((res: any, index: any) => {
             console.log(res);
-            this.show = true
+
             this.tjmrequests[index].missionId = res.clientInfo.clientContact.firstName + " " + res.clientInfo.clientContact.firstName;
           });
           // Additional handling or notifications if needed

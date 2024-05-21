@@ -91,7 +91,9 @@
                     <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
                   </tr>
                 </thead>
-                <tbody>
+
+                <tbody *ngIf="all_rh">
+
                   <tr *ngFor="let rh of getDisplayeddocs() ; let i =index">
                     <td style="width:30%">
                       <div class="Tableau">
@@ -209,6 +211,11 @@
                   </tr>
                 </tbody>
               </table>
+              <div *ngIf="!all_rh">
+
+                <div style="justify-content: center;text-align: center; margin: 20px;"> Aucune donnée disponible</div>
+
+              </div>
             </div>
           </div>
         </div>
@@ -239,7 +246,8 @@
                     <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Action</th>
                   </tr>
                 </thead>
-                <tbody>
+
+                <tbody *ngIf="all_users">
                   <tr *ngFor="let rh of getDisplayedconsultants();let i =index;">
                     <td style="width:30%">
                       <div class="Tableau">
@@ -394,6 +402,9 @@
                   </tr>
                 </tbody>
               </table>
+              <div *ngIf="!all_users" style="text-align: center; margin: 20px;">
+                Aucune donnée disponible
+              </div>
             </div>
           </div>
         </div>

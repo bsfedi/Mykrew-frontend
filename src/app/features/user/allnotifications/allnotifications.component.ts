@@ -70,7 +70,7 @@ export class AllnotificationsComponent {
     if (this.role == 'ADMIN' || this.role == 'RH') {
       this.consultantservice.getlastnotificationsrh().subscribe({
         next: (res1) => {
-          this.show = true
+
           this.lastnotifications = res1;
           this.totalPages = Math.ceil(this.lastnotifications.length / this.pageSize);
 
@@ -86,7 +86,7 @@ export class AllnotificationsComponent {
     } else {
       this.consultantservice.getallnotification(user_id).subscribe({
         next: (res1) => {
-          this.show = true
+
           this.lastnotifications = res1
           this.totalPages = Math.ceil(this.lastnotifications.length / this.pageSize);
 
@@ -106,6 +106,7 @@ export class AllnotificationsComponent {
       next: (res) => {
         // Handle the response from the server
         this.res = res
+        this.show = true
         console.log('inffffffffoooooo', this.res);
 
 

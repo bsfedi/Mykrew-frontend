@@ -41,6 +41,7 @@ export class AdminComponent {
       next: (res) => {
         // Handle the response from the server
         this.res = res
+        this.show = true
         console.log('inffffffffoooooo', this.res);
       },
       error: (e) => {
@@ -61,7 +62,7 @@ export class AdminComponent {
     });
     this.consultantservice.getConsultantusers().subscribe({
       next: (res) => {
-        this.show = true
+
         this.all_users = res
 
       }, error(e) {

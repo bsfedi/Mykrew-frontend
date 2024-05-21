@@ -36,7 +36,7 @@
 
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Date</th>
             </thead>
-            <tbody>
+            <tbody *ngIf="tjmrequests">
               <tr *ngFor="let tjm of getDisplayeddocs(); let j = index" (click)="gotovalidation(tjm._id)"
                 style="cursor: pointer;">
 
@@ -49,6 +49,9 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="!tjmrequests" style="text-align: center; margin: 20px;">
+            Aucune donnée disponible
+          </div>
           <table *ngIf="mission">
             <thead style="padding: 10px;">
               <th style="border-radius: 0.6875rem 0rem 0rem 0rem;"></th>
@@ -57,7 +60,7 @@
               <th>Date</th>
               <th style="border-radius: 0rem 0.6875rem 0rem 0rem"></th>
             </thead>
-            <tbody>
+            <tbody *ngIf="pending_missions">
               <tr *ngFor="let item of getDisplayeddocs(); let i = index" (click)="toggleMenu(i)"
                 style="cursor: pointer">
                 <td style="width: 80px;">
@@ -133,6 +136,11 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="!pending_missions" style="text-align: center; margin: 20px;">
+            Aucune donnée disponible
+
+
+          </div>
           <div class="pagination">
             <div *ngIf="mission" (click)="previousPage()" style="cursor: pointer;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
