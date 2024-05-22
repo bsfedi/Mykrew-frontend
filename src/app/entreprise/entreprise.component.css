@@ -1,0 +1,336 @@
+.container {
+    display: flex;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.left-panel {
+    padding: 3px;
+    width: 60%;
+    position: relative;
+    height: 96.97vh;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    transform: translate(-40%, -50%);
+    color: white;
+
+    z-index: 2;
+    width: 33rem;
+    color: #FFF;
+
+
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    /* Set a higher z-index for the logo overlay */
+
+
+}
+
+.image {
+    margin-top: -43px;
+    z-index: 1;
+    margin-left: -45px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Adjust object-fit as needed */
+}
+
+.content {
+    filter: drop-shadow(0px 4px 68.8px rgba(255, 255, 255, 0.56));
+
+}
+
+.logo-overlay {
+    width: 6.25rem;
+    height: 4.3125rem;
+    position: fixed;
+    top: 4%;
+    left: 3%;
+    border-radius: 1.1875rem;
+    border: 0px solid #FFF;
+    background: rgba(215, 215, 209, 0.32);
+    backdrop-filter: blur(3.6500000953674316px);
+    z-index: 2;
+}
+
+.form-container {
+    width: 420px;
+    margin-left: -80px;
+
+}
+
+.image img {
+    border-radius: 10px;
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the container */
+}
+
+.inputs {
+    align-items: center;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.form {
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loader {
+    border: 6px solid #f3f3f3;
+    /* Light grey */
+    border-top: 6px solid black;
+    /* Dark Green */
+    border-radius: 50%;
+    width: 20px;
+    margin: 0px;
+    height: 20px;
+    animation: spinloader 2s linear infinite;
+}
+
+.loader img {
+    height: 120px;
+
+    width: 120px;
+    animation: spinlogo 2s linear infinite;
+}
+
+@keyframes spinloader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinlogo {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+.form-panel {
+
+    padding-top: 20px;
+    padding-left: -200px;
+    display: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    margin-top: 35px;
+    width: 26.04313rem;
+    height: 3.61006rem;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    background: black;
+
+
+}
+
+.inscrire {
+    color: #FFF;
+
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.under-connect {
+    margin-bottom: 25px;
+}
+
+.mdp {
+    color: #000;
+    cursor: pointer;
+    margin-left: 260px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.Inscrivez-vous {
+
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"] {
+    width: 26.04313rem;
+    height: 3.61006rem;
+    flex-shrink: 0;
+
+    padding: 8px;
+    margin-top: 15px;
+
+    border-radius: 0.5rem;
+    border: 1px solid #1E1E1E;
+
+    background: #FFF;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+}
+
+.Connectez {
+    margin-top: 15px;
+    margin-bottom: 3px;
+    font-size: 24px;
+}
+
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.info-msg {
+    color: #059;
+    background-color: #BEF;
+}
+
+.success-msg {
+    color: #270;
+    background-color: #DFF2BF;
+}
+
+.warning-msg {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.error-msg {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.left-image {
+    border-radius: 1.875rem;
+    height: 100%;
+    width: 70%;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+    .left-panel {
+        height: 50%;
+        width: 100%;
+
+    }
+
+    .mdp {
+        color: #000;
+        cursor: pointer;
+        margin-left: 180px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .under-connect {
+        width: 345px;
+    }
+
+    select,
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="search"] {
+        width: 21.04313rem;
+
+    }
+
+    .Inscrivez-vous {
+        margin-left: 35px;
+
+    }
+
+    button {
+        margin-top: 35px;
+        width: 21.04313rem;
+        height: 3.61006rem;
+        flex-shrink: 0;
+        border-radius: 1rem;
+        background: black;
+    }
+
+    .form-panel {
+
+        margin-top: -400px;
+        padding-left: 100px;
+        display: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .text-overlay {
+        left: 39%;
+        width: 20rem;
+        top: 70%;
+        font-size: 1.5rem;
+        transform: translate(-40%, -50%);
+    }
+
+    .container {
+        display: grid;
+        overflow: hidden;
+        font-family: "Poppins", sans-serif !important;
+    }
+
+    .left-image {
+        border-radius: 1.875rem;
+        height: 100%;
+        width: 100%;
+    }
+
+    .image {
+        margin-top: -43px;
+        z-index: 1;
+        margin-left: -45px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}

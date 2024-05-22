@@ -8,6 +8,7 @@ import { routes as rhRoutes } from './rh/rh.module';
 import { routes as userRoutes } from './features/user/user.module';
 import { InjectionToken } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { EntrepriseComponent } from './entreprise/entreprise.component';
 const clientName = `${environment.default}`;
 
 const clientRoutes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: '*', // Note: It's better to use '**' for wildcard routes
     redirectTo: `${clientName}/sing-in`, // Redirect to your default route under the dynamic 'client'
+  },
+  {
+    path: 'entreprise',
+    component: EntrepriseComponent,
   },
 ];
 
