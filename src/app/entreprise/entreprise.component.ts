@@ -10,6 +10,7 @@ const baseUrl = "http://152.228.135.170:5200/"
 export class EntrepriseComponent {
   entreprisefrom: FormGroup;
   show_second = false
+  url: any
   show = true
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.entreprisefrom = this.fb.group({
@@ -52,6 +53,8 @@ export class EntrepriseComponent {
         next: (res: any) => {
           console.log(res);
           this.show_url = true
+          this.url = res
+
 
           if (res.message == "Entreprise added successfully!") {
 
