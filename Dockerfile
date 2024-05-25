@@ -39,7 +39,7 @@ COPY --from=builder /app/dist/mykrew /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 90 to the outside world
-EXPOSE 90
+EXPOSE 80
 
 # Start Nginx when the container launches
 CMD ["nginx", "-g", "daemon off;"]
