@@ -54,14 +54,9 @@ export class EntrepriseComponent {
           console.log(res);
           this.show_url = true
           this.url = res
+          this.show = true
 
 
-          if (res.message == "Entreprise added successfully!") {
-
-            this.show = true
-            console.log();
-
-          }
 
 
         },

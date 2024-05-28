@@ -1,0 +1,92 @@
+<body>
+    <div class="wrapper">
+        <div>
+            <app-left-bar></app-left-bar>
+        </div>
+        <div class="loader" *ngIf="!show"> </div>
+        <div *ngIf="show">
+            <div class="second-container">
+                <div>
+                    <div>
+                        <div class="title">
+                            <b> Liste des clients</b>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div>
+                    <div>
+
+                        <br />
+                    </div>
+                    <div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="border-radius: 0.6875rem 0rem 0rem 0rem;text-align: left;">
+
+                                            <div>
+                                                Entreprise
+                                            </div>
+                                        </th>
+                                        <th> Siret</th>
+                                        <th>Secteur </th>
+                                        <th>Taille </th>
+                                        <th> Adresse </th>
+                                        <th style="border-radius: 0rem 0.6875rem 0rem 0rem">Contact</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody *ngIf="all_users">
+                                    <tr *ngFor="let rh of  all_users;let i =index;" style="margin: 10px;">
+                                        <td>
+                                            {{rh.name}}
+
+                                        </td>
+                                        <td>
+                                            {{ rh.siret }}
+                                        </td>
+                                        <td>
+                                            {{ rh.secteur }}
+                                        </td>
+
+                                        <td>{{ rh.taille }}</td>
+                                        <td>{{ rh.adresse }}</td>
+                                        <td>{{ rh.email }}</td>
+
+
+
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="!all_users" style="text-align: center; margin: 20px;">
+                                Aucune donnée disponible
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>
+
+
+        <div *ngIf="show">
+            <div class="right-item" (click)="gotomyprofile()" style="cursor: pointer;">
+                <div class="profil">
+                    <img src="/assets/avatar-user.png" width="15%" height="10%" />
+                    <div style="" class="nom-prenom">{{res.firstName}} {{res.lastName}}</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

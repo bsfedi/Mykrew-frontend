@@ -38,12 +38,28 @@
                                 name="email" />
                         </div>
                         <div>
-                            <input type="text" formControlName="secteur" class="form-control"
-                                placeholder="Secteur d'Activité" required name="email" />
+                            <select formControlName="secteur">
+                                <option value=""> Secteur d'Activité</option>
+                                <option value="Informatique"> Informatique</option>
+                                <option value="Ingénierie"> Ingénierie</option>
+                                <option value="Conseil"> Conseil</option>
+                                <option value="Data"> Data</option>
+                                <option value="Énergie"> Énergie </option>
+                                <option value="Autre"> Autre </option>
+                            </select>
+                            <!-- <input type="text" formControlName="secteur" class="form-control"
+                                placeholder="Secteur d'Activité" required name="email" /> -->
                         </div>
                         <div>
-                            <input type="text" formControlName="taille" class="form-control"
-                                placeholder="Taille de l'Entreprise" required name="email" />
+                            <select formControlName="taille">
+                                <option value=""> Taille de l'Entreprise</option>
+                                <option value="1-10"> 1-10</option>
+                                <option value="11-50"> 11-50</option>
+                                <option value="51-250"> 51-250</option>
+                                <option value="+250"> +250</option>
+                            </select>
+                            <!-- <input type="text" formControlName="taille" class="form-control"
+                                placeholder="Taille de l'Entreprise" required name="email" /> -->
                         </div>
                         <div>
                             <input type="text" formControlName="adresse" class="form-control"
@@ -57,8 +73,8 @@
 
                     <div *ngIf="show_second">
                         <div>
-                            <input type="text" formControlName="nom" class="Nom du Contact"
-                                placeholder="Nom de l'Entreprise" required name="email" />
+                            <input type="text" formControlName="nom" class="Nom du Contact" placeholder="Nom du Contact"
+                                required name="email" />
                         </div>
                         <div>
                             <input type="text" formControlName="prenom" class="form-control"
@@ -92,11 +108,12 @@
             </div>
             <div *ngIf="show_second">
                 <button type="submit" (click)="paiment()" style="display: flex;">
-                    <div class="inscrire">
+                    <div class="inscrire" style="margin-left: 150px;
+                    padding: 15px;">
                         Paiement
 
                     </div>
-                    <div class="loader" *ngIf="!show"> </div>
+                    <div class="loader" style="padding: 3px;margin-top: 8px;" *ngIf="!show"> </div>
                 </button>
             </div>
 

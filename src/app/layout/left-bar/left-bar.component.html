@@ -92,7 +92,8 @@
       Mes virements
     </div>
   </div>
-  <div class="custom-item" *ngIf="role === 'ADMIN'" [ngClass]="{ 'board-item': isActiveRoute('members') }">
+  <div class="custom-item" *ngIf="role === 'ADMIN' || role === 'SUPERADMIN'"
+    [ngClass]="{ 'board-item': isActiveRoute('members') }">
     <div class="board-svg">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
         <g clip-path="url(#clip0_938_2097)">
@@ -122,7 +123,21 @@
 
   </div>
 
+  <div class="custom-item" *ngIf="role === 'SUPERADMIN'" [ngClass]="{ 'board-item': isActiveRoute('instaces') }">
+    <div class="board-svg">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M18.3337 10H13.3337L11.667 12.5H8.33366L6.66699 10H1.66699" stroke="#FEFCF1" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M4.54199 4.2585L1.66699 10.0002V15.0002C1.66699 15.4422 1.84259 15.8661 2.15515 16.1787C2.46771 16.4912 2.89163 16.6668 3.33366 16.6668H16.667C17.109 16.6668 17.5329 16.4912 17.8455 16.1787C18.1581 15.8661 18.3337 15.4422 18.3337 15.0002V10.0002L15.4587 4.2585C15.3207 3.98082 15.108 3.74714 14.8445 3.58373C14.5809 3.42032 14.2771 3.33366 13.967 3.3335H6.03366C5.72359 3.33366 5.41971 3.42032 5.1562 3.58373C4.89268 3.74714 4.67997 3.98082 4.54199 4.2585Z"
+          stroke="#FEFCF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <div class="bord-text" (click)="gotomembres()">
+      Instances
+    </div>
 
+  </div>
 
 
   <!-- <div class="custom-item">

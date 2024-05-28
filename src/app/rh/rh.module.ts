@@ -21,6 +21,7 @@ import { ValidatedTjmComponent } from './validated-tjm/validated-tjm.component';
 import { CraMissionComponent } from './cra-mission/cra-mission.component';
 import { AdminComponent } from './admin/admin.component';
 import { AllCrasComponent } from './all-cras/all-cras.component';
+import { InstancesComponent } from './instances/instances.component';
 
 export const routes: Routes = [
   {
@@ -94,6 +95,11 @@ export const routes: Routes = [
     path: 'members',
     component: AdminComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'instaces',
+    component: InstancesComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
@@ -114,6 +120,7 @@ export const routes: Routes = [
     AdminComponent,
 
     AllCrasComponent,
+    InstancesComponent,
   ],
   imports: [
     CommonModule,
