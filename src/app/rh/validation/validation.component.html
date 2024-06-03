@@ -12,17 +12,20 @@
             <div class="title"> <b> Validation de la pre-inscription </b> </div>
             <div class="demande-ng-consultants ">
                 <div class="demande">
-                    <div>
-                        <img src="/assets/4035887-200.png"
-                            style="width: 40px; border-radius: 20%; height: 42px;margin-top: 20px;" />
+                    <div style="display: flex;">
+                        <div>
+                            <img src="/assets/4035887-200.png"
+                                style="width: 40px; border-radius: 20%; height: 42px;margin-top: 20px;" />
 
-                    </div>
-                    <div class="nb-demande">
-                        <div class="nameofconsultant">
-                            <b> {{personalInfo?.firstName.value}} {{personalInfo?.lastName.value}} </b>
                         </div>
-                        <div> {{ formatDate(personalInfo?.dateOfBirth.value) }} </div>
+                        <div class="nb-demande">
+                            <div class="nameofconsultant">
+                                <b> {{personalInfo?.firstName.value}} {{personalInfo?.lastName.value}} </b>
+                            </div>
+                            <div> {{ formatDate(personalInfo?.dateOfBirth.value) }} </div>
+                        </div>
                     </div>
+
                     <div class="post-email">
                         <div class="nameofconsultant">
                             {{missionInfo?.profession.value}}
@@ -39,7 +42,7 @@
 
             </div>
             <div class="Information"> Information personnel et du compte</div>
-            <div style="display: flex;">
+            <div class="newflex">
                 <div>
                     <div class="label"> Prénom :</div>
                     <div class="Tableau">
@@ -128,7 +131,7 @@
                     <input *ngIf="!identificationDocumentValue" type="text" placeholder="COMMENTAIRE"
                         [(ngModel)]="commantaireidentificationDocumentValue">
                 </div>
-                <div style="margin-left: 150px;">
+                <div class="left-second">
                     <div class="label"> Voiture : </div>
                     <div>
                         <div style="display: flex;margin-top: 25px;margin-bottom: 35px;">
@@ -233,7 +236,7 @@
 
             </div>
             <div class="Information"> Informations du client </div>
-            <div style="display: flex;">
+            <div class="newflex">
                 <div>
                     <div class="label"> Prénom :</div>
                     <div class="Tableau">
@@ -301,7 +304,7 @@
 
 
                 </div>
-                <div style="margin-left: 150px;">
+                <div class="left-second">
                     <div class="label"> Métier :</div>
                     <div class="Tableau">
                         <input [value]="missionInfo?.profession.value" type="text" id="birthDate" name="birthDate"

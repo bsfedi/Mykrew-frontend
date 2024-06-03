@@ -27,7 +27,7 @@
     <div style="display: flex; margin-left: 10px">
       <form [formGroup]="myForm" *ngIf="status === 'VALIDATED'">
         <div class="Information"><b> Information du client </b></div>
-        <div class="personal-info" style="display: flex">
+        <div class="personal-info newflex">
           <div>
             <div class="label">Prénom :</div>
             <div class="Tableau">
@@ -73,8 +73,8 @@
               <img [src]="missionInfo.isSimulationValidated" alt="Selected Image" width="300px" height="300px" />
             </div>
           </div>
-
-          <div style="margin-left: 130px">
+          <br>
+          <div class="left-second">
             <div class="Information" style="margin-top: -18px">
               <b> Information de la mission </b>
             </div>
@@ -135,7 +135,7 @@
             </div>
 
           </div>
-          <div *ngIf="!shownotiff" style="margin-left: 70px;">
+          <div *ngIf="!shownotiff" class="third-left ">
 
             <div class="label" style=" color: rgb(255, 0, 0)">Nouvelle Simulation :</div>
 
@@ -155,7 +155,7 @@
         </div>
       </form>
     </div>
-    <div *ngIf="show" style="display: flex; margin-left: 480px; margin-top: 20px;">
+    <div *ngIf="show" class="buttons">
       <div style="margin-top: 20px">
         <button (click)="invalid()" style="
             background-color: rgb(244, 233, 233);

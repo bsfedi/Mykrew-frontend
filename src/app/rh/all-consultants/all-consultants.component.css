@@ -908,7 +908,7 @@ div.exporter:hover {
   }
 
   .export {
-    margin-left: 1.5%;
+    margin-left: 2.5%;
   }
 
   /* my-component.component.css */
@@ -949,7 +949,7 @@ div.exporter:hover {
     border-radius: 0.625rem;
     border: 2px solid #eae3d5;
     background: #fff;
-    margin: 3.25px 3.25px 3.25px -175px;
+    margin: 3.25px 3.25px 3.25px -155px;
     padding: 8px 8px 8px 8px;
   }
 

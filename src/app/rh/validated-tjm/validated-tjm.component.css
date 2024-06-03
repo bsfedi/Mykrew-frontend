@@ -42,6 +42,10 @@
   display: flex;
 }
 
+.newflex {
+  display: flex;
+}
+
 .board-item {
   width: 12.875rem;
   height: 3rem;
@@ -689,4 +693,199 @@ input[type="password"] {
   .container {
     flex-direction: column;
   }
+}
+
+.left-second {
+  margin-left: 130px;
+}
+
+.third-left {
+  margin-left: 70px
+}
+
+.buttons {
+  display: flex;
+  margin-left: 480px;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .newflex {
+    display: grid;
+  }
+
+  .third-left {
+    margin-left: 0px
+  }
+
+  .buttons {
+    display: flex;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  .left-second {
+    margin-left: 0px;
+  }
+
+  .left-first {
+    margin-left: 30px;
+    justify-content: left;
+  }
+
+  .first {
+    display: flex;
+
+    width: 300px;
+    cursor: pointer;
+    justify-content: left;
+    align-items: left;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px;
+    padding: 7.25px 8px 3.25px 8px;
+
+
+  }
+
+  input[type="month"] {
+    float: left;
+    width: 15.04313rem;
+    margin-left: 0px;
+
+  }
+
+  .tjmselected {
+
+    display: flex;
+    width: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+
+    background: #eae3d5;
+    margin: 3.25px;
+    padding-left: 3px;
+    width: 288.5px;
+    margin-bottom: 8px;
+  }
+
+  .export {
+    margin-left: 1.5%;
+  }
+
+  /* my-component.component.css */
+  .dropdown-menu {
+    width: 20rem;
+  }
+
+  .first1 {
+    display: flex;
+    width: auto;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px;
+    padding: 3.25px 8px 3.25px 8px;
+  }
+
+
+
+  .exportlist {
+    width: 8rem;
+    justify-content: none;
+    align-items: none;
+    border-radius: 0.625rem;
+    border: 2px solid #eae3d5;
+    background: #fff;
+    margin: 3.25px 3.25px 3.25px -175px;
+    padding: 8px 8px 8px 8px;
+  }
+
+  .rechercher {
+    width: 17rem;
+  }
+
+
+
+  .Tableau1 {
+    margin-top: 20px;
+    display: grid;
+  }
+
+
+
+  #chart {
+    margin-left: 0px;
+    width: 350px;
+  }
+
+  .popup-content {
+    width: 18.6875rem;
+    margin-left: 5px;
+    height: 16.4375rem;
+    border-radius: 2.125rem;
+    background: white;
+
+  }
+
+  .chezqui {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+
+
+  .tjm_moyen {
+    margin-left: 5px;
+    width: 15.25rem;
+  }
+
+  .TJMcuurent {
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .chez {
+    margin-left: 25px;
+    margin-top: 25px;
+    color: #cdc7b9
+  }
+
+
+  .wrapper {
+    display: initial;
+    grid-template-columns: initial;
+  }
+
+
+
+  .right-item {
+    display: none;
+  }
+
+  .second-container {
+    margin-left: 5px;
+  }
+
+  .newmissionbutton {
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+  }
+
+  .button {
+    float: none;
+  }
+
+  .dropdown-content {
+    margin-left: -80px;
+  }
+
 }

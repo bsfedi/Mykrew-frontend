@@ -69,6 +69,22 @@ div {
 
 @media screen and (min-width: 375px) and (max-width: 700px) {
 
+  .title {
+    margin-top: 7px;
+
+    border-radius: 0.5rem;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.0225rem;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    /* 2.25rem */
+  }
+
   /* Hide all table cells except the first two and the last one */
   table th:not(:nth-child(-n+2)):not(:last-child),
   table td:not(:nth-child(-n+2)):not(:last-child) {
@@ -175,6 +191,8 @@ table {
     transform: rotate(0deg);
   }
 }
+
+@media screen and (min-width: 375px) and (max-width: 700px) {}
 
 button:hover {
   background-color: white;
