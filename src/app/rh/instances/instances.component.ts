@@ -10,12 +10,40 @@ import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 const clientName = `${environment.default}`;
 const baseUrl = "http://152.228.135.170:5200/"
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexTitleSubtitle,
+  ApexStroke,
+  ApexGrid,
+  ApexFill,
+  ApexMarkers,
+  ApexYAxis
+} from "ng-apexcharts";
+export type ChartOptions = {
+  series: ApexAxisChartSeries | any;
+  chart: ApexChart | any;
+  chart1: ApexChart | any;
+  xaxis: ApexXAxis | any;
+  dataLabels: ApexDataLabels | any;
+  grid: ApexGrid | any;
+  fill: ApexFill | any;
+  markers: ApexMarkers | any;
+  yaxis: ApexYAxis | any;
+  stroke: ApexStroke | any;
+  title: ApexTitleSubtitle | any;
+  colors: any
+};
 
 @Component({
   selector: 'app-instances',
   templateUrl: './instances.component.html',
   styleUrls: ['./instances.component.css']
 })
+
 export class InstancesComponent {
 
 
@@ -26,7 +54,9 @@ export class InstancesComponent {
   isMenuOpen: boolean[] = [];
   isMenuOpen1: boolean[] = [];
   res: any
+
   show: any
+  public chartOptions: Partial<ChartOptions> | any;
   constructor(private inscriptionservice: InscriptionService, private consultantservice: ConsultantService, private router: Router, private userservice: UserService, private http: HttpClient, private fb: FormBuilder) {
     this.myForm = this.fb.group({
 
@@ -37,8 +67,70 @@ export class InstancesComponent {
       lastName: ['', Validators.required],
       // Add other form controls as needed
     });
+
+
+    this.show = true
+    const customColors: string[] = ['#FCE9A4'] // Replace with your desired colors
+
+    this.chartOptions = {
+      series: [
+        {
+
+          data: ["1240", "240", "360", "3200", "420", "6/2024", "7/2024", "8/2024", "9/2024", "10/2024", "11/2024", "12/2024"]
+        },
+
+        // Add more series if needed
+      ],
+      chart: {
+        toolbar: {
+          show: true, // Show or hide the toolbar
+          tools: {
+            download: true, // Show or hide the download option in the toolbar
+            selection: true, // Show or hide the selection tool in the toolbar
+            zoom: false, // Show or hide the zoom tool in the toolbar
+            zoomin: true, // Show or hide the zoom in button in the toolbar
+            zoomout: true, // Show or hide the zoom out button in the toolbar
+            pan: false, // Show or hide the pan tool in the toolbar
+            reset: true, // Show or hide the reset zoom button in the toolbar
+            customIcons: [] // Custom icons for the toolbar, e.g., [{icon: 'image-url', click: function() { // Custom action }}]
+          },
+          autoSelected: 'zoom' // Automatically select the tool on chart render, options: 'zoom', 'pan', 'selection', null
+        },
+        animations: {
+          enabled: true, // Enable or disable animations
+          easing: 'easeout', // Easing function for animations, options: 'linear', 'easein', 'easeout', 'easeinout', etc.
+          speed: 800, // Animation speed in milliseconds
+          animateGradually: {
+            enabled: true, // Enable or disable gradual animation for chart updates
+            delay: 150 // Delay in milliseconds between each data point animation
+          },
+          dynamicAnimation: {
+            enabled: true, // Enable or disable dynamic animation for chart updates
+            speed: 300 // Animation speed in milliseconds for dynamic animations
+          }
+        },
+        height: 250,
+        type: "area",
+        // Background color
+      },
+      colors: ['#FCE9A4', '#C8E1C3'],  // Line colors
+      stroke: {
+
+        curve: "smooth",
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        type: "date",
+        categories: ["1/2024", "2/2024", "3/2024", "4/2024", "5/2024", "6/2024", "7/2024", "8/2024", "9/2024", "10/2024", "11/2024", "12/2024"]
+
+      },
+    };
   }
 
+
+  nb_instancess: any
   ngOnInit(): void {
     const user_id = localStorage.getItem('user_id');
     this.userservice.getpersonalinfobyid(user_id).subscribe({
@@ -69,13 +161,30 @@ export class InstancesComponent {
 
       }
     });
+    this.nb_instances().subscribe({
+      next: (res: any) => {
 
+        this.nb_instancess = res
+        console.log(this.all_users);
+
+
+      }, error(e: any) {
+        console.log(e);
+
+      }
+    });
   }
   get_entreprises() {
 
     return this.http.get(baseUrl + 'get_entreprises')
 
   }
+  nb_instances() {
+
+    return this.http.get(baseUrl + 'nb_instances')
+
+  }
+
   deleteconsultant(id: any) {
     Swal.fire({
       title: "Confirmez l'action",

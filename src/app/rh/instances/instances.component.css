@@ -277,6 +277,80 @@ button.button1:hover {
     overflow-x: auto;
 }
 
+
+.chiffre_affaire {
+    margin: 5px;
+    padding: 10px;
+    width: 15.25rem;
+    height: 6.6875rem;
+    flex-shrink: 0;
+    border-radius: 0.8125rem;
+    border: 1px solid #eae3d5;
+    background: #1e1e1e;
+    color: white;
+}
+
+.tjm_moyen {
+    margin: 5px;
+    padding: 10px;
+    margin-left: 15px;
+    width: 16.25rem;
+    height: 6.6875rem;
+    flex-shrink: 0;
+    border-radius: 0.8125rem;
+    border: 1px solid #eae3d5;
+    background: #fefcf1;
+    color: black;
+}
+
+.pourcentage {
+    width: 2.4375rem;
+    height: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.6875rem;
+    border: 1px solid #fefcf1;
+}
+
+.pourcentage svg {
+    width: 0.775rem;
+    height: 0.75rem;
+
+    flex-shrink: 0;
+    fill: #fefcf1;
+    stroke-width: 0.2px;
+    stroke: #fefcf1;
+}
+
+.Tableau1 {
+    display: flex;
+}
+
+.nb_money {
+
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 1.6875rem;
+}
+
+.chaffaire {
+    color: #cdc7b9;
+    margin-top: 5px;
+    margin-left: 15px;
+    font-size: 1.125rem;
+}
+
+.graph svg {
+    margin-left: 20px;
+    margin-top: 1px;
+    width: 5.0375rem;
+    height: 3.265rem;
+    stroke-width: 3px;
+    stroke: #fefcf1;
+}
+
+
+
+
 @media (min-width: 1150px) {}
 
 
