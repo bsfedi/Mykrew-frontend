@@ -184,6 +184,27 @@ export class InstancesComponent {
     return this.http.get(baseUrl + 'nb_instances')
 
   }
+  change_status(instance_id: any, type: any) {
+
+    return this.http.get(baseUrl + 'change_status/' + instance_id + '/' + type)
+
+  }
+  change_status_instance(instance_id: any, type: any) {
+    this.change_status(instance_id, type).subscribe({
+      next: (res: any) => {
+
+        if (res) {
+          window.location.reload()
+        }
+
+
+      }, error(e: any) {
+        console.log(e);
+
+      }
+    });
+  }
+
 
   deleteconsultant(id: any) {
     Swal.fire({

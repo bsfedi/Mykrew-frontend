@@ -102,7 +102,7 @@ export class DetailsMissionComponent {
           // Handle the response from the server
           this.status = res.newMissionStatus
           console.log(this.status);
-
+          this.show = true
           this.clientInfo = res.clientInfo;
           this.missionInfo = res.missionInfo
           if (this.status == 'VALIDATED') {

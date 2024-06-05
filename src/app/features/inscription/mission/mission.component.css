@@ -241,10 +241,27 @@ input[type="search"] {
 
     }
 
+    .left-panel {
+        height: 50%;
+        width: 100%;
+
+    }
+
+    .form-container {
+        width: 420px;
+        padding-left: 0px;
+    }
+
     .custom-file-input {
 
 
         width: 21.04313rem;
+
+    }
+
+    .left-panel {
+        height: 50%;
+        width: 100%;
 
     }
 
@@ -259,7 +276,7 @@ input[type="search"] {
 
     .buttons {
         display: flex;
-        margin-left: 80px;
+        margin-left: 100px;
     }
 
     .under-connect {
@@ -271,7 +288,7 @@ input[type="search"] {
     input[type="date"],
     input[type="text"],
     input[type="tel"],
-    input[type="file"],
+    input[type="password"],
     input[type="search"] {
         width: 21.04313rem;
 
@@ -293,24 +310,20 @@ input[type="search"] {
 
     .form-panel {
 
-        padding-top: 50px;
-        padding-left: -1020px;
+        margin-top: -270px;
+        padding-left: 20px;
         display: row;
         justify-content: center;
         align-items: center;
 
     }
 
-    .form-container {
-
-        padding-left: 20px;
-    }
-
     .text-overlay {
-        top: 70%;
-        left: 32%;
+        left: 39%;
         width: 20rem;
-
+        top: 70%;
+        font-size: 1.5rem;
+        transform: translate(-40%, -50%);
     }
 
     .container {
@@ -333,6 +346,7 @@ input[type="search"] {
         height: auto;
         object-fit: contain;
     }
+
 }
 
 /* @media (max-width: 768px) {

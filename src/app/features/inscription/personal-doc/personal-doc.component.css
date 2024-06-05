@@ -262,6 +262,12 @@ input[type="file"] {
 
   }
 
+  .left-panel {
+    height: 50%;
+    width: 100%;
+
+  }
+
   .mdp {
     color: #000;
     cursor: pointer;
@@ -285,7 +291,7 @@ input[type="file"] {
   input[type="date"],
   input[type="text"],
   input[type="tel"],
-  input[type="file"],
+  input[type="password"],
   input[type="search"] {
     width: 21.04313rem;
 
@@ -307,8 +313,8 @@ input[type="file"] {
 
   .form-panel {
 
-    padding-top: 50px;
-    padding-left: 10px;
+    margin-top: -270px;
+    padding-left: 20px;
     display: row;
     justify-content: center;
     align-items: center;
@@ -316,9 +322,11 @@ input[type="file"] {
   }
 
   .text-overlay {
-    left: 38%;
+    left: 39%;
     width: 20rem;
-
+    top: 70%;
+    font-size: 1.5rem;
+    transform: translate(-40%, -50%);
   }
 
   .container {
