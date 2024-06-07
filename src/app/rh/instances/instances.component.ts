@@ -51,6 +51,7 @@ export class InstancesComponent {
   showPopup: any
   myForm: FormGroup;
   all_users: any
+  showPopup1: any
   isMenuOpen: boolean[] = [];
   isMenuOpen1: boolean[] = [];
   res: any
@@ -183,6 +184,28 @@ export class InstancesComponent {
 
     return this.http.get(baseUrl + 'nb_instances')
 
+  }
+  get_entreprise(entreprise_id: any) {
+
+    return this.http.get(baseUrl + 'get_entreprise_by_id/' + entreprise_id)
+
+  }
+  entreprise: any
+  openPopup1(entreprise_id: any): void {
+    this.get_entreprise(entreprise_id).subscribe({
+      next: (res) => {
+        this.entreprise = res
+      }, error(e) {
+        console.log(e);
+
+      }
+    });
+    this.showPopup1 = true;
+
+  }
+  closePopup1(): void {
+
+    this.showPopup1 = false;
   }
   change_status(instance_id: any, type: any) {
 
@@ -321,7 +344,7 @@ export class InstancesComponent {
     }
   }
   gotomyprofile() {
-    this.router.navigate([clientName + '/edit-profil'])
+    this.router.navigate([clientName + '/edit-entreprise'])
   }
   toggleMenu(i: number) {
     this.isMenuOpen[i] = !this.isMenuOpen[i];
