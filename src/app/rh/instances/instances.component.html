@@ -216,30 +216,50 @@
         </div>
         <div class="popup" *ngIf="showPopup1">
 
-            <div class="popup-content" style="height: 20rem;">
+            <div class="popup-content" style="height: 25rem;">
                 <div style="float: right" (click)="closePopup1()">
                     <img class="close-button" src="/assets/close.png" width="50%" height="50%" />
                 </div>
                 <h3>Contact</h3>
                 <div style="display: flex;">
                     <img src="/assets/avatar-user.png" width="15%" height="10%" style="border-radius: 2rem;" />
-                    <div style="margin-left: 25px; margin-top: 0px;font-size: 1rem;">
+                    <div style="margin-left: 25px; margin-top: 25px;font-size: 1rem;">
                         <b> {{entreprise.fonction}} <br>
                             {{entreprise.nom}} {{entreprise.prenom}}</b> <br>
                         {{entreprise.email}}
                     </div> <br>
                 </div> <br>
                 <div style="  justify-content: none;text-align: left;">
-                    <b> Informations d'entreprise </b> <br>
+                    <b> Informations d'entreprise </b> <br> <br> <br>
                     <div style="justify-content: none;text-align: left;margin-top: 5px;">
-                        <b> Nom de l'Entreprise : </b> {{entreprise.name}}<br>
-                        <b> Siret </b> : {{entreprise.siret}} <br>
-                        <b> Secteur d'Activité :</b> {{entreprise.secteur}} <br>
-                        <b>Taille de l'Entreprise : </b> {{entreprise.taille}} <br>
-                        <b> Adresse du Siège Social : </b> {{entreprise.adresse}} <br>
-                        <b> Site Web : </b> {{entreprise.site_web}} <br>
-                        <b> Téléphone : </b> {{entreprise.phone}} <br>
-                        <b> Nombre consultant : </b> {{entreprise.total_consultant}}
+                        <div style="display: flex;margin-top: 5px;">
+                            <div style="width: 350px;">
+                                <b> Nom de l'Entreprise : </b> {{entreprise.name}}<br>
+                            </div>
+
+                            <b style="margin-left: 50px;"> Siret </b> : {{entreprise.siret}} <br>
+                        </div>
+                        <div style="display: flex;margin-top: 5px;">
+                            <div style="width: 350px;">
+                                <b> Secteur d'Activité :</b> {{entreprise.secteur}} <br>
+                            </div>
+                            <b style="margin-left: 50px;">Taille de l'Entreprise : </b> {{entreprise.taille}} <br>
+                        </div>
+                        <div style="display: flex;margin-top: 5px;">
+                            <div style="width: 350px;">
+                                <b> Adresse du Siège Social : </b> {{entreprise.adresse}} <br>
+                            </div>
+                            <b style="margin-left: 50px;"> Site Web : </b> {{entreprise.site_web}} <br>
+                        </div>
+                        <div style="display: flex;margin-top: 5px;">
+                            <div style="width: 350px;">
+                                <b> Téléphone : </b> {{entreprise.phone}} <br>
+                            </div>
+                            <b style="margin-left: 50px;"> Nombre consultant : </b> {{entreprise.total_consultant}}
+                        </div>
+
+
+
 
 
                     </div>
